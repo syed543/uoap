@@ -1,0 +1,70 @@
+<div class="uoap-landing">
+
+    <div class="banner">
+        <div layout="column" layout-align="center center" style="padding-bottom: 10px" >
+            <jk-carousel
+                    data="dataArray"
+                    item-template-url="'assets/views/carousel-item.html'"
+                    max-width="1024"
+                    max-height="300"
+                    auto-slide-time="2000" >
+            </jk-carousel>
+        </div>
+    </div>
+    <md-content class="md-padding" >
+    <div layout="row" layout-align="space-between center" layout-xs="column" >
+        <div></div>
+         <div class="search">
+            <input type="text" ng-model="search" class="form-control input-sm" maxlength="64" placeholder="Journal/Article Search" />
+            <md-button type="submit" class="" ng-click="searchArticle()">Search</md-button>
+        </div>
+        <md-button ng-click="submitMenuScript($event)">Submit Menuscript</md-button>
+    </div>
+    </md-content>
+    <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
+        <div flex-xs flex-sm="50" flex-md="33" flex-gt-md="25" layout="column"  ng-repeat="journal in journalList">
+            <md-card>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{journal.name}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <div layout-align="center center" layout="row">
+                        <img ng-src="{{journal.imagePath}}" class="md-card-image" alt="{{journal.name}}">
+                    </div>
+                    <div class="card-description">{{journal.description}}</div>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="center center">
+                    <md-button>Read More <md-icon md-svg-src="assets/img/arrowRight.svg"></md-icon> </md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+
+    <div class="uoap-accordian-gear" ng-click="openSidePanel()">
+        <md-icon md-svg-src="assets/img/arrowUp.svg"></md-icon>
+        JOURNALS lIST
+    </div>
+
+    <md-sidenav class="md-sidenav-left md-whiteframe-4dp uoap-journal-list" md-component-id="left" style="z-index: 9999">
+
+        <md-toolbar class="md-theme-light">
+            <div class="md-toolbar-tools">
+            <h3 class="md-toolbar-tools">Journals List</h3>
+            <span flex></span>
+            <md-icon md-svg-src="assets/img/close.svg" ng-click="closeSideNav()"></md-icon>
+            </div>
+        </md-toolbar>
+        <md-content layout-padding>
+            <form>
+                <md-input-container>
+                    <input type="search" id="testInput"
+                           ng-model="data" md-autofocus>
+                </md-input-container>
+            </form>
+        </md-content>
+
+    </md-sidenav>
+
+</div>

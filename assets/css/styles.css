@@ -1,0 +1,331 @@
+@font-face {
+    font-family: SourceSansPro;
+    src: url('fonts/SourceSansPro-Regular.ttf');
+}
+@font-face {
+    font-family: SourceSansPro-Bold;
+    src: url('fonts/SourceSansPro-Bold.ttf');
+    font-weight: bold;
+}
+@font-face {
+    font-family: SourceSansPro-Italic;
+    src: url('fonts/SourceSansPro-Italic.ttf');
+    font-style: italic;
+}
+@font-face {
+    font-family: SourceSansPro-BoldItalic;
+    src: url('fonts/SourceSansPro-BoldItalic.ttf');
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: SourceSansPro-Light;
+    src: url('fonts/SourceSansPro-Light.ttf');
+    font-weight: 300;
+}
+@font-face {
+    font-family: SourceSansPro-LightItalic;
+    src: url('fonts/SourceSansPro-LightItalic.ttf');
+    font-style: italic;
+    font-weight: 300;
+}
+@font-face {
+    font-family: SourceSansPro-Semibold;
+    src: url('fonts/SourceSansPro-Semibold.ttf');
+}
+
+.uopa {
+    font-family: SourceSansPro !important;
+    background-color: #2a2c451a;
+}
+
+/* header styling: start */
+md-icon.home-icon {
+    margin-right: 4px;
+    position: relative;
+    top: -4px;
+    margin-bottom: -5px;
+}
+md-icon.home-icon svg {
+    fill: #fff;
+}
+
+.uoap-header .navbar-default {
+    border-color: rgb(231, 231, 231);
+    background-color: #2a2c45;
+}
+.uoap-header .navbar-default .navbar-brand,
+.uoap-header .navbar-default .navbar-nav > li > a{
+    color: #fff;
+}
+
+.uoap-header .navbar-default .navbar-nav > li > a:hover,
+.uoap-header .navbar-default .navbar-nav > .open > a {
+    background-color: #fff;
+    color: #2a2c45;
+}
+.uoap-header .navbar-default .navbar-nav > li > a:active {
+    color: #2a2c45;
+}
+
+.uoap-header .navbar-default .navbar-nav > li > a:hover md-icon.home-icon svg {
+    fill: #2a2c45;
+}
+
+.uoap .jk-carousel .slides-container .slide .ng-scope img:first-child {
+    width: 100%;
+}
+.uoap .carousel-container .image-text {
+    position: absolute;
+    float: right;
+    margin-left: 15px;
+    top: 15px;
+    color: #fff;
+    font-size: 24px;
+}
+
+.uoap-header .navbar {
+    margin-bottom: 0;
+}
+
+/* header styling: end */
+
+/* content styling: start */
+#page-wrapper {
+}
+
+#search {
+    float: right;
+    margin-top: 9px;
+    width: 250px;
+}
+
+.search {
+    padding: 5px 0;
+    width: 40%;
+    position: relative;
+}
+
+.search input {
+    position: absolute;
+    border-radius: 1px;
+    margin: 6px 8px;
+    min-height: 37px;
+    padding-left: 92px;
+}
+.note {
+    font-style: italic;
+    font-family: SourceSansPro-Semibold;
+    padding: 20px;
+}
+
+/* material overrides : START*/
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar),
+md-dialog md-toolbar {
+    background-color: rgb(42, 44, 69);
+}
+
+.fullwidth,
+.fullwidth md-input-container {
+    width: 100%;
+}
+
+.md-button.md-primary,
+.md-button.md-primary:focus,
+.md-button.md-primary:active{
+    background-color: #ff5349;
+    color: #fff;
+}
+
+.md-button.md-primary:disabled {
+    opacity: 0.5;
+}
+
+md-toolbar md-icon svg {
+    fill: #fff;
+}
+
+.menuscript-dialog .md-dialog-content {
+    padding: 5px;
+}
+@media only screen and (min-width: 600px)  {
+    md-dialog.menuscript-dialog {
+        min-width: 600px;
+    }
+}
+
+/* material overrides : END*/
+/* content styling: end */
+
+
+/* landing page styling: start */
+
+.uoap-landing .banner {
+    background-color: #f3f1f1;
+    padding-top: 15px;
+}
+.uoap-landing .uoap-accordian-gear {
+    position: fixed;
+    top: 50%;
+    left: -55px;
+    transform: translate(-50%, -50%);
+    transform: rotate(90deg);
+    background-color: #cfcfcf;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.uoap-landing md-card md-card-title {
+    border-bottom: 2px solid #2a2c45;
+    background-color: #00a19e;
+    color: #fff;
+    padding-bottom: 40px;
+}
+.uoap-landing md-card .md-card-image {
+    width: 75px;
+    border-radius: 50%;
+    height: 75px;
+    top: -40px;
+    position: relative;
+    border: 2px solid #fff;
+}
+
+.uoap-landing .md-button {
+    background-color: #ff5349;
+    color: #fff;
+}
+.uoap-landing md-card md-card-actions md-icon svg {
+    fill: #fff;
+}
+.uoap-landing .md-button.md-default-theme:not([disabled]).md-focused,
+.uoap-landing .md-button:not([disabled]).md-focused,
+.uoap-landing .md-button.md-default-theme:not([disabled]):hover,
+.uoap-landing .md-button:not([disabled]):hover {
+    background-color: #ff2119;
+    color: #fff;
+}
+
+.uoap-landing .card-description {
+    margin-top: -25px;
+}
+
+.uoap-landing md-toolbar:not(.md-menu-toolbar) {
+    background-color: #2a2c45;
+}
+
+.uoap-journal-list md-icon svg {
+    fill: #fff;
+}
+
+/**	Sentence case Buttons --- BEGIN */
+.md-button > span ,button.md-button.md-icon-button md-icon,span .nav-item-name,button div span,span.nav-item-text-container,tcc-action a,span.nav-item-name.flex{
+    display: inline-block;
+}
+
+button,button div,div.main-card > div.bottom > div.right,.md-button, .md-button > span,tcc-action-group tcc-action div,.tcc-action-button>span,span .nav-item-name,button div span,span.nav-item-text-container,tcc-action a,span.nav-item-name.flex{
+    text-transform:lowercase;
+}
+
+button:first-letter,button div:first-letter,span .nav-item-name:first-letter,button div span:first-letter,div.main-card > div.bottom > div.right:first-letter,.md-button:first-letter, .md-button span:first-letter,.tcc-action-button>span:first-letter,tcc-action-group tcc-action div:first-letter,span.nav-item-text-container:first-letter,span.nav-item-name.flex:first-letter,a:first-letter,tcc-action a:first-letter{
+    text-transform:uppercase;
+}
+span.nav-item-name.flex{
+    text-transform:none;
+}
+/**	Sentence case Buttons --- END */
+
+/* landing page styling: end */
+
+/* footer styling: start */
+.uoap-footer {
+    padding: 10px;
+    background-color: #2a2c45;
+    color: #fff;
+}
+
+/* footer styling: end */
+
+
+
+/***   Login Page Style Start **/
+fieldset {
+    background: #ffffff;
+    border: 1px solid #e6e8e8;
+    border-radius: 5px;
+    margin: 20px 0 20px 0;
+    padding: 25px;
+    position: relative;
+}
+fieldset legend {
+    background: inherit;
+    font-family: "Lato", sans-serif;
+    color: #4597CB;
+    font-size: 15px;
+    left: 10px;
+    padding: 0 10px;
+    position: absolute;
+    top: -12px;
+    font-weight: 400;
+    width: auto !important;
+    border: none !important;
+}
+.input-icon > input {
+    padding-left: 30px !important;
+    padding-right: 6px;
+}
+.input-icon > [class*="fa-"], .input-icon > [class*="ti-"] {
+    bottom: 0;
+    color: #4597CB;
+    display: inline-block;
+    left: 5px;
+    line-height: 35px;
+    padding: 0 3px;
+    position: absolute;
+    top: -1px;
+    z-index: 2;
+}
+span.input-icon, span.input-help {
+    display: block;
+    position: relative;
+}
+.clip-check {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+.main-login {
+    margin-top: 0;
+    position: relative;
+}
+@media (max-width: 991px) {
+    .main-login {
+        margin-top: 65px;
+    }
+}
+.main-login .box-login, .main-login .box-forgot, .main-login .box-forgotmsg, .main-login .box-register {
+    background: #FFFFFF;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 15px;
+    margin: 15px 0 65px 0;
+}
+.main-login a{
+    cursor: pointer;
+}
+/* .main-login a.forgot {
+  color: #4597cb;
+  font-size: 12px;
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: underline;
+  cursor: pointer;
+} */
+.main-login .form-actions {
+    margin-top: 15px;
+    padding-top: 10px;
+    display: block;
+}
+/***   Login Page Style End **/
