@@ -1,0 +1,116 @@
+<div class="login-container">
+    <!-- start: LOGIN -->
+    <div class="row">
+        <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+            <div class="logo">
+                <!--img ng-src="{{app.layout.logo}}" alt="{{app.name}}"/-->
+            </div>
+            <!-- start: LOGIN BOX -->
+            <div class="box-login" ng-show="loginPage">
+                <form class="form-login" name="loginForm" id="loginForm" novalidate="novalidate" ng-submit="login(loginForm)">
+                    <fieldset>
+                        <legend>
+                            Sign in
+                        </legend>
+                        <p>
+                            Please enter your email and password to login.
+                        </p>
+                        <div class="form-group" ng-class="{'has-error':submit && loginForm.emailid.$dirty && loginForm.emailid.$invalid, 'has-success':submit && loginForm.emailid.$valid}">
+						<span class="input-icon">
+							<input type="email" ng-model="loginInfo.emailid" class="form-control" name="emailid" placeholder="Email" ng-model-options="{ updateOn: 'keyup' }" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+							<span class="error text-small block" ng-if="submit && loginForm.emailid.$dirty && loginForm.emailid.$error.required">Email is required.</span>
+							<span class="error text-small block" ng-if="submit && (loginForm.emailid.$error.email || loginForm.emailid.$invalid)">Please enter valid email address.</span>
+							<i class="fa fa-envelope-o"></i> </span>
+                        </div>
+                        <div class="form-group form-actions" ng-class="{'has-error':submit && loginForm.password.$dirty && loginForm.password.$invalid, 'has-success':submit && loginForm.password.$valid}">
+						<span class="input-icon">
+							<input type="password" ng-model="loginInfo.password" class="form-control password" name="password" placeholder="Password" required>
+							<span class="error text-small block" ng-if="submit && loginForm.password.$dirty && loginForm.password.$invalid">Password is required.</span>
+							<i class="fa fa-lock"></i>
+							</span>
+                        </div>
+                        <div class="form-group form-actions">
+                            <!--div class="checkbox clip-check check-primary">
+                                <input type="checkbox" id="remember" value="1">
+                                <label for="remember">
+                                    Keep me signed in
+                                </label>
+                            </div-->
+                            <div>
+                                <a class="forgot" ng-click="forgotPassword()">Forgot Password?</a>
+                                <button type="submit" class="btn btn-primary pull-right">Login <i class="fa fa-arrow-circle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group has-error" ng-if="errorstatus"><label class="error">{{statusmsg}}</label></div>
+                        <div class="form-group has-success" ng-if="!errorstatus"><label class="success">{{statusmsg}}</label></div>
+                        <!-- <div class="new-account">
+                            Don't have an account yet?
+                            <a ui-sref="login.registration">
+                                Create an account
+                            </a>
+                        </div> -->
+                    </fieldset>
+                </form>
+            </div>
+            <!-- start: FORGOT BOX -->
+            <div class="box-forgot" ng-show="forgotPage">
+                <form class="form-forgot" name="forgotForm" novalidate="novalidate" ng-submit="forgot(forgotForm)">
+                    <fieldset>
+                        <legend>
+                            Forgot Password?
+                        </legend>
+                        <p>
+                            Enter your e-mail address below to resend your password.
+                        </p>
+                        <div class="form-group" ng-class="{'has-error':submit && forgotForm.email.$dirty && forgotForm.email.$invalid, 'has-success':forgotForm.email.$valid}">
+						<span class="input-icon">
+							<input type="email" ng-model="forgotInfo.emailid" class="form-control" name="email" placeholder="Email" ng-model-options="{ updateOn: 'keyup' }" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+							<span class="error text-small block" ng-if="submit && forgotForm.email.$dirty && forgotForm.email.$error.required">Email is required.</span>
+							<span class="error text-small block" ng-if="submit && (forgotForm.email.$error.email || forgotForm.email.$invalid)">Please enter valid email address.</span>
+							<i class="fa fa-envelope-o"></i> </span>
+                        </div>
+                        <div class="form-actions">
+                            <!--a class="btn btn-primary btn-o" ui-sref="login.signin">
+                                <i class="fa fa-chevron-circle-left"></i> Log-In
+                            </a-->
+                            click here to <a class="login" ng-click="showloginPage()">Login</a>
+                            <button type="submit" class="btn btn-primary pull-right" ng-disabled="isDisabled">
+                                {{isDisabled ? "In-Process..." : "Submit"}} <i class="fa fa-arrow-circle-right"></i>
+                            </button>
+
+                            <div class="form-group has-error" ng-if="errorstatus"><label class="error">{{statusmsg}}</label></div>
+                            <div class="form-group has-success" ng-if="!errorstatus"><label class="success">{{statusmsg}}</label></div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- end: FORGOT MESSAGE BOX -->
+            <!-- start: FORGOT MESSAGE BOX -->
+            <div class="box-forgotmsg" ng-show="forgotmsgPage">
+
+                <fieldset>
+                    <legend>
+                        Recover Password
+                    </legend>
+                    <p>
+                        Your existing password has been emailed to the address on your profile.
+                    </p>
+                    <p>
+                        Please check your junk/spam folder if you do not receive the reminder email in a few minutes
+                    </p>
+                    <div class="form-actions">
+                        <!--a class="btn btn-primary btn-o" ui-sref="login.signin">
+                            <i class="fa fa-chevron-circle-left"></i> Log-In
+                        </a-->
+                        click here to <a class="login" ng-click="showloginPage()">Login</a>
+                    </div>
+                </fieldset>
+
+            </div>
+            <!-- end: FORGOT MESSAGE BOX -->
+        </div>
+    </div>
+    <!-- end: LOGIN -->
+
+</div>
