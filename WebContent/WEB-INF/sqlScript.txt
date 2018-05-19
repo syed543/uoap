@@ -1,0 +1,22 @@
+drop table submitter;
+
+create table submitter( 
+email varchar(50),
+phoneNo varchar(20),
+firstName varchar(50),
+lastName varchar(50),
+countryName varchar(50),
+password varchar(50),
+generated varchar(1)
+)
+
+drop table submissions;
+
+create table submissions(
+email varchar(50),
+journal varchar(50),
+articleType varchar(50),
+menuScriptTitle varchar(1000),
+abstractName varchar(4000),
+attachmentFileName varchar(100),
+attachment longblob)
