@@ -1,0 +1,45 @@
+[
+  {
+    "email": "unique id",
+    "menuScript_id": "unique id",
+    "journal": "journal_value",
+    "article": "article_value",
+    "menu_title": "Title of menuscript...",
+    "abstract" : "description of abstract...",
+    "status": "in review",
+    "feedback": "The article is duplicated",
+    "reviewer": {
+      "first_Name": "Reviewer First Name",
+      "last_Name": "Reviewer Last Name",
+      "email": "test@test.com",
+      "country": "US"
+    }
+  },
+  {
+    "email": "unique id",
+    "menuScript_id": "unique id",
+    "journal": "journal_value",
+    "article": "article_value",
+    "menu_title": "Title of menuscript...",
+    "abstract" : "description of abstract...",
+    "status": "Open",
+    "feedback": "The article is duplicated",
+    "reviewer": {}
+  },
+  {
+    "email": "unique id",
+    "menuScript_id": "unique id",
+    "journal": "journal_value",
+    "article": "article_value",
+    "menu_title": "Title of menuscript...",
+    "abstract" : "description of abstract...",
+    "status": "in review",
+    "feedback": "The article is duplicated",
+    "reviewer": {
+      "first_Name": "Reviewer First Name",
+      "last_Name": "Reviewer Last Name",
+      "email": "test@test.com",
+      "country": "US"
+    }
+  }
+]

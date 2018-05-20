@@ -1,0 +1,14 @@
+{
+  "status": "200",
+  "message": "Login successful",
+  "body" : {
+    "fName": "Syed",
+    "lName": "Azher",
+    "id": "userGeneratedUniqueId",
+    "type": "Admin/Submitter/Editor/Reviewer",
+    "title": "Mr",
+    "country" : "country_value",
+    "email": "test@test.com",
+    "postalAddress": "..."
+  }
+}

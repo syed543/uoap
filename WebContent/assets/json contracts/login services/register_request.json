@@ -1,0 +1,9 @@
+{
+  "fName": "Syed",
+  "lName": "Azher",
+  "type": "Submitter/Editor/Reviewer",
+  "title": "Mr",
+  "country" : "country_value",
+  "email": "test@test.com",
+  "postalAddress": "..."
+}

@@ -1,0 +1,8 @@
+{
+  "status": "200",
+  "message": "Reviewer added successfully.",
+  "body" : {
+    "email": "",
+    "password": "generated password"
+  }
+}

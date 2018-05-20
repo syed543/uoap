@@ -1,0 +1,7 @@
+{
+  "journal_name": "This is new journal1",
+  "journal_icon": "{file object type png, jpeg}",
+  "journal_description": "Short description of journal",
+  "journal_long_description": "This is journals long description",
+  "journal_banner_image": "{file object type png, jpeg}"
+}
