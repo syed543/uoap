@@ -1,0 +1,26 @@
+[
+  {
+    "first_Name": "editor First Name",
+    "last_Name": "editor Last Name",
+    "avatar": "image_url",
+    "description": "Short description of editor",
+    "affiliation": "University/country",
+    "journal": "select journal"
+  },
+  {
+    "first_Name": "editor First Name",
+    "last_Name": "editor Last Name",
+    "avatar": "image_url",
+    "description": "Short description of editor",
+    "affiliation": "University/country",
+    "journal": "select journal"
+  },
+  {
+    "first_Name": "editor First Name",
+    "last_Name": "editor Last Name",
+    "avatar": "image_url",
+    "description": "Short description of editor",
+    "affiliation": "University/country",
+    "journal": "select journal"
+  }
+]

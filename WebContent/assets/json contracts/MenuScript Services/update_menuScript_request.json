@@ -1,0 +1,14 @@
+{
+  "menuScript_id": "unique id",
+  "fName": "Syed",
+  "lName": "Azher",
+  "title": "Mr",
+  "email": "test@test.com",
+  "postalAddress": "...",
+  "country" : "country_value",
+  "journal": "journal_value",
+  "article": "article_value",
+  "menu_title": "Title of menuscript...",
+  "abstract" : "description of abstract...",
+  "attachment" : "{file_Object}"
+}

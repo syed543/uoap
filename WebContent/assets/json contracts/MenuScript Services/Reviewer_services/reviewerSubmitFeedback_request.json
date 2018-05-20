@@ -1,0 +1,6 @@
+{
+  "email": "test@test.com", /* reviewer email id*/
+  "menuScript_id": "unique id",
+  "feedback": "Minor/Major/Approve/Reject",
+  "fb_comment": "Your feedback is approved"
+}

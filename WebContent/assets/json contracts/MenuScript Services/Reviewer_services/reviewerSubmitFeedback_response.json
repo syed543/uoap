@@ -1,0 +1,10 @@
+{
+  "status": "200",
+  "message": "Your feedback is submitted successfully.",
+  "body" : {
+    "email": "test@test.com",
+    /* reviewer email id*/
+    "menuScript_id": "unique id",
+    "status": "status_value"
+  }
+}

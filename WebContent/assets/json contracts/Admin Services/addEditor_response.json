@@ -1,0 +1,8 @@
+{
+  "status": "200",
+  "message": "Editor added successfully.",
+  "body" : {
+    "email": "",
+    "password": "generated password"
+  }
+}

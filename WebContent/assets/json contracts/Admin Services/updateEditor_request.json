@@ -1,0 +1,9 @@
+{
+  "first_Name": "editor First Name",
+  "last_Name": "editor Last Name",
+  "email": "test@test.com", /*readonly, cannot change once created.*/
+  "avatar": "{file object type png, jpeg}",
+  "description": "Short description of editor",
+  "affiliation": "University/country",
+  "journal": "select journal"
+}

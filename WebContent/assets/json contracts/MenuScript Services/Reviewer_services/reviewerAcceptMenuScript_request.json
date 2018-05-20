@@ -1,0 +1,6 @@
+{
+  "email": "test@test.com", /* reviewer email id*/
+  "menuScript_id": "unique id",
+  "Accept": "true",
+  "Reject": "false" /* Do you need this???*/
+}

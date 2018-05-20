@@ -1,0 +1,9 @@
+{
+  "status": "200",
+  "message": "Thank you for accepting Review.",
+  "body" : {
+    "email": "test@test.com",    /* reviewer email id*/
+    "menuScript_id": "unique id",
+    "status": "status_value" /* How will you maintain this column*/
+  }
+}
