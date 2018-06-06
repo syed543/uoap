@@ -1,4 +1,5 @@
 {
   "emailid": "test@test.com",
-  "password": "test123"
+  "password": "test123",
+  "url": "/login"
 }

@@ -4,4 +4,6 @@
   "journal_description": "Short description of journal",
   "journal_long_description": "This is journals long description",
   "journal_banner_image": "{file object type png, jpeg}"
+  
+  "url": "/addJournal"
 }

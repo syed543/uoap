@@ -5,16 +5,16 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.journal.model.Submitter;
+import com.journal.model.User;
 
-public class SubmitterRowMapper implements RowMapper {
+public class UserRowMapper implements RowMapper {
 
 	@Override
 	public Object mapRow(ResultSet rs, int arg1) throws SQLException {
 		
-		Submitter submitter = new Submitter();
-		submitter.setEmail(rs.getString("email"));
-		return submitter;
+		User user = new User();
+		user.setEmail(rs.getString("email"));
+		return user;
 	}
 
 }

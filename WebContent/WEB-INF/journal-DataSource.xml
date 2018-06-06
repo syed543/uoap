@@ -12,7 +12,7 @@
 		<property name="password" value="admin" />
 	</bean>
 	
-	<bean id="submitterJDBCTemplate" class ="com.journal.dao.SubmitterJDBCTemplate">
+	<bean id="userJDBCTemplate" class ="com.journal.dao.UserJDBCTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	

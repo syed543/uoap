@@ -1,14 +1,32 @@
 drop table submitter;
 
-create table submitter( 
+drop table user;
+
+create table user( 
 email varchar(50),
 phoneNo varchar(20),
 firstName varchar(50),
 lastName varchar(50),
 countryName varchar(50),
 password varchar(50),
-generated varchar(1)
+generated varchar(1),
+userType varchar(15)
 )
+
+drop table journals;
+
+create table journals(
+id int not null auto_increment,
+journalName varchar2(100) not null,
+journalIcon longblob,
+journalIconFileName varchar2(100),
+journalDescription varchar2(500),
+journalLongDescription varchar2(5000),
+journalBannerImage longblob,
+journalBannerImageFileName varchar2(100)
+primary key (id)
+)
+
 
 drop table submissions;
 

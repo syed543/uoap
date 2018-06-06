@@ -1,6 +1,6 @@
 package com.journal.model;
 
-public class Submitter {
+public class User {
 	
 	private String email;
 	private String phoneNo;
@@ -9,6 +9,8 @@ public class Submitter {
 	private String countryName;
 	private String password;
 	private String generated;
+	private String usertype;
+	private String address;
 	
 
 	public String getEmail() {
@@ -52,5 +54,17 @@ public class Submitter {
 	}
 	public void setGenerated(String generated) {
 		this.generated = generated;
+	}
+	public String getUsertype() {
+		return usertype;
+	}
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 }
