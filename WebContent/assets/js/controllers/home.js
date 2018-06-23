@@ -11,13 +11,13 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "FeatureSe
 
   function checkUserLogin() {
     if ($rootScope.userInfo) {
-      if ($rootScope.userInfo.type.toLowerCase() == "admin") {
+      if ($rootScope.userInfo.usertype.toLowerCase() == "admin") {
         $timeout($state.go("adminHome"), 0);
-      } else if ($rootScope.userInfo.type.toLowerCase() == "reviewer") {
+      } else if ($rootScope.userInfo.usertype.toLowerCase() == "reviewer") {
         $state.go("reviewerHome");
-      } else if ($rootScope.userInfo.type.toLowerCase() == "editor") {
+      } else if ($rootScope.userInfo.usertype.toLowerCase() == "editor") {
         $state.go("editorHome");
-      } else if ($rootScope.userInfo.type.toLowerCase() == "editor") {
+      } else if ($rootScope.userInfo.usertype.toLowerCase() == "editor") {
         $state.go("userHome");
       } else {
         $state.go("home");

@@ -49,7 +49,7 @@ define([
 
   // api services url constant variable
   uoap.constant('ApiEndpoint', {
-    url: 'http://localhost:8071/apps/uoap_git/uoap/WebContent/'
+    url: '/journal/router'
   });
 
 	uoap.run(['$rootScope', '$state', '$stateParams', 'authenticationSvc', '$location', '$timeout',
@@ -74,13 +74,13 @@ define([
           if ($rootScope.userInfo === false) {console.log("Not Authorized");$rootScope.userlogged = false;}
           else {event.preventDefault();console.log("Authorized");$state.go("home");}
         }/* else if(typeof toState.Authentication == "undefined" && $rootScope.userInfo !== false) {
-          if($rootScope.userInfo.type.toLowerCase() == "admin") {
+          if($rootScope.userInfo.usertype.toLowerCase() == "admin") {
             $timeout($state.go("adminHome"), 0);
-          } else if($rootScope.userInfo.type.toLowerCase() == "reviewer") {
+          } else if($rootScope.userInfo.usertype.toLowerCase() == "reviewer") {
             $state.go("reviewerHome");
-          } else if($rootScope.userInfo.type.toLowerCase() == "editor") {
+          } else if($rootScope.userInfo.usertype.toLowerCase() == "editor") {
             $state.go("editorHome");
-          } else if($rootScope.userInfo.type.toLowerCase() == "editor") {
+          } else if($rootScope.userInfo.usertype.toLowerCase() == "editor") {
             $state.go("userHome");
           } else {
             $state.go("home");

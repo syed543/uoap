@@ -7,7 +7,8 @@ services.factory('Http', ["$http", "$q", "$state", "$log", "ApiEndpoint", functi
 		return {
 			// for all GET ajax calls
 			getData : function(url) {
-				var d = $q.defer();
+				var d = $q.defer(),
+				url = ApiEndpoint.url+url;
 				$http.get(url).success(function (data, status) {
 						d.resolve(data);
 				}).error(function (data, status) {

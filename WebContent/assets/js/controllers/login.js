@@ -77,7 +77,7 @@ controllers.controller("loginCtrl", ["$scope", "$rootScope", "$state", "$statePa
           $scope.errorstatus = false;
           $rootScope.userlogged = true;
           $scope.statusmsg = data.statusMsg;
-          if(userInfo.type.toLowerCase() === "admin") {
+          if(userInfo.usertype.toLowerCase() === "admin") {
             $state.go('adminHome');
           } else {
             $state.go('home'); // Redirect to dashboard after login successful

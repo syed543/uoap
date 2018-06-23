@@ -10,7 +10,7 @@ define(['angular', 'services-module', 'underscore'], function (angular, services
       login: function (data) {
         var deferred = $q.defer();
         //Http.postData('userLogin', data).then(function(result){
-        Http.getData('assets/data/login.json', data).then(function (result) {
+        Http.postData('/login', data).then(function (result) {
           deferred.resolve(result);
         }).catch(function (err) {
         });

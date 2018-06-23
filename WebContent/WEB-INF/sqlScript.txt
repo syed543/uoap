@@ -9,7 +9,7 @@ firstName varchar(50),
 lastName varchar(50),
 countryName varchar(50),
 password varchar(50),
-generated varchar(1),
+passwordGenerated varchar(1),
 userType varchar(15)
 )
 

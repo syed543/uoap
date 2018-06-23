@@ -1,5 +1,9 @@
 package com.journal.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +48,30 @@ public class JournalJDBCTemplate {
 				journal.getJournalDescription(), journal.getJournalLongDescription(), journal.getJournalBannerImage(), journal.getJournalBannerImageFileName());
 		
 		System.out.println("Submission uploaded");
+	}
+
+	public List<Journal> getAllJournals() {
+		
+		String query = "select id, journalName, journalDescription, journalLongDescription from JOURNALS";
+		
+		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
+		
+		List<Map<String, Object>> journalRows = jdbcTemplate.queryForList(query);
+		
+		List<Journal> journals = new ArrayList<Journal>();
+		
+		for (Map<String, Object> journalRow : journalRows) {
+			
+			Journal journal = new Journal();
+			journal.setId((Integer) journalRow.get("id"));
+			journal.setJournalName((String) journalRow.get("journalName"));
+			journal.setJournalDescription((String) journalRow.get("journalDescription"));
+			journal.setJournalLongDescription((String) journalRow.get("journalLongDescription"));
+			
+			journals.add(journal);
+		}
+		
+		return journals;
 	}
 
 }

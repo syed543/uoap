@@ -2,6 +2,7 @@ package com.journal.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,5 +41,13 @@ public class JournalController {
 		result.put("message", "Journal added succesfully");
 		
 		return result;
+	}
+
+	@RequestMapping(value="/journals", method=RequestMethod.GET)
+	@ResponseBody
+	public List<Journal> journals() {
+		
+		List<Journal> journals  = journalJDBCTemplate.getAllJournals();
+		return journals;
 	}
 }

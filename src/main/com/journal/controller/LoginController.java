@@ -3,8 +3,11 @@ package com.journal.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,8 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.journal.dao.UserJDBCTemplate;
 import com.journal.model.User;
+import com.journal.requests.Login;
 import com.journal.utils.JournalMailUtil;
 import com.journal.utils.JournalUtil;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class LoginController {
@@ -47,23 +54,24 @@ public class LoginController {
 		}
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> login(@RequestParam String username, @RequestParam String password) {
+	public Map<String, Object> login(@RequestBody Login login) {
+
+		System.out.println("this is login service...");
 		
-		User user = userJDBCTemplate.getUserByEmailId(username);
-		
+		User user = userJDBCTemplate.getUserByEmailId(login.getEmailid());
 		Map<String, Object> result = new HashMap<String, Object>();
-		if (user != null) {
-			result.put("status", 200);
+	
+		if (user != null && user.getPassword().equals(login.getPassword())) {
+			result.put("statusCode", 200);
 			result.put("message", "Login successful");
 			result.put("body", user);
-		} else {
-			
-			result.put("status", 404);
-			result.put("message", "User not found");
+			return result;
 		}
-		
+
+		result.put("statusCode", 404);
+		result.put("message", "User not found/Invalid Password");
 		return result;
 	}
 	

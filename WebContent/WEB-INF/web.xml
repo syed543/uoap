@@ -19,7 +19,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>journal</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/router/*</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>

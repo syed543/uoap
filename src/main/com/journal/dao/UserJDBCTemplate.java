@@ -1,5 +1,7 @@
 package com.journal.dao;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +32,14 @@ public class UserJDBCTemplate {
 	}
 
 	public User getUserByEmailId(String email) {
-		String query = "select email, phoneNo, fistName, lastName, countryName, userType, address from USER where email = ?";
+		String query = "select email, phoneNo, firstName, lastName, countryName, password, userType from USER where email = ?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		User user = (User) jdbcTemplate.queryForObject(query, new Object[] {email}, new UserRowMapper());
-		return user;
+		List<User> users = jdbcTemplate.query(query, new Object[] {email}, new UserRowMapper());
+		if (users != null && users.size() > 0) {
+			return users.get(0);
+		}
+		return null;
 	}
 
 	public void updatePassword(User user) {
