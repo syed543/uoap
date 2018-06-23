@@ -31,7 +31,13 @@
                     <li class=""><a href="#">For Authors</a></li>
                     <li class=""><a href="#">For Reviewers</a></li>
                     <li class=""><a href="#">About Us</a></li>
-                    <li class=""><a ui-sref="login">Login</a></li>
+                    <li ng-show="!userlogged" class=""><a ui-sref="login">Login</a></li>
+                    <li ng-show="userlogged" class="">
+                        <div class="user-info">
+                            <!--<img ng-src="" class="user-image" />-->
+                            Hello {{userInfo.fName}}
+                        </div>
+                    </li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

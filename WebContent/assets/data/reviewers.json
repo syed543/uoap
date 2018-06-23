@@ -1,105 +1,60 @@
 {
   "statusCode": 200,
-  "count": 11,
+  "count": 9,
   "data": [
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url",
-      "journal_abbrev": "a1"
+      "first_Name": "Reviewer 1",
+      "last_Name": "Reviewer Last Name",
+      "email": "test@test.com",
+      "country": "US"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url",
-      "journal_abbrev": "a2"
+      "first_Name": "Reviewer 2",
+      "last_Name": "Reviewer Last Name",
+      "email": "test@test.com",
+      "country": "US"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url",
-      "journal_abbrev": "a3"
+      "first_Name": "Reviewer 3",
+      "last_Name": "Reviewer Last Name",
+      "email": "test@test.com",
+      "country": "US"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url",
-      "journal_abbrev": "a4"
+      "first_Name": "Reviewer 4",
+      "last_Name": "Reviewer Last Name",
+      "email": "test@test.com",
+      "country": "US"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url",
-      "journal_abbrev": "a5"
+      "first_Name": "Reviewer 5",
+      "last_Name": "Reviewer Last Name",
+      "email": "test@test.com",
+      "country": "US"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url",
-      "journal_abbrev": "a6"
+      "first_Name": "Reviewer 6",
+      "last_Name": "Reviewer Last Name",
+      "email": "test@test.com",
+      "country": "US"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url",
-      "journal_abbrev": "a7"
+      "first_Name": "Reviewer 7",
+      "last_Name": "Reviewer Last Name",
+      "email": "test@test.com",
+      "country": "US"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url",
-      "journal_abbrev": "a8"
+      "first_Name": "Reviewer 8",
+      "last_Name": "Reviewer Last Name",
+      "email": "test@test.com",
+      "country": "US"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url",
-      "journal_abbrev": "a9"
-    },
-    {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url",
-      "journal_abbrev": "a10"
-    },
-    {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url",
-      "journal_abbrev": "a11"
+      "first_Name": "Reviewer 9",
+      "last_Name": "Reviewer Last Name",
+      "email": "test@test.com",
+      "country": "US"
     }
   ]
 }

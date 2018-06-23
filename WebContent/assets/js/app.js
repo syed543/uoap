@@ -12,9 +12,10 @@ define([
     'angular-aria',
     'angular-messages',
     'angular-material',
-  'jkAngularCarousel'
+  'jkAngularCarousel',
+  'angular-material-data-table'
     
-], function (require, $, angular, ngResource, ngStorage, directives,services, controllers, routes, ngMaterial, jkAngularCarousel) {
+], function (require, $, angular, ngResource, ngStorage, directives,services, controllers, routes, ngMaterial, jkAngularCarousel, mdDataTable) {
     'use strict';    
     /**
      * Application definition
@@ -30,7 +31,8 @@ define([
             'ngMaterial',
             'ngStorage',
             'ngMessages',
-            'jkAngularCarousel'
+            'jkAngularCarousel',
+            'md.data.table'
         ]);
 
   uoap.config(['$mdThemingProvider', function($mdThemingProvider) {
@@ -44,14 +46,49 @@ define([
     // .backgroundPalette('gray');
   }
   ]);
-	uoap.run(['$rootScope', '$state', '$stateParams', '$location',
-		function($rootScope, $state, $stateParams, $location) {
+
+  // api services url constant variable
+  uoap.constant('ApiEndpoint', {
+    url: 'http://localhost:8071/apps/uoap_git/uoap/WebContent/'
+  });
+
+	uoap.run(['$rootScope', '$state', '$stateParams', 'authenticationSvc', '$location', '$timeout',
+		function($rootScope, $state, $stateParams, authenticationSvc, $location, $timeout) {
 		  // it'll be done when the state it resolved.
 		  $rootScope.$on('$stateChangeStart', function(event, toState, toStateParams) {
 			  /*$rootScope.dataLoading = true;*/
 			  // track the state the user wants to go to; authorization service needs this
 				$rootScope.toState = toState;
 				$rootScope.toStateParams = toStateParams;
+
+        $rootScope.userlogged = false;
+        $rootScope.userInfo = {};
+        // do an authorization check immediately
+        // if Authentication flag has been set true in routing. otherwise load controller without checking,
+        $rootScope.userInfo = authenticationSvc.getUserInfo();
+        if(typeof toState.Authentication !== "undefined" && toState.Authentication === true) {
+          // If user Authentication failed then redirect to login page
+          if ($rootScope.userInfo !== false) {console.log("Authorized");$rootScope.userlogged = true;}
+          else {event.preventDefault();console.log("Not Authorized");$state.go("login");}
+        } else if(typeof toState.Authentication !== "undefined" && toState.Authentication === false) {
+          if ($rootScope.userInfo === false) {console.log("Not Authorized");$rootScope.userlogged = false;}
+          else {event.preventDefault();console.log("Authorized");$state.go("home");}
+        }/* else if(typeof toState.Authentication == "undefined" && $rootScope.userInfo !== false) {
+          if($rootScope.userInfo.type.toLowerCase() == "admin") {
+            $timeout($state.go("adminHome"), 0);
+          } else if($rootScope.userInfo.type.toLowerCase() == "reviewer") {
+            $state.go("reviewerHome");
+          } else if($rootScope.userInfo.type.toLowerCase() == "editor") {
+            $state.go("editorHome");
+          } else if($rootScope.userInfo.type.toLowerCase() == "editor") {
+            $state.go("userHome");
+          } else {
+            $state.go("home");
+          }
+        }*/
+        if($rootScope.userInfo !== false) {
+          $rootScope.userlogged = true;
+        }
 				if(toState.name === "login") {
           $rootScope.showHeader = false;
         } else {

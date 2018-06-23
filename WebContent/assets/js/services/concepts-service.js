@@ -7,7 +7,6 @@ services.factory('ConceptsService', ["Http", "$q", "$state", "$log", function (H
 			getConcetps: function() {
         var deferred = $q.defer();
         Http.getData('concepts/concepts.json').then(function(data){
-          //Http.getData('assets/data/getAttributes.json').then(function(data){
           deferred.resolve(data);
         }).catch(function(err){});
         return deferred.promise;

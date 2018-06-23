@@ -7,7 +7,7 @@ define(['angular',
 		'angular-material'
         ], function(angular, controllers, ngMaterial) {
 controllers.controller("loginCtrl", ["$scope", "$rootScope", "$state", "$stateParams", "$localStorage", "$sessionStorage", "authenticationSvc",
-  function($scope, $rootScope, $state, $localStorage, $sessionStorage, authenticationSvc) {
+  function($scope, $rootScope, $state, $stateParams, $localStorage, $sessionStorage, authenticationSvc) {
 
   // Login form array element
   $scope.loginInfo = {
@@ -75,8 +75,13 @@ controllers.controller("loginCtrl", ["$scope", "$rootScope", "$state", "$statePa
           // set local session
           $sessionStorage["userInfo"] = userInfo;
           $scope.errorstatus = false;
+          $rootScope.userlogged = true;
           $scope.statusmsg = data.statusMsg;
-          $state.go('home'); // Redirect to dashboard after login successful
+          if(userInfo.type.toLowerCase() === "admin") {
+            $state.go('adminHome');
+          } else {
+            $state.go('home'); // Redirect to dashboard after login successful
+          }
         } else { 					// Error
           userInfo = {};
           $sessionStorage.$reset();

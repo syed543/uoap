@@ -1,8 +1,8 @@
-<md-dialog class="menuscript-dialog" aria-label="Submit Menuscript">
-    <form name="menuscript" ng-cloak>
+<md-dialog class="menuscript-dialog" aria-label="Submit Journal">
+    <form name="journal" ng-cloak>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>Welcome to the online submission system of Journals</h2>
+                <h2>Add Journals</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="cancel()">
                     <md-icon md-svg-src="assets/img/close.svg" aria-label="Close dialog"></md-icon>
@@ -16,91 +16,32 @@
             </div>
             <div class="md-dialog-content">
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
-                    <div layout="row">
-                        <md-input-container flex="20">
-                            <label>Title</label>
-                            <md-select name="type" ng-model="user.title" required>
-                                <md-option value="Dr">Dr</md-option>
-                                <md-option value="Mr">Mr</md-option>
-                                <md-option value="Mrs">Mrs</md-option>
-                            </md-select>
-                        </md-input-container>
-                        <md-input-container  flex="40">
-                            <label>First Name</label>
-                            <input name="fname" ng-model="user.fname" required>
-                            <div ng-messages="menuscript.fname.$error">
-                                <div ng-message="required" class="my-message">You must provide email.</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container flex="40">
-                            <label>Last Name</label>
-                            <input name="lname" ng-model="user.lname" required>
-                            <div ng-messages="menuscript.lname.$error">
-                                <div ng-message="required" class="my-message">You must provide email.</div>
-                            </div>
-                        </md-input-container>
-                    </div>
-                </md-content>
-                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding >
                     <div class="fullwidth">
-                        <md-input-container>
-                            <label>Email</label>
-                            <input name="email" ng-model="user.email" type="email" required ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
-
-                            <div ng-messages="menuscript.email.$error" role="alert" multiple>
-                                <div ng-message="required" class="my-message">You must provide email.</div>
-                                <div ng-message="pattern" class="my-message">That doesn't look like a valid email.
-                                </div>
-                            </div>
-                        </md-input-container>
-
-                        <md-input-container>
-                            <label>Postal Address / Affiliation</label>
-                            <input name="postalAddress" ng-model="user.postalAddress" required>
-
-                            <div ng-messages="menuscript.postalAddress.$error" role="alert" multiple>
-                                <div ng-message="required" class="my-message">You must provide postalAddress.</div>
+                        <md-input-container >
+                            <label>Name</label>
+                            <input name="name" ng-model="journal.journal_name" required>
+                            <div ng-messages="journal.journal_name.$error">
+                                <div ng-message="required" class="my-message">You must provide Journal name.</div>
                             </div>
                         </md-input-container>
                     </div>
                 </md-content>
-                <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>Journal</label>
-                        <md-select name="journal" ng-model="user.journal" required>
-                            <md-option ng-repeat="journal in journals" value="{{journal.abbrev}}">
-                                {{journal.name}}
-                            </md-option>
-                        </md-select>
-                        <div ng-messages="menuscript.journal.$error" role="alert" multiple>
-                            <div ng-message="required" class="my-message">You must provide journal.</div>
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div>
+                        <label>Icon</label>
+                        <input name="icon" ng-model="journal.journal_icon" type="file" accept=".jpg, .jpeg, .png">
+                        <div class="errors" ng-show="journal.journal_icon.$dirty && journal.journal_icon.$invalid">
+                            Please attach an icon.
                         </div>
-                    </md-input-container>
+                    </div>
                 </md-content>
-
-                <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>Article</label>
-                        <md-select name="article" ng-model="user.article" required>
-                            <md-option ng-repeat="article in articles" value="{{article.abbrev}}">
-                                {{article.name}}
-                            </md-option>
-                        </md-select>
-                        <div ng-messages="menuscript.article.$error" role="alert" multiple>
-                            <div ng-message="required" class="my-message">You must provide article.</div>
-                        </div>
-                    </md-input-container>
-                </md-content>
-
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div class="fullwidth">
-                        <md-input-container>
-                            <label>Menuscript Title</label>
-                            <input name="title" ng-model="user.title" required maxlength="1000" minlength="10">
-                            <div ng-messages="menuscript.title.$error">
-                                <div ng-message-exp="['required', 'minlength', 'maxlength']">
-                                    Your Title must be between 10 and 1000 characters long.
-                                </div>
+                        <md-input-container >
+                            <label>Description</label>
+                            <input name="description" ng-model="journal.journal_description" required>
+                            <div ng-messages="journal.journal_description.$error">
+                                <div ng-message="required" class="my-message">You must provide Journal Short Description.</div>
                             </div>
                         </md-input-container>
                     </div>
@@ -109,11 +50,11 @@
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div class="fullwidth">
                         <md-input-container>
-                            <label>Abstract</label>
-                            <textarea name="abstract" ng-model="user.abstract" maxlength="4000" required></textarea>
-                            <div ng-messages="menuscript.title.$error">
+                            <label>Long Description</label>
+                            <textarea name="ldescription" ng-model="journal.journal_long_description" maxlength="4000" required></textarea>
+                            <div ng-messages="journal.journal_long_description.$error">
                                 <div ng-message-exp="['maxlength', 'required']">
-                                    Your Abstract should not exceed 4000 characters.
+                                    Your Long Description should not exceed 4000 characters.
                                 </div>
                             </div>
                         </md-input-container>
@@ -122,10 +63,10 @@
 
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div>
-                        <label>Attach MenuScript</label>
-                        <input name="file" ng-model="user.file" type="file" accept=".pdf, .doc, .docx">
-                        <div class="errors" ng-show="menuscript.file.$dirty && menuscript.file.$invalid">
-                            Please attach a menuscript.
+                        <label>Attach Banner</label>
+                        <input name="banner_image" ng-model="journal.journal_banner_image" type="file" accept=".pdf, .doc, .docx">
+                        <div class="errors" ng-show="journal.journal_banner_image.$dirty && journal.journal_banner_image.$invalid">
+                            Please attach a journal Banner.
                         </div>
                     </div>
                 </md-content>
@@ -137,7 +78,7 @@
                 Cancel
             </md-button>
             <span flex></span>
-            <md-button ng-disabled="!menuscript.$dirty || !menuscript.$valid " class="md-primary" ng-click="submitScript()" md-autofocus>
+            <md-button ng-disabled="!journal.$dirty || !journal.$valid " class="md-primary" ng-click="addJournal()" md-autofocus>
                 Submit
             </md-button>
         </md-dialog-actions>

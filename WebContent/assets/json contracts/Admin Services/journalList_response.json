@@ -1,26 +1,29 @@
-[
-  {
-    "journal_id": "unique id",
-    "journal_name": "This is new journal1",
-    "journal_icon": "image_url",
-    "journal_description": "Short description of journal",
-    "journal_long_description": "This is journals long description",
-    "journal_banner_image": "image_url"
-  },
-  {
-    "journal_id": "unique id",
-    "journal_name": "This is new journal1",
-    "journal_icon": "image_url",
-    "journal_description": "Short description of journal",
-    "journal_long_description": "This is journals long description",
-    "journal_banner_image": "image_url"
-  },
-  {
-    "journal_id": "unique id",
-    "journal_name": "This is new journal1",
-    "journal_icon": "image_url",
-    "journal_description": "Short description of journal",
-    "journal_long_description": "This is journals long description",
-    "journal_banner_image": "image_url"
-  }
-]
+{
+  "count": 9,
+  "data": [
+    {
+      "journal_id": "unique id",
+      "journal_name": "This is new journal1",
+      "journal_icon": "image_url",
+      "journal_description": "Short description of journal",
+      "journal_long_description": "This is journals long description",
+      "journal_banner_image": "image_url"
+    },
+    {
+      "journal_id": "unique id",
+      "journal_name": "This is new journal1",
+      "journal_icon": "image_url",
+      "journal_description": "Short description of journal",
+      "journal_long_description": "This is journals long description",
+      "journal_banner_image": "image_url"
+    },
+    {
+      "journal_id": "unique id",
+      "journal_name": "This is new journal1",
+      "journal_icon": "image_url",
+      "journal_description": "Short description of journal",
+      "journal_long_description": "This is journals long description",
+      "journal_banner_image": "image_url"
+    }
+  ]
+}

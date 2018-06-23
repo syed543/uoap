@@ -1,60 +1,26 @@
 {
   "statusCode": 200,
-  "count": 9,
+  "count": 4,
   "data": [
     {
-      "first_Name": "Reviewer 1",
-      "last_Name": "Reviewer Last Name",
-      "email": "test@test.com",
-      "country": "US"
+      "article_id": "unique id",
+      "article_title": "This is new article 1",
+      "article_abstract": "image_url"
     },
     {
-      "first_Name": "Reviewer 2",
-      "last_Name": "Reviewer Last Name",
-      "email": "test@test.com",
-      "country": "US"
+      "article_id": "unique id",
+      "article_title": "This is new article 2",
+      "article_abstract": "image_url"
     },
     {
-      "first_Name": "Reviewer 3",
-      "last_Name": "Reviewer Last Name",
-      "email": "test@test.com",
-      "country": "US"
+      "article_id": "unique id",
+      "article_title": "This is new article 3",
+      "article_abstract": "image_url"
     },
     {
-      "first_Name": "Reviewer 4",
-      "last_Name": "Reviewer Last Name",
-      "email": "test@test.com",
-      "country": "US"
-    },
-    {
-      "first_Name": "Reviewer 5",
-      "last_Name": "Reviewer Last Name",
-      "email": "test@test.com",
-      "country": "US"
-    },
-    {
-      "first_Name": "Reviewer 6",
-      "last_Name": "Reviewer Last Name",
-      "email": "test@test.com",
-      "country": "US"
-    },
-    {
-      "first_Name": "Reviewer 7",
-      "last_Name": "Reviewer Last Name",
-      "email": "test@test.com",
-      "country": "US"
-    },
-    {
-      "first_Name": "Reviewer 8",
-      "last_Name": "Reviewer Last Name",
-      "email": "test@test.com",
-      "country": "US"
-    },
-    {
-      "first_Name": "Reviewer 9",
-      "last_Name": "Reviewer Last Name",
-      "email": "test@test.com",
-      "country": "US"
+      "article_id": "unique id",
+      "article_title": "This is new article 4",
+      "article_abstract": "image_url"
     }
   ]
 }

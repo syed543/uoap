@@ -1,14 +1,14 @@
 {
-  "status": "200",
-  "message": "Login successful",
-  "body" : {
+  "statusCode": "200",
+  "body": {
     "fName": "Syed",
     "lName": "Azher",
-    "id": "userGeneratedUniqueId",
-    "type": "Reviewer",
+    "id": "123",
+    "type": "Admin",
     "title": "Mr",
     "country" : "country_value",
     "email": "test@test.com",
     "postalAddress": "..."
-  }
+  },
+  "statusMsg": "Login Successful"
 }
