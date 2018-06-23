@@ -25,7 +25,7 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "FeatureSe
     }
   }
 
-    checkUserLogin();
+    //checkUserLogin();
 
     $scope.search = "";
 

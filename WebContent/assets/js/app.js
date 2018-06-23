@@ -73,19 +73,20 @@ define([
         } else if(typeof toState.Authentication !== "undefined" && toState.Authentication === false) {
           if ($rootScope.userInfo === false) {console.log("Not Authorized");$rootScope.userlogged = false;}
           else {event.preventDefault();console.log("Authorized");$state.go("home");}
-        }/* else if(typeof toState.Authentication == "undefined" && $rootScope.userInfo !== false) {
+        }
+        if($rootScope.userInfo !== false) {
           if($rootScope.userInfo.usertype.toLowerCase() == "admin") {
-            $timeout($state.go("adminHome"), 0);
+            $rootScope.userView = "adminHome";
           } else if($rootScope.userInfo.usertype.toLowerCase() == "reviewer") {
-            $state.go("reviewerHome");
+            $rootScope.userView = "reviewerHome";
           } else if($rootScope.userInfo.usertype.toLowerCase() == "editor") {
-            $state.go("editorHome");
+            $rootScope.userView = "editorHome";
           } else if($rootScope.userInfo.usertype.toLowerCase() == "editor") {
-            $state.go("userHome");
+            $rootScope.userView = "userHome";
           } else {
-            $state.go("home");
+            $rootScope.userView = "home";
           }
-        }*/
+        }
         if($rootScope.userInfo !== false) {
           $rootScope.userlogged = true;
         }
