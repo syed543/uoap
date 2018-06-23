@@ -1,0 +1,86 @@
+<md-dialog class="menuscript-dialog" aria-label="Submit Journal">
+    <form name="journal" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Add Journals</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="assets/img/close.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="note">
+                *(Please note all fields are required)
+            </div>
+            <div class="md-dialog-content">
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container >
+                            <label>Name</label>
+                            <input name="name" ng-model="journal.journal_name" required>
+                            <div ng-messages="journal.journal_name.$error">
+                                <div ng-message="required" class="my-message">You must provide Journal name.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div>
+                        <label>Icon</label>
+                        <input name="icon" ng-model="journal.journal_icon" type="file" accept=".jpg, .jpeg, .png">
+                        <div class="errors" ng-show="journal.journal_icon.$dirty && journal.journal_icon.$invalid">
+                            Please attach an icon.
+                        </div>
+                    </div>
+                </md-content>
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container >
+                            <label>Description</label>
+                            <input name="description" ng-model="journal.journal_description" required>
+                            <div ng-messages="journal.journal_description.$error">
+                                <div ng-message="required" class="my-message">You must provide Journal Short Description.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container>
+                            <label>Long Description</label>
+                            <textarea name="ldescription" ng-model="journal.journal_long_description" maxlength="4000" required></textarea>
+                            <div ng-messages="journal.journal_long_description.$error">
+                                <div ng-message-exp="['maxlength', 'required']">
+                                    Your Long Description should not exceed 4000 characters.
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div>
+                        <label>Attach Banner</label>
+                        <input name="banner_image" ng-model="journal.journal_banner_image" type="file" accept=".pdf, .doc, .docx">
+                        <div class="errors" ng-show="journal.journal_banner_image.$dirty && journal.journal_banner_image.$invalid">
+                            Please attach a journal Banner.
+                        </div>
+                    </div>
+                </md-content>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button class="md-secondary" ng-click="cancel()">
+                Cancel
+            </md-button>
+            <span flex></span>
+            <md-button ng-disabled="!journal.$dirty || !journal.$valid " class="md-primary" ng-click="addJournal()" md-autofocus>
+                Submit
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

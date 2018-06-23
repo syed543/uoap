@@ -1,0 +1,61 @@
+<div ng-controller="editorsTableCtrl" layout="column">
+
+    <md-content laout="column" flex >
+        <md-card>
+            <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
+                <div class="md-toolbar-tools">
+                    <span>Editors List</span>
+                    <div flex></div>
+                    <md-button class="md-icon-button" ng-click="refreshEditors()">
+                        <md-icon>refresh</md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" ng-click="addEditorDialog()">
+                        <md-icon>add</md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <!--<md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
+                <div class="md-toolbar-tools">
+                    <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
+                </div>
+            </md-toolbar>-->
+
+            <md-table-container>
+                <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
+                    <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+                    <tr md-row>
+                        <th md-column md-order-by="first_Name"><span>First Name</span></th>
+                        <th md-column md-order-by="last_Name"><span>Last Name</span></th>
+                        <th md-column md-order-by="avatar"><span>Avatar</span></th>
+                        <th md-column md-order-by="description"  md-desc><span>Description</span></th>
+                        <th md-column md-order-by="affiliation"><span>Affiliation</span></th>
+                        <th md-column md-order-by="journal"><span>Journal</span></th>
+                        <th md-column md-order-by=""><span>View</span></th>
+                        <th md-column md-order-by=""><span>Delete</span></th>
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                        <td md-cell>{{dessert.first_Name}}</td>
+                        <td md-cell>{{dessert.last_Name}}</td>
+                        <td md-cell><md-icon md-svg-src="{{desert.avatar}}"></md-icon> </td>
+                        <td md-cell>{{dessert.description}}</td>
+                        <td md-cell>{{dessert.affiliation}}</td>
+                        <td md-cell>{{dessert.journal}}</td>
+                        <td md-cell><md-button class="md-icon-button" ng-click="view(desert)">
+                            <md-icon>visibility</md-icon>
+                        </md-button></td>
+                        <td md-cell><md-button class="md-icon-button" ng-click="delete(desert)">
+                            <md-icon>delete</md-icon>
+                        </md-button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+
+            <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{desserts.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+        </md-card>
+    </md-content>
+
+</div>

@@ -1,0 +1,14 @@
+{
+  "statusCode": "200",
+  "body": {
+    "fName": "Syed",
+    "lName": "Azher",
+    "id": "123",
+    "type": "Admin",
+    "title": "Mr",
+    "country" : "country_value",
+    "email": "test@test.com",
+    "postalAddress": "..."
+  },
+  "statusMsg": "Login Successful"
+}
