@@ -6,8 +6,8 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial) {
-controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'JournalsService', '$mdDialog',
-  function($mdEditDialog, $q, $scope, $timeout, JournalsService, $mdDialog) {
+controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'EditorsService', '$mdDialog', 'JournalsService',
+  function($mdEditDialog, $q, $scope, $timeout, EditorsService, $mdDialog, JournalsService) {
 
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
@@ -29,14 +29,14 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
       page: 1
     };
 
-    $scope.refreshJournal = function() {
-      _getJournals();
+    $scope.refreshEditors = function() {
+      _getEditors();
     };
 
-    $scope.addJournalDialog = function(ev) {
+    $scope.addEditorDialog = function(ev) {
       $mdDialog.show({
-        controller: addJournalController,
-        templateUrl: 'assets/views/addJournalDialog.html',
+        controller: addEditorController,
+        templateUrl: 'assets/views/addEditorDialog.html',
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose:true,
@@ -46,15 +46,17 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
       });
     };
 
-    function addJournalController($scope, $mdDialog) {
+    function addEditorController($scope, $mdDialog) {
       $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
-      $scope.journal = {
-        'journal_name': null,
-        'journal_icon': null,
-        'journal_description': '',
-        'journal_long_description': '',
-        'journal_banner_image': ''
+      $scope.editor = {
+        'first_Name': '',
+        'last_Name': '',
+        'email': '',
+        'avatar': '',
+        'description': '',
+        'affiliation': '',
+        'journal': ''
       };
 
       $scope.hide = function() {
@@ -65,20 +67,28 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
         $mdDialog.cancel();
       };
 
-      $scope.addJournal = function() {
-        JournalsService.addJournal().then(function (data) {
+      $scope.addEditor = function() {
+        EditorsService.addEditor().then(function (data) {
           if (data.statusCode == 200) { // Success
-            _getJournals();
+            _getEditors();
           } else { 					// Error
             console.log("Unable to add Journal. please contact support.");
           }
           $mdDialog.cancel();
         });
       };
+
+      JournalsService.getJournals().then(function (data) {
+        if (data.statusCode == 200) { // Success
+          $scope.journals = data.data;
+        } else { 					// Error
+          console.log("Unable to fetch journals list. please contact support.");
+        }
+      });
     }
 
-    var _getJournals = function() {
-      JournalsService.getJournals().then(function (data) {
+    var _getEditors = function() {
+      EditorsService.getEditors().then(function (data) {
         if (data.statusCode == 200) { // Success
           $scope.desserts = data;
         } else { 					// Error
@@ -86,61 +96,11 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
         }
       });
     };
-    _getJournals();
-
-    $scope.editComment = function (event, dessert) {
-      event.stopPropagation(); // in case autoselect is enabled
-
-      var editDialog = {
-        modelValue: dessert.comment,
-        placeholder: 'Add a comment',
-        save: function (input) {
-          if(input.$modelValue === 'Donald Trump') {
-            input.$invalid = true;
-            return $q.reject();
-          }
-          if(input.$modelValue === 'Bernie Sanders') {
-            return dessert.comment = 'FEEL THE BERN!'
-          }
-          dessert.comment = input.$modelValue;
-        },
-        targetEvent: event,
-        title: 'Add a comment',
-        validators: {
-          'md-maxlength': 30
-        }
-      };
-
-      var promise;
-
-      if($scope.options.largeEditDialog) {
-        promise = $mdEditDialog.large(editDialog);
-      } else {
-        promise = $mdEditDialog.small(editDialog);
-      }
-
-      promise.then(function (ctrl) {
-        var input = ctrl.getInput();
-
-        input.$viewChangeListeners.push(function () {
-          input.$setValidity('test', input.$modelValue !== 'test');
-        });
-      });
-    };
+    _getEditors();
 
     $scope.toggleLimitOptions = function () {
       $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
     };
-
-    $scope.getTypes = function () {
-      return ['Candy', 'Ice cream', 'Other', 'Pastry'];
-    };
-
-    $scope.loadStuff = function () {
-      $scope.promise = $timeout(function () {
-        // loading
-      }, 2000);
-    }
 
     $scope.logItem = function (item) {
       console.log(item.name, 'was selected');

@@ -1,15 +1,15 @@
-<div ng-controller="editorsTableCtrl" layout="column">
+<div ng-controller="reviewersTableCtrl" layout="column">
 
     <md-content laout="column" flex >
         <md-card>
             <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
                 <div class="md-toolbar-tools">
-                    <span>Editors List</span>
+                    <span>Reviewers List</span>
                     <div flex></div>
-                    <md-button class="md-icon-button" ng-click="refreshEditors()">
+                    <md-button class="md-icon-button" ng-click="refreshReviewers()">
                         <md-icon>refresh</md-icon>
                     </md-button>
-                    <md-button class="md-icon-button" ng-click="addEditorDialog()">
+                    <md-button class="md-icon-button" ng-click="addReviewerDialog()">
                         <md-icon>add</md-icon>
                     </md-button>
                 </div>
@@ -27,10 +27,8 @@
                     <tr md-row>
                         <th md-column md-order-by="first_Name"><span>First Name</span></th>
                         <th md-column md-order-by="last_Name"><span>Last Name</span></th>
-                        <th md-column md-order-by="avatar"><span>Avatar</span></th>
-                        <th md-column md-order-by="description"  md-desc><span>Description</span></th>
-                        <th md-column md-order-by="affiliation"><span>Affiliation</span></th>
-                        <th md-column md-order-by="journal"><span>Journal</span></th>
+                        <th md-column md-order-by="email"><span>Email</span></th>
+                        <th md-column md-order-by="country"  md-desc><span>Country</span></th>
                         <th md-column md-order-by=""><span>View</span></th>
                         <th md-column md-order-by=""><span>Delete</span></th>
                     </tr>
@@ -39,10 +37,8 @@
                     <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
                         <td md-cell>{{dessert.first_Name}}</td>
                         <td md-cell>{{dessert.last_Name}}</td>
-                        <td md-cell><md-icon md-svg-src="{{desert.avatar}}"></md-icon> </td>
-                        <td md-cell>{{dessert.description}}</td>
-                        <td md-cell>{{dessert.affiliation}}</td>
-                        <td md-cell>{{dessert.journal}}</td>
+                        <td md-cell>{{dessert.email}}</td>
+                        <td md-cell>{{dessert.country}}</td>
                         <td md-cell><md-button class="md-icon-button" ng-click="view(desert)">
                             <md-icon>visibility</md-icon>
                         </md-button></td>

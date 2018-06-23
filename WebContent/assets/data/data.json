@@ -1,0 +1,62 @@
+[
+    {
+        "period_week": "P1W1",
+        "promo_name": "Test Promo1",
+        "store_id": "0001",
+        "promo_enddate": "30/02/2016",
+        "facility": "combined",
+        "status": "Approved",
+        "actions": {
+        	"edit": false,
+        	"delete": false
+        }
+    },
+    {
+        "period_week": "P1W1",
+        "promo_name": "Test Promo1",
+        "store_id": "0002",
+        "promo_enddate": "30/02/2016",
+        "facility": "single",
+        "status": "Pending",
+        "actions": {
+        	"edit": true,
+        	"delete": true
+        }
+    },
+    {
+        "period_week": "P1W2",
+        "promo_name": "Test Promo2",
+        "store_id": "0001",
+        "promo_enddate": "30/02/2016",
+        "facility": "combined",
+        "status": "Approved",
+        "actions": {
+        	"edit": false,
+        	"delete": false
+        }
+    },
+    {
+        "period_week": "P2W1",
+        "promo_name": "Test Promo2",
+        "store_id": "0002",
+        "promo_enddate": "30/02/2016",
+        "facility": "single",
+        "status": "Pending",
+        "actions": {
+        	"edit": true,
+        	"delete": true
+        }
+    },
+    {
+        "period_week": "P2W2",
+        "promo_name": "Test Promo3",
+        "store_id": "0003",
+        "promo_enddate": "30/02/2016",
+        "facility": "combined",
+        "status": "Approved",
+        "actions": {
+        	"edit": false,
+        	"delete": false
+        }
+    }
+]

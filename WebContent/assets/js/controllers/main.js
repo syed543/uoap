@@ -6,6 +6,14 @@
 define([
 './home',
 './login',
+'./admin',
+'./reviewer',
+'./editor',
+'./journalsTable',
+'./editorsTable',
+'./reviewersTable',
+'./articlesTable',
+'./user',
   './concepts'
 ], function(){
 	

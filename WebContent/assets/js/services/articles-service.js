@@ -2,19 +2,11 @@
 define(['angular', 'services-module'], function(angular, services) {
 	'use strict';
 
-services.factory('ReviewersService', ["Http", "$q", "$state", "$log", function (Http, $q, $state, $log) {
+services.factory('ArticlesService', ["Http", "$q", "$state", "$log", function (Http, $q, $state, $log) {
 		return {
-			getReviewers: function() {
+			getArticles: function() {
         var deferred = $q.defer();
-        Http.getData('assets/data/reviewers.json').then(function(data){
-          deferred.resolve(data);
-        }).catch(function(err){});
-        return deferred.promise;
-			},
-      addReviewer: function(data) {
-				var deferred = $q.defer();
-				/*HTTP.postData('assets/data/journals.json', data).then(function(data){*/
-        Http.getData('assets/data/reviewers.json', data).then(function(data){
+        Http.getData('assets/data/articles.json').then(function(data){
           deferred.resolve(data);
         }).catch(function(err){});
         return deferred.promise;

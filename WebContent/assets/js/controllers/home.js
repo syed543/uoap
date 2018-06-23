@@ -9,6 +9,24 @@ define(['angular',
 controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "FeatureService", "ConceptsService", "$mdDialog", "$mdSidenav", "$timeout",
   function($scope, $rootScope, $state, FeatureService, ConceptsService, $mdDialog, $mdSidenav, $timeout) {
 
+  function checkUserLogin() {
+    if ($rootScope.userInfo) {
+      if ($rootScope.userInfo.type.toLowerCase() == "admin") {
+        $timeout($state.go("adminHome"), 0);
+      } else if ($rootScope.userInfo.type.toLowerCase() == "reviewer") {
+        $state.go("reviewerHome");
+      } else if ($rootScope.userInfo.type.toLowerCase() == "editor") {
+        $state.go("editorHome");
+      } else if ($rootScope.userInfo.type.toLowerCase() == "editor") {
+        $state.go("userHome");
+      } else {
+        $state.go("home");
+      }
+    }
+  }
+
+    checkUserLogin();
+
     $scope.search = "";
 
     $scope.searchArticle = function() {

@@ -1,8 +1,8 @@
 <md-dialog class="menuscript-dialog" aria-label="Submit Journal">
-    <form name="editor" ng-cloak>
+    <form name="reviewer" ng-cloak>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>Add Editors</h2>
+                <h2>Add Reviewers</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="cancel()">
                     <md-icon md-svg-src="assets/img/close.svg" aria-label="Close dialog"></md-icon>
@@ -19,17 +19,17 @@
                     <div layout="row">
                         <md-input-container >
                             <label>First Name</label>
-                            <input name="name" ng-model="editor.first_Name" required>
-                            <div ng-messages="editor.first_Name.$error">
-                                <div ng-message="required" class="my-message">You must provide Editors First Name.</div>
+                            <input name="name" ng-model="reviewer.first_Name" required>
+                            <div ng-messages="reviewer.first_Name.$error">
+                                <div ng-message="required" class="my-message">You must provide reviewers First Name.</div>
                             </div>
                         </md-input-container>
 
                         <md-input-container >
                             <label>Last Name</label>
-                            <input name="name" ng-model="editor.last_Name" required>
-                            <div ng-messages="editor.last_Name.$error">
-                                <div ng-message="required" class="my-message">You must provide Editors Last Name.</div>
+                            <input name="name" ng-model="reviewer.last_Name" required>
+                            <div ng-messages="reviewer.last_Name.$error">
+                                <div ng-message="required" class="my-message">You must provide reviewers Last Name.</div>
                             </div>
                         </md-input-container>
                     </div>
@@ -38,8 +38,8 @@
                     <div class="fullwidth">
                         <md-input-container>
                             <label>Email</label>
-                            <input name="editorEmail" ng-model="editor.email" type="email" required ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
-                            <div ng-messages="editor.editorEmail.$error" role="alert" multiple>
+                            <input name="reviewerEmail" ng-model="reviewer.email" type="email" required ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
+                            <div ng-messages="reviewer.reviewerEmail.$error" role="alert" multiple>
                                 <div ng-message="required" class="my-message">You must provide email.</div>
                                 <div ng-message="pattern" class="my-message">That doesn't look like a valid email.
                                 </div>
@@ -47,47 +47,22 @@
                         </md-input-container>
                     </div>
                 </md-content>
-                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                <!--<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div>
                         <label>Avatar</label>
-                        <input name="avatar" ng-model="editor.avatar" type="file" accept=".jpg, .jpeg, .png">
-                        <div class="errors" ng-show="editor.avatar.$dirty && editor.avatar.$invalid">
+                        <input name="avatar" ng-model="reviewer.avatar" type="file" accept=".jpg, .jpeg, .png">
+                        <div class="errors" ng-show="reviewer.avatar.$dirty && reviewer.avatar.$invalid">
                             Please attach an avatar.
                         </div>
                     </div>
-                </md-content>
-                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
-                    <div class="fullwidth">
-                        <md-input-container >
-                            <label>Description</label>
-                            <input name="editorDescription" ng-model="editor.description" required>
-                            <div ng-messages="editor.editorDescription.$error">
-                                <div ng-message="required" class="my-message">You must provide Journal Short Description.</div>
-                            </div>
-                        </md-input-container>
-                    </div>
-                </md-content>
-
-                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
-                    <div class="fullwidth">
-                        <md-input-container>
-                            <label>Affiliation</label>
-                            <textarea name="ldescription" ng-model="editor.affiliation" required></textarea>
-                            <div ng-messages="editor.affiliation.$error">
-                                <div ng-message-exp="['required']">
-                                    You must provide affiliation.
-                                </div>
-                            </div>
-                        </md-input-container>
-                    </div>
-                </md-content>
+                </md-content>-->
 
                 <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
                     <md-input-container class="md-block" flex-gt-sm>
-                        <label>Journal</label>
+                        <label>Country</label>
                         <md-select name="journal" ng-model="user.journal" required>
-                            <md-option ng-repeat="journal in journals" value="{{journal.journal_abbrev}}">
-                                {{journal.journal_name}}
+                            <md-option ng-repeat="country in countries" value="{{country.abbrev}}">
+                                {{country.name}}
                             </md-option>
                         </md-select>
                         <div ng-messages="menuscript.journal.$error" role="alert" multiple>
@@ -103,7 +78,7 @@
                 Cancel
             </md-button>
             <span flex></span>
-            <md-button ng-disabled="!editor.$dirty || !editor.$valid " class="md-primary" ng-click="addEditor()" md-autofocus>
+            <md-button ng-disabled="!reviewer.$dirty || !reviewer.$valid " class="md-primary" ng-click="addReviewer()" md-autofocus>
                 Submit
             </md-button>
         </md-dialog-actions>

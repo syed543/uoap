@@ -1,94 +1,70 @@
 {
   "statusCode": 200,
-  "count": 11,
+  "count": 8,
   "data": [
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url"
+      "first_Name": "editor First Name",
+      "last_Name": "editor Last Name",
+      "avatar": "image_url",
+      "description": "Short description of editor",
+      "affiliation": "University/country",
+      "journal": "select journal"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url"
+      "first_Name": "editor First Name",
+      "last_Name": "editor Last Name",
+      "avatar": "image_url",
+      "description": "Short description of editor",
+      "affiliation": "University/country",
+      "journal": "select journal"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url"
+      "first_Name": "editor First Name",
+      "last_Name": "editor Last Name",
+      "avatar": "image_url",
+      "description": "Short description of editor",
+      "affiliation": "University/country",
+      "journal": "select journal"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url"
+      "first_Name": "editor First Name",
+      "last_Name": "editor Last Name",
+      "avatar": "image_url",
+      "description": "Short description of editor",
+      "affiliation": "University/country",
+      "journal": "select journal"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url"
+      "first_Name": "editor First Name",
+      "last_Name": "editor Last Name",
+      "avatar": "image_url",
+      "description": "Short description of editor",
+      "affiliation": "University/country",
+      "journal": "select journal"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url"
+      "first_Name": "editor First Name",
+      "last_Name": "editor Last Name",
+      "avatar": "image_url",
+      "description": "Short description of editor",
+      "affiliation": "University/country",
+      "journal": "select journal"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url"
+      "first_Name": "editor First Name",
+      "last_Name": "editor Last Name",
+      "avatar": "image_url",
+      "description": "Short description of editor",
+      "affiliation": "University/country",
+      "journal": "select journal"
     },
     {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url"
-    },
-    {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url"
-    },
-    {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url"
-    },
-    {
-      "journal_id": "unique id",
-      "journal_name": "This is new journal1",
-      "journal_icon": "image_url",
-      "journal_description": "Short description of journal",
-      "journal_long_description": "This is journals long description",
-      "journal_banner_image": "image_url"
+      "first_Name": "editor First Name",
+      "last_Name": "editor Last Name",
+      "avatar": "image_url",
+      "description": "Short description of editor",
+      "affiliation": "University/country",
+      "journal": "select journal"
     }
   ]
 }

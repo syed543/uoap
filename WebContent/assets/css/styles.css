@@ -84,6 +84,20 @@ md-icon.home-icon svg {
     font-size: 24px;
 }
 
+.user-image {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+.user-info {
+    color: #fff;
+    vertical-align: middle;
+    line-height: 50px;
+    margin-left: 10px;
+}
+
 .uoap-header .navbar {
     margin-bottom: 0;
 }
@@ -92,6 +106,10 @@ md-icon.home-icon svg {
 
 /* content styling: start */
 #page-wrapper {
+}
+
+.left-arrow-button, .right-arrow-button {
+    display: none;
 }
 
 #search {
@@ -329,3 +347,15 @@ span.input-icon, span.input-help {
     display: block;
 }
 /***   Login Page Style End **/
+
+.dashboard-margin  {
+    margin-left: 22px;
+}
+
+/*** md-table-pagination: style ***/
+
+md-table-pagination .label {
+    color: inherit;
+}
+
+/*** md-table-pagination: style end ***/

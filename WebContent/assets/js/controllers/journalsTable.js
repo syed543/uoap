@@ -6,10 +6,105 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial) {
-controllers.controller("editorHomeCtrl", ["$scope", "$rootScope", "$state", "$stateParams", "$localStorage", "$sessionStorage", "authenticationSvc",
-  function($scope, $rootScope, $state, $stateParams, $localStorage, $sessionStorage, authenticationSvc) {
+controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'JournalsService', '$mdDialog',
+  function($mdEditDialog, $q, $scope, $timeout, JournalsService, $mdDialog) {
 
-    alert("editor...");
+    $scope.selected = [];
+    $scope.limitOptions = [5, 10, 15];
+
+    $scope.options = {
+      rowSelection: false,
+      multiSelect: false,
+      autoSelect: true,
+      decapitate: false,
+      largeEditDialog: false,
+      boundaryLinks: false,
+      limitSelect: true,
+      pageSelect: true
+    };
+
+    $scope.query = {
+      order: 'name',
+      limit: 5,
+      page: 1
+    };
+
+    $scope.refreshJournal = function() {
+      _getJournals();
+    };
+
+    $scope.addJournalDialog = function(ev) {
+      $mdDialog.show({
+        controller: addJournalController,
+        templateUrl: 'assets/views/addJournalDialog.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+      }).then(function() {
+      }, function() {
+      });
+    };
+
+    function addJournalController($scope, $mdDialog) {
+      $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+
+      $scope.journal = {
+        'journal_name': null,
+        'journal_icon': null,
+        'journal_description': '',
+        'journal_long_description': '',
+        'journal_banner_image': '',
+        'journal_abbrev':''
+      };
+
+      $scope.hide = function() {
+        $mdDialog.hide();
+      };
+
+      $scope.cancel = function() {
+        $mdDialog.cancel();
+      };
+
+      $scope.addJournal = function() {
+        JournalsService.addJournal().then(function (data) {
+          if (data.statusCode == 200) { // Success
+            _getJournals();
+          } else { 					// Error
+            console.log("Unable to add Journal. please contact support.");
+          }
+          $mdDialog.cancel();
+        });
+      };
+    }
+
+    var _getJournals = function() {
+      JournalsService.getJournals().then(function (data) {
+        if (data.statusCode == 200) { // Success
+          $scope.desserts = data;
+        } else { 					// Error
+          console.log("Unable to fetch journals list. please contact support.");
+        }
+      });
+    };
+    _getJournals();
+
+    $scope.toggleLimitOptions = function () {
+      $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
+    };
+
+    $scope.logItem = function (item) {
+      console.log(item.name, 'was selected');
+    };
+
+    $scope.logOrder = function (order) {
+      console.log('order: ', order);
+    };
+
+    $scope.logPagination = function (page, limit) {
+      console.log('page: ', page);
+      console.log('limit: ', limit);
+    }
   
 }]);
 });

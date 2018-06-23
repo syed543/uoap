@@ -1,0 +1,42 @@
+[
+    {
+        "firstName": "Captola",
+        "lastName": "Evens",
+        "emailid": "captola.evens@persistent.com",
+        "user_type": "Kroger User",
+        "region": "Southeast",
+        "division": "Texas"
+    },
+    {
+        "firstName": "Josef",
+        "lastName": "Kuengs",
+        "emailid": "josef.kuengs@persistent.com",
+        "user_type": "WLT User",
+        "region": "Midwest",
+        "division": "California"
+    },
+    {
+        "firstName": "Ferda",
+        "lastName": "Pertinand",
+        "emailid": "ferda.pertinand@persistent.com",
+        "user_type": "Kroger User",
+        "region": "Southeast",
+        "division": "Washington"
+    },
+    {
+        "firstName": "Stephen",
+        "lastName": "smith",
+        "emailid": "stephen.smith@persistent.com",
+        "user_type": "WLT User",
+        "region": "Mountain",
+        "division": "Chicago"
+    },
+    {
+        "firstName": "Mark",
+        "lastName": "Ian",
+        "emailid": "mark.ian@persistent.com",
+        "user_type": "Kroger User",
+        "region": "West",
+        "division": "Texas"
+    }
+]

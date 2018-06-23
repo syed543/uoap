@@ -35,9 +35,36 @@ define([ 'angular', 'controllers/main', 'angular-ui-router' ], function (angular
             name: 'concepts',
             templateUrl: 'assets/views/conceptsdetail.html',
             controller: 'conceptsCtrl'
-          });
+          })
+        .state('adminHome', {
+          url: '/adminHome',
+          name: 'adminHome',
+          templateUrl: 'assets/views/adminHome.html',
+          controller: 'adminHomeCtrl',
+          Authentication: true
+        })
+        .state('editorHome', {
+          url: '/editorHome',
+          name: 'editorHome',
+          templateUrl: 'assets/views/editorHome.html',
+          controller: 'editorHomeCtrl',
+          Authentication: true
+        })
+        .state('reviewerHome', {
+          url: '/reviewerHome',
+          name: 'reviewerHome',
+          templateUrl: 'assets/views/reviewerHome.html',
+          controller: 'reviewerHomeCtrl',
+          Authentication: true
+        })
+        .state('userHome', {
+          url: '/userHome',
+          name: 'userHome',
+          templateUrl: 'assets/views/userHome.html',
+          controller: 'userHomeCtrl',
+          Authentication: true
+        });
 
-          
         $urlRouterProvider.otherwise('home');
     } ]);
 });

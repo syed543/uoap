@@ -6,10 +6,10 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial) {
-controllers.controller("adminHomeCtrl", ["$scope", "$rootScope", "$state", "$stateParams", "$localStorage", "$sessionStorage", "authenticationSvc",
+controllers.controller("editorHomeCtrl", ["$scope", "$rootScope", "$state", "$stateParams", "$localStorage", "$sessionStorage", "authenticationSvc",
   function($scope, $rootScope, $state, $stateParams, $localStorage, $sessionStorage, authenticationSvc) {
 
-
+    alert("editor...");
   
 }]);
 });

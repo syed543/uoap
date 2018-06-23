@@ -1,17 +1,20 @@
-[
-  {
-    "article_id": "unique id",
-    "article_title": "This is new journal1",
-    "article_abstract": "image_url"
-  },
-  {
-    "article_id": "unique id",
-    "article_title": "This is new journal1",
-    "article_abstract": "image_url"
-  },
-  {
-    "article_id": "unique id",
-    "article_title": "This is new journal1",
-    "article_abstract": "image_url"
-  }
-]
+{
+  "count": 9,
+  "data": [
+    {
+      "article_id": "unique id",
+      "article_title": "This is new journal1",
+      "article_abstract": "image_url"
+    },
+    {
+      "article_id": "unique id",
+      "article_title": "This is new journal1",
+      "article_abstract": "image_url"
+    },
+    {
+      "article_id": "unique id",
+      "article_title": "This is new journal1",
+      "article_abstract": "image_url"
+    }
+  ]
+}
