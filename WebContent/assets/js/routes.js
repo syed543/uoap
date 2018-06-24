@@ -63,6 +63,34 @@ define([ 'angular', 'controllers/main', 'angular-ui-router' ], function (angular
           templateUrl: 'assets/views/userHome.html',
           controller: 'userHomeCtrl',
           Authentication: true
+        })
+        .state('forEditors', {
+          url: '/forEditors',
+          name: 'forEditors',
+          templateUrl: 'assets/views/forEditors.html',
+          controller: 'forEditorsCtrl',
+          Authentication: true
+        })
+        .state('forAuthors', {
+          url: '/forAuthors',
+          name: 'forAuthors',
+          templateUrl: 'assets/views/forAuthors.html',
+          controller: 'forAuthorsCtrl',
+          Authentication: true
+        })
+        .state('forReviewers', {
+          url: '/forReviewers',
+          name: 'forReviewers',
+          templateUrl: 'assets/views/forReviewers.html',
+          controller: 'forReviewersCtrl',
+          Authentication: true
+        })
+        .state('aboutUs', {
+          url: '/aboutUs',
+          name: 'aboutUs',
+          templateUrl: 'assets/views/aboutUs.html',
+          controller: 'aboutUsCtrl',
+          Authentication: true
         });
 
         $urlRouterProvider.otherwise('home');

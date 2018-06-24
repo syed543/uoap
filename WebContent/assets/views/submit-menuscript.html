@@ -67,12 +67,13 @@
                 <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Journal</label>
-                        <md-select name="journal" ng-model="user.journal" required>
+                        <input name="journal1" ng-model="journalId" ng-if="journalId" required readonly></input>
+                        <md-select name="journal" ng-model="user.journal" required ng-if="!journalId">
                             <md-option ng-repeat="journal in journals" value="{{journal.journal_abbrev}}">
                                 {{journal.journal_name}}
                             </md-option>
                         </md-select>
-                        <div ng-messages="menuscript.journal.$error" role="alert" multiple>
+                        <div ng-if="!journalId" ng-messages="menuscript.journal.$error" role="alert" multiple>
                             <div ng-message="required" class="my-message">You must provide journal.</div>
                         </div>
                     </md-input-container>
