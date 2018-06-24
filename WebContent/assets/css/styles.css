@@ -359,3 +359,10 @@ md-table-pagination .label {
 }
 
 /*** md-table-pagination: style end ***/
+
+/** Article list **/
+.article-title,
+.author-title {
+    font-weight: 600;
+}
+/** Article list **/

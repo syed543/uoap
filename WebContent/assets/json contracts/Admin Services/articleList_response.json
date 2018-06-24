@@ -4,17 +4,20 @@
     {
       "article_id": "unique id",
       "article_title": "This is new journal1",
-      "article_abstract": "image_url"
+      "article_abstract": "image_url",
+      "authors": "Syed"
     },
     {
       "article_id": "unique id",
       "article_title": "This is new journal1",
-      "article_abstract": "image_url"
+      "article_abstract": "image_url",
+      "authors": "Syed"
     },
     {
       "article_id": "unique id",
       "article_title": "This is new journal1",
-      "article_abstract": "image_url"
+      "article_abstract": "image_url",
+      "authors": "Syed"
     }
   ]
 }

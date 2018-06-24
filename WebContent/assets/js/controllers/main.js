@@ -13,6 +13,7 @@ define([
 './editorsTable',
 './reviewersTable',
 './articlesTable',
+'./articles',
 './user',
   './concepts'
 ], function(){
