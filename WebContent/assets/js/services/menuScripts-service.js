@@ -2,18 +2,18 @@
 define(['angular', 'services-module'], function(angular, services) {
 	'use strict';
 
-services.factory('ArticlesService', ["Http", "$q", "$state", "$log", function (Http, $q, $state, $log) {
+services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function (Http, $q, $state, $log) {
 		return {
-			getArticles: function(filterBy) {
+			getMenuScripts: function(filterBy) {
         var deferred = $q.defer(),
-          serviceUrl = 'assets/data/menuScriptList.json';
+            serviceUrl = 'assets/data/menuScriptList.json';
         if(filterBy) {
           for(var key in filterBy) {
             serviceUrl += "?"+key+"="+filterBy[key];
           }
         }
         /*Http.getData(serviceUrl).then(function(data){*/
-        Http.getData('assets/data/articles.json').then(function(data){
+        Http.getData('assets/data/menuScriptList.json').then(function(data){
           deferred.resolve(data);
         }).catch(function(err){});
         return deferred.promise;

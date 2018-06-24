@@ -6,8 +6,8 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial) {
-controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'ArticlesService', '$rootScope',
-  function($mdEditDialog, $q, $scope, $timeout, ArticlesService, $rootScope) {
+controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'MenuScriptsService', '$rootScope',
+  function($mdEditDialog, $q, $scope, $timeout, MenuScriptsService, $rootScope) {
 
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
@@ -29,18 +29,18 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
       page: 1
     };
 
-    $scope.refreshArticles = function() {
-      _getArticles();
+    $scope.refreshMenuScripts = function() {
+      _getMenuScripts();
     };
 
-    var _getArticles = function() {
+    var _getMenuScripts = function() {
       var _filterBy;
-      if($scope.userType === 'author') {
+      if($scope.userType === 'reviewer') {
         _filterBy = {
           "email" : $rootScope.userInfo.email
         }
       }
-      ArticlesService.getArticles(_filterBy).then(function (data) {
+      MenuScriptsService.getMenuScripts(_filterBy).then(function (data) {
         if (data.statusCode == 200) { // Success
           $scope.desserts = data;
         } else { 					// Error
@@ -48,7 +48,7 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
         }
       });
     };
-    _getArticles();
+    _getMenuScripts();
 
     $scope.toggleLimitOptions = function () {
       $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
