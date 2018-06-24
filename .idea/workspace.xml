@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12a0e19b-aa26-40a5-8663-1a4818134a83" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/data/getJournalById.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/includes/header_journal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/includes/journal1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/js/controllers/aboutUs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/js/controllers/forAuthors.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/js/controllers/forEditors.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/js/controllers/forReviewers.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/js/controllers/journalDetails.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/json contracts/getJournalById_response.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/views/aboutUs.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/views/forAuthors.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/views/forEditors.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/assets/views/forReviewers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/assets/css/styles.css" afterPath="$PROJECT_DIR$/WebContent/assets/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/assets/includes/header.html" afterPath="$PROJECT_DIR$/WebContent/assets/includes/header.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/assets/js/app.js" afterPath="$PROJECT_DIR$/WebContent/assets/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/assets/js/controllers/main.js" afterPath="$PROJECT_DIR$/WebContent/assets/js/controllers/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/assets/js/routes.js" afterPath="$PROJECT_DIR$/WebContent/assets/js/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/assets/js/services/articles-service.js" afterPath="$PROJECT_DIR$/WebContent/assets/js/services/articles-service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/assets/js/services/journals-service.js" afterPath="$PROJECT_DIR$/WebContent/assets/js/services/journals-service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/assets/views/submit-menuscript.html" afterPath="$PROJECT_DIR$/WebContent/assets/views/submit-menuscript.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/journal1.html" afterPath="$PROJECT_DIR$/WebContent/journal1.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -100,11 +78,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="submit-menuscript.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="submit-menuscript.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/assets/views/submit-menuscript.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="431">
               <caret line="69" column="66" lean-forward="false" selection-start-line="69" selection-start-column="66" selection-end-line="69" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebContent/assets/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="151">
+              <caret line="51" column="9" lean-forward="false" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -125,16 +113,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="483">
               <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="87" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getJournalById.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/assets/data/getJournalById.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -222,7 +200,6 @@
         <option value="$PROJECT_DIR$/WebContent/assets/views/articles.html" />
         <option value="$PROJECT_DIR$/WebContent/assets/views/home.html" />
         <option value="$PROJECT_DIR$/WebContent/assets/data/journals.json" />
-        <option value="$PROJECT_DIR$/WebContent/assets/js/app.js" />
         <option value="$PROJECT_DIR$/WebContent/assets/includes/header_journal.html" />
         <option value="$PROJECT_DIR$/WebContent/assets/includes/header.html" />
         <option value="$PROJECT_DIR$/WebContent/assets/js/routes.js" />
@@ -245,6 +222,7 @@
         <option value="$PROJECT_DIR$/WebContent/assets/includes/journal1.html" />
         <option value="$PROJECT_DIR$/WebContent/assets/js/controllers/journalDetails.js" />
         <option value="$PROJECT_DIR$/WebContent/assets/views/submit-menuscript.html" />
+        <option value="$PROJECT_DIR$/WebContent/assets/js/app.js" />
       </list>
     </option>
   </component>
@@ -420,12 +398,12 @@
       <workItem from="1526804594658" duration="9409000" />
       <workItem from="1528019749961" duration="5552000" />
       <workItem from="1529498416132" duration="909000" />
-      <workItem from="1529693991312" duration="44496000" />
+      <workItem from="1529693991312" duration="45101000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60366000" />
+    <option name="totallyTimeSpent" value="60971000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -626,14 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="25" column="51" lean-forward="false" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/assets/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="51" column="9" lean-forward="false" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -868,6 +838,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
           <caret line="69" column="66" lean-forward="false" selection-start-line="69" selection-start-column="66" selection-end-line="69" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/assets/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="51" column="9" lean-forward="false" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
           <folding />
         </state>
       </provider>
