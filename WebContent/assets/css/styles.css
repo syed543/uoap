@@ -108,10 +108,6 @@ md-icon.home-icon svg {
 #page-wrapper {
 }
 
-.left-arrow-button, .right-arrow-button {
-    display: none;
-}
-
 #search {
     float: right;
     margin-top: 9px;
