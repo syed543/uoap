@@ -1,0 +1,46 @@
+<div id="page-wrapper" ng-controller="journalDetailsCtrl" >
+	<md-content md-padding class="journal-details">
+		<h1>{{journal.journal_name}}</h1>
+		<div layout="row" layout-wrap>
+			<div flex-gt-sm="75" flex="100">
+				<img width="100%" style="max-height: 200px;" ng-src="{{journal.journal_banner_image}}"/>
+			</div>
+			<div flex-gt-sm="25" flex="100">
+				<div class="submit-menuScript-container">
+					<div class="submit-menuscript-details" ng-click="submitMenuScript()">
+						Submit a MenuScript
+					</div>
+				</div>
+			</div>
+			<div layout="row" class="journal-details-desc">
+				{{journal.journal_description}}
+			</div>
+		</div>
+	</md-content>
+
+
+	<md-content layout="column" >
+		<md-toolbar class="md-table-toolbar md-default">
+			<div class="md-toolbar-tools">
+				<h1>List Of Articles:</h1>
+				<div flex></div>
+				<md-button class="md-icon-button" ng-click="refreshArticles()">
+					<md-icon>refresh</md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+			<md-card ng-repeat="article in articles">
+				<md-content layout-padding>
+					<div class="article-title">{{article.article_title}}</div>
+					<div class="article-abstract">{{article.article_abstract}}</div>
+					<div>
+						<span class="author-title">Author(s): </span>
+						<span>{{article.authors}}</span>
+					</div>
+					<div>
+						<a href="">Download</a>
+					</div>
+				</md-content>
+			</md-card>
+	</md-content>
+</div>

@@ -14,6 +14,11 @@ define([
 './reviewersTable',
 './articlesTable',
 './articles',
+'./journalDetails',
+'./forEditors',
+'./forAuthors',
+'./forReviewers',
+'./aboutUs',
 './user',
   './concepts'
 ], function(){
