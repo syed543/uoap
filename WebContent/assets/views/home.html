@@ -36,7 +36,7 @@
                     <div class="card-description">{{journal.description}}</div>
                 </md-card-content>
                 <md-card-actions layout="row" layout-align="center center">
-                    <md-button>Read More <md-icon md-svg-src="assets/img/arrowRight.svg"></md-icon> </md-button>
+                    <md-button ng-click="openJournal(journal.url)">Read More <md-icon md-svg-src="assets/img/arrowRight.svg"></md-icon> </md-button>
                 </md-card-actions>
             </md-card>
         </div>

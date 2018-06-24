@@ -30,11 +30,11 @@ define([ 'angular', 'controllers/main', 'angular-ui-router' ], function (angular
             templateUrl: 'assets/views/login.html',
             controller: 'loginCtrl'
            })
-          .state('concepts', {
-            url: '/concepts?concept',
-            name: 'concepts',
-            templateUrl: 'assets/views/conceptsdetail.html',
-            controller: 'conceptsCtrl'
+          .state('articles', {
+            url: '/articles',
+            name: 'articles',
+            templateUrl: 'assets/views/articles.html',
+            controller: 'articlesCtrl'
           })
         .state('adminHome', {
           url: '/adminHome',
