@@ -26,26 +26,26 @@
             <md-card>
                 <md-card-title>
                     <md-card-title-text>
-                        <span class="md-headline">{{journal.name}}</span>
+                        <span class="md-headline">{{journal.journal_name}}</span>
                     </md-card-title-text>
                 </md-card-title>
                 <md-card-content>
                     <div layout-align="center center" layout="row">
-                        <img ng-src="{{journal.imagePath}}" class="md-card-image" alt="{{journal.name}}">
+                        <img ng-src="{{journal.journal_icon}}" class="md-card-image" alt="{{journal.name}}">
                     </div>
-                    <div class="card-description">{{journal.description}}</div>
+                    <div class="card-description">{{journal.journal_description}}</div>
                 </md-card-content>
                 <md-card-actions layout="row" layout-align="center center">
-                    <md-button ng-click="openJournal(journal.url)">Read More <md-icon md-svg-src="assets/img/arrowRight.svg"></md-icon> </md-button>
+                    <md-button ng-click="openJournal(journal.journal_abbrev)">Read More <md-icon md-svg-src="assets/img/arrowRight.svg"></md-icon> </md-button>
                 </md-card-actions>
             </md-card>
         </div>
     </md-content>
 
-    <div class="uoap-accordian-gear" ng-click="openSidePanel()">
+    <!--<div class="uoap-accordian-gear" ng-click="openSidePanel()">
         <md-icon md-svg-src="assets/img/arrowUp.svg"></md-icon>
         JOURNALS lIST
-    </div>
+    </div>-->
 
     <md-sidenav class="md-sidenav-left md-whiteframe-4dp uoap-journal-list" md-component-id="left" style="z-index: 9999">
 

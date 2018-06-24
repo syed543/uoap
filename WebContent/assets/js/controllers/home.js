@@ -6,26 +6,8 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial, ngMessages) {
-controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "FeatureService", "ConceptsService", "$mdDialog", "$mdSidenav", "$timeout",
-  function($scope, $rootScope, $state, FeatureService, ConceptsService, $mdDialog, $mdSidenav, $timeout) {
-
-  function checkUserLogin() {
-    if ($rootScope.userInfo) {
-      if ($rootScope.userInfo.usertype.toLowerCase() == "admin") {
-        $timeout($state.go("adminHome"), 0);
-      } else if ($rootScope.userInfo.usertype.toLowerCase() == "reviewer") {
-        $state.go("reviewerHome");
-      } else if ($rootScope.userInfo.usertype.toLowerCase() == "editor") {
-        $state.go("editorHome");
-      } else if ($rootScope.userInfo.usertype.toLowerCase() == "editor") {
-        $state.go("userHome");
-      } else {
-        $state.go("home");
-      }
-    }
-  }
-
-    //checkUserLogin();
+controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsService", "ArticlesService", "$mdDialog", "$mdSidenav", "$timeout",
+  function($scope, $rootScope, $state, JournalsService, ArticlesService, $mdDialog, $mdSidenav, $timeout) {
 
     $scope.search = "";
 
@@ -47,52 +29,27 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "FeatureSe
       text: 'This is fourth page'
     }];
 
-  $scope.journalList = [{
-    imagePath: 'https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg',
-    name: 'Biochemistry and Modern Applications',
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
-    'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took ' +
-    'a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ' +
-    'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the ' +
-    '1960s with the release of Letraset sheets containing Lorem Ipsum passages, ' +
-    'and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-  },
-    {
-      imagePath: 'https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg',
-      name: 'Clinical Cardiology and Cardiovascular Medicine',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
-      'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took ' +
-      'a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ' +
-      'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the ' +
-      '1960s with the release of Letraset sheets containing Lorem Ipsum passages, ' +
-      'and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-    },
-    {
-      imagePath: 'https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg',
-      name: 'Dental research and Management',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
-      'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took ' +
-      'a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ' +
-      'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the ' +
-      '1960s with the release of Letraset sheets containing Lorem Ipsum passages, ' +
-      'and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-    },
-    {
-      imagePath: 'https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg',
-      name: 'Dental research and Management ...',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
-      'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took ' +
-      'a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ' +
-      'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the ' +
-      '1960s with the release of Letraset sheets containing Lorem Ipsum passages, ' +
-      'and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-    }];
+    JournalsService.getJournals().then(function (data) {
+      if (data.statusCode == 200) { // Success
+        $scope.journalList = data.data;
+      } else { 					// Error
+        console.log("Unable to fetch journals list. please contact support.");
+      }
+    });
+
+    ArticlesService.getArticles().then(function (data) {
+      if (data.statusCode == 200) { // Success
+        $scope.articles = data.data;
+      } else { 					// Error
+        console.log("Unable to fetch articles list. please contact support.");
+      }
+    });
 
     /**
      * Supplies a function that will continue to operate until the
      * time is up.
      */
-    function debounce(func, wait, context) {
+    /*function debounce(func, wait, context) {
       var timer;
 
       return function debounced() {
@@ -104,13 +61,13 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "FeatureSe
           func.apply(context, args);
         }, wait || 10);
       };
-    }
+    }*/
 
     /**
      * Build handler to open/close a SideNav; when animation finishes
      * report completion in console
      */
-    function buildDelayedToggler(navID) {
+    /*function buildDelayedToggler(navID) {
       return debounce(function() {
         // Component lookup should always be available since we are not using `ng-if`
         $mdSidenav(navID)
@@ -119,74 +76,60 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "FeatureSe
 
           });
       }, 200);
-    }
+    }*/
 
-  $scope.openSidePanel = buildDelayedToggler('left');
-    $scope.closeSideNav = function() {
-      $mdSidenav('left').close()
-        .then(function () {
-        });
+  /*$scope.openSidePanel = buildDelayedToggler('left');*/
+  $scope.closeSideNav = function() {
+    $mdSidenav('left').close()
+      .then(function () {
+      });
+  };
+
+  $scope.submitMenuScript = function(ev) {
+    $mdDialog.show({
+      locals:{journals: $scope.journalList, articles: $scope.articles},
+      controller: DialogController,
+      templateUrl: 'assets/views/submit-menuscript.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+    })
+      .then(function(answer) {
+      }, function() {
+      });
+  };
+
+  function DialogController($scope, $mdDialog, journals, articles) {
+    $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+
+    $scope.user = {
+      name: 'Developer',
+      fname: 'test',
+      email: 'ipsum@lorem.com',
+      postalCode: '94043',
+      journal: 'ca'
     };
 
-    $scope.submitMenuScript = function(ev) {
-      $mdDialog.show({
-        controller: DialogController,
-        templateUrl: 'assets/views/submit-menuscript.html',
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose:true,
-        fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-      })
-        .then(function(answer) {
-        }, function() {
-        });
-    }
+    $scope.journals = journals;
+    $scope.articles = articles;
 
-    function DialogController($scope, $mdDialog) {
-      $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
 
-      $scope.user = {
-        name: 'Developer',
-        fname: 'test',
-        email: 'ipsum@lorem.com',
-        postalCode: '94043',
-        journal: 'ca'
-      };
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
 
-      $scope.journals = [{
-        name: 'journal1',
-        abbrev: 'JA1'
-      },{
-        name: 'journal2',
-        abbrev: 'JA2'
-      },{
-        name: 'journal3',
-        abbrev: 'JA3'
-      }];
+    $scope.submitScript = function() {
+      console.log("submit script...");
+    };
+  }
 
-      $scope.articles = [{
-        name: 'article1',
-        abbrev: 'AR1'
-      },{
-        name: 'article2',
-        abbrev: 'AR2'
-      },{
-        name: 'article3',
-        abbrev: 'AR3'
-      }];
-
-      $scope.hide = function() {
-        $mdDialog.hide();
-      };
-
-      $scope.cancel = function() {
-        $mdDialog.cancel();
-      };
-
-      $scope.submitScript = function() {
-        console.log("submit script...");
-      };
-    }
+  $scope.openJournal = function(journalPageId) {
+    window.open(journalPageId+'.html')
+  }
 
   }]);
 });
