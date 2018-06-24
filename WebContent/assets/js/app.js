@@ -49,7 +49,7 @@ define([
 
   // api services url constant variable
   uoap.constant('ApiEndpoint', {
-    url: ''/*'/journal/router'*/
+    url: '/journal/router'
   });
 
 	uoap.run(['$rootScope', '$state', '$stateParams', 'authenticationSvc', '$location', '$timeout',

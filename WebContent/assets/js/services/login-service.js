@@ -9,8 +9,8 @@ define(['angular', 'services-module', 'underscore'], function (angular, services
       // Login to check authentication from service
       login: function (data) {
         var deferred = $q.defer();
-        /*Http.postData('/login', data).then(function (result) {*/
-        Http.getData('assets/data/login.json', data).then(function (result){
+        Http.postData('/login', data).then(function (result) {
+        /*Http.getData('assets/data/login.json', data).then(function (result){*/
           deferred.resolve(result);
         }).catch(function (err) {
         });
