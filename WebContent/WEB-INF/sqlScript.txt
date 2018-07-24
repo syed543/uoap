@@ -38,3 +38,22 @@ menuScriptTitle varchar(1000),
 abstractName varchar(4000),
 attachmentFileName varchar(100),
 attachment longblob)
+
+drop table editor;
+
+create table editor(
+id int not null auto_increment,
+firstName varchar2(50),
+lastName varchar2(50),
+attachment longblob,
+description varchar2(200),
+affiliation varchar2(200),
+journalId int);
+
+drop table reviewer;
+create table reviewer(
+id int not null auto_increment,
+firstName varchar2(50),
+lastName varchar2(50),
+email varchar2(200),
+country varchar2(70));

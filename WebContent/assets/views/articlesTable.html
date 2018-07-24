@@ -26,7 +26,7 @@
                         <th md-column md-order-by="authors"><span>Authors</span></th>
                         <th md-column md-order-by="article_abstract"><span>Abstract</span></th>
                         <th md-column md-order-by=""><span>View</span></th>
-                        <th md-column md-order-by=""><span>Delete</span></th>
+                        <th md-column ng-if="userType === 'admin'"  md-order-by=""><span>Delete</span></th>
                     </tr>
                     </thead>
                     <tbody md-body>
@@ -37,7 +37,7 @@
                         <td md-cell><md-button class="md-icon-button" ng-click="view(desert)">
                             <md-icon>visibility</md-icon>
                         </md-button></td>
-                        <td md-cell><md-button class="md-icon-button" ng-click="delete(desert)">
+                        <td md-cell ng-if="userType === 'admin'" ><md-button class="md-icon-button" ng-click="delete(desert)">
                             <md-icon>delete</md-icon>
                         </md-button></td>
                     </tr>

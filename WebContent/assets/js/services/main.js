@@ -10,6 +10,7 @@ define([
 "./editors-service",
 "./reviewers-service",
 "./articles-service",
+"./menuScripts-service",
   "./login-service"
 ], function() {
 

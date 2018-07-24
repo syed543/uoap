@@ -6,12 +6,12 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial) {
-controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'ReviewersService', '$mdDialog',
-  function($mdEditDialog, $q, $scope, $timeout, ReviewersService, $mdDialog) {
+controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'ReviewersService', '$mdDialog', '$rootScope',
+  function($mdEditDialog, $q, $scope, $timeout, ReviewersService, $mdDialog, $rootScope) {
 
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
-
+    $scope.userType = $rootScope.userInfo.usertype.toLowerCase();
     $scope.options = {
       rowSelection: false,
       multiSelect: false,

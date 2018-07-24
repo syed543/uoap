@@ -4,7 +4,7 @@
     "fName": "Syed",
     "lName": "Azher",
     "id": "123",
-    "usertype": "Admin",
+    "usertype": "author",
     "title": "Mr",
     "country" : "country_value",
     "email": "test@test.com",

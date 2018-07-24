@@ -9,7 +9,6 @@ define(['angular',
 controllers.controller("userHomeCtrl", ["$scope", "$rootScope", "$state", "$stateParams", "$localStorage", "$sessionStorage", "authenticationSvc",
   function($scope, $rootScope, $state, $stateParams, $localStorage, $sessionStorage, authenticationSvc) {
 
-alert("user...");
-  
+
 }]);
 });

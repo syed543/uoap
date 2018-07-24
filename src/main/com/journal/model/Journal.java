@@ -2,7 +2,7 @@ package com.journal.model;
 
 public class Journal {
 	
-	private int id;
+	private Integer id;
 	private String journalName;
 	private byte[] journalIcon;
 	private String journalIconFileName;
@@ -11,7 +11,7 @@ public class Journal {
 	private byte[] journalBannerImage;
 	private String journalBannerImageFileName;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(int id) {

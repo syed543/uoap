@@ -13,6 +13,7 @@ define([
 './editorsTable',
 './reviewersTable',
 './articlesTable',
+'./menuScriptsTable',
 './articles',
 './journalDetails',
 './forEditors',
