@@ -45,7 +45,8 @@ public class JournalJDBCTemplate {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, journal.getJournalName(), journal.getJournalIcon(), journal.getJournalIconFileName(), 
-				journal.getJournalDescription(), journal.getJournalLongDescription(), journal.getJournalBannerImage(), journal.getJournalBannerImageFileName());
+				journal.getJournalDescription(), journal.getJournalLongDescription(), journal.getJournalBannerImage(), 
+				journal.getJournalBannerImageFileName());
 		
 		System.out.println("Submission uploaded");
 	}
@@ -72,6 +73,17 @@ public class JournalJDBCTemplate {
 		}
 		
 		return journals;
+	}
+	
+	public void updateJournal(Journal journal) {
+		
+		String query = "update JOURNALS set journalName = ?, journalIcon = ?, journalIconFileName = ?, journalDescription = ?, journalBannerImage = ?, journalBannerImageFileName = ? where id = ?";
+		
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		jdbcTemplate.update(query, journal.getJournalName(), journal.getJournalIcon(), journal.getJournalIconFileName(),
+				journal.getJournalDescription(), journal.getJournalLongDescription(), journal.getJournalBannerImage(),
+				journal.getJournalBannerImageFileName());
+		
 	}
 
 }

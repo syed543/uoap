@@ -20,4 +20,17 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
+	<bean id="journalJDBCTemplate" class="com.journal.dao.JournalJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="editorJDBCTemplate" class="com.journal.dao.EditorJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="reviewerJDBCTemplate" class="com.journal.dao.ReviewerJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	
 </beans>

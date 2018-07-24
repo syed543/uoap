@@ -20,7 +20,7 @@ public class JournalController {
 	
 	@RequestMapping(value="/addJournal", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object>addJournal(@RequestParam String journalName, @RequestParam(required = false) MultipartFile journalIcon, 
+	public Map<String, Object> addJournal(@RequestParam String journalName, @RequestParam(required = false) MultipartFile journalIcon, 
 			@RequestParam String journalDescription, @RequestParam String journalLongDescription,
 			@RequestParam(required = false) MultipartFile journalBannerImage) throws IOException {
 		
@@ -49,5 +49,23 @@ public class JournalController {
 		
 		List<Journal> journals  = journalJDBCTemplate.getAllJournals();
 		return journals;
+	}
+	
+	@RequestMapping(value="/updateJournal", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> updateJournal(@RequestParam Journal journal) {
+		
+		if (journal.getId() != null) {
+			
+			journalJDBCTemplate.updateJournal(journal);
+			
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("status", "200");
+			result.put("message", "Journal added succesfully");
+
+			return result;
+		}
+		
+		return null;
 	}
 }
