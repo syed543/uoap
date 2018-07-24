@@ -49,7 +49,7 @@ define([
 
   // api services url constant variable
   uoap.constant('ApiEndpoint', {
-    url: ''/*'/journal/router'*/
+    url: '/journal/router'
   });
 
 	uoap.run(['$rootScope', '$state', '$stateParams', 'authenticationSvc', '$location', '$timeout',
@@ -81,7 +81,7 @@ define([
             $rootScope.userView = "reviewerHome";
           } else if($rootScope.userInfo.usertype.toLowerCase() == "editor") {
             $rootScope.userView = "editorHome";
-          } else if($rootScope.userInfo.usertype.toLowerCase() == "editor") {
+          } else if($rootScope.userInfo.usertype.toLowerCase() == "author") {
             $rootScope.userView = "userHome";
           } else {
             $rootScope.userView = "home";

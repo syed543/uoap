@@ -9,7 +9,7 @@ define(['angular',
 controllers.controller("editorHomeCtrl", ["$scope", "$rootScope", "$state", "$stateParams", "$localStorage", "$sessionStorage", "authenticationSvc",
   function($scope, $rootScope, $state, $stateParams, $localStorage, $sessionStorage, authenticationSvc) {
 
-    alert("editor...");
-  
+
+
 }]);
 });
