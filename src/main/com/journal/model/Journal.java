@@ -1,9 +1,13 @@
 package com.journal.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Journal {
 	
 	private Integer id;
 	private String journalName;
+	private MultipartFile journalIconFile;
+	private MultipartFile journalBannerImageFile;
 	private byte[] journalIcon;
 	private String journalIconFileName;
 	private String journalDescription;
@@ -58,5 +62,17 @@ public class Journal {
 	}
 	public void setJournalBannerImageFileName(String journalBannerImageFileName) {
 		this.journalBannerImageFileName = journalBannerImageFileName;
+	}
+	public MultipartFile getJournalIconFile() {
+		return journalIconFile;
+	}
+	public void setJournalIconFile(MultipartFile journalIconFile) {
+		this.journalIconFile = journalIconFile;
+	}
+	public MultipartFile getJournalBannerImageFile() {
+		return journalBannerImageFile;
+	}
+	public void setJournalBannerImageFile(MultipartFile journalBannerImageFile) {
+		this.journalBannerImageFile = journalBannerImageFile;
 	}
 }

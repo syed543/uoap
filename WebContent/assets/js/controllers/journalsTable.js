@@ -65,9 +65,34 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
       $scope.cancel = function() {
         $mdDialog.cancel();
       };
+      
+      $scope.uploadedFile = function(element) {
+		$scope.$apply(function($scope) {
+		   $scope.icon = element.files[0];
+		});			
+	  };
+	  
+	  $scope.uploadedBanner = function(element) {
+			$scope.$apply(function($scope) {
+			   $scope.banner = element.files[0];
+			});			
+		};
+           
 
       $scope.addJournal = function() {
-        JournalsService.addJournal().then(function (data) {
+          var data = {},
+              fd = new FormData();
+          	
+          	fd.append("journalIconFile", $scope.icon);
+          	fd.append("journalBannerImageFile", $scope.banner);
+          
+          data['journalName'] = $scope.journal['journal_name'];
+          data['journalDescription'] = $scope.journal['journal_description'];
+          data['journalLongDescription'] = $scope.journal['journal_long_description'];
+          	
+          fd.append("data", JSON.stringify(data));
+          
+        JournalsService.addJournal(fd).then(function (data) {
           if (data.statusCode == 200) { // Success
             _getJournals();
           } else { 					// Error

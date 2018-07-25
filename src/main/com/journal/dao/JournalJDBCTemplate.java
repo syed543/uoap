@@ -26,18 +26,6 @@ public class JournalJDBCTemplate {
 		return dataSource;
 	}
 
-	public void save(Submission submission) {
-		String query = "insert into submission(email, journal, articleType, menuScriptTitle, abstractName, attachmentFileName, attachment) values" +
-						"(?, ?, ?, ?, ?, ? ,?)";
-		
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		
-		jdbcTemplate.update(query, submission.getEmail(), submission.getJournal(), submission.getArticleType(), 
-				submission.getMenuScriptTitle(), submission.getAbstractName(), submission.getAttachmentFileName(), submission.getAttachment());
-		
-		System.out.println("Submission uploaded");
-	}
-
 	public void saveJournal(Journal journal) {
 		String query = "insert into JOURNAL(journalName, journalIcon, journalIconFileName, journalDescription, journalLongDescription, journalBannerImage, journalBannerImageFileName) values" +
 				"(?, ?, ?, ?, ?, ? ,?)";
@@ -48,12 +36,12 @@ public class JournalJDBCTemplate {
 				journal.getJournalDescription(), journal.getJournalLongDescription(), journal.getJournalBannerImage(), 
 				journal.getJournalBannerImageFileName());
 		
-		System.out.println("Submission uploaded");
+		System.out.println("Journal uploaded");
 	}
 
 	public List<Journal> getAllJournals() {
 		
-		String query = "select id, journalName, journalDescription, journalLongDescription from JOURNALS";
+		String query = "select id, journalName, journalDescription, journalLongDescription from JOURNAL";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 		
@@ -77,7 +65,7 @@ public class JournalJDBCTemplate {
 	
 	public void updateJournal(Journal journal) {
 		
-		String query = "update JOURNALS set journalName = ?, journalIcon = ?, journalIconFileName = ?, journalDescription = ?, journalBannerImage = ?, journalBannerImageFileName = ? where id = ?";
+		String query = "update JOURNAL set journalName = ?, journalIcon = ?, journalIconFileName = ?, journalDescription = ?, journalBannerImage = ?, journalBannerImageFileName = ? where id = ?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		jdbcTemplate.update(query, journal.getJournalName(), journal.getJournalIcon(), journal.getJournalIconFileName(),

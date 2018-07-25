@@ -13,17 +13,17 @@ passwordGenerated varchar(1),
 userType varchar(15)
 )
 
-drop table journals;
+drop table journal;
 
-create table journals(
+create table journal(
 id int not null auto_increment,
-journalName varchar2(100) not null,
+journalName varchar(100),
 journalIcon longblob,
-journalIconFileName varchar2(100),
-journalDescription varchar2(500),
-journalLongDescription varchar2(5000),
+journalIconFileName varchar(100),
+journalDescription varchar(500),
+journalLongDescription varchar(5000),
 journalBannerImage longblob,
-journalBannerImageFileName varchar2(100)
+journalBannerImageFileName varchar(100),
 primary key (id)
 )
 

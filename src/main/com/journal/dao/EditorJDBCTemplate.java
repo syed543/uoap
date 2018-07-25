@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.journal.model.Editor;
 
-public class EditorJDBCController {
+public class EditorJDBCTemplate {
 
 	@Autowired
 	private DataSource dataSource;
