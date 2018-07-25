@@ -32,8 +32,8 @@ public class JournalJDBCTemplate {
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
-		jdbcTemplate.update(query, journal.getJournalName(), journal.getJournalIcon(), journal.getJournalIconFileName(), 
-				journal.getJournalDescription(), journal.getJournalLongDescription(), journal.getJournalBannerImage(), 
+		jdbcTemplate.update(query, journal.getJournal_name(), journal.getJournalIcon(), journal.getJournalIconFileName(), 
+				journal.getJournal_description(), journal.getJournal_long_description(), journal.getJournalBannerImage(), 
 				journal.getJournalBannerImageFileName());
 		
 		System.out.println("Journal uploaded");
@@ -53,9 +53,9 @@ public class JournalJDBCTemplate {
 			
 			Journal journal = new Journal();
 			journal.setId((Integer) journalRow.get("id"));
-			journal.setJournalName((String) journalRow.get("journalName"));
-			journal.setJournalDescription((String) journalRow.get("journalDescription"));
-			journal.setJournalLongDescription((String) journalRow.get("journalLongDescription"));
+			journal.setJournal_name((String) journalRow.get("journalName"));
+			journal.setJournal_description((String) journalRow.get("journalDescription"));
+			journal.setJournal_long_description((String) journalRow.get("journalLongDescription"));
 			
 			journals.add(journal);
 		}
@@ -68,8 +68,8 @@ public class JournalJDBCTemplate {
 		String query = "update JOURNAL set journalName = ?, journalIcon = ?, journalIconFileName = ?, journalDescription = ?, journalBannerImage = ?, journalBannerImageFileName = ? where id = ?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		jdbcTemplate.update(query, journal.getJournalName(), journal.getJournalIcon(), journal.getJournalIconFileName(),
-				journal.getJournalDescription(), journal.getJournalLongDescription(), journal.getJournalBannerImage(),
+		jdbcTemplate.update(query, journal.getJournal_name(), journal.getJournalIcon(), journal.getJournalIconFileName(),
+				journal.getJournal_description(), journal.getJournal_long_description(), journal.getJournalBannerImage(),
 				journal.getJournalBannerImageFileName());
 		
 	}

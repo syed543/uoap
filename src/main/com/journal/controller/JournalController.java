@@ -28,24 +28,24 @@ public class JournalController {
 	@RequestMapping(value="/addJournal", method=RequestMethod.POST, consumes=MediaType.MULTIPART_FORM_DATA_VALUE)
 	@ResponseBody
 //	public Map<String, Object> addJournal(@ModelAttribute Journal journal, @RequestBody Journal journalData) throws IOException {
-	public Map<String, Object> addJournal(@RequestParam String data, @RequestPart(required=false) MultipartFile journalIconFile, @RequestPart(required=false) MultipartFile journalBannerImageFile) throws IOException {
+	public Map<String, Object> addJournal(@RequestParam String data, @RequestPart(required=false) MultipartFile icon, @RequestPart(required=false) MultipartFile banner) throws IOException {
 		
 		Journal journal = new ObjectMapper().readValue(data, Journal.class);
 	
-		if (journalIconFile != null) {
-			journal.setJournalIcon(journalIconFile.getBytes());
-			journal.setJournalIconFileName(journalIconFile.getOriginalFilename());
+		if (icon != null) {
+			journal.setJournalIcon(icon.getBytes());
+			journal.setJournalIconFileName(icon.getOriginalFilename());
 		}
 		
-		if (journalBannerImageFile != null) {
-			journal.setJournalBannerImage(journalBannerImageFile.getBytes());
-			journal.setJournalBannerImageFileName(journalBannerImageFile.getOriginalFilename());
+		if (banner != null) {
+			journal.setJournalBannerImage(banner.getBytes());
+			journal.setJournalBannerImageFileName(banner.getOriginalFilename());
 		}
 		
 		journalJDBCTemplate.saveJournal(journal);
 		
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("status", "200");
+		result.put("statusCode", "200");
 		result.put("message", "Journal added succesfully");
 		
 		System.out.println("Journal added");
@@ -54,10 +54,14 @@ public class JournalController {
 
 	@RequestMapping(value="/journals", method=RequestMethod.GET)
 	@ResponseBody
-	public List<Journal> journals() {
+	public Map<String, Object> journals() {
 		
 		List<Journal> journals  = journalJDBCTemplate.getAllJournals();
-		return journals;
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("statusCode", "200");
+		result.put("data", journals);
+
+		return result;
 	}
 	
 	@RequestMapping(value="/updateJournal", method=RequestMethod.POST)

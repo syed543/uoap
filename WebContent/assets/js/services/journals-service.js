@@ -7,7 +7,7 @@ services.factory('JournalsService', ["Http", "$q", "$state", "$log", function (H
 			getJournals: function() {
         var deferred = $q.defer();
 //        Http.getData('assets/data/journals.json').then(function(data){
-        Http.getData('/journals').then(function (result) {
+        Http.getData('/journals').then(function (data) {
           deferred.resolve(data);
         }).catch(function(err){});
         return deferred.promise;

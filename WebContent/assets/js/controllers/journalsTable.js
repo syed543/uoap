@@ -83,12 +83,12 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
           var data = {},
               fd = new FormData();
           	
-          	fd.append("journalIconFile", $scope.icon);
-          	fd.append("journalBannerImageFile", $scope.banner);
+          	fd.append("icon", $scope.icon);
+          	fd.append("banner", $scope.banner);
           
-          data['journalName'] = $scope.journal['journal_name'];
-          data['journalDescription'] = $scope.journal['journal_description'];
-          data['journalLongDescription'] = $scope.journal['journal_long_description'];
+          data['journal_name'] = $scope.journal['journal_name'];
+          data['journal_description'] = $scope.journal['journal_description'];
+          data['journal_long_description'] = $scope.journal['journal_long_description'];
           	
           fd.append("data", JSON.stringify(data));
           
