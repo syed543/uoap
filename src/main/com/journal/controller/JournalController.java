@@ -60,6 +60,7 @@ public class JournalController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("statusCode", "200");
 		result.put("data", journals);
+		result.put("count", journals.size());
 
 		return result;
 	}
