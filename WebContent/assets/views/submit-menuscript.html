@@ -69,7 +69,7 @@
                         <label>Journal</label>
                         <input name="journal1" ng-model="journalId" ng-if="journalId" required readonly></input>
                         <md-select name="journal" ng-model="user.journal" required ng-if="!journalId">
-                            <md-option ng-repeat="journal in journals" value="{{journal.journal_abbrev}}">
+                            <md-option ng-repeat="journal in journals" value="{{journal.id}}">
                                 {{journal.journal_name}}
                             </md-option>
                         </md-select>
