@@ -27,14 +27,14 @@
                         </md-input-container>
                         <md-input-container  flex="40">
                             <label>First Name</label>
-                            <input name="fname" ng-model="user.fname" required>
+                            <input name="fname" ng-model="user.fName" required>
                             <div ng-messages="menuscript.fname.$error">
                                 <div ng-message="required" class="my-message">You must provide email.</div>
                             </div>
                         </md-input-container>
                         <md-input-container flex="40">
                             <label>Last Name</label>
-                            <input name="lname" ng-model="user.lname" required>
+                            <input name="lname" ng-model="user.lName" required>
                             <div ng-messages="menuscript.lname.$error">
                                 <div ng-message="required" class="my-message">You must provide email.</div>
                             </div>
@@ -111,7 +111,7 @@
                     <div class="fullwidth">
                         <md-input-container>
                             <label>Abstract</label>
-                            <textarea name="abstract" ng-model="user.abstract" maxlength="4000" required></textarea>
+                            <textarea name="abstract" ng-model="user.abstractTitle" maxlength="4000" required></textarea>
                             <div ng-messages="menuscript.abstract.$error">
                                 <div ng-message-exp="['maxlength', 'required']">
                                     Your Abstract should not exceed 4000 characters.

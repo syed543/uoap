@@ -104,17 +104,16 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
     $scope.user = {
-        "fName": "Syed",
-        "lName": "Azher",
-        "title": "Mr",
-        "email": "test@test.com",
-        "postalAddress": "...",
-        "country" : "country_value",
-        "journal": "journal_value",
-        "article": "article_value",
-        "menuTitle": "Title of menuscript...",
-        "abstract" : "description of abstract...",
-        "attachment" : "{file_Object}"
+        "fName": "",
+        "lName": "",
+        "title": "",
+        "email": "",
+        "postalAddress": "",
+        "country" : "",
+        "journal": "",
+        "article": "",
+        "menuTitle": "",
+        "abstractTitle" : ""
     };
 
     $scope.journals = journals;
