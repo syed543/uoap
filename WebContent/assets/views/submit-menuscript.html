@@ -97,7 +97,7 @@
                     <div class="fullwidth">
                         <md-input-container>
                             <label>Menuscript Title</label>
-                            <input name="title" ng-model="user.title" required maxlength="1000" minlength="10">
+                            <input name="title" ng-model="user.menuTitle" required maxlength="1000" minlength="10">
                             <div ng-messages="menuscript.title.$error">
                                 <div ng-message-exp="['required', 'minlength', 'maxlength']">
                                     Your Title must be between 10 and 1000 characters long.
@@ -112,7 +112,7 @@
                         <md-input-container>
                             <label>Abstract</label>
                             <textarea name="abstract" ng-model="user.abstract" maxlength="4000" required></textarea>
-                            <div ng-messages="menuscript.title.$error">
+                            <div ng-messages="menuscript.abstract.$error">
                                 <div ng-message-exp="['maxlength', 'required']">
                                     Your Abstract should not exceed 4000 characters.
                                 </div>
@@ -124,7 +124,7 @@
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div>
                         <label>Attach MenuScript</label>
-                        <input name="file" ng-model="user.file" type="file" accept=".pdf, .doc, .docx">
+                        <input name="file" onchange="angular.element(this).scope().uploadedFile(this)" ng-model="user.file" type="file" accept=".pdf, .doc, .docx">
                         <div class="errors" ng-show="menuscript.file.$dirty && menuscript.file.$invalid">
                             Please attach a menuscript.
                         </div>
