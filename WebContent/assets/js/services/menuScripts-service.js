@@ -6,14 +6,14 @@ services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function
 		return {
 			getMenuScripts: function(filterBy) {
         var deferred = $q.defer(),
-            serviceUrl = 'assets/data/menuScriptList.json';
+            serviceUrl = 'menuScriptList';
         if(filterBy) {
           for(var key in filterBy) {
             serviceUrl += "?"+key+"="+filterBy[key];
           }
         }
         /*Http.getData(serviceUrl).then(function(data){*/
-        Http.getData('assets/data/menuScriptList.json').then(function(data){
+        Http.getData('/menuScriptList').then(function(data){
           deferred.resolve(data);
         }).catch(function(err){});
         return deferred.promise;

@@ -38,7 +38,7 @@
                     <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
                         <td md-cell>{{dessert.author}}</td>
                         <td md-cell>{{dessert.status}}</td>
-                        <td md-cell>{{dessert.menu_title}}</td>
+                        <td md-cell>{{dessert.menuTitle}}</td>
                         <td md-cell>{{dessert.article}}</td>
                         <td md-cell>{{dessert.journal}}</td>
                         <td md-cell><span ng-if="dessert.reviewer">{{dessert.reviewer.first_Name}} {{dessert.reviewer.last_Name}}</span></td>

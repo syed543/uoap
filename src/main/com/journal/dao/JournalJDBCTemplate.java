@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.journal.model.Journal;
-import com.journal.model.Submission;
 
 public class JournalJDBCTemplate {
 
@@ -26,7 +25,7 @@ public class JournalJDBCTemplate {
 		return dataSource;
 	}
 
-	public void saveJournal(Journal journal) {
+	public Integer saveJournal(Journal journal) {
 		String query = "insert into JOURNAL(journalName, journalIcon, journalIconFileName, journalDescription, journalLongDescription, journalBannerImage, journalBannerImageFileName) values" +
 				"(?, ?, ?, ?, ?, ? ,?)";
 
@@ -36,7 +35,11 @@ public class JournalJDBCTemplate {
 				journal.getJournal_description(), journal.getJournal_long_description(), journal.getJournalBannerImage(), 
 				journal.getJournalBannerImageFileName());
 		
-		System.out.println("Journal uploaded");
+		String auto = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'journal' AND TABLE_NAME = 'JOURNAL'";
+		
+		Integer autoInt = jdbcTemplate.queryForInt(auto);
+		
+		return autoInt - 1;
 	}
 
 	public List<Journal> getAllJournals() {
@@ -44,7 +47,7 @@ public class JournalJDBCTemplate {
 		String query = "select id, journalName, journalDescription, journalLongDescription from JOURNAL";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
-		
+
 		List<Map<String, Object>> journalRows = jdbcTemplate.queryForList(query);
 		
 		List<Journal> journals = new ArrayList<Journal>();

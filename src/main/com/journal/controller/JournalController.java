@@ -27,7 +27,6 @@ public class JournalController {
 	
 	@RequestMapping(value="/addJournal", method=RequestMethod.POST, consumes=MediaType.MULTIPART_FORM_DATA_VALUE)
 	@ResponseBody
-//	public Map<String, Object> addJournal(@ModelAttribute Journal journal, @RequestBody Journal journalData) throws IOException {
 	public Map<String, Object> addJournal(@RequestParam String data, @RequestPart(required=false) MultipartFile icon, @RequestPart(required=false) MultipartFile banner) throws IOException {
 		
 		Journal journal = new ObjectMapper().readValue(data, Journal.class);
@@ -42,7 +41,12 @@ public class JournalController {
 			journal.setJournalBannerImageFileName(banner.getOriginalFilename());
 		}
 		
-		journalJDBCTemplate.saveJournal(journal);
+		Integer autoId = journalJDBCTemplate.saveJournal(journal);
+		
+		if (icon != null) {
+			
+//			File iconFile = new File(JournalConstants.JOURNAL_IMAGES_FOLDER + "")
+		}
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("statusCode", "200");
@@ -81,5 +85,9 @@ public class JournalController {
 		}
 		
 		return null;
+	}
+	
+	public void getJournal() {
+		
 	}
 }
