@@ -9,7 +9,7 @@
       "journal_description": "Short description of journal",
       "journal_long_description": "This is journals long description",
       "journal_banner_image": "https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg",
-      "journal_abbrev": "journal1"
+      "id": "journal1"
     },
     {
       "journal_id": "unique id",
@@ -18,7 +18,7 @@
       "journal_description": "Short description of journal",
       "journal_long_description": "This is journals long description",
       "journal_banner_image": "https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg",
-      "journal_abbrev": "journal2"
+      "id": "journal2"
     },
     {
       "journal_id": "unique id",
@@ -27,7 +27,7 @@
       "journal_description": "Short description of journal",
       "journal_long_description": "This is journals long description",
       "journal_banner_image": "https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg",
-      "journal_abbrev": "journal3"
+      "id": "journal3"
     },
     {
       "journal_id": "unique id",
@@ -36,7 +36,7 @@
       "journal_description": "Short description of journal",
       "journal_long_description": "This is journals long description",
       "journal_banner_image": "https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg",
-      "journal_abbrev": "journal4"
+      "id": "journal4"
     },
     {
       "journal_id": "unique id",
@@ -45,7 +45,7 @@
       "journal_description": "Short description of journal",
       "journal_long_description": "This is journals long description",
       "journal_banner_image": "https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg",
-      "journal_abbrev": "journal5"
+      "id": "journal5"
     },
     {
       "journal_id": "unique id",
@@ -54,7 +54,7 @@
       "journal_description": "Short description of journal",
       "journal_long_description": "This is journals long description",
       "journal_banner_image": "https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg",
-      "journal_abbrev": "journal6"
+      "id": "journal6"
     },
     {
       "journal_id": "unique id",
@@ -63,7 +63,7 @@
       "journal_description": "Short description of journal",
       "journal_long_description": "This is journals long description",
       "journal_banner_image": "https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg",
-      "journal_abbrev": "journal7"
+      "id": "journal7"
     },
     {
       "journal_id": "unique id",
@@ -72,7 +72,7 @@
       "journal_description": "Short description of journal",
       "journal_long_description": "This is journals long description",
       "journal_banner_image": "https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg",
-      "journal_abbrev": "journal8"
+      "id": "journal8"
     },
     {
       "journal_id": "unique id",
@@ -81,7 +81,7 @@
       "journal_description": "Short description of journal",
       "journal_long_description": "This is journals long description",
       "journal_banner_image": "https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg",
-      "journal_abbrev": "journal9"
+      "id": "journal9"
     },
     {
       "journal_id": "unique id",
@@ -90,7 +90,7 @@
       "journal_description": "Short description of journal",
       "journal_long_description": "This is journals long description",
       "journal_banner_image": "https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg",
-      "journal_abbrev": "journal10"
+      "id": "journal10"
     },
     {
       "journal_id": "unique id",
@@ -99,7 +99,7 @@
       "journal_description": "Short description of journal",
       "journal_long_description": "This is journals long description",
       "journal_banner_image": "https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg",
-      "journal_abbrev": "journal11"
+      "id": "journal11"
     }
   ]
 }

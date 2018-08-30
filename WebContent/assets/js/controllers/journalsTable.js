@@ -55,7 +55,7 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
         'journal_description': '',
         'journal_long_description': '',
         'journal_banner_image': '',
-        'journal_abbrev':''
+        'id':''
       };
 
       $scope.hide = function() {
@@ -65,9 +65,34 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
       $scope.cancel = function() {
         $mdDialog.cancel();
       };
+      
+      $scope.uploadedFile = function(element) {
+		$scope.$apply(function($scope) {
+		   $scope.icon = element.files[0];
+		});			
+	  };
+	  
+	  $scope.uploadedBanner = function(element) {
+			$scope.$apply(function($scope) {
+			   $scope.banner = element.files[0];
+			});			
+		};
+           
 
       $scope.addJournal = function() {
-        JournalsService.addJournal().then(function (data) {
+          var data = {},
+              fd = new FormData();
+          	
+          	fd.append("icon", $scope.icon);
+          	fd.append("banner", $scope.banner);
+          
+          data['journal_name'] = $scope.journal['journal_name'];
+          data['journal_description'] = $scope.journal['journal_description'];
+          data['journal_long_description'] = $scope.journal['journal_long_description'];
+          	
+          fd.append("data", JSON.stringify(data));
+          
+        JournalsService.addJournal(fd).then(function (data) {
           if (data.statusCode == 200) { // Success
             _getJournals();
           } else { 					// Error

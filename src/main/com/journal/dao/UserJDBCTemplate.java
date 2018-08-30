@@ -44,7 +44,7 @@ public class UserJDBCTemplate {
 
 	public void updatePassword(User user) {
 		
-		String query = "update USER set generated = ? where email = ?";
+		String query = "update USER set password = ? where email = ?";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		jdbcTemplate.update(query, user.getPassword(), user.getEmail());
 		

@@ -6,8 +6,8 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial, ngMessages) {
-controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsService", "ArticlesService", "$mdDialog", "$mdSidenav", "$timeout",
-  function($scope, $rootScope, $state, JournalsService, ArticlesService, $mdDialog, $mdSidenav, $timeout) {
+controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsService", "ArticlesService", "$mdDialog", "$mdSidenav", "$timeout", 'MenuScriptService',
+  function($scope, $rootScope, $state, JournalsService, ArticlesService, $mdDialog, $mdSidenav, $timeout, MenuScriptService) {
 
     $scope.search = "";
 
@@ -104,11 +104,16 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
     $scope.user = {
-      name: 'Developer',
-      fname: 'test',
-      email: 'ipsum@lorem.com',
-      postalCode: '94043',
-      journal: 'ca'
+        "fName": "",
+        "lName": "",
+        "title": "",
+        "email": "",
+        "postalAddress": "",
+        "country" : "",
+        "journal": "",
+        "article": "",
+        "menuTitle": "",
+        "abstractTitle" : ""
     };
 
     $scope.journals = journals;
@@ -123,7 +128,27 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     };
 
     $scope.submitScript = function() {
-      console.log("submit script...");
+        var data = {},
+            fd = new FormData();
+
+        fd.append("attachment", $scope.menuFile);
+
+        fd.append("data", JSON.stringify($scope.user));
+
+        MenuScriptService.submitMenuScript(fd).then(function (data) {
+            if (data.statusCode == 200) { // Success
+                alert('MenuScript added successfully.');
+            } else { 					// Error
+                console.log("Unable to add Menuscript. please contact support.");
+            }
+            $mdDialog.cancel();
+        });
+    };
+
+    $scope.uploadedFile = function(element) {
+        $scope.$apply(function($scope) {
+            $scope.menuFile = element.files[0];
+        });
     };
   }
 
