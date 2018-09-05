@@ -108,7 +108,9 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
       fname: 'test',
       email: 'ipsum@lorem.com',
       postalCode: '94043',
-      journal: 'ca'
+      journal: 'ca',
+      menuTitle: '',
+      abstract: ''
     };
 
     $scope.journals = journals;

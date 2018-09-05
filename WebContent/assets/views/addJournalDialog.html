@@ -29,7 +29,7 @@
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div>
                         <label>Icon</label>
-                        <input name="icon" ng-model="journal.journal_icon" type="file" accept=".jpg, .jpeg, .png">
+                        <input name="icon" onchange="angular.element(this).scope().uploadedFile(this)" ng-model="journal.journal_icon" type="file" accept=".jpg, .jpeg, .png">
                         <div class="errors" ng-show="journal.journal_icon.$dirty && journal.journal_icon.$invalid">
                             Please attach an icon.
                         </div>
@@ -64,7 +64,7 @@
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div>
                         <label>Attach Banner</label>
-                        <input name="banner_image" ng-model="journal.journal_banner_image" type="file" accept=".pdf, .doc, .docx">
+                        <input onchange="angular.element(this).scope().uploadedBanner(this)" name="banner_image" ng-model="journal.journal_banner_image" type="file" accept=".pdf, .doc, .docx">
                         <div class="errors" ng-show="journal.journal_banner_image.$dirty && journal.journal_banner_image.$invalid">
                             Please attach a journal Banner.
                         </div>
