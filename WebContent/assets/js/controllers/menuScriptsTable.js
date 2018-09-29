@@ -22,7 +22,7 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
       limitSelect: true,
       pageSelect: true
     };
-
+    $scope.canEdit = false;
     $scope.query = {
       order: 'name',
       limit: 5,
@@ -66,6 +66,48 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
       console.log('page: ', page);
       console.log('limit: ', limit);
     }
+
+    $scope.menuScriptItem = {};
+    $scope.view = function(item) {
+        $scope.menuScriptItem = item;
+        $scope.toggleEdit();
+        if($scope.menuScriptItem.status && $scope.menuScriptItem.status.toLowerCase() == 'open') {
+            $scope.canEdit = true;
+        }
+    };
+
+      $scope.inEditMode = false;
+      $scope.toggleEdit = function() {
+          $scope.inEditMode = !$scope.inEditMode;
+      };
+      $scope.uploadedFile = function(element) {
+          $scope.$apply(function($scope) {
+              $scope.file = element.files[0];
+          });
+      };
+      $scope.submitScript = function() {
+          var data = {},
+              fd = new FormData();
+
+          fd.append("file", $scope.file);
+
+          data['menu_title'] = $scope.menuScriptItem['menu_title'];
+          data['abstract'] = $scope.menuScriptItem['abstract'];
+          data['menuScript_id'] = $scope.menuScriptItem['menuScript_id'];
+
+          fd.append("data", JSON.stringify(data));
+          MenuScriptsService.updateMenuScript(fd).then(function(data) {
+              $scope.refreshMenuScripts();
+              $scope.toggleEdit();
+              angular.element("input[type='file']").val(null);
+              $scope.file = '';
+          });
+          console.log("submit script...");
+      };
+
+      $scope.cancel = function() {
+          $scope.toggleEdit();
+      };
   
 }]);
 });
