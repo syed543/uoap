@@ -55,7 +55,7 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
         'journal_description': '',
         'journal_long_description': '',
         'journal_banner_image': '',
-        'id':''
+        'journal_abbrev':''
       };
 
       $scope.hide = function() {

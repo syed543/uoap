@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.journal.model.Journal;
+import com.journal.model.Submission;
 
 public class JournalJDBCTemplate {
 
@@ -25,29 +26,37 @@ public class JournalJDBCTemplate {
 		return dataSource;
 	}
 
-	public Integer saveJournal(Journal journal) {
+	public void save(Submission submission) {
+		String query = "insert into submission(email, journal, articleType, menuScriptTitle, abstractName, attachmentFileName, attachment) values" +
+						"(?, ?, ?, ?, ?, ? ,?)";
+		
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		
+		jdbcTemplate.update(query, submission.getEmail(), submission.getJournal(), submission.getArticleType(), 
+				submission.getMenuScriptTitle(), submission.getAbstractName(), submission.getAttachmentFileName(), submission.getAttachment());
+		
+		System.out.println("Submission uploaded");
+	}
+
+	public void saveJournal(Journal journal) {
 		String query = "insert into JOURNAL(journalName, journalIcon, journalIconFileName, journalDescription, journalLongDescription, journalBannerImage, journalBannerImageFileName) values" +
 				"(?, ?, ?, ?, ?, ? ,?)";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
-		jdbcTemplate.update(query, journal.getJournal_name(), journal.getJournalIcon(), journal.getJournalIconFileName(), 
-				journal.getJournal_description(), journal.getJournal_long_description(), journal.getJournalBannerImage(), 
+		jdbcTemplate.update(query, journal.getJournalName(), journal.getJournalIcon(), journal.getJournalIconFileName(), 
+				journal.getJournalDescription(), journal.getJournalLongDescription(), journal.getJournalBannerImage(), 
 				journal.getJournalBannerImageFileName());
 		
-		String auto = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'journal' AND TABLE_NAME = 'JOURNAL'";
-		
-		Integer autoInt = jdbcTemplate.queryForInt(auto);
-		
-		return autoInt - 1;
+		System.out.println("Submission uploaded");
 	}
 
 	public List<Journal> getAllJournals() {
 		
-		String query = "select id, journalName, journalDescription, journalLongDescription from JOURNAL";
+		String query = "select id, journalName, journalDescription, journalLongDescription from JOURNALS";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
-
+		
 		List<Map<String, Object>> journalRows = jdbcTemplate.queryForList(query);
 		
 		List<Journal> journals = new ArrayList<Journal>();
@@ -56,9 +65,9 @@ public class JournalJDBCTemplate {
 			
 			Journal journal = new Journal();
 			journal.setId((Integer) journalRow.get("id"));
-			journal.setJournal_name((String) journalRow.get("journalName"));
-			journal.setJournal_description((String) journalRow.get("journalDescription"));
-			journal.setJournal_long_description((String) journalRow.get("journalLongDescription"));
+			journal.setJournalName((String) journalRow.get("journalName"));
+			journal.setJournalDescription((String) journalRow.get("journalDescription"));
+			journal.setJournalLongDescription((String) journalRow.get("journalLongDescription"));
 			
 			journals.add(journal);
 		}
@@ -68,11 +77,11 @@ public class JournalJDBCTemplate {
 	
 	public void updateJournal(Journal journal) {
 		
-		String query = "update JOURNAL set journalName = ?, journalIcon = ?, journalIconFileName = ?, journalDescription = ?, journalBannerImage = ?, journalBannerImageFileName = ? where id = ?";
+		String query = "update JOURNALS set journalName = ?, journalIcon = ?, journalIconFileName = ?, journalDescription = ?, journalBannerImage = ?, journalBannerImageFileName = ? where id = ?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		jdbcTemplate.update(query, journal.getJournal_name(), journal.getJournalIcon(), journal.getJournalIconFileName(),
-				journal.getJournal_description(), journal.getJournal_long_description(), journal.getJournalBannerImage(),
+		jdbcTemplate.update(query, journal.getJournalName(), journal.getJournalIcon(), journal.getJournalIconFileName(),
+				journal.getJournalDescription(), journal.getJournalLongDescription(), journal.getJournalBannerImage(),
 				journal.getJournalBannerImageFileName());
 		
 	}

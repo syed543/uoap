@@ -1,17 +1,13 @@
 package com.journal.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class Journal {
 	
 	private Integer id;
-	private String journal_name;
-	private MultipartFile journalIconFile;
-	private MultipartFile journalBannerImageFile;
+	private String journalName;
 	private byte[] journalIcon;
 	private String journalIconFileName;
-	private String journal_description;
-	private String journal_long_description;
+	private String journalDescription;
+	private String journalLongDescription;
 	private byte[] journalBannerImage;
 	private String journalBannerImageFileName;
 
@@ -20,6 +16,12 @@ public class Journal {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getJournalName() {
+		return journalName;
+	}
+	public void setJournalName(String journalName) {
+		this.journalName = journalName;
 	}
 	public byte[] getJournalIcon() {
 		return journalIcon;
@@ -33,6 +35,18 @@ public class Journal {
 	public void setJournalIconFileName(String journalIconFileName) {
 		this.journalIconFileName = journalIconFileName;
 	}
+	public String getJournalDescription() {
+		return journalDescription;
+	}
+	public void setJournalDescription(String journalDescription) {
+		this.journalDescription = journalDescription;
+	}
+	public String getJournalLongDescription() {
+		return journalLongDescription;
+	}
+	public void setJournalLongDescription(String journalLongDescription) {
+		this.journalLongDescription = journalLongDescription;
+	}
 	public byte[] getJournalBannerImage() {
 		return journalBannerImage;
 	}
@@ -45,35 +59,4 @@ public class Journal {
 	public void setJournalBannerImageFileName(String journalBannerImageFileName) {
 		this.journalBannerImageFileName = journalBannerImageFileName;
 	}
-	public MultipartFile getJournalIconFile() {
-		return journalIconFile;
-	}
-	public void setJournalIconFile(MultipartFile journalIconFile) {
-		this.journalIconFile = journalIconFile;
-	}
-	public MultipartFile getJournalBannerImageFile() {
-		return journalBannerImageFile;
-	}
-	public void setJournalBannerImageFile(MultipartFile journalBannerImageFile) {
-		this.journalBannerImageFile = journalBannerImageFile;
-	}
-	public String getJournal_name() {
-		return journal_name;
-	}
-	public void setJournal_name(String journal_name) {
-		this.journal_name = journal_name;
-	}
-	public String getJournal_description() {
-		return journal_description;
-	}
-	public void setJournal_description(String journal_description) {
-		this.journal_description = journal_description;
-	}
-	public String getJournal_long_description() {
-		return journal_long_description;
-	}
-	public void setJournal_long_description(String journal_long_description) {
-		this.journal_long_description = journal_long_description;
-	}
-	
 }

@@ -1,3 +1,5 @@
+drop table submitter;
+
 drop table user;
 
 create table user( 
@@ -11,72 +13,47 @@ passwordGenerated varchar(1),
 userType varchar(15)
 )
 
-drop table journal;
+drop table journals;
 
-create table journal(
+create table journals(
 id int not null auto_increment,
-journalName varchar(100),
+journalName varchar2(100) not null,
 journalIcon longblob,
-journalIconFileName varchar(100),
-journalDescription varchar(500),
-journalLongDescription varchar(5000),
+journalIconFileName varchar2(100),
+journalDescription varchar2(500),
+journalLongDescription varchar2(5000),
 journalBannerImage longblob,
-journalBannerImageFileName varchar(100),
+journalBannerImageFileName varchar2(100)
 primary key (id)
 )
 
-drop table menuscript;
 
-create table menuscript(
-id int not null auto_increment,
-submitterId int not null,
-journalid int not null,
+drop table submissions;
+
+create table submissions(
+email varchar(50),
+journal varchar(50),
+articleType varchar(50),
 menuScriptTitle varchar(1000),
-abstractTitle varchar(5000),
-attachment longblob,
-attachmentName varchar(100),
-primary key (id)
-)
-
-drop table submitter;
-
-create table submitter(
-id int not null auto_increment,
-title varchar(7),
-firstName varchar(100),
-lastName varchar(100),
-email varchar(100),
-password varchar(100),
-generatedPass varchar(1),
-postalAddress varchar(500),
-country varchar(50),
-primary key (id))
-
+abstractName varchar(4000),
+attachmentFileName varchar(100),
+attachment longblob)
 
 drop table editor;
 
 create table editor(
 id int not null auto_increment,
-firstName varchar(50),
-lastName varchar(50),
-email varchar(100),
-password varchar(100),
-generatedPass varchar(1),
-avatar longblob,
-avatarFileName varchar(50),
-description varchar(200),
-affiliation varchar(200),
-journalId int,
-primary key(id));
+firstName varchar2(50),
+lastName varchar2(50),
+attachment longblob,
+description varchar2(200),
+affiliation varchar2(200),
+journalId int);
 
 drop table reviewer;
-
 create table reviewer(
 id int not null auto_increment,
-firstName varchar(50),
-lastName varchar(50),
-email varchar(200),
-password varchar(100),
-generatedPass varchar(1),
-country varchar(70),
-primary key(id));
+firstName varchar2(50),
+lastName varchar2(50),
+email varchar2(200),
+country varchar2(70));
