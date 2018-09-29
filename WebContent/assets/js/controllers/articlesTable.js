@@ -65,7 +65,11 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
     $scope.logPagination = function (page, limit) {
       console.log('page: ', page);
       console.log('limit: ', limit);
-    }
+    };
+
+    $scope.view = function(article) {
+      ArticlesService.downloadArticle(article['article_id']);
+    };
   
 }]);
 });
