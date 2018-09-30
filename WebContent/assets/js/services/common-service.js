@@ -68,7 +68,8 @@ services.factory('Http', ["$http", "$q", "$state", "$log", "ApiEndpoint", functi
       },
       downloadFile : function(url) {
         var url = ApiEndpoint.url + url;
-        window.location = url;
+        //window.location = url;
+          window.open(url);
       }
 		};
 	}]);
