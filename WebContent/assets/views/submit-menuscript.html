@@ -27,14 +27,14 @@
                         </md-input-container>
                         <md-input-container  flex="40">
                             <label>First Name</label>
-                            <input name="fname" ng-model="user.fname" required>
+                            <input name="fname" ng-model="user.fName" required>
                             <div ng-messages="menuscript.fname.$error">
                                 <div ng-message="required" class="my-message">You must provide email.</div>
                             </div>
                         </md-input-container>
                         <md-input-container flex="40">
                             <label>Last Name</label>
-                            <input name="lname" ng-model="user.lname" required>
+                            <input name="lname" ng-model="user.lName" required>
                             <div ng-messages="menuscript.lname.$error">
                                 <div ng-message="required" class="my-message">You must provide email.</div>
                             </div>
@@ -64,6 +64,7 @@
                         </md-input-container>
                     </div>
                 </md-content>
+
                 <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Journal</label>
@@ -79,19 +80,20 @@
                     </md-input-container>
                 </md-content>
 
-                <!--<md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
+                <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
                     <md-input-container class="md-block" flex-gt-sm>
-                        <label>Article Type</label>
-                        <md-select name="article" ng-model="user.article" required>
-                            <md-option ng-repeat="article in articles" value="{{article.abbrev}}">
-                                {{article.article_title}}
+                        <label>Country</label>
+                        <input name="country" ng-model="country" ng-if="country" required readonly></input>
+                        <md-select name="country" ng-model="user.country" required ng-if="!country">
+                            <md-option ng-repeat="country in countries" value="{{country.id}}">
+                                {{country.name}}
                             </md-option>
                         </md-select>
-                        <div ng-messages="menuscript.article.$error" role="alert" multiple>
-                            <div ng-message="required" class="my-message">You must provide article.</div>
+                        <div ng-if="!country" ng-messages="menuscript.country.$error" role="alert" multiple>
+                            <div ng-message="required" class="my-message">You must provide country.</div>
                         </div>
                     </md-input-container>
-                </md-content>-->
+                </md-content>
 
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div class="fullwidth">
@@ -124,7 +126,7 @@
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div>
                         <label>Attach MenuScript</label>
-                        <input name="file" ng-model="user.file" type="file" accept=".pdf, .doc, .docx">
+                        <input name="file" onchange="angular.element(this).scope().uploadedFile(this)"  ng-model="file" type="file" accept=".pdf, .doc, .docx">
                         <div class="errors" ng-show="menuscript.file.$dirty && menuscript.file.$invalid">
                             Please attach a menuscript.
                         </div>
@@ -138,7 +140,7 @@
                 Cancel
             </md-button>
             <span flex></span>
-            <md-button ng-disabled="!menuscript.$dirty || !menuscript.$valid " class="md-primary" ng-click="submitScript()" md-autofocus>
+            <md-button ng-disabled="!menuscript.$dirty || !menuscript.$valid || !file " class="md-primary" ng-click="submitScript()" md-autofocus>
                 Submit
             </md-button>
         </md-dialog-actions>
