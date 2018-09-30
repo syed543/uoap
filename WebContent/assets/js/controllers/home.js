@@ -6,8 +6,8 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial, ngMessages) {
-controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsService", "ArticlesService", "$mdDialog", "$mdSidenav", "$timeout",
-  function($scope, $rootScope, $state, JournalsService, ArticlesService, $mdDialog, $mdSidenav, $timeout) {
+controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsService", "ArticlesService", "$mdDialog", "$mdSidenav", "$timeout", "MenuScriptsService",
+  function($scope, $rootScope, $state, JournalsService, ArticlesService, $mdDialog, $mdSidenav, $timeout, MenuScriptsService) {
 
     $scope.search = "";
 
@@ -40,6 +40,14 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     ArticlesService.getArticles().then(function (data) {
       if (data.statusCode == 200) { // Success
         $scope.articles = data.data;
+      } else { 					// Error
+        console.log("Unable to fetch articles list. please contact support.");
+      }
+    });
+
+    ArticlesService.getCountries().then(function (data) {
+      if (data.statusCode == 200) { // Success
+        $scope.countries = data.body.countryList;
       } else { 					// Error
         console.log("Unable to fetch articles list. please contact support.");
       }
@@ -87,7 +95,7 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
 
   $scope.submitMenuScript = function(ev) {
     $mdDialog.show({
-      locals:{journals: $scope.journalList, articles: $scope.articles},
+      locals:{journals: $scope.journalList, articles: $scope.articles, countries: $scope.countries},
       controller: DialogController,
       templateUrl: 'assets/views/submit-menuscript.html',
       parent: angular.element(document.body),
@@ -100,21 +108,32 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
       });
   };
 
-  function DialogController($scope, $mdDialog, journals, articles) {
+  function DialogController($scope, $rootScope, $mdDialog, journals, articles, countries) {
     $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
     $scope.user = {
-      name: 'Developer',
-      fname: 'test',
-      email: 'ipsum@lorem.com',
-      postalCode: '94043',
-      journal: 'ca',
-      menuTitle: '',
-      abstract: ''
+        country: "",
+        email : "",
+        fName : "",
+        id : "",
+        lName : "",
+        postalAddress : "",
+        title : "",
+        usertype : ""
+    };
+    if($rootScope.userInfo.email) {
+      $scope.user = $rootScope.userInfo;
+    }
+    $scope.user.country = 25;
+    $scope.uploadedFile = function(element) {
+        $scope.$apply(function($scope) {
+            $scope.file = element.files[0];
+        });
     };
 
     $scope.journals = journals;
     $scope.articles = articles;
+    $scope.countries = countries;
 
     $scope.hide = function() {
       $mdDialog.hide();
@@ -125,7 +144,15 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     };
 
     $scope.submitScript = function() {
-      console.log("submit script...");
+        var data = {},
+            fd = new FormData();
+        fd.append("file", $scope.file);
+
+        fd.append("data", JSON.stringify($scope.user));
+        MenuScriptsService.submitMenuScript(fd).then(function(data) {
+          console.log('submitted...');
+          $scope.cancel();
+        });
     };
   }
 

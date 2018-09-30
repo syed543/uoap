@@ -26,6 +26,14 @@ services.factory('ArticlesService', ["Http", "$q", "$state", "$log", function (H
                 }).catch(function(err){});
                 return deferred.promise;
             },
+            getCountries: function() {
+                var deferred = $q.defer();
+                /*Http.getData(serviceUrl).then(function(data){*/
+                Http.getData('assets/data/countrysList.json').then(function(data){
+                    deferred.resolve(data);
+                }).catch(function(err){});
+                return deferred.promise;
+            },
             downloadArticle: function(articleId) {
                 Http.downloadFile('/downloadArticle?id='+articleId);
             }
