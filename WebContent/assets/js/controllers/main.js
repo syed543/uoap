@@ -21,6 +21,7 @@ define([
 './forReviewers',
 './aboutUs',
 './user',
+'./headerController',
   './concepts'
 ], function(){
 	
