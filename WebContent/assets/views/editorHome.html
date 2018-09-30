@@ -1,4 +1,7 @@
-<div>
+<div ng-if="userType !== 'editor'">
+    YOU ARE NOT AUTHORISED TO VIEW THIS MODULE.
+</div>
+<div ng-if="userType === 'editor'">
     <div>
         <h1 class="md-display-2 dashboard-margin">Dashboard</h1>
     </div>
