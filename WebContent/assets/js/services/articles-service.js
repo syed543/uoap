@@ -36,6 +36,22 @@ services.factory('ArticlesService', ["Http", "$q", "$state", "$log", function (H
             },
             downloadArticle: function(articleId) {
                 Http.downloadFile('/downloadArticle?id='+articleId);
+            },
+            addArticle: function(data) {
+                var deferred = $q.defer();
+                Http.getData('assets/data/articles.json', data).then(function(data){
+                /*Http.postMultipartData('/addArticle', data).then(function(data){*/
+                    deferred.resolve(data);
+                }).catch(function(err){});
+                return deferred.promise;
+            },
+            deleteArticle: function(articleId) {
+                var deferred = $q.defer();
+                Http.getData('assets/data/articles.json', articleId).then(function(data){
+                /*Http.getData('/deleteArticle', articleId).then(function(data){*/
+                    deferred.resolve(data);
+                }).catch(function(err){});
+                return deferred.promise;
             }
 		};
 	}]);
