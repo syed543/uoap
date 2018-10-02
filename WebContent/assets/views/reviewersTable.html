@@ -8,7 +8,7 @@
                     <md-button class="md-icon-button" ng-click="refreshReviewers()">
                         <md-icon>refresh</md-icon>
                     </md-button>
-                    <md-button class="md-icon-button" ng-if="userType === 'admin'" ng-click="addReviewerDialog()">
+                    <md-button class="md-icon-button" ng-if="userType === 'admin' || userType === 'editor'" ng-click="addReviewerDialog()">
                         <md-icon>add</md-icon>
                     </md-button>
                 </div>
