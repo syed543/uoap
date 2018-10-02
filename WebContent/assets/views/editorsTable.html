@@ -1,6 +1,6 @@
 <div ng-controller="editorsTableCtrl" layout="column">
 
-    <md-content laout="column" flex >
+    <md-content ng-if="!inEditMode" layout="column" flex >
         <md-card>
             <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
                 <div class="md-toolbar-tools">
@@ -43,10 +43,10 @@
                         <td md-cell>{{dessert.description}}</td>
                         <td md-cell>{{dessert.affiliation}}</td>
                         <td md-cell>{{dessert.journal}}</td>
-                        <td md-cell><md-button class="md-icon-button" ng-click="view(desert)">
+                        <td md-cell><md-button class="md-icon-button" ng-click="view(dessert)">
                             <md-icon>visibility</md-icon>
                         </md-button></td>
-                        <td md-cell><md-button class="md-icon-button" ng-click="delete(desert)">
+                        <td md-cell><md-button class="md-icon-button" ng-click="deleteEditor(dessert)">
                             <md-icon>delete</md-icon>
                         </md-button></td>
                     </tr>
@@ -56,6 +56,113 @@
 
             <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{desserts.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
         </md-card>
+    </md-content>
+    <md-content ng-if="inEditMode" layout="column" flex>
+        <form name="editorForm" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>update Editors</h2>
+                </div>
+            </md-toolbar>
+
+            <md-dialog-content>
+                <div class="note">
+                    *(Please note all fields are required)
+                </div>
+                <div class="md-dialog-content">
+                    <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                        <div layout="row">
+                            <md-input-container >
+                                <label>First Name</label>
+                                <input name="name" ng-model="editor.first_Name" required>
+                                <div ng-messages="editorForm.first_Name.$error">
+                                    <div ng-message="required" class="my-message">You must provide Editors First Name.</div>
+                                </div>
+                            </md-input-container>
+
+                            <md-input-container >
+                                <label>Last Name</label>
+                                <input name="name" ng-model="editor.last_Name" required>
+                                <div ng-messages="editorForm.last_Name.$error">
+                                    <div ng-message="required" class="my-message">You must provide Editors Last Name.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-content>
+                    <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                        <div class="fullwidth">
+                            <md-input-container>
+                                <label>Email</label>
+                                <input name="editorEmail" ng-model="editor.email" type="email" required ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
+                                <div ng-messages="editorForm.editorEmail.$error" role="alert" multiple>
+                                    <div ng-message="required" class="my-message">You must provide email.</div>
+                                    <div ng-message="pattern" class="my-message">That doesn't look like a valid email.
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-content>
+                    <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                        <div>
+                            <label>Avatar</label>
+                            <input name="avatar" onchange="angular.element(this).scope().uploadedFile(this)" ng-model="file" type="file" accept=".jpg, .jpeg, .png">
+                            <div class="errors" ng-show="editorForm.avatar.$dirty && editor.avatar.$invalid">
+                                Please attach an avatar.
+                            </div>
+                        </div>
+                    </md-content>
+                    <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                        <div class="fullwidth">
+                            <md-input-container >
+                                <label>Description</label>
+                                <input name="editorDescription" ng-model="editor.description" required>
+                                <div ng-messages="editorForm.editorDescription.$error">
+                                    <div ng-message="required" class="my-message">You must provide Journal Short Description.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-content>
+
+                    <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                        <div class="fullwidth">
+                            <md-input-container>
+                                <label>Affiliation</label>
+                                <textarea name="ldescription" ng-model="editor.affiliation" required></textarea>
+                                <div ng-messages="editorForm.affiliation.$error">
+                                    <div ng-message-exp="['required']">
+                                        You must provide affiliation.
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-content>
+
+                    <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Journal</label>
+                            <md-select name="journal" ng-model="editor.journal" required>
+                                <md-option ng-repeat="journal in journals" value="{{journal.journal_abbrev}}">
+                                    {{journal.journal_name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="editorForm.journal.$error" role="alert" multiple>
+                                <div ng-message="required" class="my-message">You must provide journal.</div>
+                            </div>
+                        </md-input-container>
+                    </md-content>
+                </div>
+            </md-dialog-content>
+
+            <md-dialog-actions layout="row">
+                <md-button class="md-secondary" ng-click="cancel()">
+                    Cancel
+                </md-button>
+                <span flex></span>
+                <md-button ng-disabled="!editorForm.$dirty || !editorForm.$valid" class="md-primary" ng-click="updateEditor()" md-autofocus>
+                    Submit
+                </md-button>
+            </md-dialog-actions>
+        </form>
     </md-content>
 
 </div>
