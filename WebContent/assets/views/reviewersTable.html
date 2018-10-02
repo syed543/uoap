@@ -1,6 +1,5 @@
 <div ng-controller="reviewersTableCtrl" layout="column">
-
-    <md-content laout="column" flex >
+    <md-content ng-if="!inEditMode" layout="column" flex >
         <md-card>
             <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
                 <div class="md-toolbar-tools">
@@ -39,10 +38,10 @@
                         <td md-cell>{{dessert.last_Name}}</td>
                         <td md-cell>{{dessert.email}}</td>
                         <td md-cell>{{dessert.country}}</td>
-                        <td md-cell><md-button class="md-icon-button" ng-click="view(desert)">
+                        <td md-cell><md-button class="md-icon-button" ng-click="view(dessert)">
                             <md-icon>visibility</md-icon>
                         </md-button></td>
-                        <td md-cell ng-if="userType === 'admin'" ><md-button class="md-icon-button" ng-click="delete(desert)">
+                        <td md-cell ng-if="userType === 'admin'" ><md-button class="md-icon-button" ng-click="deleteReviewer(dessert)">
                             <md-icon>delete</md-icon>
                         </md-button></td>
                     </tr>
@@ -53,5 +52,77 @@
             <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{desserts.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
         </md-card>
     </md-content>
+    <md-content ng-if="inEditMode" layout="column" flex>
+        <form name="reviewer" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Update Reviewers</h2>
+                </div>
+            </md-toolbar>
 
+            <md-dialog-content>
+                <div class="note">
+                    *(Please note all fields are required)
+                </div>
+                <div class="md-dialog-content">
+                    <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                        <div layout="row">
+                            <md-input-container >
+                                <label>First Name</label>
+                                <input name="name" ng-model="reviewerObj.first_Name" required>
+                                <div ng-messages="reviewer.first_Name.$error">
+                                    <div ng-message="required" class="my-message">You must provide reviewers First Name.</div>
+                                </div>
+                            </md-input-container>
+
+                            <md-input-container >
+                                <label>Last Name</label>
+                                <input name="name" ng-model="reviewerObj.last_Name" required>
+                                <div ng-messages="reviewer.last_Name.$error">
+                                    <div ng-message="required" class="my-message">You must provide reviewers Last Name.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-content>
+                    <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                        <div class="fullwidth">
+                            <md-input-container>
+                                <label>Email</label>
+                                <input name="reviewerEmail" ng-model="reviewerObj.email" type="email" required ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
+                                <div ng-messages="reviewer.reviewerEmail.$error" role="alert" multiple>
+                                    <div ng-message="required" class="my-message">You must provide email.</div>
+                                    <div ng-message="pattern" class="my-message">That doesn't look like a valid email.
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-content>
+
+                    <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Country</label>
+                            <md-select name="journal" ng-model="reviewerObj.country" required>
+                                <md-option ng-repeat="country in countries" value="{{country.abbrev}}">
+                                    {{country.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="menuscript.journal.$error" role="alert" multiple>
+                                <div ng-message="required" class="my-message">You must provide journal.</div>
+                            </div>
+                        </md-input-container>
+                    </md-content>
+                </div>
+            </md-dialog-content>
+
+            <md-dialog-actions layout="row">
+                <md-button class="md-secondary" ng-click="cancel()">
+                    Cancel
+                </md-button>
+                <span flex></span>
+                <md-button ng-disabled="!reviewer.$dirty || !reviewer.$valid " class="md-primary" ng-click="updateReviewer()" md-autofocus>
+                    Submit
+                </md-button>
+            </md-dialog-actions>
+        </form>
+    </md-content>
 </div>

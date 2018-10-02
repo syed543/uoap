@@ -124,7 +124,7 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     if($rootScope.userInfo.email) {
       $scope.user = $rootScope.userInfo;
     }
-    $scope.user.country = 25;
+    $scope.user.country = 'IN';
     $scope.uploadedFile = function(element) {
         $scope.$apply(function($scope) {
             $scope.file = element.files[0];

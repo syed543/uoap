@@ -85,7 +85,7 @@
                         <label>Country</label>
                         <input name="country" ng-model="country" ng-if="country" required readonly></input>
                         <md-select name="country" ng-model="user.country" required ng-if="!country">
-                            <md-option ng-repeat="country in countries" value="{{country.id}}">
+                            <md-option ng-repeat="country in countries" value="{{country.abbrev}}">
                                 {{country.name}}
                             </md-option>
                         </md-select>

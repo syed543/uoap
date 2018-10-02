@@ -67,6 +67,11 @@
     </md-content>
     <md-content layout="column" flex ng-if="inEditMode && (userType == 'author' || userType == 'admin')">
         <form name="menuscript" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Update Menuscript</h2>
+                </div>
+            </md-toolbar>
             <div class="note">
                 *(Please note all fields are required)
             </div>
@@ -130,6 +135,11 @@
     </md-content>
     <md-content layout="column" flex ng-if="inEditMode && userType == 'reviewer'">
         <form name="menuscript" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Update Menuscript</h2>
+                </div>
+            </md-toolbar>
             <div class="note">
                 *(Please note all fields are required)
             </div>
