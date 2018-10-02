@@ -130,6 +130,65 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
       console.log('page: ', page);
       console.log('limit: ', limit);
     }
+
+    $scope.canEdit = false;
+    $scope.inEditMode = false;
+    $scope.toggleEdit = function() {
+        $scope.inEditMode = !$scope.inEditMode;
+    };
+    $scope.journal = {};
+    $scope.view = function(item) {
+        $scope.journal = item;
+        $scope.toggleEdit();
+    };
+    $scope.cancel = function() {
+        $scope.toggleEdit();
+    };
+    $scope.icon = '';
+    $scope.banner = '';
+
+    $scope.uploadedFile = function(element) {
+        $scope.$apply(function($scope) {
+            $scope.icon = element.files[0];
+        });
+    };
+
+    $scope.uploadedBanner = function(element) {
+        $scope.$apply(function($scope) {
+            $scope.banner = element.files[0];
+        });
+    };
+    $scope.updateJournal = function() {
+        var data = {},
+            fd = new FormData();
+
+        fd.append("icon", $scope.icon);
+        fd.append("banner", $scope.banner);
+
+        data['journal_name'] = $scope.journal['journal_name'];
+        data['journal_description'] = $scope.journal['journal_description'];
+        data['journal_long_description'] = $scope.journal['journal_long_description'];
+
+        fd.append("data", JSON.stringify(data));
+
+        JournalsService.updateJournal(fd).then(function (data) {
+            if (data.statusCode == 200) { // Success
+                $scope.refreshJournal();
+                $scope.toggleEdit();
+            } else { 					// Error
+                console.log("Unable to update Journal. please contact support.");
+            }
+        });
+    };
+    $scope.deleteJournal = function(journal) {
+        JournalsService.deleteJournal(journal.journal_id).then(function (data) {
+            if (data.statusCode == 200) { // Success
+                $scope.refreshJournal();
+            } else { 					// Error
+                console.log("Unable to delete Journal. please contact support.");
+            }
+        });
+    };
   
 }]);
 });
