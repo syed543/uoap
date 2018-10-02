@@ -133,7 +133,7 @@
             </md-dialog-actions>
         </form>
     </md-content>
-    <md-content layout="column" flex ng-if="inEditMode && userType == 'reviewer'">
+    <md-content layout="column" flex ng-if="inEditMode && (userType == 'reviewer' || userType == 'editor')">
         <form name="menuscript" ng-cloak>
             <md-toolbar>
                 <div class="md-toolbar-tools">
