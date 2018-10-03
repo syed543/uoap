@@ -78,7 +78,7 @@
                 Cancel
             </md-button>
             <span flex></span>
-            <md-button ng-disabled="!journal.$dirty || !journal.$valid " class="md-primary" ng-click="addJournal()" md-autofocus>
+            <md-button ng-disabled="!journal.$dirty || !journal.$valid || !icon || !banner" class="md-primary" ng-click="addJournal()" md-autofocus>
                 Submit
             </md-button>
         </md-dialog-actions>

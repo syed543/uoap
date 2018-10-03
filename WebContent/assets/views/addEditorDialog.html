@@ -50,7 +50,7 @@
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div>
                         <label>Avatar</label>
-                        <input name="avatar" ng-model="editor.avatar" type="file" accept=".jpg, .jpeg, .png">
+                        <input name="avatar" onchange="angular.element(this).scope().uploadedFile(this)" ng-model="file" type="file" accept=".jpg, .jpeg, .png">
                         <div class="errors" ng-show="editor.avatar.$dirty && editor.avatar.$invalid">
                             Please attach an avatar.
                         </div>
@@ -103,7 +103,7 @@
                 Cancel
             </md-button>
             <span flex></span>
-            <md-button ng-disabled="!editor.$dirty || !editor.$valid " class="md-primary" ng-click="addEditor()" md-autofocus>
+            <md-button ng-disabled="(!editor.$dirty || !editor.$valid) || !file " class="md-primary" ng-click="addEditor()" md-autofocus>
                 Submit
             </md-button>
         </md-dialog-actions>

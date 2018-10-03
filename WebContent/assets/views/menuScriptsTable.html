@@ -1,5 +1,4 @@
 <div ng-controller="menuScriptsTableCtrl" layout="column">
-
     <md-content layout="column" flex ng-if="!inEditMode">
         <md-card>
             <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
@@ -11,7 +10,6 @@
                     </md-button>
                 </div>
             </md-toolbar>
-
             <!--<md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
                 <div class="md-toolbar-tools">
                     <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
@@ -26,11 +24,13 @@
                         <th md-column md-order-by="status"><span>Status</span></th>
                         <th md-column md-order-by="menu_title"><span>Title</span></th>
                         <th md-column md-order-by="article"><span>Article Type</span></th>
-                        <th md-column md-order-by="journal"><span>Journal</span></th>
-                        <th md-column md-order-by="reviewer.first_Name"><span>Reviewer</span></th>
-                        <th md-column md-order-by="reviewer.email"><span>Reviewer Email</span></th>
+                        <th md-column ng-if="userType !== 'reviewer'" md-order-by="journal"><span>Journal</span></th>
+                        <th md-column ng-if="userType !== 'reviewer'" md-order-by="reviewer.first_Name"><span>Reviewer</span></th>
+                        <th md-column ng-if="userType !== 'reviewer'" md-order-by="reviewer.email"><span>Reviewer Email</span></th>
                         <th md-column md-order-by="feedback"><span>Feedback</span></th>
                         <th md-column md-order-by=""><span>View</span></th>
+                        <th md-column ng-if="userType === 'reviewer'" md-order-by=""><span>Accept</span></th>
+                        <th md-column ng-if="userType === 'reviewer'" md-order-by=""><span>Reject</span></th>
                         <th md-column ng-if="userType === 'admin'"  md-order-by=""><span>Delete</span></th>
                     </tr>
                     </thead>
@@ -40,14 +40,21 @@
                         <td md-cell>{{dessert.status}}</td>
                         <td md-cell>{{dessert.menu_title}}</td>
                         <td md-cell>{{dessert.article}}</td>
-                        <td md-cell>{{dessert.journal}}</td>
-                        <td md-cell><span ng-if="dessert.reviewer">{{dessert.reviewer.first_Name}} {{dessert.reviewer.last_Name}}</span></td>
-                        <td md-cell><span ng-if="dessert.reviewer && dessert.reviewer.email">{{dessert.reviewer.email}}</span></td>
+                        <td md-cell ng-if="userType !== 'reviewer'">{{dessert.journal}}</td>
+                        <td md-cell ng-if="userType !== 'reviewer'"><span ng-if="dessert.reviewer">{{dessert.reviewer.first_Name}} {{dessert.reviewer.last_Name}}</span></td>
+                        <td md-cell ng-if="userType !== 'reviewer'"><span ng-if="dessert.reviewer && dessert.reviewer.email">{{dessert.reviewer.email}}</span></td>
                         <td md-cell>{{dessert.feedback}}</td>
-                        <td md-cell><md-button class="md-icon-button" ng-click="view(dessert)">
-                            <md-icon>visibility</md-icon>
-                        </md-button></td>
-                        <td md-cell ng-if="userType === 'admin'" ><md-button class="md-icon-button" ng-click="delete(desert)">
+                        <td md-cell><md-button class="md-icon-button">
+                            <md-icon ng-click="view(dessert)">visibility</md-icon>
+
+                        </td>
+                        <td md-cell ng-if="userType === 'reviewer'">
+                            <md-icon ng-if="dessert.status === 'Open'" title="Accept Review" arial-label="accept" ng-click="acceptReview(dessert)">thumb_up</md-icon>
+                        </td>
+                        <td md-cell ng-if="userType === 'reviewer'">
+                            <md-icon ng-if="dessert.status === 'Open'" title="Reject Review" arial-label="reject" ng-click="rejectReview(dessert)">thumb_down</md-icon>
+                        </td>
+                        <td md-cell ng-if="userType === 'admin'" ><md-button class="md-icon-button" ng-click="delete(dessert)">
                             <md-icon>delete</md-icon>
                         </md-button></td>
                     </tr>
@@ -58,8 +65,13 @@
             <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{desserts.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
         </md-card>
     </md-content>
-    <md-content layout="column" flex ng-if="inEditMode">
+    <md-content layout="column" flex ng-if="inEditMode && (userType == 'author' || userType == 'admin')">
         <form name="menuscript" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Update Menuscript</h2>
+                </div>
+            </md-toolbar>
             <div class="note">
                 *(Please note all fields are required)
             </div>
@@ -109,7 +121,6 @@
                     </div>
                 </md-content>
             </div>
-            </md-dialog-content>
 
             <md-dialog-actions layout="row">
                 <md-button class="md-secondary" ng-click="cancel()">
@@ -118,6 +129,42 @@
                 <span flex></span>
                 <md-button ng-if="inEditMode && canEdit" ng-disabled="(!menuscript.$dirty || !menuscript.$valid) && !file" class="md-primary" ng-click="submitScript()" md-autofocus>
                     Submit
+                </md-button>
+            </md-dialog-actions>
+        </form>
+    </md-content>
+    <md-content layout="column" flex ng-if="inEditMode && (userType == 'reviewer' || userType == 'editor')">
+        <form name="menuscript" ng-cloak>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Update Menuscript</h2>
+                </div>
+            </md-toolbar>
+            <div class="note">
+                *(Please note all fields are required)
+            </div>
+            <div class="md-dialog-content">
+                <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Feedback</label>
+                        <input name="feedback" ng-model="menuScriptItem.feedback" required></input>
+                    </md-input-container>
+                </md-content>
+
+            </div>
+            <md-dialog-actions layout="row">
+                <md-button class="md-secondary" ng-click="cancel()">
+                    Cancel
+                </md-button>
+                <span flex></span>
+                <md-button ng-if="inEditMode" ng-disabled="!menuscript.$dirty || !menuscript.$valid" class="md-primary" ng-click="rejectMenuScript()" md-autofocus>
+                    Approve
+                </md-button>
+                <md-button ng-if="inEditMode" ng-disabled="!menuscript.$dirty || !menuscript.$valid" class="md-primary" ng-click="approveMenuScript()" md-autofocus>
+                    Reject
+                </md-button>
+                <md-button ng-if="inEditMode" ng-disabled="!menuscript.$dirty || !menuscript.$valid" class="md-primary" ng-click="submitScript()" md-autofocus>
+                    Update
                 </md-button>
             </md-dialog-actions>
         </form>

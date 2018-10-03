@@ -73,6 +73,8 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
         $scope.toggleEdit();
         if($scope.menuScriptItem.status && $scope.menuScriptItem.status.toLowerCase() == 'open') {
             $scope.canEdit = true;
+        } else {
+            $scope.canEdit = false;
         }
     };
 
@@ -86,23 +88,60 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
           });
       };
       $scope.submitScript = function() {
-          var data = {},
-              fd = new FormData();
+          if($scope.userType === 'author' || $scope.userType === 'admin') {
+              var data = {},
+                  fd = new FormData();
 
-          fd.append("file", $scope.file);
+              fd.append("file", $scope.file);
 
-          data['menu_title'] = $scope.menuScriptItem['menu_title'];
-          data['abstract'] = $scope.menuScriptItem['abstract'];
-          data['menuScript_id'] = $scope.menuScriptItem['menuScript_id'];
+              data['menu_title'] = $scope.menuScriptItem['menu_title'];
+              data['abstract'] = $scope.menuScriptItem['abstract'];
+              data['menuScript_id'] = $scope.menuScriptItem['menuScript_id'];
 
-          fd.append("data", JSON.stringify(data));
-          MenuScriptsService.updateMenuScript(fd).then(function(data) {
+              fd.append("data", JSON.stringify(data));
+              MenuScriptsService.updateMenuScript(fd).then(function (data) {
+                  $scope.refreshMenuScripts();
+                  $scope.toggleEdit();
+                  angular.element("input[type='file']").val(null);
+                  $scope.file = '';
+              });
+          } else {
+
+          }
+      };
+
+      $scope.rejectMenuScript = function() {
+          $scope.menuScriptItem['status'] = 'Reject'
+          MenuScriptsService.rejectMenuScript($scope.menuScriptItem).then(function (data) {
               $scope.refreshMenuScripts();
               $scope.toggleEdit();
-              angular.element("input[type='file']").val(null);
-              $scope.file = '';
           });
-          console.log("submit script...");
+      };
+
+      $scope.approveMenuScript = function() {
+          $scope.menuScriptItem['status'] = 'Approve'
+          MenuScriptsService.rejectMenuScript($scope.menuScriptItem).then(function (data) {
+              $scope.refreshMenuScripts();
+              $scope.toggleEdit();
+          });
+      };
+
+      $scope.acceptReview = function(menuScript) {
+          MenuScriptsService.acceptReview(menuScript.menuScript_id).then(function (data) {
+              $scope.refreshMenuScripts();
+          });
+      };
+
+      $scope.rejectReview = function(menuScript) {
+          MenuScriptsService.acceptReview(menuScript.menuScript_id).then(function (data) {
+              $scope.refreshMenuScripts();
+          });
+      };
+
+      $scope.delete = function(menuScript) {
+          MenuScriptsService.deleteMenuScript(menuScript.menuScript_id).then(function (data) {
+              $scope.refreshMenuScripts();
+          });
       };
 
       $scope.cancel = function() {

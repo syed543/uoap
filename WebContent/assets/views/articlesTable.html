@@ -9,6 +9,9 @@
                     <md-button class="md-icon-button" ng-click="refreshArticles()">
                         <md-icon>refresh</md-icon>
                     </md-button>
+                    <md-button class="md-icon-button" ng-click="addArticleDialog()">
+                        <md-icon>add</md-icon>
+                    </md-button>
                 </div>
             </md-toolbar>
 
@@ -34,10 +37,10 @@
                         <td md-cell>{{dessert.article_title}}</td>
                         <td md-cell>{{dessert.authors}}</td>
                         <td md-cell>{{dessert.article_abstract}}</td>
-                        <td md-cell><md-button class="md-icon-button" ng-click="view(desert)">
-                            <md-icon>visibility</md-icon>
+                        <td md-cell><md-button class="md-icon-button" ng-click="view(dessert)">
+                            <md-icon>file_download</md-icon>
                         </md-button></td>
-                        <td md-cell ng-if="userType === 'admin'" ><md-button class="md-icon-button" ng-click="delete(desert)">
+                        <td md-cell ng-if="userType === 'admin'" ><md-button class="md-icon-button" ng-click="delete(dessert)">
                             <md-icon>delete</md-icon>
                         </md-button></td>
                     </tr>

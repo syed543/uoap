@@ -33,9 +33,18 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
       _getEditors();
     };
 
+    JournalsService.getJournals().then(function (data) {
+        if (data.statusCode == 200) { // Success
+            $scope.journals = data.data;
+        } else { 					// Error
+            console.log("Unable to fetch journals list. please contact support.");
+        }
+    });
+
     $scope.addEditorDialog = function(ev) {
       $mdDialog.show({
         controller: addEditorController,
+        locals: {parentScope: $scope},
         templateUrl: 'assets/views/addEditorDialog.html',
         parent: angular.element(document.body),
         targetEvent: ev,
@@ -46,7 +55,7 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
       });
     };
 
-    function addEditorController($scope, $mdDialog) {
+    function addEditorController($scope, $mdDialog, parentScope) {
       $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
       $scope.editor = {
@@ -58,6 +67,7 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
         'affiliation': '',
         'journal': ''
       };
+      $scope.journals = parentScope.journals;
 
       $scope.hide = function() {
         $mdDialog.hide();
@@ -66,25 +76,36 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
       $scope.cancel = function() {
         $mdDialog.cancel();
       };
+      $scope.file = '';
+      $scope.uploadedFile = function(element) {
+          $scope.$apply(function($scope) {
+              $scope.file = element.files[0];
+          });
+      };
 
       $scope.addEditor = function() {
-        EditorsService.addEditor().then(function (data) {
+        var data = {},
+            fd = new FormData(),
+            editorObj = {};
+        fd.append("file", $scope.file);
+
+         data['first_Name'] = $scope.editor['first_Name'];
+         data['last_Name'] = $scope.editor['last_Name'];
+         data['email'] = $scope.editor['email'];
+         data['description'] = $scope.editor['description'];
+         data['affiliation'] = $scope.editor['affiliation'];
+         data['journal'] = $scope.editor['journal'];
+
+        fd.append("data", JSON.stringify(data));
+        EditorsService.addEditor(fd).then(function (data) {
           if (data.statusCode == 200) { // Success
-            _getEditors();
+              parentScope.refreshEditors();
           } else { 					// Error
             console.log("Unable to add Journal. please contact support.");
           }
           $mdDialog.cancel();
         });
       };
-
-      JournalsService.getJournals().then(function (data) {
-        if (data.statusCode == 200) { // Success
-          $scope.journals = data.data;
-        } else { 					// Error
-          console.log("Unable to fetch journals list. please contact support.");
-        }
-      });
     }
 
     var _getEditors = function() {
@@ -113,6 +134,59 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
     $scope.logPagination = function (page, limit) {
       console.log('page: ', page);
       console.log('limit: ', limit);
+    };
+
+    $scope.canEdit = false;
+    $scope.inEditMode = false;
+    $scope.toggleEdit = function() {
+        $scope.inEditMode = !$scope.inEditMode;
+    };
+    $scope.editor = {};
+    $scope.view = function(item) {
+        $scope.editor = item;
+        $scope.toggleEdit();
+    };
+    $scope.cancel = function() {
+        $scope.toggleEdit();
+    };
+    $scope.file = '';
+    $scope.uploadedFile = function(element) {
+        $scope.$apply(function($scope) {
+            $scope.file = element.files[0];
+        });
+    };
+    $scope.updateEditor = function() {
+        var data = {},
+            fd = new FormData(),
+            editorObj = {};
+        fd.append("file", $scope.file);
+
+        data['first_Name'] = $scope.editor['first_Name'];
+        data['last_Name'] = $scope.editor['last_Name'];
+        data['email'] = $scope.editor['email'];
+        data['description'] = $scope.editor['description'];
+        data['affiliation'] = $scope.editor['affiliation'];
+        data['journal'] = $scope.editor['journal'];
+
+        fd.append("data", JSON.stringify(data));
+        EditorsService.updateEditor(fd).then(function (data) {
+            if (data.statusCode == 200) { // Success
+                $scope.refreshEditors();
+                $scope.toggleEdit();
+            } else { 					// Error
+                console.log("Unable to update Editor. please contact support.");
+            }
+        });
+    }
+    $scope.deleteEditor = function(editor) {
+        EditorsService.deleteEditor(editor.email).then(function (data) {
+            if (data.statusCode == 200) { // Success
+                $scope.refreshEditors();
+            } else { 					// Error
+                console.log("Unable to delete Editor. please contact support.");
+            }
+            $mdDialog.cancel();
+        });
     }
   
 }]);

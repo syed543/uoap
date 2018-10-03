@@ -6,8 +6,8 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial) {
-controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'ArticlesService', '$rootScope',
-  function($mdEditDialog, $q, $scope, $timeout, ArticlesService, $rootScope) {
+controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'ArticlesService', '$rootScope', '$mdDialog',
+  function($mdEditDialog, $q, $scope, $timeout, ArticlesService, $rootScope, $mdDialog) {
 
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
@@ -70,6 +70,72 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
     $scope.view = function(article) {
       ArticlesService.downloadArticle(article['article_id']);
     };
+
+    $scope.delete = function(article) {
+      ArticlesService.deleteArticle(article['article_id']).then(function(data) {
+          if (data.statusCode == 200) { // Success
+              $scope.refreshArticles();
+          } else { 					// Error
+              console.log("Unable to delete Article. please contact support.");
+          }
+      });
+    };
+
+    $scope.addArticleDialog = function(ev) {
+        $mdDialog.show({
+            controller: addArticleController,
+            locals: {parentScope: $scope},
+            templateUrl: 'assets/views/addArticleDialog.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+        }).then(function() {
+        }, function() {
+        });
+    }
+
+    function addArticleController($scope, $mdDialog, parentScope) {
+
+        $scope.article = {
+            'article_title': '',
+            'article_abstract': '',
+            'authors': ''
+        };
+        $scope.file = '';
+        $scope.hide = function() {
+            $mdDialog.hide();
+        };
+
+        $scope.cancel = function() {
+            $mdDialog.cancel();
+        };
+
+        $scope.uploadedFile = function(element) {
+            $scope.$apply(function($scope) {
+                $scope.file = element.files[0];
+            });
+        };
+
+        $scope.submitArticle = function() {
+            var data = {},
+                fd = new FormData();
+
+            fd.append("file", $scope.file);
+            angular.copy($scope.article, data);
+
+            fd.append("data", JSON.stringify(data));
+
+            ArticlesService.addArticle(fd).then(function (data) {
+                if (data.statusCode == 200) { // Success
+                    parentScope.refreshArticles();
+                } else { 					// Error
+                    console.log("Unable to add Journal. please contact support.");
+                }
+                $mdDialog.cancel();
+            });
+        };
+    }
   
 }]);
 });

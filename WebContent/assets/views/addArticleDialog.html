@@ -1,0 +1,73 @@
+<md-dialog class="menuscript-dialog" aria-label="Submit Article">
+    <form name="articleForm" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Add Articles</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="assets/img/close.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="note">
+                *(Please note all fields are required)
+            </div>
+            <div class="md-dialog-content">
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container >
+                            <label>Title</label>
+                            <input name="title" ng-model="article.article_title" required>
+                            <div ng-messages="articleForm.title.$error">
+                                <div ng-message="required" class="my-message">You must provide the title of article.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container>
+                            <label>Abstract</label>
+                            <input name="abstract" ng-model="article.article_abstract" required>
+                            <div ng-messages="articleForm.abstract.$error">
+                                <div ng-message="required" class="my-message">You must provide abstract.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container>
+                            <label>Author(s)</label>
+                            <input name="authors" ng-model="article.authors" required>
+                            <div ng-messages="articleForm.authors.$error">
+                                <div ng-message="required" class="my-message">You must provide abstract.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div>
+                        <label>Attach article</label>
+                        <input name="file" onchange="angular.element(this).scope().uploadedFile(this)" ng-model="file" type="file" accept=".pdf, .doc, .docx">
+                        <div class="errors" ng-show="articleForm.file.$dirty && articleForm.file.$invalid">
+                            Please attach an article.
+                        </div>
+                    </div>
+                </md-content>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button class="md-secondary" ng-click="cancel()">
+                Cancel
+            </md-button>
+            <span flex></span>
+            <md-button ng-disabled="(!articleForm.$dirty || !articleForm.$valid) || !file" class="md-primary" ng-click="submitArticle()" md-autofocus>
+                Submit
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
