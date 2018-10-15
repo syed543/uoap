@@ -31,6 +31,13 @@
 	<bean id="reviewerJDBCTemplate" class="com.journal.dao.ReviewerJDBCTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-
+	
+	<bean id="menuScriptTemplate" class="com.journal.dao.MenuScriptTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="submitterJDBCTemplate" class="com.journal.dao.SubmitterJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 	
 </beans>
