@@ -400,7 +400,7 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     $scope.submitScript = function() {
         var data = {},
             fd = new FormData();
-        fd.append("file", $scope.file);
+        fd.append("attachment", $scope.file);
 
         fd.append("data", JSON.stringify($scope.user));
         MenuScriptsService.submitMenuScript(fd).then(function(data) {
