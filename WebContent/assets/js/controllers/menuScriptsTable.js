@@ -35,7 +35,7 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
 
     var _getMenuScripts = function() {
       var _filterBy;
-      if($scope.userType === 'reviewer') {
+      if($scope.userType === 'reviewer' || $scope.userType === 'author') {
         _filterBy = {
           "email" : $rootScope.userInfo.email
         }
