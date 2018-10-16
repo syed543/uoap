@@ -108,11 +108,22 @@ public class LoginController {
 			result.put("statusCode", 200);
 			result.put("message", "Login successful");
 			
-			user.setFirstName(submitterRecord.getFirstName());
-			user.setLastName(submitterRecord.getLastName());
+			user.setfName(submitterRecord.getFirstName());
+			user.setlName(submitterRecord.getLastName());
 			user.setEmail(submitterRecord.getEmail());
 			user.setPassword(submitterRecord.getPassword());
-			user.setUsertype("admin");
+			Map<String, List> rolesMap  = getRoles(login.getEmailid());
+			List<String> roles  = rolesMap.get("roles");
+			
+			if (roles != null) {
+				
+				if (roles.contains("Submitter")) {
+					user.setUsertype("author");
+				}
+			}
+			
+//			user.setUsertype("admin");
+			user.setPassword(null);
 			result.put("body", user);
 			return result;
 		}
@@ -127,8 +138,8 @@ public class LoginController {
 	public Map<String, List> getRoles(@RequestParam String email) {
 		
 		SubmitterRecord submitterRecord = submitterJDBCTemplate.getSubmitterByEmail(email);
-		ReviewerRecord reviewerRecord = reviewerJDBCTemplate.getReviewerByMailId(email);
-		EditorRecord editorRecord = editorJDBCTemplate.getEditorByMailId(email);
+//		ReviewerRecord reviewerRecord = reviewerJDBCTemplate.getReviewerByMailId(email);
+//		EditorRecord editorRecord = editorJDBCTemplate.getEditorByMailId(email);
 		
 		List<String> roles  = new ArrayList<String>();
 		
@@ -136,13 +147,13 @@ public class LoginController {
 			roles.add("Submitter");
 		}
 		
-		if (reviewerRecord != null) {
-			roles.add("Reviewer");
-		}
+//		if (reviewerRecord != null) {
+//			roles.add("Reviewer");
+//		}
 		
-		if (editorRecord != null) {
+//		if (editorRecord != null) {
 			roles.add("Editor");
-		}
+//		}
 		
 		Map<String, List> results = new HashMap<String, List>();
 		

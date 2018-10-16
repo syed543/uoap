@@ -7,8 +7,11 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.journal.dao.record.EditorRecord;
 import com.journal.dao.record.MenuScriptRecord;
 import com.journal.model.MenuScriptModel;
 
@@ -82,6 +85,44 @@ public class MenuScriptTemplate {
 		}
 		
 		return menuScriptModels;
+	}
+	
+	public List<MenuScriptModel> getMenuScriptsByEmail(String email) {
+		
+		String query = "select m.id, firstName, lastName, menuScriptTitle, journalName from " + 
+				"submitter s, " + 
+				"menuscript m, " + 
+				"journal j " + 
+				"where m.submitterId = s.id " + 
+				"and m.journalid = j.id and s.email = ?";
+		
+		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
+		try {
+			
+			List<MenuScriptModel> menuScripts = jdbcTemplate.queryForList(query, new Object[] {email}, MenuScriptModel.class);
+			
+			System.out.println("Menu scripts : " + menuScripts.size() + " for email : " + email);
+			return menuScripts;
+		} catch (EmptyResultDataAccessException eae) {
+			
+		}
+		
+		return null;
+		
+//		List<MenuScriptModel> menuScriptModels = new ArrayList<MenuScriptModel>();
+//		
+//		for (Map<String, Object> menuScriptRow : menuScriptRows) {
+//			
+//			MenuScriptModel menuScriptModel = new MenuScriptModel();
+//			menuScriptModel.setId((Integer) menuScriptRow.get("id"));
+//			menuScriptModel.setfName((String) menuScriptRow.get("firstname"));
+//			menuScriptModel.setlName((String) menuScriptRow.get("lastName"));
+//			menuScriptModel.setMenuTitle((String) menuScriptRow.get("menuScriptTitle"));
+//			menuScriptModel.setJournalName((String) menuScriptRow.get("journalName"));
+//			menuScriptModels.add(menuScriptModel);
+//		}
+//		
+//		return menuScriptModels;
 	}
 
 	public MenuScriptModel getMenuScriptById(Integer menuScriptId) {

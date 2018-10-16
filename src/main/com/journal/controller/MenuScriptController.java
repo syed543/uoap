@@ -139,9 +139,9 @@ public class MenuScriptController {
 	
 	@RequestMapping(value="/menuScriptList", method=RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> menuScriptList() {
+	public Map<String, Object> menuScriptList(@RequestParam String email) {
 		
-		List<MenuScriptModel> menuScriptModels  = menuScriptTemplate.getAllMenuScripts();
+		List<MenuScriptModel> menuScriptModels  = menuScriptTemplate.getMenuScriptsByEmail(email);
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("statusCode", "200");
 		result.put("data", menuScriptModels);
