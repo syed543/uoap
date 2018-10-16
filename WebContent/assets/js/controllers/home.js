@@ -365,11 +365,9 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
         country: "",
         email : "",
         fName : "",
-        id : "",
         lName : "",
         postalAddress : "",
-        title : "",
-        usertype : ""
+        title : ""
     };
     if($rootScope.userInfo.email) {
       $scope.user = $rootScope.userInfo;
