@@ -372,6 +372,7 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     if($rootScope.userInfo.email) {
       $scope.user = $rootScope.userInfo;
         delete $scope.user.password;
+        delete $scope.user.generated;
     }
     $scope.user.country = 'IN';
     $scope.uploadedFile = function(element) {
