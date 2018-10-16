@@ -376,6 +376,7 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
       $scope.user.lName = $rootScope.userInfo.lName;
       $scope.user.postalAddress = $rootScope.userInfo.postalAddress;
       $scope.user.title = $rootScope.userInfo.title;
+      $scope.user.journal = $rootScope.userInfo.journal;
     }
     $scope.user.country = 'IN';
     $scope.uploadedFile = function(element) {
