@@ -6,14 +6,15 @@ services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function
 		return {
 		    getMenuScripts: function(filterBy) {
                 var deferred = $q.defer(),
-                    serviceUrl = 'assets/data/menuScriptList.json';
+                    // serviceUrl = 'assets/data/menuScriptList.json';
+                    serviceUrl = 'menuScriptList';
                 if(filterBy) {
                   for(var key in filterBy) {
                     serviceUrl += "?"+key+"="+filterBy[key];
                   }
                 }
-                /*Http.getData(serviceUrl).then(function(data){*/
-                Http.getData('assets/data/menuScriptList.json').then(function(data){
+                Http.getData(serviceUrl).then(function(data){
+                /*Http.getData('assets/data/menuScriptList.json').then(function(data){*/
                   deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
@@ -28,8 +29,8 @@ services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function
 			},
             submitMenuScript: function(menuScriptItem) {
                 var deferred = $q.defer();
-                /*Http.postMultipartData('/menuScriptItem', menuScriptItem).then(function(data){*/
-                Http.getData('assets/data/menuScriptItem.json', menuScriptItem).then(function(data){
+                Http.postMultipartData('/addMenuScript', menuScriptItem).then(function(data){
+                /*Http.getData('assets/data/menuScriptItem.json', menuScriptItem).then(function(data){*/
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
