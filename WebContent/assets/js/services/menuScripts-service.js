@@ -7,7 +7,7 @@ services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function
 		    getMenuScripts: function(filterBy) {
                 var deferred = $q.defer(),
                     // serviceUrl = 'assets/data/menuScriptList.json';
-                    serviceUrl = 'menuScriptList';
+                    serviceUrl = '/menuScriptList';
                 if(filterBy) {
                   for(var key in filterBy) {
                     serviceUrl += "?"+key+"="+filterBy[key];
