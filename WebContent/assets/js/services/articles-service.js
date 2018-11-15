@@ -39,8 +39,8 @@ services.factory('ArticlesService', ["Http", "$q", "$state", "$log", function (H
             },
             addArticle: function(data) {
                 var deferred = $q.defer();
-                Http.getData('assets/data/articles.json', data).then(function(data){
-                /*Http.postMultipartData('/addArticle', data).then(function(data){*/
+                //Http.getData('assets/data/articles.json', data).then(function(data){
+                Http.postMultipartData('/addArticle', data).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
