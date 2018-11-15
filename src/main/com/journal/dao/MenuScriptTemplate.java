@@ -30,12 +30,12 @@ public class MenuScriptTemplate {
 	}
 
 	public MenuScriptRecord saveMenuScript(MenuScriptRecord menuScriptRecord) {
-		String query = "insert into menuscript(submitterId, journalid, menuScriptTitle, abstractTitle, attachment, attachmentName) values" +
-				"(?, ? ,?, ?, ?, ?)";
+		String query = "insert into menuscript(submitterId, journalid, menuScriptTitle, status, abstractTitle, attachment, attachmentName) values" +
+				"(?, ? ,?, ?, ?, ?, ?)";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
-		jdbcTemplate.update(query, menuScriptRecord.getSubmitterId(), menuScriptRecord.getJournalId(), menuScriptRecord.getMenuScriptTitle(), 
+		jdbcTemplate.update(query, menuScriptRecord.getSubmitterId(), menuScriptRecord.getJournalId(), menuScriptRecord.getMenuScriptTitle(), menuScriptRecord.getStatus(),
 				menuScriptRecord.getAbstractData(), menuScriptRecord.getMenuScriptData(), menuScriptRecord.getMenuScriptFileName());
 		
 		String auto = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'journal' AND TABLE_NAME = 'menuscript'";
@@ -89,7 +89,7 @@ public class MenuScriptTemplate {
 	
 	public List<MenuScriptModel> getMenuScriptsByEmail(String email) {
 		
-		String query = "select m.id, firstName, lastName, menuScriptTitle, abstractTitle, journalName from " + 
+		String query = "select m.id, firstName, lastName, menuScriptTitle, abstractTitle, journalName, status from " + 
 				"submitter s, " + 
 				"menuscript m, " + 
 				"journal j " + 
@@ -123,6 +123,12 @@ public class MenuScriptTemplate {
 			menuScriptModel.setMenuTitle((String) menuScriptRow.get("menuScriptTitle"));
 			menuScriptModel.setAbstractTitle((String) menuScriptRow.get("abstractTitle"));
 			menuScriptModel.setJournalName((String) menuScriptRow.get("journalName"));
+			String status = (String) menuScriptRow.get("status");
+			if (status != null) {
+				menuScriptModel.setStatus(Integer.parseInt(status));
+			} else {
+				menuScriptModel.setStatus(1);
+			}
 			menuScriptModels.add(menuScriptModel);
 		}
 		

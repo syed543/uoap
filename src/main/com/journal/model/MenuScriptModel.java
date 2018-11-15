@@ -2,7 +2,7 @@ package com.journal.model;
 
 public class MenuScriptModel {
 	
-	private int id,journal;
+	private int id,journal,status;
 	private String fName,lName,title,email, article, postalAddress,country,menuTitle,abstractTitle;
 	private String journalName;
 	
@@ -14,6 +14,12 @@ public class MenuScriptModel {
 	}
 	public int getJournal() {
 		return journal;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	public void setJournal(int journal) {
 		this.journal = journal;

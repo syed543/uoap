@@ -61,8 +61,7 @@ public class LoginController {
 		} else if ("Editor".equals(userType)) {
 			
 			userRecord   = editorJDBCTemplate.getEditorByMailId(emailId);
-		}
-		
+		} 
 		
 		Map<String, String> result = new HashMap<String, String>();
 		
@@ -102,32 +101,77 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> login(@RequestBody Login login, HttpServletRequest request) {
+		
+		User fetchedUser = userJDBCTemplate.getUserByEmailId(login.getEmailid());
+		
+		String userType = null;
+		User user = null;
+		
+		
+		if (fetchedUser != null) {
+			
+			user = new User();
+			user.setfName(fetchedUser.getfName());
+			user.setlName(fetchedUser.getlName());
+			user.setEmail(fetchedUser.getEmail());
+			user.setPassword(fetchedUser.getPassword());
+			
+			userType = "Admin";
+		} else {
+			
+			SubmitterRecord submitter = submitterJDBCTemplate.getSubmitterByEmail(login.getEmailid());
+			
+			if (submitter != null) {
+				
+				user = new User();
+				user.setfName(submitter.getFirstName());
+				user.setlName(submitter.getLastName());
+				user.setEmail(submitter.getEmail());
+				user.setPassword(submitter.getPassword());
+				
+				userType = "Submitter";
+			} else {
+				
+				ReviewerRecord reviewer  = reviewerJDBCTemplate.getReviewerByMailId(login.getEmailid());
+				
+				if (reviewer != null) {
+				
+					user = new User();
+					user.setfName(reviewer.getFirstName());
+					user.setlName(reviewer.getLastName());
+					user.setEmail(reviewer.getEmail());
+					user.setPassword(reviewer.getPassword());
+					
+					userType = "Reviewer";
+				} else {
+					
+					EditorRecord editor   = editorJDBCTemplate.getEditorByMailId(login.getEmailid());
+					
+					if (editor != null) {
+						
+						user = new User();
+						user.setfName(editor.getFirstName());
+						user.setlName(editor.getLastName());
+						user.setEmail(editor.getEmail());
+						user.setPassword(editor.getPassword());
+						
+						userType = "Editor";
+					}
+				}
+			}
+		}
 
-		SubmitterRecord submitterRecord = submitterJDBCTemplate.getSubmitterByEmail(login.getEmailid());
 		Map<String, Object> result = new HashMap<String, Object>();
 		
-		User user = new User();
 	
-		if (submitterRecord != null && submitterRecord.getPassword().equals(login.getPassword())) {
+		if (user != null && user.getPassword().equals(login.getPassword())) {
 			result.put("statusCode", 200);
 			result.put("message", "Login successful");
 			
-			user.setfName(submitterRecord.getFirstName());
-			user.setlName(submitterRecord.getLastName());
-			user.setEmail(submitterRecord.getEmail());
-			user.setPassword(submitterRecord.getPassword());
-			Map<String, List> rolesMap  = getRoles(login.getEmailid());
-			List<String> roles  = rolesMap.get("roles");
-			
-			if (roles != null) {
-				
-				if (roles.contains("Submitter")) {
-					user.setUsertype("author");
-				}
-			}
 			
 //			user.setUsertype("admin");
 			user.setPassword(null);
+			user.setUsertype(userType);
 			
 			HttpSession session = request.getSession(false);
 			

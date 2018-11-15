@@ -68,6 +68,8 @@ public class MenuScriptController {
 			record.setSubmitterId(existingSubmitterRecord.getId());
 		}
 		
+		record.setStatus(1); //UnAssigned
+		
 		if (attachment != null) {
 			
 			record.setMenuScriptData(attachment.getBytes());

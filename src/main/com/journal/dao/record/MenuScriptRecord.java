@@ -18,6 +18,8 @@ public class MenuScriptRecord {
 	private int id;
 	private int submitterId;
 	private int journalId;
+	private int status; // 1:UnAssigned
+	private int reviewer;
 	private String menuScriptTitle;
 	private String abstractData;
 	
@@ -50,6 +52,12 @@ public class MenuScriptRecord {
 	}
 	public void setMenuScriptTitle(String menuScriptTitle) {
 		this.menuScriptTitle = menuScriptTitle;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	public String getAbstractData() {
 		return abstractData;
