@@ -89,7 +89,7 @@ public class MenuScriptTemplate {
 	
 	public List<MenuScriptModel> getMenuScriptsByEmail(String email) {
 		
-		String query = "select m.id, firstName, lastName, menuScriptTitle, journalName from " + 
+		String query = "select m.id, firstName, lastName, menuScriptTitle, abstractTitle, journalName from " + 
 				"submitter s, " + 
 				"menuscript m, " + 
 				"journal j " + 
@@ -97,32 +97,36 @@ public class MenuScriptTemplate {
 				"and m.journalid = j.id and s.email = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
+		
+		List<Map<String, Object>> menuScripts = null;
+		
 		try {
 			
-			List<MenuScriptModel> menuScripts = jdbcTemplate.queryForList(query, new Object[] {email}, MenuScriptModel.class);
+			System.out.println("Fetching the list");
+			
+			menuScripts = jdbcTemplate.queryForList(query, new Object[] {email});
 			
 			System.out.println("Menu scripts : " + menuScripts.size() + " for email : " + email);
-			return menuScripts;
 		} catch (EmptyResultDataAccessException eae) {
-			
+			return null;
 		}
 		
-		return null;
 		
-//		List<MenuScriptModel> menuScriptModels = new ArrayList<MenuScriptModel>();
-//		
-//		for (Map<String, Object> menuScriptRow : menuScriptRows) {
-//			
-//			MenuScriptModel menuScriptModel = new MenuScriptModel();
-//			menuScriptModel.setId((Integer) menuScriptRow.get("id"));
-//			menuScriptModel.setfName((String) menuScriptRow.get("firstname"));
-//			menuScriptModel.setlName((String) menuScriptRow.get("lastName"));
-//			menuScriptModel.setMenuTitle((String) menuScriptRow.get("menuScriptTitle"));
-//			menuScriptModel.setJournalName((String) menuScriptRow.get("journalName"));
-//			menuScriptModels.add(menuScriptModel);
-//		}
-//		
-//		return menuScriptModels;
+		List<MenuScriptModel> menuScriptModels = new ArrayList<MenuScriptModel>(menuScripts.size());
+		
+		for (Map<String, Object> menuScriptRow : menuScripts) {
+			
+			MenuScriptModel menuScriptModel = new MenuScriptModel();
+			menuScriptModel.setId((Integer) menuScriptRow.get("id"));
+			menuScriptModel.setfName((String) menuScriptRow.get("firstname"));
+			menuScriptModel.setlName((String) menuScriptRow.get("lastName"));
+			menuScriptModel.setMenuTitle((String) menuScriptRow.get("menuScriptTitle"));
+			menuScriptModel.setAbstractTitle((String) menuScriptRow.get("abstractTitle"));
+			menuScriptModel.setJournalName((String) menuScriptRow.get("journalName"));
+			menuScriptModels.add(menuScriptModel);
+		}
+		
+		return menuScriptModels;
 	}
 
 	public MenuScriptModel getMenuScriptById(Integer menuScriptId) {

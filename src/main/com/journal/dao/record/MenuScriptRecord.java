@@ -6,6 +6,7 @@ public class MenuScriptRecord {
 	
 	public MenuScriptRecord(MenuScriptModel model) {
 		
+		journalId = model.getJournal();
 		menuScriptTitle = model.getMenuTitle();
 		abstractData = model.getAbstractTitle();
 	}

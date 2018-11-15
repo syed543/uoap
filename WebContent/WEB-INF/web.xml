@@ -17,10 +17,20 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
+	<filter>
+		<filter-name>journalFilter</filter-name>
+		<filter-class>com.journal.filter.JournalFilter</filter-class>
+	</filter>
+	
 	<servlet-mapping>
 		<servlet-name>journal</servlet-name>
 		<url-pattern>/router/*</url-pattern>
 	</servlet-mapping>
+	
+	<filter-mapping>
+		<filter-name>journalFilter</filter-name>
+		<url-pattern>/router/*</url-pattern>
+	</filter-mapping>
 	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

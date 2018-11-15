@@ -25,8 +25,8 @@ public class UserJDBCTemplate {
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
-		jdbcTemplate.update(query, user.getEmail(), user.getPhoneNo(), user.getFirstName(), 
-				user.getLastName(), user.getCountryName(), user.getPassword(), user.getGenerated(), user.getUsertype(), user.getAddress());
+//		jdbcTemplate.update(query, user.getEmail(), user.getPhoneNo(), user.getFirstName(), 
+//				user.getLastName(), user.getCountryName(), user.getPassword(), user.getGenerated(), user.getUsertype(), user.getAddress());
 		
 		System.out.println("User created");
 	}

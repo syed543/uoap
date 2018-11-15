@@ -56,7 +56,12 @@ public class MenuScriptController {
 			
 			submitterJDBCTemplate.saveSubmitter(submitterRecord);
 			
+			try {
+			
 			JournalMailUtil.sendMail(submitterRecord.getEmail(), "Submitter Registration done", "The generated password is :" + password);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			record.setSubmitterId(submitterRecord.getId());
 		} else {
 			
@@ -70,8 +75,12 @@ public class MenuScriptController {
 		}
 		
 		menuScriptTemplate.saveMenuScript(record);
+		try {
 		JournalMailUtil.sendMail(submitterRecord.getEmail(), "MenuScript submitted successfully", 
 				"MenuScript uploaded successfully with menuScript title:" + record.getMenuScriptTitle());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		System.out.println("Menu Script added successfully");
 		

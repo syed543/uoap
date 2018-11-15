@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -97,7 +101,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> login(@RequestBody Login login) {
+	public Map<String, Object> login(@RequestBody Login login, HttpServletRequest request) {
 
 		SubmitterRecord submitterRecord = submitterJDBCTemplate.getSubmitterByEmail(login.getEmailid());
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -124,6 +128,16 @@ public class LoginController {
 			
 //			user.setUsertype("admin");
 			user.setPassword(null);
+			
+			HttpSession session = request.getSession(false);
+			
+			if (session != null) {
+				session.invalidate();
+			}
+			
+			HttpSession httpSession = request.getSession(true);
+			httpSession.setAttribute("user", user);
+			
 			result.put("body", user);
 			return result;
 		}
@@ -131,6 +145,17 @@ public class LoginController {
 		result.put("statusCode", 404);
 		result.put("message", "User not found/Invalid Password");
 		return result;
+	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public void logout(HttpServletRequest request, HttpServletResponse resposne) {
+		
+		HttpSession session = request.getSession(false);
+		
+		if (session != null) {
+			session.invalidate();
+		}
+		return;
 	}
 	
 	@RequestMapping(value="/getRoles", method=RequestMethod.GET)

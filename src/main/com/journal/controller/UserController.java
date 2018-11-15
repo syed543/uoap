@@ -36,14 +36,14 @@ public class UserController {
 		if (existingUser == null) {
 			User user = new User();
 			user.setEmail(email);
-			user.setPhoneNo(phoneNo);
-			user.setFirstName(firstName);
-			user.setLastName(lastName);
-			user.setCountryName(countryName);
+//			user.setPhoneNo(phoneNo);
+//			user.setFirstName(firstName);
+//			user.setLastName(lastName);
+//			user.setCountryName(countryName);
 			String password = JournalUtil.generatePassword();
 			user.setPassword(password);
 			user.setUsertype(userType);
-			user.setAddress(address);
+//			user.setAddress(address);
 			user.setGenerated("y");
 			userJDBCTemplate.save(user);
 

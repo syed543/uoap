@@ -3,14 +3,13 @@ package com.journal.model;
 public class User {
 	
 	private String email;
-	private String phoneNo;
-	private String firstName;
-	private String lastName;
-	private String countryName;
+	private String fName;
+	private String lName;
+	private String country;
 	private String password;
 	private String generated;
 	private String usertype;
-	private String address;
+	private String postalAddress;
 	
 
 	public String getEmail() {
@@ -18,30 +17,6 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getPhoneNo() {
-		return phoneNo;
-	}
-	public void setPhoneNo(String phoneNo) {
-		this.phoneNo = phoneNo;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getCountryName() {
-		return countryName;
-	}
-	public void setCountryName(String countryName) {
-		this.countryName = countryName;
 	}
 	public String getPassword() {
 		return password;
@@ -61,10 +36,28 @@ public class User {
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
 	}
-	public String getAddress() {
-		return address;
+	public String getfName() {
+		return fName;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setfName(String fName) {
+		this.fName = fName;
+	}
+	public String getlName() {
+		return lName;
+	}
+	public void setlName(String lName) {
+		this.lName = lName;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getPostalAddress() {
+		return postalAddress;
+	}
+	public void setPostalAddress(String postalAddress) {
+		this.postalAddress = postalAddress;
 	}
 }
