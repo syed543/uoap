@@ -20,11 +20,11 @@
                 <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
                     <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
                     <tr md-row>
-                        <th md-column md-order-by="author"><span>Author</span></th>
+                        <th md-column md-order-by="fName"><span>Author</span></th>
                         <th md-column md-order-by="status"><span>Status</span></th>
-                        <th md-column md-order-by="menu_title"><span>Title</span></th>
+                        <th md-column md-order-by="menuTitle"><span>Title</span></th>
                         <th md-column md-order-by="article"><span>Article Type</span></th>
-                        <th md-column ng-if="userType !== 'reviewer'" md-order-by="journal"><span>Journal</span></th>
+                        <th md-column ng-if="userType !== 'reviewer'" md-order-by="journalName"><span>Journal</span></th>
                         <th md-column ng-if="userType !== 'reviewer'" md-order-by="reviewer.first_Name"><span>Reviewer</span></th>
                         <th md-column ng-if="userType !== 'reviewer'" md-order-by="reviewer.email"><span>Reviewer Email</span></th>
                         <th md-column md-order-by="feedback"><span>Feedback</span></th>
@@ -36,11 +36,11 @@
                     </thead>
                     <tbody md-body>
                     <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-                        <td md-cell>{{dessert.author}}</td>
+                        <td md-cell>{{dessert.fName}}</td>
                         <td md-cell>{{dessert.status}}</td>
-                        <td md-cell>{{dessert.menu_title}}</td>
+                        <td md-cell>{{dessert.menuTitle}}</td>
                         <td md-cell>{{dessert.article}}</td>
-                        <td md-cell ng-if="userType !== 'reviewer'">{{dessert.journal}}</td>
+                        <td md-cell ng-if="userType !== 'reviewer'">{{dessert.journalName}}</td>
                         <td md-cell ng-if="userType !== 'reviewer'"><span ng-if="dessert.reviewer">{{dessert.reviewer.first_Name}} {{dessert.reviewer.last_Name}}</span></td>
                         <td md-cell ng-if="userType !== 'reviewer'"><span ng-if="dessert.reviewer && dessert.reviewer.email">{{dessert.reviewer.email}}</span></td>
                         <td md-cell>{{dessert.feedback}}</td>
@@ -87,7 +87,7 @@
                     <div class="fullwidth">
                         <md-input-container>
                             <label>Menuscript Title</label>
-                            <input name="title" ng-model="menuScriptItem.menu_title" required maxlength="1000" minlength="10" >
+                            <input name="title" ng-model="menuScriptItem.journalName" required maxlength="1000" minlength="10" >
                             <div ng-messages="menuscript.title.$error">
                                 <div ng-message-exp="['required', 'minlength', 'maxlength']">
                                     Your Title must be between 10 and 1000 characters long.

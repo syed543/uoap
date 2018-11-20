@@ -68,21 +68,21 @@ define(['angular', 'controllers/main', 'angular-ui-router'], function (angular, 
                 name: 'forEditors',
                 templateUrl: 'assets/views/forEditors.html',
                 controller: 'forEditorsCtrl',
-                Authentication: true
+                Authentication: false
             })
             .state('forAuthors', {
                 url: '/forAuthors',
                 name: 'forAuthors',
                 templateUrl: 'assets/views/forAuthors.html',
                 controller: 'forAuthorsCtrl',
-                Authentication: true
+                Authentication: false
             })
             .state('forReviewers', {
                 url: '/forReviewers',
                 name: 'forReviewers',
                 templateUrl: 'assets/views/forReviewers.html',
                 controller: 'forReviewersCtrl',
-                Authentication: true
+                Authentication: false
             })
             .state('aboutUs', {
                 url: '/aboutUs',
