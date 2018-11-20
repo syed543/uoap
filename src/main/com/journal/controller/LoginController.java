@@ -168,8 +168,7 @@ public class LoginController {
 			result.put("statusCode", 200);
 			result.put("message", "Login successful");
 			
-			
-//			user.setUsertype("admin");
+			System.out.println("User Type is : " + userType);
 			user.setPassword(null);
 			user.setUsertype(userType);
 			
