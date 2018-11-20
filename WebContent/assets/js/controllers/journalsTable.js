@@ -89,7 +89,8 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
           data['journal_name'] = $scope.journal['journal_name'];
           data['journal_description'] = $scope.journal['journal_description'];
           data['journal_long_description'] = $scope.journal['journal_long_description'];
-          	
+          data['id'] = $scope.journal['id'];
+
           fd.append("data", JSON.stringify(data));
           
         JournalsService.addJournal(fd).then(function (data) {
