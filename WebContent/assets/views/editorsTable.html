@@ -25,24 +25,24 @@
                 <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
                     <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
                     <tr md-row>
-                        <th md-column md-order-by="first_Name"><span>First Name</span></th>
-                        <th md-column md-order-by="last_Name"><span>Last Name</span></th>
+                        <th md-column md-order-by="firstName"><span>First Name</span></th>
+                        <th md-column md-order-by="lastName"><span>Last Name</span></th>
                         <th md-column md-order-by="avatar"><span>Avatar</span></th>
                         <th md-column md-order-by="description"  md-desc><span>Description</span></th>
                         <th md-column md-order-by="affiliation"><span>Affiliation</span></th>
-                        <th md-column md-order-by="journal"><span>Journal</span></th>
+                        <th md-column md-order-by="journalId"><span>Journal</span></th>
                         <th md-column md-order-by=""><span>View</span></th>
                         <th md-column md-order-by=""><span>Delete</span></th>
                     </tr>
                     </thead>
                     <tbody md-body>
                     <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-                        <td md-cell>{{dessert.first_Name}}</td>
-                        <td md-cell>{{dessert.last_Name}}</td>
+                        <td md-cell>{{dessert.firstName}}</td>
+                        <td md-cell>{{dessert.lastName}}</td>
                         <td md-cell><md-icon md-svg-src="{{desert.avatar}}"></md-icon> </td>
                         <td md-cell>{{dessert.description}}</td>
                         <td md-cell>{{dessert.affiliation}}</td>
-                        <td md-cell>{{dessert.journal}}</td>
+                        <td md-cell>{{dessert.journalId}}</td>
                         <td md-cell><md-button class="md-icon-button" ng-click="view(dessert)">
                             <md-icon>visibility</md-icon>
                         </md-button></td>
@@ -74,16 +74,16 @@
                         <div layout="row">
                             <md-input-container >
                                 <label>First Name</label>
-                                <input name="name" ng-model="editor.first_Name" required>
-                                <div ng-messages="editorForm.first_Name.$error">
+                                <input name="name" ng-model="editor.firstName" required>
+                                <div ng-messages="editorForm.firstName.$error">
                                     <div ng-message="required" class="my-message">You must provide Editors First Name.</div>
                                 </div>
                             </md-input-container>
 
                             <md-input-container >
                                 <label>Last Name</label>
-                                <input name="name" ng-model="editor.last_Name" required>
-                                <div ng-messages="editorForm.last_Name.$error">
+                                <input name="name" ng-model="editor.lastName" required>
+                                <div ng-messages="editorForm.lastName.$error">
                                     <div ng-message="required" class="my-message">You must provide Editors Last Name.</div>
                                 </div>
                             </md-input-container>
@@ -140,7 +140,7 @@
                     <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Journal</label>
-                            <md-select name="journal" ng-model="editor.journal" required>
+                            <md-select name="journalId" ng-model="editor.journalId" required>
                                 <md-option ng-repeat="journal in journals" value="{{journal.journal_abbrev}}">
                                     {{journal.journal_name}}
                                 </md-option>

@@ -59,13 +59,13 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
       $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
       $scope.editor = {
-        'first_Name': '',
-        'last_Name': '',
+        'firstName': '',
+        'lastName': '',
         'email': '',
         'avatar': '',
         'description': '',
         'affiliation': '',
-        'journal': ''
+        'journalId': ''
       };
       $scope.journals = parentScope.journals;
 
@@ -89,8 +89,8 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
             editorObj = {};
         fd.append("file", $scope.file);
 
-         data['firstName'] = $scope.editor['first_Name'];
-         data['lastName'] = $scope.editor['last_Name'];
+         data['firstName'] = $scope.editor['firstName'];
+         data['lastName'] = $scope.editor['lastName'];
          data['email'] = $scope.editor['email'];
          data['description'] = $scope.editor['description'];
          data['affiliation'] = $scope.editor['affiliation'];
@@ -161,12 +161,12 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
             editorObj = {};
         fd.append("file", $scope.file);
 
-        data['firstName'] = $scope.editor['first_Name'];
-        data['lastName'] = $scope.editor['last_Name'];
+        data['firstName'] = $scope.editor['firstName'];
+        data['lastName'] = $scope.editor['lastName'];
         data['email'] = $scope.editor['email'];
         data['description'] = $scope.editor['description'];
         data['affiliation'] = $scope.editor['affiliation'];
-        data['journalId'] = $scope.editor['journal'];
+        data['journalId'] = $scope.editor['journalId'];
 
         fd.append("data", JSON.stringify(data));
         EditorsService.updateEditor(fd).then(function (data) {

@@ -19,16 +19,16 @@
                     <div layout="row">
                         <md-input-container >
                             <label>First Name</label>
-                            <input name="name" ng-model="editor.first_Name" required>
-                            <div ng-messages="editor.first_Name.$error">
+                            <input name="name" ng-model="editor.firstName" required>
+                            <div ng-messages="editor.firstName.$error">
                                 <div ng-message="required" class="my-message">You must provide Editors First Name.</div>
                             </div>
                         </md-input-container>
 
                         <md-input-container >
                             <label>Last Name</label>
-                            <input name="name" ng-model="editor.last_Name" required>
-                            <div ng-messages="editor.last_Name.$error">
+                            <input name="name" ng-model="editor.lastName" required>
+                            <div ng-messages="editor.lastName.$error">
                                 <div ng-message="required" class="my-message">You must provide Editors Last Name.</div>
                             </div>
                         </md-input-container>
@@ -85,12 +85,12 @@
                 <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Journal</label>
-                        <md-select name="journal" ng-model="editor.journal" required>
+                        <md-select name="journalId" ng-model="editor.journalId" required>
                             <md-option ng-repeat="journal in journals" value="{{journal.journal_abbrev}}">
                                 {{journal.journal_name}}
                             </md-option>
                         </md-select>
-                        <div ng-messages="menuscript.journal.$error" role="alert" multiple>
+                        <div ng-messages="menuscript.journalId.$error" role="alert" multiple>
                             <div ng-message="required" class="my-message">You must provide journal.</div>
                         </div>
                     </md-input-container>

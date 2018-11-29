@@ -22,7 +22,7 @@ services.factory('EditorsService', ["Http", "$q", "$state", "$log", function (Ht
             updateEditor: function(data) {
                 var deferred = $q.defer();
                 /*Http.postMultipartData('/addEditor', data).then(function(data){*/
-                Http.getData('/updateEditor', data).then(function(data){
+                Http.postMultipartData('/updateEditor', data).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
