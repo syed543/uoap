@@ -181,7 +181,7 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
         });
     };
     $scope.deleteJournal = function(journal) {
-        JournalsService.deleteJournal(journal.journal_id).then(function (data) {
+        JournalsService.deleteJournal(journal.id).then(function (data) {
             if (data.statusCode == 200) { // Success
                 $scope.refreshJournal();
             } else { 					// Error

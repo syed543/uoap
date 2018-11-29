@@ -68,13 +68,27 @@ public class JournalJDBCTemplate {
 	
 	public void updateJournal(Journal journal) {
 		
-		String query = "update JOURNAL set journalName = ?, journalIcon = ?, journalIconFileName = ?, journalDescription = ?, journalBannerImage = ?, journalBannerImageFileName = ? where id = ?";
+		String query = "update JOURNAL set journalName = ?,  journalDescription = ?, journalLongDescription = ? ";
+		
+		if (journal.getJournalIcon() != null) {
+			query = query + ", journalIcon = ?, journalIconFileName = ? ";
+		}
+		
+//		where id = ?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		jdbcTemplate.update(query, journal.getJournal_name(), journal.getJournalIcon(), journal.getJournalIconFileName(),
 				journal.getJournal_description(), journal.getJournal_long_description(), journal.getJournalBannerImage(),
 				journal.getJournalBannerImageFileName());
+	}
+	
+	public void deleteJournal(String journalId) {
 		
+		String query = "delete from JOURNAL where id = ?";
+		
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		
+		jdbcTemplate.update(query, new Object[] {journalId});
 	}
 
 }

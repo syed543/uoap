@@ -27,6 +27,9 @@ public class JournalFilter implements Filter{
 		allowed.add("/login");
 		allowed.add("/logout");
 		allowed.add("/journals");
+		allowed.add("/addJournal");
+		allowed.add("/updateJournal");
+		allowed.add("/deleteJournal");
 	}
 
 	@Override
@@ -55,7 +58,7 @@ public class JournalFilter implements Filter{
 				return;
 			} else {
 				
-				System.out.println("Returned");
+				System.out.println("Not allowed and Returned");
 				response.sendRedirect("/login");
 				return;
 			}

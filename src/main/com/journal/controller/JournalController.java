@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.journal.dao.JournalJDBCTemplate;
 import com.journal.model.Journal;
@@ -71,7 +73,19 @@ public class JournalController {
 	
 	@RequestMapping(value="/updateJournal", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> updateJournal(@RequestParam Journal journal) {
+	public Map<String, Object> updateJournal(@RequestParam String data, @RequestPart(required=false) MultipartFile icon, @RequestPart(required=false) MultipartFile banner) throws JsonParseException, JsonMappingException, IOException {
+		
+		Journal journal = new ObjectMapper().readValue(data, Journal.class);
+		
+		if (icon != null) {
+			journal.setJournalIcon(icon.getBytes());
+			journal.setJournalIconFileName(icon.getOriginalFilename());
+		}
+		
+		if (banner != null) {
+			journal.setJournalBannerImage(banner.getBytes());
+			journal.setJournalBannerImageFileName(banner.getOriginalFilename());
+		}
 		
 		if (journal.getId() != null) {
 			
@@ -85,6 +99,17 @@ public class JournalController {
 		}
 		
 		return null;
+	}
+	
+	@RequestMapping(value="/deleteJournal", method=RequestMethod.GET)
+	public void deleteJournal(@RequestParam String journalId) {
+		
+		if (journalId != null && journalId.trim().length() > 0) {
+
+			System.out.println("Deleting journal with id : " + journalId);
+			journalJDBCTemplate.deleteJournal(journalId);
+			System.out.println("Deleted journal with id : " + journalId);
+		}
 	}
 	
 	public void getJournal() {
