@@ -26,10 +26,19 @@ public class JournalFilter implements Filter{
 		
 		allowed.add("/login");
 		allowed.add("/logout");
+		
+		//Journals
 		allowed.add("/journals");
 		allowed.add("/addJournal");
 		allowed.add("/updateJournal");
 		allowed.add("/deleteJournal");
+		
+		//Editors
+		allowed.add("/editors");
+		allowed.add("/addEditor");
+		allowed.add("/updateEditor");
+		allowed.add("/deleteEditor");
+		
 	}
 
 	@Override

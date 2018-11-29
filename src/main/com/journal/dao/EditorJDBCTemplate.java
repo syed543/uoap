@@ -60,7 +60,7 @@ public class EditorJDBCTemplate {
 
 	public EditorRecord getEditorByMailId(String mail) {
 		
-		String query = "Select id, firstName, lastName, email, country from Editor where email = ?";
+		String query = "Select id, firstName, lastName, email from Editor where email = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 		
@@ -76,7 +76,7 @@ public class EditorJDBCTemplate {
 
 	public List<EditorModel> getEditors() {
 		
-		String query = "Select id, firstName, lastName, email, description, affiliation, journalName from Editor e, Journal j where e.journalId = j.id";
+		String query = "Select e.id as id, firstName, lastName, email, description, affiliation, journalName from Editor e, Journal j where e.journalId = j.id";
 
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 

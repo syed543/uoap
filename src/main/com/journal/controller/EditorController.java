@@ -28,7 +28,7 @@ public class EditorController {
 	
 	@RequestMapping(value="/addEditor", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> addEditor(@RequestParam String data, @RequestPart(required=false) MultipartFile attachment) 
+	public Map<String, Object> addEditor(@RequestParam String data, @RequestPart(required=false) MultipartFile file) 
 			throws IOException {
 		
 		EditorModel editorModel = new ObjectMapper().readValue(data, EditorModel.class);
@@ -43,14 +43,13 @@ public class EditorController {
 			editorModel.setPassword(password);
 			editorModel.setGeneratedPass("y");
 			
-			if (attachment != null) {
+			if (file != null) {
 				
-				editorModel.setAvatar(attachment.getBytes());
-				editorModel.setAvatarFileName(attachment.getOriginalFilename());
+				editorModel.setAvatar(file.getBytes());
+				editorModel.setAvatarFileName(file.getOriginalFilename());
 			}
 			
 			editorJDBCTemplate.saveEditor(editorModel);
-			
 			
 			result.put("status", "200");
 			result.put("message", "editor added succesfully");
@@ -89,7 +88,9 @@ public class EditorController {
 	@RequestMapping(value="/deleteEditor", method=RequestMethod.GET)
 	public Map<String, Object> deleteeditor(String editorId) {
 		
-		editorJDBCTemplate.deleteEditor(editorId);
+		if (editorId != null && editorId.trim().length() > 0) {
+			editorJDBCTemplate.deleteEditor(editorId);
+		}
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("status", "200");
@@ -98,7 +99,7 @@ public class EditorController {
 		return result;
 	}
 	
-	@RequestMapping(value="/geteditors", method=RequestMethod.GET)
+	@RequestMapping(value="/editors", method=RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> geteditors() {
 		
