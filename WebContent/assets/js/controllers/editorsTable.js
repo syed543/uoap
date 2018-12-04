@@ -94,7 +94,7 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
          data['email'] = $scope.editor['email'];
          data['description'] = $scope.editor['description'];
          data['affiliation'] = $scope.editor['affiliation'];
-         data['journalId'] = $scope.editor['journal'];
+         data['journalId'] = $scope.editor['journalId'];
 
         fd.append("data", JSON.stringify(data));
         EditorsService.addEditor(fd).then(function (data) {
