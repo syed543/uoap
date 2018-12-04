@@ -71,21 +71,26 @@ public class JournalFilter implements Filter{
 		
 		if (session == null || session.getAttribute("user") == null) {
 			
-			if (allowed.contains(pathInfo)) {
-				
-				System.out.println("Allowing to into system from allowed condition");
-				chain.doFilter(servletRequest, servletResponse);
-				return;
-			} else {
-				
+			if (!pathInfo.equals("/login")) {
 				System.out.println("Not allowed and Returned");
 				response.sendRedirect("/login");
 				return;
 			}
 		}
-		
-		User user = (User) session.getAttribute("user");
-		
+			
+			int index = pathInfo.indexOf("/", 2);
+			
+			if (index > 2) {
+				pathInfo = pathInfo.substring(0, index);
+			}
+			
+			System.out.println("Cutdowned path: " + pathInfo);
+			
+			if (!allowed.contains(pathInfo)) {
+				System.out.println("Not allowed and Returned");
+				response.sendRedirect("/login");
+				return;
+			}
 		System.out.println("Allowed into system");
 		
 		chain.doFilter(servletRequest, servletResponse);

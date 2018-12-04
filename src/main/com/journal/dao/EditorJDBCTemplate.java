@@ -53,7 +53,7 @@ public class EditorJDBCTemplate {
 		
 		jdbcTemplate.update(query, editorModel.getFirstName(), editorModel.getLastName(), editorModel.getAvatar(), 
 				editorModel.getAvatarFileName(), editorModel.getDescription(), editorModel.getAffiliation(), 
-				editorModel.getJournalId());
+				editorModel.getJournalId(), editorModel.getId());
 		
 		System.out.println("Editor updated");
 	}
@@ -76,7 +76,7 @@ public class EditorJDBCTemplate {
 
 	public List<EditorModel> getEditors() {
 		
-		String query = "Select e.id as id, firstName, lastName, email, description, affiliation, journalName from Editor e, Journal j where e.journalId = j.id";
+		String query = "Select e.id as id, firstName, lastName, email, description, affiliation, journalName, j.id as jid from Editor e, Journal j where e.journalId = j.id";
 
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
@@ -94,6 +94,8 @@ public class EditorJDBCTemplate {
 			editorModel.setDescription((String) editorRow.get("description"));
 			editorModel.setAffiliation((String) editorRow.get("affiliation"));
 			editorModel.setJournalName((String) editorRow.get("journalName"));
+			editorModel.setJournalId((Integer) editorRow.get("jid"));
+			
 			editorModels.add(editorModel);
 		}
 		

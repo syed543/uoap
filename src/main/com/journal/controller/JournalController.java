@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -71,11 +72,14 @@ public class JournalController {
 		return result;
 	}
 	
-	@RequestMapping(value="/updateJournal", method=RequestMethod.POST)
+	@RequestMapping(value="/updateJournal/{journalId}", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> updateJournal(@RequestParam String data, @RequestPart(required=false) MultipartFile icon, @RequestPart(required=false) MultipartFile banner) throws JsonParseException, JsonMappingException, IOException {
+	public Map<String, Object> updateJournal(@RequestParam String data, @PathVariable("journalId") int journalId, 
+			@RequestPart(required=false) MultipartFile icon, @RequestPart(required=false) MultipartFile banner) throws JsonParseException, JsonMappingException, IOException {
 		
 		Journal journal = new ObjectMapper().readValue(data, Journal.class);
+		
+		journal.setId(journalId);
 		
 		if (icon != null) {
 			journal.setJournalIcon(icon.getBytes());
@@ -92,7 +96,7 @@ public class JournalController {
 			journalJDBCTemplate.updateJournal(journal);
 			
 			Map<String, Object> result = new HashMap<String, Object>();
-			result.put("status", "200");
+			result.put("statusCode", "200");
 			result.put("message", "Journal added succesfully");
 
 			return result;

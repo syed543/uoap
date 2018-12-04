@@ -173,7 +173,7 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
 
         fd.append("data", JSON.stringify(data));
 
-        JournalsService.updateJournal(fd).then(function (data, journalId) {
+        JournalsService.updateJournal(fd, journalId).then(function (data, journalId) {
             if (data.statusCode == 200) { // Success
                 $scope.refreshJournal();
                 $scope.toggleEdit();
