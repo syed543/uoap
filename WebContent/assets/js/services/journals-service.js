@@ -39,7 +39,7 @@ services.factory('JournalsService', ["Http", "$q", "$state", "$log", function (H
             deleteJournal: function(journalId) {
                 var deferred = $q.defer();
                 /*HTTP.postData('assets/data/journals.json', journalId).then(function(data){*/
-                Http.getData('/deleteJournal?journalId='+journalId).then(function(data){
+                Http.getData('/deleteJournal/'+journalId).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;

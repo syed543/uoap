@@ -105,15 +105,17 @@ public class JournalController {
 		return null;
 	}
 	
-	@RequestMapping(value="/deleteJournal", method=RequestMethod.GET)
-	public void deleteJournal(@RequestParam String journalId) {
+	@RequestMapping(value="/deleteJournal/{journalId}", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> deleteJournal(@PathVariable("journalId") int journalId) {
+		System.out.println("Deleting journal with id : " + journalId);
+		journalJDBCTemplate.deleteJournal(journalId);
+		System.out.println("Deleted journal with id : " + journalId);
 		
-		if (journalId != null && journalId.trim().length() > 0) {
-
-			System.out.println("Deleting journal with id : " + journalId);
-			journalJDBCTemplate.deleteJournal(journalId);
-			System.out.println("Deleted journal with id : " + journalId);
-		}
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("statusCode", "200");
+		result.put("message", "Journal added succesfully");
+		return result;
 	}
 	
 	public void getJournal() {

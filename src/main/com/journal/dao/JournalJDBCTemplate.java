@@ -94,7 +94,7 @@ public class JournalJDBCTemplate {
 		jdbcTemplate.update(query, params.toArray(new Object[0]));
 	}
 	
-	public void deleteJournal(String journalId) {
+	public void deleteJournal(int journalId) {
 		
 		String query = "delete from JOURNAL where id = ?";
 		
