@@ -141,7 +141,7 @@
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Journal</label>
                             <md-select name="journalId" ng-model="editor.journalId" required>
-                                <md-option ng-repeat="journal in journals" value="{{journal.journal_abbrev}}">
+                                <md-option ng-repeat="journal in journals" value="{{journal.id}}">
                                     {{journal.journal_name}}
                                 </md-option>
                             </md-select>
