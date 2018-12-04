@@ -19,10 +19,10 @@ services.factory('EditorsService', ["Http", "$q", "$state", "$log", function (Ht
                 }).catch(function(err){});
                 return deferred.promise;
 			},
-            updateEditor: function(data) {
+            updateEditor: function(data, editorId) {
                 var deferred = $q.defer();
                 /*Http.postMultipartData('/addEditor', data).then(function(data){*/
-                Http.postMultipartData('/updateEditor', data).then(function(data){
+                Http.postMultipartData('/updateEditor/'+editorId, data).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;

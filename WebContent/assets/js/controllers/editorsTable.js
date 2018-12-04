@@ -158,7 +158,8 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
     $scope.updateEditor = function() {
         var data = {},
             fd = new FormData(),
-            editorObj = {};
+            editorObj = {},
+            editorId = $scope.editor['id'];
         fd.append("file", $scope.file);
 
         data['firstName'] = $scope.editor['firstName'];
@@ -169,7 +170,7 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
         data['journalId'] = $scope.editor['journalId'];
 
         fd.append("data", JSON.stringify(data));
-        EditorsService.updateEditor(fd).then(function (data) {
+        EditorsService.updateEditor(fd, editorId).then(function (data) {
             if (data.statusCode == 200) { // Success
                 $scope.refreshEditors();
                 $scope.toggleEdit();

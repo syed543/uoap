@@ -161,7 +161,8 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
     };
     $scope.updateJournal = function() {
         var data = {},
-            fd = new FormData();
+            fd = new FormData(),
+            journalId = $scope.journal['journalId'];
 
         fd.append("icon", $scope.icon);
         fd.append("banner", $scope.banner);
@@ -172,7 +173,7 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
 
         fd.append("data", JSON.stringify(data));
 
-        JournalsService.updateJournal(fd).then(function (data) {
+        JournalsService.updateJournal(fd).then(function (data, journalId) {
             if (data.statusCode == 200) { // Success
                 $scope.refreshJournal();
                 $scope.toggleEdit();

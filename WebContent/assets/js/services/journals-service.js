@@ -28,10 +28,10 @@ services.factory('JournalsService', ["Http", "$q", "$state", "$log", function (H
                 }).catch(function(err){});
                 return deferred.promise;
             },
-            updateJournal: function(data) {
+            updateJournal: function(data, journalId) {
                 var deferred = $q.defer();
                 //Http.getData('assets/data/journals.json', data).then(function(data){
-                Http.postMultipartData('/updateJournal', data).then(function(data){
+                Http.postMultipartData('/updateJournal/'+journalId, data).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
