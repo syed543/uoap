@@ -74,7 +74,7 @@ public class ReviewerController {
 		return result;
 	}
 	
-	@RequestMapping(value="/getReviewers", method=RequestMethod.GET)
+	@RequestMapping(value="/reviewers", method=RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> getReviewers() {
 		
