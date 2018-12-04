@@ -51,12 +51,12 @@ public class EditorController {
 			
 			editorJDBCTemplate.saveEditor(editorModel);
 			
-			result.put("status", "200");
+			result.put("statusCode", "200");
 			result.put("message", "editor added succesfully");
 
 		} else {
 			
-			result.put("status", "200");
+			result.put("statusCode", "200");
 			result.put("message", "editor exists");
 		}
 		
@@ -79,7 +79,7 @@ public class EditorController {
 		editorJDBCTemplate.updateEditor(editorModel);
 		
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("status", "200");
+		result.put("statusCode", "200");
 		result.put("message", "Editor updated succesfully");
 		
 		return result;
@@ -93,7 +93,7 @@ public class EditorController {
 		}
 		
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("status", "200");
+		result.put("statusCode", "200");
 		result.put("message", "editor deleted succesfully");
 		
 		return result;
