@@ -162,7 +162,7 @@ controllers.controller("journalsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
     $scope.updateJournal = function() {
         var data = {},
             fd = new FormData(),
-            journalId = $scope.journal['journalId'];
+            journalId = $scope.journal['id'];
 
         fd.append("icon", $scope.icon);
         fd.append("banner", $scope.banner);
