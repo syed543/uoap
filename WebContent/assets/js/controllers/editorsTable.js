@@ -180,7 +180,7 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
         });
     }
     $scope.deleteEditor = function(editor) {
-        EditorsService.deleteEditor(editor.email).then(function (data) {
+        EditorsService.deleteEditor(editor.id).then(function (data) {
             if (data.statusCode == 200) { // Success
                 $scope.refreshEditors();
             } else { 					// Error
