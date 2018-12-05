@@ -30,7 +30,7 @@ services.factory('EditorsService', ["Http", "$q", "$state", "$log", function (Ht
             deleteEditor: function(editorId) {
                 var deferred = $q.defer();
                 /*HTTP.postData('assets/data/journals.json', reviewerId).then(function(data){*/
-                Http.getData('/deleteEditor?editorId='+editorId).then(function(data){
+                Http.getData('/deleteEditor/'+editorId).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
