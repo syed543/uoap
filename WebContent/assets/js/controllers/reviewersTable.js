@@ -380,7 +380,7 @@ controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '
         $scope.toggleEdit();
     };
     $scope.updateReviewer = function() {
-        ReviewersService.updateReviewer($scope.reviewerObj).then(function (data) {
+        ReviewersService.updateReviewer($scope.reviewerObj, $scope.reviewerObj.id).then(function (data) {
             if (data.statusCode == 200) { // Success
                 $scope.refreshReviewers();
                 $scope.toggleEdit();
@@ -390,7 +390,7 @@ controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '
         });
     }
     $scope.deleteReviewer = function(reviewer) {
-        ReviewersService.deleteReviewer(reviewer.email).then(function (data) {
+        ReviewersService.deleteReviewer(reviewer.id).then(function (data) {
             if (data.statusCode == 200) { // Success
                 $scope.refreshReviewers();
             } else { 					// Error

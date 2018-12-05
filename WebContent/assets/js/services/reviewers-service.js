@@ -14,15 +14,17 @@ services.factory('ReviewersService', ["Http", "$q", "$state", "$log", function (
             addReviewer: function(data) {
 				var deferred = $q.defer();
 				/*HTTP.postData('assets/data/journals.json', data).then(function(data){*/
-                Http.getData('assets/data/reviewers.json', data).then(function(data){
+                /*Http.getData('assets/data/reviewers.json', data).then(function(data){*/
+                Http.postData('/addReviewer', data).then(function(data){
                   deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
 			},
-            updateReviewer: function(data) {
+            updateReviewer: function(data, reviewerId) {
                 var deferred = $q.defer();
                 /*HTTP.postData('assets/data/journals.json', data).then(function(data){*/
-                Http.getData('assets/data/reviewers.json', data).then(function(data){
+                /*Http.getData('assets/data/reviewers.json', data).then(function(data){*/
+                Http.postData('/updateReviewer/'+reviewerId, data).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
@@ -30,7 +32,8 @@ services.factory('ReviewersService', ["Http", "$q", "$state", "$log", function (
             deleteReviewer: function(reviewerId) {
                 var deferred = $q.defer();
                 /*HTTP.postData('assets/data/journals.json', reviewerId).then(function(data){*/
-                Http.getData('assets/data/reviewers.json', reviewerId).then(function(data){
+                /*Http.getData('assets/data/reviewers.json', reviewerId).then(function(data){*/
+                Http.getData('/deleteReviewer/'+reviewerId).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
