@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,9 +65,9 @@ public class EditorController {
 		return result;
 	}
 	
-	@RequestMapping(value="/updateEditor", method=RequestMethod.POST)
+	@RequestMapping(value="/updateEditor/{editorId}", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> updateEditor(@RequestParam String data, @RequestPart(required=false) MultipartFile attachment) throws IOException {
+	public Map<String, Object> updateEditor(@PathVariable("editorId") int editorId, @RequestParam String data, @RequestPart(required=false) MultipartFile attachment) throws IOException {
 		
 
 		EditorModel editorModel = new ObjectMapper().readValue(data, EditorModel.class);
@@ -76,7 +77,12 @@ public class EditorController {
 			editorModel.setAvatar(attachment.getBytes());
 			editorModel.setAvatarFileName(attachment.getOriginalFilename());
 		}
-		editorJDBCTemplate.updateEditor(editorModel);
+		
+		editorModel.setId(editorId);
+		
+		if (editorModel.getId() != null) {
+			editorJDBCTemplate.updateEditor(editorModel);
+		}
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("statusCode", "200");
@@ -85,10 +91,11 @@ public class EditorController {
 		return result;
 	}
 	
-	@RequestMapping(value="/deleteEditor", method=RequestMethod.GET)
-	public Map<String, Object> deleteeditor(String editorId) {
+	@RequestMapping(value="/deleteEditor/{editorId}", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> deleteeditor(@PathVariable("editorId") int editorId) {
 		
-		if (editorId != null && editorId.trim().length() > 0) {
+		if (editorId > 0 ) {
 			editorJDBCTemplate.deleteEditor(editorId);
 		}
 		
