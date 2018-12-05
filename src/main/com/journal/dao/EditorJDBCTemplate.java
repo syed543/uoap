@@ -102,7 +102,7 @@ public class EditorJDBCTemplate {
 		return editorModels;
 	}
 
-	public void deleteEditor(String editorId) {
+	public void deleteEditor(int editorId) {
 		
 		String query  = "delete from Editor where id = ?";
 		
