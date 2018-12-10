@@ -35,11 +35,11 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
 
     var _getMenuScripts = function() {
       var _filterBy;
-      if($scope.userType === 'reviewer' || $scope.userType === 'author') {
+      /*if($scope.userType === 'reviewer' || $scope.userType === 'author') {*/
         _filterBy = {
           "email" : $rootScope.userInfo.email
         }
-      }
+      /*}*/
       MenuScriptsService.getMenuScripts(_filterBy).then(function (data) {
         if (data.statusCode == 200) { // Success
           $scope.desserts = data;
