@@ -28,7 +28,8 @@
                         <th md-column md-order-by="article_title"><span>Title</span></th>
                         <th md-column md-order-by="authors"><span>Authors</span></th>
                         <th md-column md-order-by="article_abstract"><span>Abstract</span></th>
-                        <th md-column md-order-by=""><span>View</span></th>
+                        <th md-column md-order-by="journalName"><span>Journal</span></th>
+                        <th md-column md-order-by=""><span>Download</span></th>
                         <th md-column ng-if="userType === 'admin'"  md-order-by=""><span>Delete</span></th>
                     </tr>
                     </thead>
@@ -37,6 +38,7 @@
                         <td md-cell>{{dessert.article_title}}</td>
                         <td md-cell>{{dessert.authors}}</td>
                         <td md-cell>{{dessert.article_abstract}}</td>
+                        <td md-cell>{{dessert.journalName}}</td>
                         <td md-cell><md-button class="md-icon-button" ng-click="view(dessert)">
                             <md-icon>file_download</md-icon>
                         </md-button></td>

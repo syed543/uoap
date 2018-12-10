@@ -13,15 +13,15 @@ services.factory('ArticlesService', ["Http", "$q", "$state", "$log", function (H
                   }
                 }
                 /*Http.getData(serviceUrl).then(function(data){*/
-                Http.getData('assets/data/articles.json').then(function(data){
+                Http.getData('/getArticles').then(function(data){
                   deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
 			},
             getArticlesByJournalId: function(Id) {
                 var deferred = $q.defer();
-                /*Http.getData('assets/data/getArticlesByJournalId.json?Id='+id).then(function(data){*/
-                Http.getData('assets/data/articles.json').then(function(data){
+                Http.getData('/getArticlesByJournalId', Id).then(function(data){
+                /*Http.getData('assets/data/articles.json').then(function(data){*/
                   deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
@@ -47,8 +47,8 @@ services.factory('ArticlesService', ["Http", "$q", "$state", "$log", function (H
             },
             deleteArticle: function(articleId) {
                 var deferred = $q.defer();
-                Http.getData('assets/data/articles.json', articleId).then(function(data){
-                /*Http.getData('/deleteArticle', articleId).then(function(data){*/
+                /*Http.getData('assets/data/articles.json', articleId).then(function(data){*/
+                Http.getData('/deleteArticle', articleId).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
