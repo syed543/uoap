@@ -6,7 +6,8 @@ services.factory('ReviewersService', ["Http", "$q", "$state", "$log", function (
 		return {
 			getReviewers: function() {
                 var deferred = $q.defer();
-                Http.getData('assets/data/reviewers.json').then(function(data){
+                /*Http.getData('assets/data/reviewers.json').then(function(data){*/
+                Http.getData('/reviewers').then(function(data){
                   deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
