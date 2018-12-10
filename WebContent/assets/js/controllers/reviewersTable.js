@@ -326,12 +326,12 @@ controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '
       };
 
       $scope.addReviewer = function() {
-          /*var _data = {};
+          var _data = {};
           _data['firstName'] = $scope.reviewer['first_Name'];
           _data['lastName'] = $scope.reviewer['last_Name'];
           _data['email'] = $scope.reviewer['email'];
-          _data['country'] = $scope.reviewer['country'];*/
-        ReviewersService.addReviewer($scope.reviewerObj).then(function (data) {
+          _data['country'] = $scope.reviewer['country'];
+        ReviewersService.addReviewer(_data).then(function (data) {
           if (data.statusCode == 200) { // Success
             _getReviewers();
           } else { 					// Error
