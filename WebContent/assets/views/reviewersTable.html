@@ -24,8 +24,8 @@
                 <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
                     <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
                     <tr md-row>
-                        <th md-column md-order-by="first_Name"><span>First Name</span></th>
-                        <th md-column md-order-by="last_Name"><span>Last Name</span></th>
+                        <th md-column md-order-by="firstName"><span>First Name</span></th>
+                        <th md-column md-order-by="lastName"><span>Last Name</span></th>
                         <th md-column md-order-by="email"><span>Email</span></th>
                         <th md-column md-order-by="country"  md-desc><span>Country</span></th>
                         <th md-column md-order-by=""><span>View</span></th>
@@ -34,8 +34,8 @@
                     </thead>
                     <tbody md-body>
                     <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-                        <td md-cell>{{dessert.first_Name}}</td>
-                        <td md-cell>{{dessert.last_Name}}</td>
+                        <td md-cell>{{dessert.firstName}}</td>
+                        <td md-cell>{{dessert.lastName}}</td>
                         <td md-cell>{{dessert.email}}</td>
                         <td md-cell>{{dessert.country}}</td>
                         <td md-cell><md-button class="md-icon-button" ng-click="view(dessert)">
@@ -70,7 +70,7 @@
                             <md-input-container >
                                 <label>First Name</label>
                                 <input name="name" ng-model="reviewerObj.first_Name" required>
-                                <div ng-messages="reviewer.first_Name.$error">
+                                <div ng-messages="reviewer.firstName.$error">
                                     <div ng-message="required" class="my-message">You must provide reviewers First Name.</div>
                                 </div>
                             </md-input-container>
@@ -78,7 +78,7 @@
                             <md-input-container >
                                 <label>Last Name</label>
                                 <input name="name" ng-model="reviewerObj.last_Name" required>
-                                <div ng-messages="reviewer.last_Name.$error">
+                                <div ng-messages="reviewer.lastName.$error">
                                     <div ng-message="required" class="my-message">You must provide reviewers Last Name.</div>
                                 </div>
                             </md-input-container>

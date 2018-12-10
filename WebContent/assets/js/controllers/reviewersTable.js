@@ -327,15 +327,15 @@ controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '
 
       $scope.addReviewer = function() {
           var _data = {};
-          _data['firstName'] = $scope.reviewer['first_Name'];
-          _data['lastName'] = $scope.reviewer['last_Name'];
+          _data['firstName'] = $scope.reviewer['firstName'];
+          _data['lastName'] = $scope.reviewer['lastName'];
           _data['email'] = $scope.reviewer['email'];
           _data['country'] = $scope.reviewer['country'];
         ReviewersService.addReviewer(_data).then(function (data) {
           if (data.statusCode == 200) { // Success
             _getReviewers();
           } else { 					// Error
-            console.log("Unable to add Journal. please contact support.");
+            console.log("Unable to add Reviewer. please contact support.");
           }
           $mdDialog.cancel();
         });
