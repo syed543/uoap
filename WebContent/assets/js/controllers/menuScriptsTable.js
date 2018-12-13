@@ -43,6 +43,16 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
       MenuScriptsService.getMenuScripts(_filterBy).then(function (data) {
         if (data.statusCode == 200) { // Success
           $scope.desserts = data;
+
+          if(data.status == 1) {
+              $scope.desserts.statusText = 'Open';
+          } else if(data.status == 2) {
+              $scope.desserts.statusText = 'In-review';
+          } else if(data.status == 3) {
+              $scope.desserts.statusText = 'Approved';
+          } else {
+              $scope.desserts.statusText = 'Rejected';
+          }
         } else { 					// Error
           console.log("Unable to fetch articles list. please contact support.");
         }
@@ -71,7 +81,7 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
     $scope.view = function(item) {
         $scope.menuScriptItem = item;
         $scope.toggleEdit();
-        if($scope.menuScriptItem.status && $scope.menuScriptItem.status.toLowerCase() == 'open') {
+        if($scope.menuScriptItem.status && $scope.menuScriptItem.status == 1) {
             $scope.canEdit = true;
         } else {
             $scope.canEdit = false;

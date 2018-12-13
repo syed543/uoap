@@ -21,7 +21,7 @@
                     <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
                     <tr md-row>
                         <th md-column md-order-by="fName"><span>Author</span></th>
-                        <th md-column md-order-by="status"><span>Status</span></th>
+                        <th md-column md-order-by="statusText"><span>Status</span></th>
                         <th md-column md-order-by="menuTitle"><span>Title</span></th>
                         <th md-column md-order-by="article"><span>Article Type</span></th>
                         <th md-column ng-if="userType !== 'reviewer'" md-order-by="journalName"><span>Journal</span></th>
@@ -37,7 +37,7 @@
                     <tbody md-body>
                     <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
                         <td md-cell>{{dessert.fName}}</td>
-                        <td md-cell>{{dessert.status}}</td>
+                        <td md-cell>{{dessert.statusText}}</td>
                         <td md-cell>{{dessert.menuTitle}}</td>
                         <td md-cell>{{dessert.article}}</td>
                         <td md-cell ng-if="userType !== 'reviewer'">{{dessert.journalName}}</td>
