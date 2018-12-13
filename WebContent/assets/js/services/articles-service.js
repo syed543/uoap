@@ -48,7 +48,7 @@ services.factory('ArticlesService', ["Http", "$q", "$state", "$log", function (H
             deleteArticle: function(articleId) {
                 var deferred = $q.defer();
                 /*Http.getData('assets/data/articles.json', articleId).then(function(data){*/
-                Http.getData('/deleteArticle', articleId).then(function(data){
+                Http.getData('/deleteArticle/'+articleId).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
