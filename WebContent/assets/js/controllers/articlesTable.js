@@ -76,11 +76,11 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
     };
 
     $scope.view = function(article) {
-      ArticlesService.downloadArticle(article['article_id']);
+      ArticlesService.downloadArticle(article['id']);
     };
 
     $scope.delete = function(article) {
-      ArticlesService.deleteArticle(article['article_id']).then(function(data) {
+      ArticlesService.deleteArticle(article['id']).then(function(data) {
           if (data.statusCode == 200) { // Success
               $scope.refreshArticles();
           } else { 					// Error
