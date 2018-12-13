@@ -46,14 +46,14 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
 
           for(var index=0; index < data.data.length; index++) {
 
-              if (data[data][index].status == 1) {
-                  $scope.desserts[data][index].statusText = 'Open';
-              } else if (data.status == 2) {
-                  $scope.desserts[data][index].statusText = 'In-review';
-              } else if (data.status == 3) {
-                  $scope.desserts[data][index].statusText = 'Approved';
+              if (data['data'][index].status == 1) {
+                  $scope.desserts['data'][index].statusText = 'Open';
+              } else if (data['data'][index].status == 2) {
+                  $scope.desserts['data'][index].statusText = 'In-review';
+              } else if (data['data'][index].status == 3) {
+                  $scope.desserts['data'][index].statusText = 'Approved';
               } else {
-                  $scope.desserts[data][index].statusText = 'Rejected';
+                  $scope.desserts['data'][index].statusText = 'Rejected';
               }
           }
         } else { 					// Error
