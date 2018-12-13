@@ -69,7 +69,15 @@ services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function
             },
             updateMenuScript: function(menuScriptItem) {
                 var deferred = $q.defer();
-                Http.postMultipartData('/updateMenuScript/'+menuScriptItem['menuScript_id'], menuScriptItem).then(function(data){
+                Http.postData('/updateMenuScript/'+menuScriptItem['id'], menuScriptItem).then(function(data){
+                /*Http.getData('assets/data/menuScriptItem.json', menuScriptItem).then(function(data){*/
+                    deferred.resolve(data);
+                }).catch(function(err){});
+                return deferred.promise;
+            },
+            updateMenuScriptMultipart: function(menuScriptItem) {
+                var deferred = $q.defer();
+                Http.postMultipartData('/updateMenuScript/'+menuScriptItem['id'], menuScriptItem).then(function(data){
                 /*Http.getData('assets/data/menuScriptItem.json', menuScriptItem).then(function(data){*/
                     deferred.resolve(data);
                 }).catch(function(err){});

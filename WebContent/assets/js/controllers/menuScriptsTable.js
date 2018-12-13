@@ -107,19 +107,32 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
 
               fd.append("file", $scope.file);
 
-              data['menu_title'] = $scope.menuScriptItem['menu_title'];
-              data['abstract'] = $scope.menuScriptItem['abstract'];
-              data['menuScript_id'] = $scope.menuScriptItem['menuScript_id'];
+              data['menuTitle'] = $scope.menuScriptItem['menuTitle'];
+              data['abstractTitle'] = $scope.menuScriptItem['abstractTitle'];
+              data['id'] = $scope.menuScriptItem['id'];
+              if($scope.userType === 'admin' && $scope.menuScriptItem['feedback'].length > 0) {
+                  data['feedback'] = $scope.menuScriptItem['feedback'];
+              }
 
               fd.append("data", JSON.stringify(data));
-              MenuScriptsService.updateMenuScript(fd).then(function (data) {
+              MenuScriptsService.updateMenuScriptMultipart(fd).then(function (data) {
                   $scope.refreshMenuScripts();
                   $scope.toggleEdit();
                   angular.element("input[type='file']").val(null);
                   $scope.file = '';
               });
           } else {
+              var data = {};
 
+              data['feedback'] = $scope.menuScriptItem['feedback'];
+              data['id'] = $scope.menuScriptItem['id'];
+
+              MenuScriptsService.updateMenuScript(data).then(function (data) {
+                  $scope.refreshMenuScripts();
+                  $scope.toggleEdit();
+                  angular.element("input[type='file']").val(null);
+                  $scope.file = '';
+              });
           }
       };
 
