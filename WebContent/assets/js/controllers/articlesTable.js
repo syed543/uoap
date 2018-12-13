@@ -130,9 +130,9 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
             var fd = new FormData(),
                 _data = {};
             _data['title'] = $scope.article['title'];
-            _data['abstractDesc'] = $scope.reviewer['abstractDesc'];
-            _data['journalId'] = $scope.reviewer['journalId'];
-            _data['authors'] = $scope.reviewer['authors'];
+            _data['abstractDesc'] = $scope.article['abstractDesc'];
+            _data['journalId'] = $scope.article['journalId'];
+            _data['authors'] = $scope.article['authors'];
 
             fd.append("file", $scope.file);
             //angular.copy($scope.article, data);
