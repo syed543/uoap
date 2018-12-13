@@ -127,13 +127,17 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
         };
 
         $scope.submitArticle = function() {
-            var data = {},
-                fd = new FormData();
+            var fd = new FormData(),
+                _data = {};
+            _data['title'] = $scope.article['title'];
+            _data['abstractDesc'] = $scope.reviewer['abstractDesc'];
+            _data['journalId'] = $scope.reviewer['journalId'];
+            _data['authors'] = $scope.reviewer['authors'];
 
             fd.append("file", $scope.file);
-            angular.copy($scope.article, data);
+            //angular.copy($scope.article, data);
 
-            fd.append("data", JSON.stringify(data));
+            fd.append("data", JSON.stringify(_data));
 
             ArticlesService.addArticle(fd).then(function (data) {
                 if (data.statusCode == 200) { // Success
