@@ -19,7 +19,7 @@
                     <div class="fullwidth">
                         <md-input-container >
                             <label>Title</label>
-                            <input name="title" ng-model="article.article_title" required>
+                            <input name="title" ng-model="article.title" required>
                             <div ng-messages="articleForm.title.$error">
                                 <div ng-message="required" class="my-message">You must provide the title of article.</div>
                             </div>
@@ -30,9 +30,24 @@
                     <div class="fullwidth">
                         <md-input-container>
                             <label>Abstract</label>
-                            <input name="abstract" ng-model="article.article_abstract" required>
+                            <input name="abstract" ng-model="article.abstractDesc" required>
                             <div ng-messages="articleForm.abstract.$error">
                                 <div ng-message="required" class="my-message">You must provide abstract.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Journal</label>
+                            <md-select name="journalId" ng-model="article.journalId" required>
+                                <md-option ng-repeat="journal in journals" value="{{journal.id}}">
+                                    {{journal.journal_name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="articleForm.journalId.$error" role="alert" multiple>
+                                <div ng-message="required" class="my-message">You must provide journal.</div>
                             </div>
                         </md-input-container>
                     </div>

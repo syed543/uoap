@@ -6,8 +6,8 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial) {
-controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'ArticlesService', '$rootScope', '$mdDialog',
-  function($mdEditDialog, $q, $scope, $timeout, ArticlesService, $rootScope, $mdDialog) {
+controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'ArticlesService', '$rootScope', '$mdDialog','JournalsService',
+  function($mdEditDialog, $q, $scope, $timeout, ArticlesService, $rootScope, $mdDialog, JournalsService) {
 
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
@@ -49,6 +49,14 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
       });
     };
     _getArticles();
+
+    JournalsService.getJournals().then(function (data) {
+      if (data.statusCode == 200) { // Success
+          $scope.journals = data.data;
+      } else { 					// Error
+          console.log("Unable to fetch journals list. please contact support.");
+      }
+    });
 
     $scope.toggleLimitOptions = function () {
       $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
@@ -110,6 +118,7 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
         $scope.cancel = function() {
             $mdDialog.cancel();
         };
+        $scope.journals = parentScope.journals;
 
         $scope.uploadedFile = function(element) {
             $scope.$apply(function($scope) {
