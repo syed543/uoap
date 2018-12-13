@@ -44,14 +44,17 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
         if (data.statusCode == 200) { // Success
           $scope.desserts = data;
 
-          if(data.status == 1) {
-              $scope.desserts.statusText = 'Open';
-          } else if(data.status == 2) {
-              $scope.desserts.statusText = 'In-review';
-          } else if(data.status == 3) {
-              $scope.desserts.statusText = 'Approved';
-          } else {
-              $scope.desserts.statusText = 'Rejected';
+          for(var index=0; index < data.data.length; index++) {
+
+              if (data[data][index].status == 1) {
+                  $scope.desserts[data][index].statusText = 'Open';
+              } else if (data.status == 2) {
+                  $scope.desserts[data][index].statusText = 'In-review';
+              } else if (data.status == 3) {
+                  $scope.desserts[data][index].statusText = 'Approved';
+              } else {
+                  $scope.desserts[data][index].statusText = 'Rejected';
+              }
           }
         } else { 					// Error
           console.log("Unable to fetch articles list. please contact support.");
