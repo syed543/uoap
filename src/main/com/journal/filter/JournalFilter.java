@@ -46,10 +46,16 @@ public class JournalFilter implements Filter{
 		allowed.add("/deleteReviewer");
 		
 		//Reviewers
-		allowed.add("/reviewers");
-		allowed.add("/addReviewer");
-		allowed.add("/updateReviewer");
-		allowed.add("/deleteReviewer");
+		allowed.add("/getArticles");
+		allowed.add("/addArticle");
+		allowed.add("/updateArticle");
+		allowed.add("/deleteArticle");
+		
+		//Reviewers
+		allowed.add("/menuScriptList");
+		allowed.add("/addMenuScript");
+		allowed.add("/updateMenuScript");
+		allowed.add("/deleteMenuScript");
 	}
 
 	@Override

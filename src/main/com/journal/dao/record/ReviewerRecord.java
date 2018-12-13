@@ -6,7 +6,6 @@ public class ReviewerRecord {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String postalAddress;
 	private String password;
 	private String generatedPass;
 	
@@ -33,12 +32,6 @@ public class ReviewerRecord {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getPostalAddress() {
-		return postalAddress;
-	}
-	public void setPostalAddress(String postalAddress) {
-		this.postalAddress = postalAddress;
 	}
 	public String getPassword() {
 		return password;

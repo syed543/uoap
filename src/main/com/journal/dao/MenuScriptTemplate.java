@@ -94,7 +94,8 @@ public class MenuScriptTemplate {
 				"menuscript m, " + 
 				"journal j " + 
 				"where m.submitterId = s.id " + 
-				"and m.journalid = j.id and s.email = ?";
+				"and m.journalid = j.id";
+//				"and m.journalid = j.id and s.email = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 		
@@ -104,7 +105,7 @@ public class MenuScriptTemplate {
 			
 			System.out.println("Fetching the list");
 			
-			menuScripts = jdbcTemplate.queryForList(query, new Object[] {email});
+			menuScripts = jdbcTemplate.queryForList(query);
 			
 			System.out.println("Menu scripts : " + menuScripts.size() + " for email : " + email);
 		} catch (EmptyResultDataAccessException eae) {

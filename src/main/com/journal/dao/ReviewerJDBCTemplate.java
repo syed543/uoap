@@ -12,8 +12,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.journal.dao.record.ReviewerRecord;
-import com.journal.dao.record.SubmitterRecord;
-import com.journal.model.ReviewerModel;
 import com.journal.model.ReviewerModel;
 
 public class ReviewerJDBCTemplate {
@@ -32,7 +30,7 @@ public class ReviewerJDBCTemplate {
 	
 	public ReviewerRecord getReviewerByMailId(String mail) {
 		
-		String query = "Select id, firstName, lastName, email, postalAddress, password, generatedPass, country from Reviewer where email = ?";
+		String query = "Select id, firstName, lastName, email, password, generatedPass, country from Reviewer where email = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 		
@@ -47,32 +45,32 @@ public class ReviewerJDBCTemplate {
 	}
 
 	public void saveReviewer(ReviewerModel reviewerModel) {
-		String query = "insert into Reviewer(firstName, lastName, email, postalAddress, password, generatedPass, country) values" +
-						"(?, ?, ?, ?, ?, ?, ?)";
+		String query = "insert into Reviewer(firstName, lastName, email, password, generatedPass, country) values" +
+						"(?, ?, ?, ?, ?, ?)";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, reviewerModel.getFirstName(), reviewerModel.getLastName(), reviewerModel.getEmail(), 
-				reviewerModel.getPostalAddress(), reviewerModel.getPassword(), reviewerModel.getGeneratedPass(),
+				reviewerModel.getPassword(), reviewerModel.getGeneratedPass(),
 				reviewerModel.getCountry());
 		
 		System.out.println("Reviewer created");
 	}
 	
 	public void updateReviewer(ReviewerModel reviewerModel) {
-		String query = "update Reviewer set firstName = ?, lastName = ?, postalAddress = ?, password = ?,  country = ? where id = ?";
+		String query = "update Reviewer set firstName = ?, lastName = ?,  email = ?, country = ? where id = ?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
-		jdbcTemplate.update(query, reviewerModel.getFirstName(), reviewerModel.getLastName(), reviewerModel.getPostalAddress(), 
-				reviewerModel.getPassword(), reviewerModel.getCountry(), reviewerModel.getId());
+		jdbcTemplate.update(query, reviewerModel.getFirstName(), reviewerModel.getLastName(), 
+				reviewerModel.getEmail(), reviewerModel.getCountry(), reviewerModel.getId());
 		
 		System.out.println("Reviewer updated");
 	}
 
 	public List<ReviewerModel> getReviewers() {
 		
-		String query = "Select id, firstName, lastName, email, password, generatedPass, country from Reviewer";
+		String query = "Select id, firstName, lastName, email, country from Reviewer";
 
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
@@ -94,7 +92,7 @@ public class ReviewerJDBCTemplate {
 		return reviewerModels;
 	}
 
-	public void deleteReviewer(String reviewerId) {
+	public void deleteReviewer(int reviewerId) {
 		
 		String query  = "delete from Reviewer where id = ?";
 		

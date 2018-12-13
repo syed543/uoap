@@ -39,5 +39,9 @@
 	<bean id="submitterJDBCTemplate" class="com.journal.dao.SubmitterJDBCTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+
+	<bean id="articleJDBCTemplate" class="com.journal.dao.ArticleJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 	
 </beans>
