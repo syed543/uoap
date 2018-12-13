@@ -67,17 +67,17 @@ services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function
                 }).catch(function(err){});
                 return deferred.promise;
             },
-            updateMenuScript: function(menuScriptItem) {
+            updateMenuScript: function(menuScriptItem, id) {
                 var deferred = $q.defer();
-                Http.postData('/updateMenuScript/'+menuScriptItem['id'], menuScriptItem).then(function(data){
+                Http.postData('/updateMenuScript/'+id, menuScriptItem).then(function(data){
                 /*Http.getData('assets/data/menuScriptItem.json', menuScriptItem).then(function(data){*/
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
             },
-            updateMenuScriptMultipart: function(menuScriptItem) {
+            updateMenuScriptMultipart: function(menuScriptItem, id) {
                 var deferred = $q.defer();
-                Http.postMultipartData('/updateMenuScript/'+menuScriptItem['id'], menuScriptItem).then(function(data){
+                Http.postMultipartData('/updateMenuScript/'+id, menuScriptItem).then(function(data){
                 /*Http.getData('assets/data/menuScriptItem.json', menuScriptItem).then(function(data){*/
                     deferred.resolve(data);
                 }).catch(function(err){});

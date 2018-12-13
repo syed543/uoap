@@ -109,13 +109,13 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
 
               data['menuTitle'] = $scope.menuScriptItem['menuTitle'];
               data['abstractTitle'] = $scope.menuScriptItem['abstractTitle'];
-              data['id'] = $scope.menuScriptItem['id'];
+              var _id = $scope.menuScriptItem['id'];
               if($scope.userType === 'admin' && $scope.menuScriptItem['feedback'].length > 0) {
                   data['feedback'] = $scope.menuScriptItem['feedback'];
               }
 
               fd.append("data", JSON.stringify(data));
-              MenuScriptsService.updateMenuScriptMultipart(fd).then(function (data) {
+              MenuScriptsService.updateMenuScriptMultipart(fd, _id).then(function (data) {
                   $scope.refreshMenuScripts();
                   $scope.toggleEdit();
                   angular.element("input[type='file']").val(null);
@@ -125,9 +125,9 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
               var data = {};
 
               data['feedback'] = $scope.menuScriptItem['feedback'];
-              data['id'] = $scope.menuScriptItem['id'];
+              var _id = $scope.menuScriptItem['id'];
 
-              MenuScriptsService.updateMenuScript(data).then(function (data) {
+              MenuScriptsService.updateMenuScript(data, _id).then(function (data) {
                   $scope.refreshMenuScripts();
                   $scope.toggleEdit();
                   angular.element("input[type='file']").val(null);
