@@ -5,8 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +25,8 @@ import com.journal.dao.SubmitterJDBCTemplate;
 import com.journal.dao.record.MenuScriptRecord;
 import com.journal.dao.record.SubmitterRecord;
 import com.journal.model.MenuScriptModel;
+import com.journal.model.User;
+import com.journal.utils.JournalConstants;
 import com.journal.utils.JournalMailUtil;
 import com.journal.utils.JournalUtil;
 
@@ -68,7 +73,7 @@ public class MenuScriptController {
 			record.setSubmitterId(existingSubmitterRecord.getId());
 		}
 		
-		record.setStatus(1); //UnAssigned
+		record.setStatus(1); //1: Open, 2: inReivew, 3: Approved, 4: Rejected
 		
 		if (attachment != null) {
 			
@@ -107,24 +112,22 @@ public class MenuScriptController {
 		return result;
 	}
 	
-	@RequestMapping(value="/updateMenuScript", method=RequestMethod.POST)
+	@RequestMapping(value="/updateMenuScript/{menuScriptId}", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> updateMenuScript(@RequestParam String data, @RequestPart(required=false) MultipartFile attachment) 
+	public Map<String, Object> updateMenuScript(HttpSession session, @PathVariable int menuScriptId, @RequestParam String data) 
 			throws JsonParseException, JsonMappingException, IOException {
 		
 		MenuScriptModel model = new ObjectMapper().readValue(data, MenuScriptModel.class);
 
 		MenuScriptRecord record = new MenuScriptRecord(model);
 		
-		if (attachment != null) {
-			
-			record.setMenuScriptData(attachment.getBytes());
-			record.setMenuScriptFileName(attachment.getOriginalFilename());
-		}
+		record.setId(menuScriptId);
 		
-		menuScriptTemplate.updateMenuScript(record);
-		JournalMailUtil.sendMail(model.getEmail(), "MenuScript Updated successfully", 
-				"MenuScript update successfully with menuScript title:" + record.getMenuScriptTitle());
+		User user  = (User) session.getAttribute("user");
+		
+		menuScriptTemplate.updateMenuScript(user.getUsertype(), record);
+//		JournalMailUtil.sendMail(model.getEmail(), "MenuScript Updated successfully", 
+//				"MenuScript update successfully with menuScript title:" + record.getMenuScriptTitle());
 		
 		System.out.println("Menu Script added successfully");
 		
@@ -135,26 +138,35 @@ public class MenuScriptController {
 		return result;
 	}
 	
-	@RequestMapping(value = "/deleteMenuScript", method = RequestMethod.GET)
+	@RequestMapping(value = "/deleteMenuScript{menuScriptId}", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> deleteMenuScript(Integer menuScriptId) {
+	public Map<String, Object> deleteMenuScript(@PathVariable int menuScriptId) {
 		
-		menuScriptTemplate.deleteMenuScript(menuScriptId);
-		
+		if (menuScriptId > 0) {
+			menuScriptTemplate.deleteMenuScript(menuScriptId);
+		}
 		Map<String, Object> result = new HashMap<String, Object>(2);
 		result.put("statusCode", 200);
-		result.put("message", "MenuScript updated successfully");
+		result.put("message", "MenuScript deleted successfully");
 		
 		return result;
 	}
 	
 	@RequestMapping(value="/menuScriptList", method=RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> menuScriptList(@RequestParam String email) {
+	public Map<String, Object> menuScriptList(HttpSession session, @RequestParam String email) {
 		
-		List<MenuScriptModel> menuScriptModels  = menuScriptTemplate.getMenuScriptsByEmail(email);
+		User user  = (User) session.getAttribute("user");
+		
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("statusCode", "200");
+
+		if (user == null) {
+			return result;
+		}
+		
+		List<MenuScriptModel> menuScriptModels  =  menuScriptTemplate.getMenuScriptsByEmailAndUserType(user.getUsertype(), user.getEmail());
+		
 		result.put("data", menuScriptModels);
 		result.put("count", menuScriptModels.size());
 

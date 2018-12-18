@@ -89,9 +89,12 @@ alter table menuscript add column reviewer int;
 create table article(
 id int not null auto_increment,
 title varchar(100),
-abstract varchar(100),
-authros varchar(100),
+abstractDesc varchar(100),
+authors varchar(100),
 article longblob,
 articleFileName varchar(50),
+journalId int,
 primary key(id)
 );
+
+alter table menuscript add column feedback varchar(2000);

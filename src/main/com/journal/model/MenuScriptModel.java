@@ -5,6 +5,7 @@ public class MenuScriptModel {
 	private int id,journal,status;
 	private String fName,lName,title,email, article, postalAddress,country,menuTitle,abstractTitle;
 	private String journalName;
+	private String feedback;
 	
 	public int getId() {
 		return id;
@@ -83,5 +84,11 @@ public class MenuScriptModel {
 	}
 	public void setJournalName(String journalName) {
 		this.journalName = journalName;
+	}
+	public String getFeedback() {
+		return feedback;
+	}
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
 	}
 }

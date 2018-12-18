@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.journal.model.User;
-
 public class JournalFilter implements Filter{
 
 	private List<String> allowed = new ArrayList<String>();
@@ -82,8 +80,10 @@ public class JournalFilter implements Filter{
 				response.sendRedirect("/login");
 				return;
 			}
+		} else {
+		
+			System.out.println("User :" + session.getAttribute("user"));
 		}
-			
 			int index = pathInfo.indexOf("/", 2);
 			
 			if (index > 2) {

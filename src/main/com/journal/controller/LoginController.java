@@ -111,8 +111,8 @@ public class LoginController {
 		if (fetchedUser != null) {
 			
 			user = new User();
-			user.setfName(fetchedUser.getfName());
-			user.setlName(fetchedUser.getlName());
+			user.setFirstName(fetchedUser.getFirstName());
+			user.setLastName(fetchedUser.getLastName());
 			user.setEmail(fetchedUser.getEmail());
 			user.setPassword(fetchedUser.getPassword());
 			
@@ -124,8 +124,8 @@ public class LoginController {
 			if (submitter != null) {
 				
 				user = new User();
-				user.setfName(submitter.getFirstName());
-				user.setlName(submitter.getLastName());
+				user.setFirstName(submitter.getFirstName());
+				user.setLastName(submitter.getLastName());
 				user.setEmail(submitter.getEmail());
 				user.setPassword(submitter.getPassword());
 				
@@ -137,8 +137,8 @@ public class LoginController {
 				if (reviewer != null) {
 				
 					user = new User();
-					user.setfName(reviewer.getFirstName());
-					user.setlName(reviewer.getLastName());
+					user.setFirstName(reviewer.getFirstName());
+					user.setLastName(reviewer.getLastName());
 					user.setEmail(reviewer.getEmail());
 					user.setPassword(reviewer.getPassword());
 					
@@ -150,8 +150,8 @@ public class LoginController {
 					if (editor != null) {
 						
 						user = new User();
-						user.setfName(editor.getFirstName());
-						user.setlName(editor.getLastName());
+						user.setFirstName(editor.getFirstName());
+						user.setLastName(editor.getLastName());
 						user.setEmail(editor.getEmail());
 						user.setPassword(editor.getPassword());
 						

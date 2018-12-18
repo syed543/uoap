@@ -9,6 +9,7 @@ public class MenuScriptRecord {
 		journalId = model.getJournal();
 		menuScriptTitle = model.getMenuTitle();
 		abstractData = model.getAbstractTitle();
+		feedBack = model.getFeedback();
 	}
 	
 	public MenuScriptRecord() {
@@ -18,10 +19,11 @@ public class MenuScriptRecord {
 	private int id;
 	private int submitterId;
 	private int journalId;
-	private int status; // 1:UnAssigned
+	private int status; // 1: Open, 2: inReivew, 3: Accepted, 4: Rejected
 	private int reviewer;
 	private String menuScriptTitle;
 	private String abstractData;
+	private String feedBack;
 	
 	private byte[] menuScriptData;
 	private String menuScriptFileName;
@@ -77,4 +79,13 @@ public class MenuScriptRecord {
 	public void setMenuScriptFileName(String menuScriptFileName) {
 		this.menuScriptFileName = menuScriptFileName;
 	}
+
+	public String getFeedBack() {
+		return feedBack;
+	}
+
+	public void setFeedBack(String feedBack) {
+		this.feedBack = feedBack;
+	}
+	
 }
