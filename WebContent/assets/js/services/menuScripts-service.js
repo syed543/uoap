@@ -22,7 +22,7 @@ services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function
             getReviewersByJournalId: function(Id) {
                 var deferred = $q.defer();
                 /*Http.getData('assets/data/getArticlesByJournalId.json?Id='+id).then(function(data){*/
-                Http.getData('/getReviewersByJournalId', Id).then(function(data){
+                Http.getData('/getReviewersByJournalId/'+Id).then(function(data){
                   deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
