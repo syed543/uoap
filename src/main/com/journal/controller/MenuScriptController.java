@@ -126,8 +126,11 @@ public class MenuScriptController {
 		User user  = (User) session.getAttribute("user");
 		
 		menuScriptTemplate.updateMenuScript(user.getUsertype(), record);
-//		JournalMailUtil.sendMail(model.getEmail(), "MenuScript Updated successfully", 
-//				"MenuScript update successfully with menuScript title:" + record.getMenuScriptTitle());
+		
+		SubmitterRecord submitterRecord = menuScriptTemplate.getMenuScriptSubmiiter(menuScriptId);
+		
+		JournalMailUtil.sendMail(submitterRecord.getEmail(), "MenuScript Feedback Provided:", 
+				"Feed back for MenuScript:" + record.getFeedBack());
 		
 		System.out.println("Menu Script added successfully");
 		

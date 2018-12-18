@@ -2,7 +2,6 @@ package com.journal.dao;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,9 +9,11 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.journal.dao.record.MenuScriptRecord;
+import com.journal.dao.record.SubmitterRecord;
 import com.journal.model.MenuScriptModel;
 import com.journal.utils.JournalConstants;
 
@@ -48,15 +49,30 @@ public class MenuScriptTemplate {
 		return menuScriptRecord;
 	}
 	
-	public MenuScriptRecord updateMenuScript(String userType, MenuScriptRecord menuScriptRecord) {
-		String query = "update menuscript set menuScriptTitle = ?, abstractTitle = ?, feedback = ? where id = ?";
-
+	public SubmitterRecord getMenuScriptSubmiiter(int menuScriptId) {
+		
+		String query = "select title, firstName, lastName, email from submitter s, menuscript m where s.id = m.submitterId and m.id = ?";
+		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
-		jdbcTemplate.update(query, menuScriptRecord.getMenuScriptTitle(), menuScriptRecord.getAbstractData(), menuScriptRecord.getFeedBack(),
-				menuScriptRecord.getId());
+		SubmitterRecord record = (SubmitterRecord) jdbcTemplate.queryForObject(query, new Object[] {menuScriptId}, new BeanPropertyRowMapper(SubmitterRecord.class));
+		
+		return record;
+	}
+	
+	public MenuScriptRecord updateMenuScript(String userType, MenuScriptRecord menuScriptRecord) {
+		
+		if (!(JournalConstants.ADMIN.equals(userType) || JournalConstants.REVIEWER.equals(userType) || JournalConstants.EDITOR.equals(userType))) {
+			return menuScriptRecord;
+		}
+		String query = "update menuscript set feedback = ? where id = ?";
+		
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		
+		jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), menuScriptRecord.getId());
 		
 		return menuScriptRecord;
+
 	}
 
 	public List<MenuScriptModel> getAllMenuScripts() {
@@ -128,7 +144,7 @@ public class MenuScriptTemplate {
 			if (JournalConstants.ADMIN.equals(userType)) {
 				menuScripts = jdbcTemplate.queryForList(query);
 			} else if (JournalConstants.REVIEWER.equals(userType) || JournalConstants.EDITOR.equals(userType) || JournalConstants.SUBMITTER.equals(userType)) {
-				menuScripts = jdbcTemplate.queryForList(query);
+				menuScripts = jdbcTemplate.queryForList(query, new Object[] {email});
 			}
 
 		} catch (EmptyResultDataAccessException eae) {
