@@ -9,7 +9,7 @@
                     <md-button class="md-icon-button" ng-click="refreshArticles()">
                         <md-icon>refresh</md-icon>
                     </md-button>
-                    <md-button class="md-icon-button" ng-click="addArticleDialog()">
+                    <md-button class="md-icon-button" ng-if="userType === 'admin'"  ng-click="addArticleDialog()">
                         <md-icon>add</md-icon>
                     </md-button>
                 </div>
