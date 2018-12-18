@@ -65,7 +65,7 @@
                 <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Journal</label>
-                        <md-select name="journalId" ng-model="editor.journalId" required>
+                        <md-select name="journalId" ng-model="reviewer.journalId" required>
                             <md-option ng-repeat="journal in journals" value="{{journal.id}}">
                                 {{journal.journal_name}}
                             </md-option>
