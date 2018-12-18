@@ -27,6 +27,7 @@
                         <th md-column md-order-by="firstName"><span>First Name</span></th>
                         <th md-column md-order-by="lastName"><span>Last Name</span></th>
                         <th md-column md-order-by="email"><span>Email</span></th>
+                        <th md-column md-order-by="journalName"><span>Journal</span></th>
                         <th md-column md-order-by="country"  md-desc><span>Country</span></th>
                         <th md-column md-order-by=""><span>View</span></th>
                         <th md-column ng-if="userType === 'admin'"  md-order-by=""><span>Delete</span></th>
@@ -37,6 +38,7 @@
                         <td md-cell>{{dessert.firstName}}</td>
                         <td md-cell>{{dessert.lastName}}</td>
                         <td md-cell>{{dessert.email}}</td>
+                        <td md-cell>{{dessert.journalName}}</td>
                         <td md-cell>{{dessert.country}}</td>
                         <td md-cell><md-button class="md-icon-button" ng-click="view(dessert)">
                             <md-icon>visibility</md-icon>
