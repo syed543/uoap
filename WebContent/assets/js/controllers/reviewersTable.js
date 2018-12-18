@@ -6,8 +6,8 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial) {
-controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'ReviewersService', '$mdDialog', '$rootScope', 'ArticlesService',
-  function($mdEditDialog, $q, $scope, $timeout, ReviewersService, $mdDialog, $rootScope, ArticlesService) {
+controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'ReviewersService', '$mdDialog', '$rootScope', 'JournalsService',
+  function($mdEditDialog, $q, $scope, $timeout, ReviewersService, $mdDialog, $rootScope, JournalsService) {
 
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
@@ -32,15 +32,7 @@ controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '
     $scope.refreshReviewers = function() {
       _getReviewers();
     };
-
-    /*ArticlesService.getCountries().then(function (data) {
-        if (data.statusCode == 200) { // Success
-            $scope.countries = data.body.countryList;
-        } else { 					// Error
-            console.log("Unable to fetch articles list. please contact support.");
-        }
-    });*/
-      $scope.countries = [
+    $scope.countries = [
           {"name":"Afghanistan","abbrev":"AF"},
           {"name":"Åland Islands","abbrev":"AX"},
           {"name":"Albania","abbrev":"AL"},
@@ -292,6 +284,14 @@ controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '
           {"name":"Zimbabwe","abbrev":"ZW"}
       ];
 
+    JournalsService.getJournals().then(function (data) {
+      if (data.statusCode == 200) { // Success
+          $scope.journals = data.data;
+      } else { 					// Error
+          console.log("Unable to fetch journals list. please contact support.");
+      }
+    });
+
     $scope.addReviewerDialog = function(ev) {
       $mdDialog.show({
         controller: addReviewerController,
@@ -313,7 +313,8 @@ controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '
         'first_Name': '',
         'last_Name': '',
         'email': '',
-        'country': ''
+        'country': '',
+        'journalId': ''
       };
       $scope.countries = countries;
 
@@ -330,6 +331,7 @@ controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '
           _data['firstName'] = $scope.reviewer['firstName'];
           _data['lastName'] = $scope.reviewer['lastName'];
           _data['email'] = $scope.reviewer['email'];
+          _data['journalId'] = $scope.reviewer['journalId'];
           _data['country'] = $scope.reviewer['country'];
         ReviewersService.addReviewer(_data).then(function (data) {
           if (data.statusCode == 200) { // Success

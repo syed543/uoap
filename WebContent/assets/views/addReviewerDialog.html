@@ -56,7 +56,21 @@
                                 {{country.name}}
                             </md-option>
                         </md-select>
-                        <div ng-messages="menuscript.journal.$error" role="alert" multiple>
+                        <div ng-messages="reviewer.journal.$error" role="alert" multiple>
+                            <div ng-message="required" class="my-message">You must provide journal.</div>
+                        </div>
+                    </md-input-container>
+                </md-content>
+
+                <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Journal</label>
+                        <md-select name="journalId" ng-model="editor.journalId" required>
+                            <md-option ng-repeat="journal in journals" value="{{journal.id}}">
+                                {{journal.journal_name}}
+                            </md-option>
+                        </md-select>
+                        <div ng-messages="reviewer.journalId.$error" role="alert" multiple>
                             <div ng-message="required" class="my-message">You must provide journal.</div>
                         </div>
                     </md-input-container>
