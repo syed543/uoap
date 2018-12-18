@@ -154,6 +154,8 @@
                         <label>Feedback</label>
                         <input name="feedback" ng-model="menuScriptItem.feedback" required></input>
                     </md-input-container>
+                </md-content>
+                <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
 
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Reviewer</label>
@@ -168,8 +170,8 @@
                             <div ng-message="required" class="my-message">Please assign reviewer.</div>
                         </div>
                     </md-input-container>
-
                 </md-content>
+
             </div>
 
             <md-dialog-actions layout="row">

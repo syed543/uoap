@@ -86,7 +86,7 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
 
         MenuScriptsService.getReviewersByJournalId($scope.menuScriptItem.journal).then(function (data) {
             if (data.statusCode == 200) { // Success
-                $scope.reviewers = data;
+                $scope.reviewers = data.data;
 
                 $scope.toggleEdit();
                 if($scope.menuScriptItem.status && $scope.menuScriptItem.status == 1) {
