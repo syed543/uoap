@@ -38,7 +38,7 @@ services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function
             rejectMenuScript: function(menuScriptItem) {
                 var deferred = $q.defer();
                 /*Http.postMultipartData('/menuScriptItem', menuScriptItem).then(function(data){*/
-                Http.getData('assets/data/menuScriptItem.json', menuScriptItem).then(function(data){
+                Http.postData('/rejectMenuscript/'+menuScriptItem.id).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
@@ -46,7 +46,7 @@ services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function
             approveMenuScript: function(menuScriptItem) {
                 var deferred = $q.defer();
                 /*Http.postMultipartData('/menuScriptItem', menuScriptItem).then(function(data){*/
-                Http.getData('assets/data/menuScriptItem.json', menuScriptItem).then(function(data){
+                Http.postData('/approveMenuscript/'+menuScriptItem.id).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
@@ -54,7 +54,7 @@ services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function
             acceptReview: function(menuScriptId) {
                 var deferred = $q.defer();
                 /*Http.postMultipartData('/menuScriptItem', menuScriptId).then(function(data){*/
-                Http.getData('assets/data/menuScriptItem.json', menuScriptId).then(function(data){
+                Http.postData('/reviewerAccept/'+menuScriptItem.id).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
@@ -62,7 +62,7 @@ services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function
             rejectReview: function(menuScriptId) {
                 var deferred = $q.defer();
                 /*Http.postMultipartData('/menuScriptItem', menuScriptId).then(function(data){*/
-                Http.getData('assets/data/menuScriptItem.json', menuScriptId).then(function(data){
+                Http.postData('/reviewerDecline/'+menuScriptItem.id).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;

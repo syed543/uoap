@@ -49,8 +49,10 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
               if (data['data'][index].status == 1) {
                   $scope.desserts['data'][index].statusText = 'Open';
               } else if (data['data'][index].status == 2) {
-                  $scope.desserts['data'][index].statusText = 'In-review';
+                  $scope.desserts['data'][index].statusText = 'Assigned';
               } else if (data['data'][index].status == 3) {
+                  $scope.desserts['data'][index].statusText = 'In-review';
+              } else if (data['data'][index].status == 4) {
                   $scope.desserts['data'][index].statusText = 'Approved';
               } else {
                   $scope.desserts['data'][index].statusText = 'Rejected';

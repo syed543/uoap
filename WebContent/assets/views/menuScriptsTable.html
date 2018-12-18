@@ -179,10 +179,10 @@
                     Cancel
                 </md-button>
                 <span flex></span>
-                <md-button ng-if="inEditMode" ng-disabled="!menuscript.$dirty || !menuscript.$valid" class="md-primary" ng-click="rejectMenuScript()" md-autofocus>
+                <md-button ng-if="inEditMode && ((userType == 'reviewer' && menuscript.status == 3) || userType == 'editor' || userType == 'admin')" ng-disabled="!menuscript.$dirty || !menuscript.$valid" class="md-primary" ng-click="approveMenuScript()" md-autofocus>
                     Approve
                 </md-button>
-                <md-button ng-if="inEditMode" ng-disabled="!menuscript.$dirty || !menuscript.$valid" class="md-primary" ng-click="approveMenuScript()" md-autofocus>
+                <md-button ng-if="inEditMode && ((userType == 'reviewer' && menuscript.status == 3) || userType == 'editor' || userType == 'admin')" ng-disabled="!menuscript.$dirty || !menuscript.$valid" class="md-primary" ng-click="rejectMenuScript()" md-autofocus>
                     Reject
                 </md-button>
                 <md-button ng-if="inEditMode" ng-disabled="!menuscript.$dirty || !menuscript.$valid" class="md-primary" ng-click="submitScript()" md-autofocus>
