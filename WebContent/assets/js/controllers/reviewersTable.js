@@ -295,7 +295,7 @@ controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '
     $scope.addReviewerDialog = function(ev) {
       $mdDialog.show({
         controller: addReviewerController,
-        locals: {countries: $scope.countries},
+        locals: {countries: $scope.countries, journals: $scope.journals},
         templateUrl: 'assets/views/addReviewerDialog.html',
         parent: angular.element(document.body),
         targetEvent: ev,
@@ -306,7 +306,7 @@ controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '
       });
     };
 
-    function addReviewerController($scope, $mdDialog, countries) {
+    function addReviewerController($scope, $mdDialog, countries, journals) {
       $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
       $scope.reviewer = {
@@ -317,6 +317,7 @@ controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '
         'journalId': ''
       };
       $scope.countries = countries;
+      $scope.journals = journals;
 
       $scope.hide = function() {
         $mdDialog.hide();
