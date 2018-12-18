@@ -83,12 +83,21 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
     $scope.menuScriptItem = {};
     $scope.view = function(item) {
         $scope.menuScriptItem = item;
-        $scope.toggleEdit();
-        if($scope.menuScriptItem.status && $scope.menuScriptItem.status == 1) {
-            $scope.canEdit = true;
-        } else {
-            $scope.canEdit = false;
-        }
+
+        MenuScriptsService.getReviewersByJournalId($scope.menuScriptItem.journal).then(function (data) {
+            if (data.statusCode == 200) { // Success
+                $scope.reviewers = data;
+
+                $scope.toggleEdit();
+                if($scope.menuScriptItem.status && $scope.menuScriptItem.status == 1) {
+                    $scope.canEdit = true;
+                } else {
+                    $scope.canEdit = false;
+                }
+            } else { 					// Error
+                console.log("Unable to fetch articles list. please contact support.");
+            }
+        });
     };
 
       $scope.inEditMode = false;

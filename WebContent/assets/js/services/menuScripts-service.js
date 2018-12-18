@@ -13,16 +13,16 @@ services.factory('MenuScriptsService', ["Http", "$q", "$state", "$log", function
                     serviceUrl += "?"+key+"="+filterBy[key];
                   }
                 }
-                Http.getData(serviceUrl).then(function(data){
-                /*Http.getData('assets/data/menuScriptList.json').then(function(data){*/
+                /*Http.getData(serviceUrl).then(function(data){*/
+                Http.getData('assets/data/menuScriptList.json').then(function(data){
                   deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
 			},
-            getArticlesByJournalId: function(Id) {
+            getReviewersByJournalId: function(Id) {
                 var deferred = $q.defer();
                 /*Http.getData('assets/data/getArticlesByJournalId.json?Id='+id).then(function(data){*/
-                Http.getData('assets/data/articles.json').then(function(data){
+                Http.getData('/getReviewersByJournalId', Id).then(function(data){
                   deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;

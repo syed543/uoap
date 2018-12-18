@@ -65,7 +65,7 @@
             <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{desserts.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
         </md-card>
     </md-content>
-    <md-content layout="column" flex ng-if="inEditMode && (userType == 'author' || userType == 'admin')">
+    <md-content layout="column" flex ng-if="inEditMode && (userType == 'author')">
         <form name="menuscript" ng-cloak>
             <md-toolbar>
                 <div class="md-toolbar-tools">
@@ -121,10 +121,10 @@
                     </div>
                 </md-content>
 
-                <md-input-container class="md-block" flex-gt-sm>
+                <!--<md-input-container class="md-block" flex-gt-sm>
                     <label>Feedback</label>
                     <input name="feedback" ng-model="menuScriptItem.feedback"></input>
-                </md-input-container>
+                </md-input-container>-->
             </div>
 
             <md-dialog-actions layout="row">
@@ -138,7 +138,7 @@
             </md-dialog-actions>
         </form>
     </md-content>
-    <md-content layout="column" flex ng-if="inEditMode && (userType == 'reviewer' || userType == 'editor')">
+    <md-content layout="column" flex ng-if="inEditMode && (userType == 'reviewer' || userType == 'editor' || userType == 'admin')">
         <form name="menuscript" ng-cloak>
             <md-toolbar>
                 <div class="md-toolbar-tools">
@@ -154,9 +154,24 @@
                         <label>Feedback</label>
                         <input name="feedback" ng-model="menuScriptItem.feedback" required></input>
                     </md-input-container>
-                </md-content>
 
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Reviewer</label>
+                        <!--<input name="reviewer" ng-model="ReviewerId" ng-if="ReviewerId" required readonly></input>-->
+                        <md-select name="reviewer" ng-model="menuScriptItem.reviewerId" required>
+                            <md-option ng-repeat="reviewer in reviewers" value="{{reviewer.id}}">
+                                {{reviewer.firstName}} {{reviewer.lastName}}
+                                <span class="reviewer-email">{{reviewer.email}}</span>
+                            </md-option>
+                        </md-select>
+                        <div ng-messages="menuscript.reviewer.$error" role="alert" multiple>
+                            <div ng-message="required" class="my-message">Please assign reviewer.</div>
+                        </div>
+                    </md-input-container>
+
+                </md-content>
             </div>
+
             <md-dialog-actions layout="row">
                 <md-button class="md-secondary" ng-click="cancel()">
                     Cancel
