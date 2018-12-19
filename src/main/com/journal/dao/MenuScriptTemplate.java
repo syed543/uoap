@@ -110,7 +110,7 @@ public class MenuScriptTemplate {
 		
 		if (JournalConstants.ADMIN.equals(userType)) {
 		
-			query = "select m.id, firstName, lastName, menuScriptTitle, abstractTitle, feedback, journalName, status from " + 
+			query = "select m.id, firstName, lastName, menuScriptTitle, abstractTitle, feedback, journalName, status, j.id as jid from " + 
 				"submitter s, " + 
 				"menuscript m, " + 
 				"journal j " + 
@@ -118,7 +118,7 @@ public class MenuScriptTemplate {
 				"and m.journalid = j.id";
 		} else if (JournalConstants.REVIEWER.equals(userType)) {
 			
-			query = "select m.id, r.firstName, r.lastName, menuScriptTitle, abstractTitle, feedback, journalName, status from " + 
+			query = "select m.id, r.firstName, r.lastName, menuScriptTitle, abstractTitle, feedback, journalName, status, j.id as jid from " + 
 					"submitter s, " + 
 					"menuscript m, " + 
 					"journal j, " +
@@ -127,11 +127,11 @@ public class MenuScriptTemplate {
 					"and m.journalid = j.id and m.reviewer = r.id and s.email = ?";
 		} else if (JournalConstants.EDITOR.equals(userType)) {
 			
-			query = "select m.id, e.firstName, e.lastName, menuScriptTitle, abstractTitle, feedback, journalName, status from submitter s, menuscript m," + 
+			query = "select m.id, e.firstName, e.lastName, menuScriptTitle, abstractTitle, feedback, journalName, status, j.id as jid from submitter s, menuscript m," + 
 					"journal j, editor e where s.id = m.submitterId and m.journalid = j.id and m.journalid = e.journalId and e.email = ?"; 
 		} else if (JournalConstants.SUBMITTER.equals(userType)) {
 			
-			query = "select m.id, s.firstName, s.lastName, menuScriptTitle, abstractTitle, feedback, journalName, status from submitter s, menuscript m," + 
+			query = "select m.id, s.firstName, s.lastName, menuScriptTitle, abstractTitle, feedback, journalName, status, j.id as jid from submitter s, menuscript m," + 
 					"journal j where m.submitterId = s.id and m.journalid = j.id and s.email = ?"; 
 		}
 		
@@ -167,6 +167,7 @@ public class MenuScriptTemplate {
 			menuScriptModel.setAbstractTitle((String) menuScriptRow.get("abstractTitle"));
 			menuScriptModel.setJournalName((String) menuScriptRow.get("journalName"));
 			menuScriptModel.setFeedback((String) menuScriptRow.get("feedback"));
+			menuScriptModel.setJournal((Integer) menuScriptRow.get("jid"));
 			String status = (String) menuScriptRow.get("status");
 			if (status != null) {
 				menuScriptModel.setStatus(Integer.parseInt(status));

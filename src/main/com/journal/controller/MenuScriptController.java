@@ -26,7 +26,6 @@ import com.journal.dao.record.MenuScriptRecord;
 import com.journal.dao.record.SubmitterRecord;
 import com.journal.model.MenuScriptModel;
 import com.journal.model.User;
-import com.journal.utils.JournalConstants;
 import com.journal.utils.JournalMailUtil;
 import com.journal.utils.JournalUtil;
 
@@ -73,7 +72,9 @@ public class MenuScriptController {
 			record.setSubmitterId(existingSubmitterRecord.getId());
 		}
 		
-		record.setStatus(1); //1: Open, 2: inReivew, 3: Approved, 4: Rejected
+		record.setStatus(1); //1: Open, 2: Assigned, 3:In Review 4: Approved, 5: Rejected
+		//If Reviewer accepts it will be In Review.
+		//If Reviewer rejects it will be in Open.
 		
 		if (attachment != null) {
 			

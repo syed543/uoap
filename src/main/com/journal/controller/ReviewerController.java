@@ -97,4 +97,21 @@ public class ReviewerController {
 
 		return result;
 	}
+	
+	@RequestMapping(value="/getReviewersByJournalId/{journalId}", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getReviewersByJournalId(@PathVariable int journalId) {
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("statusCode", "200");
+
+		
+		if (journalId > 0) {
+			
+			List<ReviewerRecord> reviewers = reviewerJDBCTemplate.getReviewersByJournalId(journalId);
+			result.put("data", reviewers);
+			result.put("count", reviewers.size());
+		}
+		return result;
+	}
 }

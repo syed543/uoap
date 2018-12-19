@@ -1,6 +1,7 @@
 package com.journal.dao;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapperResultSetExtractor;
+import org.springframework.jdbc.core.SingleColumnRowMapper;
 
 import com.journal.dao.record.ReviewerRecord;
 import com.journal.model.ReviewerModel;
@@ -30,7 +33,7 @@ public class ReviewerJDBCTemplate {
 	
 	public ReviewerRecord getReviewerByMailId(String mail) {
 		
-		String query = "Select id, firstName, lastName, email, password, generatedPass, country from Reviewer where email = ?";
+		String query = "Select id, firstName, lastName, email, password, generatedPass, country, journalId from Reviewer where email = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 		
@@ -43,34 +46,68 @@ public class ReviewerJDBCTemplate {
 		}
 		return null;
 	}
-
+	
+	public List<ReviewerRecord> getReviewersByJournalId(int journalId) {
+		
+		String query = "Select id, firstName, lastName, email, country from Reviewer where journalId = ?";
+		
+		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
+		
+		try {
+			
+			//TODO - Use exatractor.
+			List<Map<String, Object>> records = jdbcTemplate.queryForList(query, new Object[] {journalId});
+			
+			if (records != null && records.size() > 0) {
+				
+				List<ReviewerRecord> reviewerRecords = new ArrayList<ReviewerRecord>(records.size());
+				for (Map<String, Object> record : records) {
+					
+					ReviewerRecord rec = new ReviewerRecord();
+					rec.setId((Integer)record.get("id"));
+					rec.setFirstName((String) record.get("firstName"));
+					rec.setLastName((String) record.get("lastName"));
+					rec.setEmail((String) record.get("email"));
+					
+					reviewerRecords.add(rec);
+//					rec.set((String) record.get("country"));;
+				}
+				
+				return reviewerRecords;
+			}
+		} catch (EmptyResultDataAccessException eae) {
+			
+		}
+		return Collections.emptyList();
+	}
+	
 	public void saveReviewer(ReviewerModel reviewerModel) {
-		String query = "insert into Reviewer(firstName, lastName, email, password, generatedPass, country) values" +
-						"(?, ?, ?, ?, ?, ?)";
+		String query = "insert into Reviewer(firstName, lastName, email, password, generatedPass, country, journalId) values" +
+						"(?, ?, ?, ?, ?, ?, ?)";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, reviewerModel.getFirstName(), reviewerModel.getLastName(), reviewerModel.getEmail(), 
 				reviewerModel.getPassword(), reviewerModel.getGeneratedPass(),
-				reviewerModel.getCountry());
+				reviewerModel.getCountry(), reviewerModel.getJournalId());
 		
 		System.out.println("Reviewer created");
 	}
 	
 	public void updateReviewer(ReviewerModel reviewerModel) {
-		String query = "update Reviewer set firstName = ?, lastName = ?,  email = ?, country = ? where id = ?";
+		String query = "update Reviewer set firstName = ?, lastName = ?,  email = ?, journalId = ?, country = ? where id = ?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, reviewerModel.getFirstName(), reviewerModel.getLastName(), 
-				reviewerModel.getEmail(), reviewerModel.getCountry(), reviewerModel.getId());
+				reviewerModel.getEmail(), reviewerModel.getJournalId(), reviewerModel.getCountry(), reviewerModel.getId());
 		
 		System.out.println("Reviewer updated");
 	}
 
 	public List<ReviewerModel> getReviewers() {
 		
-		String query = "Select id, firstName, lastName, email, country from Reviewer";
+		String query = "Select r.id as id, firstName, lastName, email, journalId, journalName, country from Reviewer r, Journal j where r.journalId = j.id";
 
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
@@ -86,6 +123,8 @@ public class ReviewerJDBCTemplate {
 			reviewerModel.setLastName((String) menuScriptRow.get("lastName"));
 			reviewerModel.setEmail((String) menuScriptRow.get("email"));
 			reviewerModel.setCountry((String) menuScriptRow.get("country"));
+			reviewerModel.setJournalId((Integer) menuScriptRow.get("journalId"));
+			reviewerModel.setJournalName((String) menuScriptRow.get("journalName"));
 			reviewerModels.add(reviewerModel);
 		}
 		

@@ -98,3 +98,5 @@ primary key(id)
 );
 
 alter table menuscript add column feedback varchar(2000);
+
+alter table reviewer add column journalId int;

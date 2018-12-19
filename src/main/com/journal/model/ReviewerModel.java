@@ -10,6 +10,9 @@ public class ReviewerModel {
 	private String password;
 	private String generatedPass;
 	private String country;
+	private int journalId;
+	private String journalName;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -57,5 +60,17 @@ public class ReviewerModel {
 	}
 	public void setGeneratedPass(String generatedPass) {
 		this.generatedPass = generatedPass;
+	}
+	public int getJournalId() {
+		return journalId;
+	}
+	public void setJournalId(int journalId) {
+		this.journalId = journalId;
+	}
+	public String getJournalName() {
+		return journalName;
+	}
+	public void setJournalName(String journalName) {
+		this.journalName = journalName;
 	}
 }
