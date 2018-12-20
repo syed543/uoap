@@ -35,7 +35,7 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
 
     var _getArticles = function() {
       var _filterBy;
-      if($scope.userType === 'author') {
+      if($scope.userType === 'author' || $scope.userType === 'submitter') {
         _filterBy = {
           "email" : $rootScope.userInfo.email
         }

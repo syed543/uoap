@@ -65,7 +65,7 @@
             <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{desserts.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
         </md-card>
     </md-content>
-    <md-content layout="column" flex ng-if="inEditMode && (userType == 'author')">
+    <md-content layout="column" flex ng-if="inEditMode && (userType == 'author' || userType == 'submitter')">
         <form name="menuscript" ng-cloak>
             <md-toolbar>
                 <div class="md-toolbar-tools">
