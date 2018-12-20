@@ -95,7 +95,7 @@ define([
                         $rootScope.userView = "reviewerHome";
                     } else if ($rootScope.userInfo.usertype.toLowerCase() == "editor") {
                         $rootScope.userView = "editorHome";
-                    } else if ($rootScope.userInfo.usertype.toLowerCase() == "author") {
+                    } else if ($rootScope.userInfo.usertype.toLowerCase() == "author" || $rootScope.userInfo.usertype.toLowerCase() == "submitter") {
                         $rootScope.userView = "userHome";
                     } else {
                         $rootScope.userView = "home";

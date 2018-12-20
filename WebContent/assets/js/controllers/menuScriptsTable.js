@@ -112,7 +112,7 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
           });
       };
       $scope.submitScript = function() {
-          if($scope.userType === 'author' || $scope.userType === 'admin') {
+          if($scope.userType === 'author' || $scope.userType === 'submitter' || $scope.userType === 'admin') {
               var data = {},
                   fd = new FormData();
 
