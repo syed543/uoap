@@ -74,6 +74,15 @@ public class MenuScriptTemplate {
 		return menuScriptRecord;
 
 	}
+	
+	public void updateStatus(int status, int menuScriptId) {
+		
+		String query = "update menuscript set status = ? where id = ?";
+		
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		
+		jdbcTemplate.update(query, status, menuScriptId);
+	}
 
 	public List<MenuScriptModel> getAllMenuScripts() {
 		

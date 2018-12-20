@@ -56,6 +56,12 @@ public class JournalFilter implements Filter{
 		allowed.add("/deleteMenuScript");
 		
 		allowed.add("/getReviewersByJournalId");
+		allowed.add("/approveMenuscript");
+		allowed.add("/rejectMenuscript");
+		allowed.add("/reviewerDecline");
+		allowed.add("/reviewerAccept");
+		allowed.add("/getJournalById");
+		allowed.add("/getArticlesByJournalId");
 	}
 
 	@Override

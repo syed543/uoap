@@ -66,6 +66,17 @@ public class JournalJDBCTemplate {
 		return journals;
 	}
 	
+	public Journal getJournalById(int journalId) {
+		
+		String query = "select id, journalName, journalDescription, journalLongDescription from JOURNAL where id = ?";
+		
+		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
+
+		Journal journal = jdbcTemplate.queryForObject(query, new Object[] {journalId}, Journal.class);
+		
+		return journal;
+	}
+	
 	public void updateJournal(Journal journal) {
 		
 		List<Object> params = new ArrayList<Object>(8);

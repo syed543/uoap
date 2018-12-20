@@ -68,6 +68,19 @@ public class ArticleController {
 		return result;
 	}
 	
+	@RequestMapping(value="/getArticlesByJournalId/{journalId}", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getArticlesByJournalId(@PathVariable int journalId) {
+		
+		List<Article> articles  = articleJDBCTemplate.getAllArticles();
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("statusCode", "200");
+		result.put("data", articles);
+		result.put("count", articles.size());
+
+		return result;
+	}
+	
 	@RequestMapping(value="/updateArticle/{articleId}", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> updateArticle(@RequestParam String data, @PathVariable("articleId") int articleId, 

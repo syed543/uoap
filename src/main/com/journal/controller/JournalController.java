@@ -71,6 +71,19 @@ public class JournalController {
 
 		return result;
 	}
+
+	@RequestMapping(value="/getJournalById/{journalId", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getJournalById(@PathVariable int journalId) {
+		
+		Journal journal  = journalJDBCTemplate.getJournalById(journalId);
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("statusCode", "200");
+		result.put("data", journal);
+
+		return result;
+
+	}
 	
 	@RequestMapping(value="/updateJournal/{journalId}", method=RequestMethod.POST)
 	@ResponseBody

@@ -2,7 +2,7 @@ package com.journal.model;
 
 public class MenuScriptModel {
 	
-	private int id,journal,status;
+	private int id,journal,status;//1: Open, 2: Assigned, 3:In Review 4: Approved, 5: Rejected
 	private String fName,lName,title,email, article, postalAddress,country,menuTitle,abstractTitle;
 	private String journalName;
 	private String feedback;

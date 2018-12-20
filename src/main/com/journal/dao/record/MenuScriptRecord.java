@@ -19,7 +19,7 @@ public class MenuScriptRecord {
 	private int id;
 	private int submitterId;
 	private int journalId;
-	private int status; // 1: Open, 2: inReivew, 3: Accepted, 4: Rejected
+	private int status; //1: Open, 2: Assigned, 3:In Review 4: Approved, 5: Rejected
 	private int reviewer;
 	private String menuScriptTitle;
 	private String abstractData;
