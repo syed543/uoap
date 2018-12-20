@@ -28,14 +28,14 @@ public class EditorJDBCTemplate {
 	}
 
 	public void saveEditor(EditorModel editorModel) {
-		String query = "insert into Editor(firstName, lastName, email, avatar, avatarFileName, description, affiliation, journalId) values" +
-						"(?, ?, ?, ?, ?, ?, ? ,?)";
+		String query = "insert into Editor(firstName, lastName, email, avatar, avatarFileName, description, affiliation, journalId, password, generatedPass) values" +
+						"(?, ?, ?, ?, ?, ?, ? ,?, ?, ?)";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, editorModel.getFirstName(), editorModel.getLastName(), editorModel.getEmail(), 
 				editorModel.getAvatar(), editorModel.getAvatarFileName(), editorModel.getDescription(), 
-				editorModel.getAffiliation(), editorModel.getJournalId());
+				editorModel.getAffiliation(), editorModel.getJournalId(), editorModel.getPassword(), editorModel.getGeneratedPass());
 		
 		String auto = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'journal' AND TABLE_NAME = 'Editor'";
 		
@@ -60,7 +60,7 @@ public class EditorJDBCTemplate {
 
 	public EditorRecord getEditorByMailId(String mail) {
 		
-		String query = "Select id, firstName, lastName, email from Editor where email = ?";
+		String query = "Select id, firstName, lastName, email, password from Editor where email = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 		
