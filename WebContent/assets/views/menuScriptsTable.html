@@ -49,10 +49,10 @@
 
                         </td>
                         <td md-cell ng-if="userType === 'reviewer'">
-                            <md-icon ng-if="dessert.status === 'Open'" title="Accept Review" arial-label="accept" ng-click="acceptReview(dessert)">thumb_up</md-icon>
+                            <md-icon ng-if="dessert.statusText === 'Open'" title="Accept Review" arial-label="accept" ng-click="acceptReview(dessert)">thumb_up</md-icon>
                         </td>
                         <td md-cell ng-if="userType === 'reviewer'">
-                            <md-icon ng-if="dessert.status === 'Open'" title="Reject Review" arial-label="reject" ng-click="rejectReview(dessert)">thumb_down</md-icon>
+                            <md-icon ng-if="dessert.statusText === 'Open'" title="Reject Review" arial-label="reject" ng-click="rejectReview(dessert)">thumb_down</md-icon>
                         </td>
                         <td md-cell ng-if="userType === 'admin'" ><md-button class="md-icon-button" ng-click="delete(dessert)">
                             <md-icon>delete</md-icon>
@@ -155,7 +155,7 @@
                         <input name="feedback" ng-model="menuScriptItem.feedback" required></input>
                     </md-input-container>
                 </md-content>
-                <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
+                <md-content ng-if="userType != 'reviewer'" md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
 
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Reviewer</label>

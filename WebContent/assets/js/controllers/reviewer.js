@@ -9,6 +9,6 @@ define(['angular',
 controllers.controller("reviewerHomeCtrl", ["$scope", "$rootScope", "$state", "$stateParams", "$localStorage", "$sessionStorage", "authenticationSvc",
   function($scope, $rootScope, $state, $stateParams, $localStorage, $sessionStorage, authenticationSvc) {
 
-      $scope.userType = $rootScope.userInfo ?  $rootScope.userInfo.usertype : '';
+      $scope.userType = $rootScope.userInfo ?  $rootScope.userInfo.usertype.toLowerCase() : '';
 }]);
 });

@@ -112,7 +112,7 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
           });
       };
       $scope.submitScript = function() {
-          if($scope.userType === 'author' || $scope.userType === 'submitter' || $scope.userType === 'admin') {
+          /*if($scope.userType === 'author' || $scope.userType === 'submitter' || $scope.userType === 'admin') {*/
               var data = {},
                   fd = new FormData();
 
@@ -135,10 +135,12 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
                   angular.element("input[type='file']").val(null);
                   $scope.file = '';
               });
-          } else {
+          /*} else {
               var data = {};
 
               data['feedback'] = $scope.menuScriptItem['feedback'];
+              data['reviewerId'] = $scope.menuScriptItem['reviewerId'];
+
               var _id = $scope.menuScriptItem['id'];
 
               MenuScriptsService.updateMenuScript(data, _id).then(function (data) {
@@ -147,7 +149,7 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
                   angular.element("input[type='file']").val(null);
                   $scope.file = '';
               });
-          }
+          }*/
       };
 
       $scope.rejectMenuScript = function() {
@@ -167,19 +169,19 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
       };
 
       $scope.acceptReview = function(menuScript) {
-          MenuScriptsService.acceptReview(menuScript.menuScript_id).then(function (data) {
+          MenuScriptsService.acceptReview(menuScript.id).then(function (data) {
               $scope.refreshMenuScripts();
           });
       };
 
       $scope.rejectReview = function(menuScript) {
-          MenuScriptsService.acceptReview(menuScript.menuScript_id).then(function (data) {
+          MenuScriptsService.rejectReview(menuScript.id).then(function (data) {
               $scope.refreshMenuScripts();
           });
       };
 
       $scope.delete = function(menuScript) {
-          MenuScriptsService.deleteMenuScript(menuScript.menuScript_id).then(function (data) {
+          MenuScriptsService.deleteMenuScript(menuScript.id).then(function (data) {
               $scope.refreshMenuScripts();
           });
       };
