@@ -180,9 +180,9 @@ public class MenuScriptTemplate {
 			menuScriptModel.setJournalName((String) menuScriptRow.get("journalName"));
 			menuScriptModel.setFeedback((String) menuScriptRow.get("feedback"));
 			menuScriptModel.setJournal((Integer) menuScriptRow.get("jid"));
-			String status = (String) menuScriptRow.get("status");
+			Integer status = (Integer) menuScriptRow.get("status");
 			if (status != null) {
-				menuScriptModel.setStatus(Integer.parseInt(status));
+				menuScriptModel.setStatus(status);
 			} else {
 				menuScriptModel.setStatus(1);
 			}
