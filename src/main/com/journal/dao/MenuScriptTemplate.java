@@ -17,8 +17,8 @@ import com.journal.dao.record.SubmitterRecord;
 import com.journal.model.MenuScriptModel;
 import com.journal.utils.JournalConstants;
 
-public class MenuScriptTemplate {
 
+public class MenuScriptTemplate {
 	
 	@Autowired
 	private DataSource dataSource;
@@ -62,14 +62,17 @@ public class MenuScriptTemplate {
 	
 	public MenuScriptRecord updateMenuScript(String userType, MenuScriptRecord menuScriptRecord) {
 		
-		if (!(JournalConstants.ADMIN.equals(userType) || JournalConstants.REVIEWER.equals(userType) || JournalConstants.EDITOR.equals(userType))) {
-			return menuScriptRecord;
-		}
-		String query = "update menuscript set feedback = ? where id = ?";
-		
+
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		if (JournalConstants.ADMIN.equals(userType) || JournalConstants.EDITOR.equals(userType)) {
 		
-		jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), menuScriptRecord.getId());
+			String query = "update menuscript set feedback = ?, reviewer = ? where id = ?";
+			jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), menuScriptRecord.getId());
+		} else if (JournalConstants.REVIEWER.equals(userType)) {
+			
+			String query = "update menuscript set feedback = ? where id = ?";
+			jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), menuScriptRecord.getId());
+		}
 		
 		return menuScriptRecord;
 

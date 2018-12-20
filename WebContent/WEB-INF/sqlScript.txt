@@ -1,4 +1,4 @@
-drop table user;
+drop table if exists user;
 
 create table user( 
 email varchar(50),
@@ -11,7 +11,7 @@ passwordGenerated varchar(1),
 userType varchar(15)
 )
 
-drop table journal;
+drop table if exists journal;
 
 create table journal(
 id int not null auto_increment,
@@ -25,7 +25,7 @@ journalBannerImageFileName varchar(100),
 primary key (id)
 )
 
-drop table menuscript;
+drop table if exists menuscript;
 
 create table menuscript(
 id int not null auto_increment,
@@ -38,7 +38,7 @@ attachmentName varchar(100),
 primary key (id)
 )
 
-drop table submitter;
+drop table if exists submitter;
 
 create table submitter(
 id int not null auto_increment,
@@ -53,7 +53,7 @@ country varchar(50),
 primary key (id))
 
 
-drop table editor;
+drop table if exists editor;
 
 create table editor(
 id int not null auto_increment,
@@ -69,7 +69,7 @@ affiliation varchar(200),
 journalId int,
 primary key(id));
 
-drop table reviewer;
+drop table if exists reviewer;
 
 create table reviewer(
 id int not null auto_increment,
@@ -86,7 +86,7 @@ alter table menuscript add column status int;
 
 alter table menuscript add column reviewer int;
 
-create table article(
+create table if exists article(
 id int not null auto_increment,
 title varchar(100),
 abstractDesc varchar(100),
