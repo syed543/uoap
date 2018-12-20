@@ -67,11 +67,11 @@ public class MenuScriptTemplate {
 		if (JournalConstants.ADMIN.equals(userType) || JournalConstants.EDITOR.equals(userType)) {
 		
 			String query = "update menuscript set feedback = ?, reviewer = ? where id = ?";
-			jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), menuScriptRecord.getReviewerId());
+			jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), menuScriptRecord.getReviewerId(), menuScriptRecord.getId());
 		} else if (JournalConstants.REVIEWER.equals(userType)) {
 			
 			String query = "update menuscript set feedback = ? where id = ?";
-			jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), menuScriptRecord.getReviewerId());
+			jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), menuScriptRecord.getId());
 		} else if (JournalConstants.SUBMITTER.equals(userType)) {
 			String query = "update menuscript set menuScriptTitle = ?, abstractTitle = ? where id = ?";
 			jdbcTemplate.update(query, new Object[] {menuScriptRecord.getMenuScriptTitle(), menuScriptRecord.getAbstractData(), menuScriptRecord.getId()});
