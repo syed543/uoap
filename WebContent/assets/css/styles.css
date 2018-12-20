@@ -393,3 +393,8 @@ md-table-pagination .label {
     font-size: 16px;
 }
 /** Journal Details**/
+
+.reviewer-email {
+    font-size: 12px;
+    font-style: italic;
+}

@@ -116,13 +116,16 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
               var data = {},
                   fd = new FormData();
 
-              fd.append("file", $scope.file);
-
-              data['menuTitle'] = $scope.menuScriptItem['menuTitle'];
-              data['abstractTitle'] = $scope.menuScriptItem['abstractTitle'];
               var _id = $scope.menuScriptItem['id'];
-              if($scope.userType === 'admin' && $scope.menuScriptItem['feedback'].length > 0) {
+              if($scope.userType === 'admin' || $scope.userType === 'editor') {
                   data['feedback'] = $scope.menuScriptItem['feedback'];
+                  data['reviewerId'] = $scope.menuScriptItem['reviewerId'];
+              } else if($scope.userType === 'reviewer') {
+                  data['feedback'] = $scope.menuScriptItem['feedback'];
+              } else {
+                  fd.append("file", $scope.file);
+                  data['menuTitle'] = $scope.menuScriptItem['menuTitle'];
+                  data['abstractTitle'] = $scope.menuScriptItem['abstractTitle'];
               }
 
               fd.append("data", JSON.stringify(data));
