@@ -6,6 +6,7 @@ public class MenuScriptModel {
 	private String fName,lName,title,email, article, postalAddress,country,menuTitle,abstractTitle;
 	private String journalName;
 	private String feedback;
+	private int reviewerId;
 	
 	public int getId() {
 		return id;
@@ -91,4 +92,11 @@ public class MenuScriptModel {
 	public void setFeedback(String feedback) {
 		this.feedback = feedback;
 	}
+	public int getReviewerId() {
+		return reviewerId;
+	}
+	public void setReviewerId(int reviewerId) {
+		this.reviewerId = reviewerId;
+	}
+	
 }

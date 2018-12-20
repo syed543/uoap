@@ -10,6 +10,7 @@ public class MenuScriptRecord {
 		menuScriptTitle = model.getMenuTitle();
 		abstractData = model.getAbstractTitle();
 		feedBack = model.getFeedback();
+		reviewerId = model.getReviewerId();
 	}
 	
 	public MenuScriptRecord() {
@@ -20,7 +21,7 @@ public class MenuScriptRecord {
 	private int submitterId;
 	private int journalId;
 	private int status; //1: Open, 2: Assigned, 3:In Review 4: Approved, 5: Rejected
-	private int reviewer;
+	private int reviewerId;
 	private String menuScriptTitle;
 	private String abstractData;
 	private String feedBack;
@@ -87,5 +88,12 @@ public class MenuScriptRecord {
 	public void setFeedBack(String feedBack) {
 		this.feedBack = feedBack;
 	}
-	
+
+	public int getReviewerId() {
+		return reviewerId;
+	}
+
+	public void setReviewerId(int reviewerId) {
+		this.reviewerId = reviewerId;
+	}
 }
