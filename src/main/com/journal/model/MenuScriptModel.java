@@ -4,6 +4,8 @@ public class MenuScriptModel {
 	
 	private int id,journal,status;//1: Open, 2: Assigned, 3:In Review 4: Approved, 5: Rejected
 	private String fName,lName,title,email, article, postalAddress,country,menuTitle,abstractTitle;
+	private String reviewerName;
+	private String reviewerEmail;
 	private String journalName;
 	private String feedback;
 	private int reviewerId;
@@ -74,6 +76,18 @@ public class MenuScriptModel {
 	public void setAbstractTitle(String abstractTitle) {
 		this.abstractTitle = abstractTitle;
 	}
+	public String getReviewerName() {
+		return reviewerName;
+	}
+	public void setReviewerName(String reviewerName) {
+		this.reviewerName = reviewerName;
+	}
+	public String getReviewerEmail() {
+		return reviewerEmail;
+	}
+	public void setReviewerEmail(String reviewerEmail) {
+		this.reviewerEmail = reviewerEmail;
+	}
 	public String getArticle() {
 		return article;
 	}
@@ -98,5 +112,4 @@ public class MenuScriptModel {
 	public void setReviewerId(int reviewerId) {
 		this.reviewerId = reviewerId;
 	}
-	
 }

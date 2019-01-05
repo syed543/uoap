@@ -1,9 +1,15 @@
 package com.journal.controller;
 
 import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +25,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.journal.dao.EditorJDBCTemplate;
 import com.journal.dao.record.EditorRecord;
 import com.journal.model.EditorModel;
+import com.journal.utils.Encryptor;
+import com.journal.utils.JournalMailUtil;
 import com.journal.utils.JournalUtil;
 
 @Controller
@@ -30,7 +38,7 @@ public class EditorController {
 	@RequestMapping(value="/addEditor", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> addEditor(@RequestParam String data, @RequestPart(required=false) MultipartFile file) 
-			throws IOException {
+			throws IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		
 		EditorModel editorModel = new ObjectMapper().readValue(data, EditorModel.class);
 		
@@ -41,7 +49,7 @@ public class EditorController {
 			
 			String password = JournalUtil.generatePassword();
 			
-			editorModel.setPassword(password);
+			editorModel.setPassword(Encryptor.getEncodedEncrytedString(password));
 			editorModel.setGeneratedPass("y");
 			
 			if (file != null) {
@@ -51,6 +59,13 @@ public class EditorController {
 			}
 			
 			editorJDBCTemplate.saveEditor(editorModel);
+			
+			try {
+				
+				JournalMailUtil.sendMail(editorModel.getEmail(), "Editor Registration done", "The generated password is :" + password);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 			result.put("statusCode", "200");
 			result.put("message", "editor added succesfully");

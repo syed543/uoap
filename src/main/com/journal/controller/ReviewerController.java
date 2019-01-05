@@ -1,9 +1,15 @@
 package com.journal.controller;
 
 import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.journal.dao.ReviewerJDBCTemplate;
 import com.journal.dao.record.ReviewerRecord;
 import com.journal.model.ReviewerModel;
+import com.journal.utils.Encryptor;
 import com.journal.utils.JournalUtil;
 
 @Controller
@@ -26,7 +33,7 @@ public class ReviewerController {
 	
 	@RequestMapping(value="/addReviewer", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> addReviewer(@RequestBody ReviewerModel reviewerModel) throws IOException {
+	public Map<String, Object> addReviewer(@RequestBody ReviewerModel reviewerModel) throws IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		
 		ReviewerRecord record = reviewerJDBCTemplate.getReviewerByMailId(reviewerModel.getEmail());
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -35,7 +42,7 @@ public class ReviewerController {
 			
 			String password = JournalUtil.generatePassword();
 			
-			reviewerModel.setPassword(password);
+			reviewerModel.setPassword(Encryptor.getEncodedEncrytedString(password));
 			reviewerModel.setGeneratedPass("y");
 			
 			reviewerJDBCTemplate.saveReviewer(reviewerModel);

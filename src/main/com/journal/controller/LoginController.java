@@ -1,10 +1,15 @@
 package com.journal.controller;
 
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,6 +31,7 @@ import com.journal.dao.record.ReviewerRecord;
 import com.journal.dao.record.SubmitterRecord;
 import com.journal.model.User;
 import com.journal.requests.Login;
+import com.journal.utils.Encryptor;
 import com.journal.utils.JournalMailUtil;
 import com.journal.utils.JournalUtil;
 
@@ -100,7 +106,9 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> login(@RequestBody Login login, HttpServletRequest request) {
+	public Map<String, Object> login(@RequestBody Login login, HttpServletRequest request) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
+		
+		System.out.println("This is login");
 		
 		User fetchedUser = userJDBCTemplate.getUserByEmailId(login.getEmailid());
 		
@@ -162,9 +170,8 @@ public class LoginController {
 		}
 
 		Map<String, Object> result = new HashMap<String, Object>();
-		
 	
-		if (user != null && user.getPassword().equals(login.getPassword())) {
+		if (user != null && (user.getPassword().equals(login.getPassword()) || Encryptor.getDecodedDecrytedString(user.getPassword()).equals(login.getPassword()))) {
 			result.put("statusCode", 200);
 			result.put("message", "Login successful");
 			

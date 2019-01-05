@@ -1,10 +1,15 @@
 package com.journal.controller;
 
 import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +31,7 @@ import com.journal.dao.record.MenuScriptRecord;
 import com.journal.dao.record.SubmitterRecord;
 import com.journal.model.MenuScriptModel;
 import com.journal.model.User;
+import com.journal.utils.Encryptor;
 import com.journal.utils.JournalConstants;
 import com.journal.utils.JournalMailUtil;
 import com.journal.utils.JournalUtil;
@@ -42,7 +48,7 @@ public class MenuScriptController {
 	@RequestMapping(value="/addMenuScript", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> addMenuScript(@RequestParam String data, @RequestPart(required=false) MultipartFile attachment) 
-			throws IOException {
+			throws IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		
 		MenuScriptModel model = new ObjectMapper().readValue(data, MenuScriptModel.class);
 
@@ -56,7 +62,7 @@ public class MenuScriptController {
 
 			String password = JournalUtil.generatePassword();
 			
-			submitterRecord.setPassword(password);
+			submitterRecord.setPassword(Encryptor.getEncodedEncrytedString(password));
 			submitterRecord.setGeneratedPass("y");
 			
 			submitterJDBCTemplate.saveSubmitter(submitterRecord);
@@ -147,7 +153,7 @@ public class MenuScriptController {
 	@ResponseBody
 	public Map<String, Object> approveMenuScript(@PathVariable int menuScriptId) {
 		
-		menuScriptTemplate.updateStatus(JournalConstants.MENUSCRIPT_STATUS_APPROVED, menuScriptId);
+		menuScriptTemplate.updateStatus(JournalConstants.MENUSCRIPT_STATUS_APPROVED, false, menuScriptId);
 
 		Map<String, Object> result = new HashMap<String, Object>(2);
 		result.put("statusCode", 200);
@@ -160,7 +166,7 @@ public class MenuScriptController {
 	@ResponseBody
 	public Map<String, Object> rejectMenuScript(@PathVariable int menuScriptId) {
 		
-		menuScriptTemplate.updateStatus(JournalConstants.MENUSCRIPT_STATUS_REJECTED, menuScriptId);
+		menuScriptTemplate.updateStatus(JournalConstants.MENUSCRIPT_STATUS_REJECTED, false, menuScriptId);
 
 		Map<String, Object> result = new HashMap<String, Object>(2);
 		result.put("statusCode", 200);
@@ -173,7 +179,7 @@ public class MenuScriptController {
 	@ResponseBody
 	public Map<String, Object> reviewerDecline(@PathVariable int menuScriptId) {
 		
-		menuScriptTemplate.updateStatus(JournalConstants.MENUSCRIPT_STATUS_OPEN, menuScriptId);
+		menuScriptTemplate.updateStatus(JournalConstants.MENUSCRIPT_STATUS_OPEN, true, menuScriptId);
 
 		Map<String, Object> result = new HashMap<String, Object>(2);
 		result.put("statusCode", 200);
@@ -186,7 +192,7 @@ public class MenuScriptController {
 	@ResponseBody
 	public Map<String, Object> reviewerAccept(@PathVariable int menuScriptId) {
 		
-		menuScriptTemplate.updateStatus(JournalConstants.MENUSCRIPT_STATUS_INREVIEW, menuScriptId);
+		menuScriptTemplate.updateStatus(JournalConstants.MENUSCRIPT_STATUS_INREVIEW, false, menuScriptId);
 
 		Map<String, Object> result = new HashMap<String, Object>(2);
 		result.put("statusCode", 200);

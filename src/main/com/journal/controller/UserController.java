@@ -1,6 +1,12 @@
 package com.journal.controller;
 
 import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.journal.dao.UserJDBCTemplate;
 import com.journal.model.User;
+import com.journal.utils.Encryptor;
 import com.journal.utils.JournalMailUtil;
 import com.journal.utils.JournalUtil;
 
@@ -26,7 +33,7 @@ public class UserController {
 	public String registerSubmitter(@RequestParam String email, @RequestParam(required = false) String phoneNo, 
 		@RequestParam String firstName, @RequestParam(required = false) String lastName, 
 		@RequestParam String userType, @RequestParam(required = false) String countryName,
-		@RequestParam String address) throws IOException {
+		@RequestParam String address) throws IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 	
 		User existingUser  = null;
 		if (!StringUtils.isEmpty(email)) {
@@ -41,7 +48,7 @@ public class UserController {
 //			user.setLastName(lastName);
 //			user.setCountryName(countryName);
 			String password = JournalUtil.generatePassword();
-			user.setPassword(password);
+			user.setPassword(Encryptor.getEncodedEncrytedString(password));
 			user.setUsertype(userType);
 //			user.setAddress(address);
 			user.setGenerated("y");

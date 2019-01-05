@@ -21,7 +21,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.journal.dao.ArticleJDBCTemplate;
 import com.journal.model.Article;
-import com.journal.model.Journal;
 
 @Controller
 public class ArticleController {

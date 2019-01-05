@@ -2,7 +2,6 @@ package com.journal.filter;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.Filter;
@@ -18,9 +17,14 @@ import javax.servlet.http.HttpSession;
 public class JournalFilter implements Filter{
 
 	private List<String> allowed = new ArrayList<String>();
+	private List<String> allowedWithoutLogin = new ArrayList<String>();
 	
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
+		
+		allowedWithoutLogin.add("/journals");
+		allowedWithoutLogin.add("/login");
+		allowedWithoutLogin.add("/logout");
 		
 		allowed.add("/login");
 		allowed.add("/logout");
@@ -75,37 +79,30 @@ public class JournalFilter implements Filter{
 		
 		HttpSession session = request.getSession(false);
 		
-		System.out.println("Going through filter +" + new Date());
-		System.out.println("Session : " + session);
-		System.out.println("Path Info: " + pathInfo);
-		System.out.println("############################");
+		int index = pathInfo.indexOf("/", 2);
 		
+		if (index > 2) {
+			pathInfo = pathInfo.substring(0, index);
+		}
 		
-		if (session == null || session.getAttribute("user") == null) {
+		if (!allowedWithoutLogin.contains(pathInfo)) {
 			
-			if (!pathInfo.equals("/login")) {
-				System.out.println("Not allowed and Returned");
+			if (session == null || session.getAttribute("user") == null) {
+				System.out.println("Not allowed and Returned For no Session or User:" + pathInfo);
 				response.sendRedirect("/login");
 				return;
+			} else {
+				System.out.println("User :" + session.getAttribute("user"));
 			}
-		} else {
-		
-			System.out.println("User :" + session.getAttribute("user"));
-		}
-			int index = pathInfo.indexOf("/", 2);
-			
-			if (index > 2) {
-				pathInfo = pathInfo.substring(0, index);
-			}
-			
 			System.out.println("Cutdowned path: " + pathInfo);
 			
 			if (!allowed.contains(pathInfo)) {
-				System.out.println("Not allowed and Returned");
+				System.out.println("Not allowed and Returned not present in allowed list:"+pathInfo);
 				response.sendRedirect("/login");
 				return;
 			}
-		System.out.println("Allowed into system");
+		}
+		System.out.println("Allowed into system:" + pathInfo);
 		
 		chain.doFilter(servletRequest, servletResponse);
 	}

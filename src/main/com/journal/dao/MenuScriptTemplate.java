@@ -66,8 +66,8 @@ public class MenuScriptTemplate {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		if (JournalConstants.ADMIN.equals(userType) || JournalConstants.EDITOR.equals(userType)) {
 		
-			String query = "update menuscript set feedback = ?, reviewer = ? where id = ?";
-			jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), menuScriptRecord.getReviewerId(), menuScriptRecord.getId());
+			String query = "update menuscript set feedback = ?, reviewer = ?, status = ? where id = ?";
+			jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), menuScriptRecord.getReviewerId(), 2, menuScriptRecord.getId());
 		} else if (JournalConstants.REVIEWER.equals(userType)) {
 			
 			String query = "update menuscript set feedback = ? where id = ?";
@@ -81,9 +81,9 @@ public class MenuScriptTemplate {
 
 	}
 	
-	public void updateStatus(int status, int menuScriptId) {
+	public void updateStatus(int status, boolean unAssignReviewer, int menuScriptId) {
 		
-		String query = "update menuscript set status = ? where id = ?";
+		String query = "update menuscript set status = ?" + (unAssignReviewer ? " , reviewer = NULL " : "" ) + " where id = ?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
@@ -125,29 +125,30 @@ public class MenuScriptTemplate {
 		
 		if (JournalConstants.ADMIN.equals(userType)) {
 		
-			query = "select m.id, firstName, lastName, menuScriptTitle, abstractTitle, feedback, journalName, status, j.id as jid from " + 
+			query = "select m.id, s.firstName firstName, s.lastName lastName, menuScriptTitle, abstractTitle, feedback, journalName, concat(r.firstName, ' ', r.lastName) as reivewerName, r.email reviewerEmail, status, j.id as jid from " + 
 				"submitter s, " + 
-				"menuscript m, " + 
-				"journal j " + 
+				"journal j, " + 
+				"menuscript m left join reviewer r on m.reviewer = r.id " + 
 				"where m.submitterId = s.id " + 
 				"and m.journalid = j.id";
 		} else if (JournalConstants.REVIEWER.equals(userType)) {
 			
-			query = "select m.id, r.firstName, r.lastName, menuScriptTitle, abstractTitle, feedback, journalName, status, j.id as jid from " + 
+			query = "select m.id, s.firstName firstName, s.lastName lastName, menuScriptTitle, abstractTitle, feedback, journalName, concat(r.firstName, ' ', r.lastName) as reivewerName, r.email reviewerEmail, status, j.id as jid from " + 
 					"submitter s, " + 
-					"menuscript m, " + 
 					"journal j, " +
-					"reviewer r " +
+					"menuscript m left join reviewer r on m.reviewer = r.id " + 
 					"where m.submitterId = s.id " + 
-					"and m.journalid = j.id and m.reviewer = r.id and s.email = ?";
+					"and m.journalid = j.id and m.reviewer = r.id and r.email = ?";
 		} else if (JournalConstants.EDITOR.equals(userType)) {
 			
-			query = "select m.id, e.firstName, e.lastName, menuScriptTitle, abstractTitle, feedback, journalName, status, j.id as jid from submitter s, menuscript m," + 
-					"journal j, editor e where s.id = m.submitterId and m.journalid = j.id and m.journalid = e.journalId and e.email = ?"; 
+			query = "select m.id, s.firstName firstName, s.lastName lastName, menuScriptTitle, abstractTitle, feedback, journalName, concat(r.firstName, ' ', r.lastName) as reivewerName, r.email reviewerEmail, status, j.id as jid from submitter s, " + 
+					"journal j, editor e, menuscript m left join reviewer r on m.reviewer = r.id " + 
+					" where s.id = m.submitterId and m.journalid = j.id and m.journalid = e.journalId and e.email = ?"; 
 		} else if (JournalConstants.SUBMITTER.equals(userType)) {
 			
-			query = "select m.id, s.firstName, s.lastName, menuScriptTitle, abstractTitle, feedback, journalName, status, j.id as jid from submitter s, menuscript m," + 
-					"journal j where m.submitterId = s.id and m.journalid = j.id and s.email = ?"; 
+			query = "select m.id, s.firstName firstName, s.lastName lastName, menuScriptTitle, abstractTitle, feedback, journalName, concat(r.firstName, ' ', r.lastName) as reivewerName, r.email reviewerEmail, status, j.id as jid from submitter s, journal j," + 
+					"menuscript m left join reviewer r on m.reviewer = r.id " + 
+					" where m.submitterId = s.id and m.journalid = j.id and s.email = ?"; 
 		}
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
@@ -157,8 +158,10 @@ public class MenuScriptTemplate {
 		try {
 			
 			if (JournalConstants.ADMIN.equals(userType)) {
+				System.out.println("Admin query: " + query);
 				menuScripts = jdbcTemplate.queryForList(query);
 			} else if (JournalConstants.REVIEWER.equals(userType) || JournalConstants.EDITOR.equals(userType) || JournalConstants.SUBMITTER.equals(userType)) {
+				System.out.println("Others query:"+ query);
 				menuScripts = jdbcTemplate.queryForList(query, new Object[] {email});
 			}
 
@@ -183,6 +186,9 @@ public class MenuScriptTemplate {
 			menuScriptModel.setJournalName((String) menuScriptRow.get("journalName"));
 			menuScriptModel.setFeedback((String) menuScriptRow.get("feedback"));
 			menuScriptModel.setJournal((Integer) menuScriptRow.get("jid"));
+			menuScriptModel.setReviewerName((String) menuScriptRow.get("reivewerName"));
+			menuScriptModel.setReviewerEmail((String) menuScriptRow.get("reviewerEmail"));
+
 			Integer status = (Integer) menuScriptRow.get("status");
 			if (status != null) {
 				menuScriptModel.setStatus(status);
