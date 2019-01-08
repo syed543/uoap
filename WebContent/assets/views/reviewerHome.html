@@ -8,12 +8,12 @@
     <div ng-cloak>
         <md-content>
             <md-tabs md-dynamic-height md-border-bottom>
-                <md-tab label="Articles">
+                <md-tab label="Articles" md-on-select="onTabSelected('article')">
                     <md-content class="md-padding">
                         <div ng-include="'assets/views/articlesTable.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="MenuScripts">
+                <md-tab label="MenuScripts" md-on-select="onTabSelected('menuscript')">
                     <md-content class="md-padding">
                         <div ng-include="'assets/views/menuScriptsTable.html'"></div>
                     </md-content>

@@ -11,5 +11,9 @@ controllers.controller("editorHomeCtrl", ["$scope", "$rootScope", "$state", "$st
 
       $scope.userType = $rootScope.userInfo ?  $rootScope.userInfo.usertype.toLowerCase() : '';
 
+      $scope.onTabSelected = function(tab) {
+          $rootScope.selectedTab = tab;
+      }
+
 }]);
 });

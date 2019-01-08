@@ -10,5 +10,9 @@ controllers.controller("userHomeCtrl", ["$scope", "$rootScope", "$state", "$stat
   function($scope, $rootScope, $state, $stateParams, $localStorage, $sessionStorage, authenticationSvc) {
 
       $scope.userType = $rootScope.userInfo ?  $rootScope.userInfo.usertype.toLowerCase() : '';
+
+      $scope.onTabSelected = function(tab) {
+          $rootScope.selectedTab = tab;
+      }
 }]);
 });
