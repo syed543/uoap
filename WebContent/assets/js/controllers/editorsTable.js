@@ -382,7 +382,7 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
         if (data.statusCode == 200) { // Success
           $scope.desserts = data;
         } else { 					// Error
-          console.log("Unable to fetch journals list. please contact support.");
+          console.log("Unable to fetch editors list. please contact support.");
         }
       });
     };
@@ -437,6 +437,11 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
         data['description'] = $scope.editor['description'];
         data['affiliation'] = $scope.editor['affiliation'];
         data['journalId'] = $scope.editor['journalId'];
+        data['designation'] = $scope.editor['designation'];
+        data['department'] = $scope.editor['department'];
+        data['country'] = $scope.editor['country'];
+        data['contactNo'] = $scope.editor['contactNo'];
+        data['isCheifEditor'] = $scope.editor['isCheifEditor'];
 
         fd.append("data", JSON.stringify(data));
         EditorsService.updateEditor(fd, editorId).then(function (data) {

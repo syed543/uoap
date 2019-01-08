@@ -19,28 +19,50 @@
 	</md-content>
 
 
-	<md-content layout="column" >
-		<md-toolbar class="md-table-toolbar md-default">
-			<div class="md-toolbar-tools">
-				<h1>List Of Articles:</h1>
-				<div flex></div>
-				<md-button class="md-icon-button" ng-click="refreshArticles()">
-					<md-icon>refresh</md-icon>
-				</md-button>
+	<md-content md-padding>
+		<div layout="row" layout-wrap>
+			<div flex-gt-sm="75" flex="100">
+				<md-toolbar class="md-table-toolbar md-default">
+					<div class="md-toolbar-tools">
+						<h1>List Of Articles:</h1>
+						<div flex></div>
+						<md-button class="md-icon-button" ng-click="refreshArticles()">
+							<md-icon>refresh</md-icon>
+						</md-button>
+					</div>
+				</md-toolbar>
+				<md-card ng-repeat="article in articles">
+					<md-content layout-padding>
+						<div class="article-title">{{article.article_title}}</div>
+						<div class="article-abstract">{{article.article_abstract}}</div>
+						<div>
+							<span class="author-title">Author(s): </span>
+							<span>{{article.authors}}</span>
+						</div>
+						<div>
+							<a href="">Download</a>
+						</div>
+					</md-content>
+				</md-card>
 			</div>
-		</md-toolbar>
-			<md-card ng-repeat="article in articles">
-				<md-content layout-padding>
-					<div class="article-title">{{article.article_title}}</div>
-					<div class="article-abstract">{{article.article_abstract}}</div>
-					<div>
-						<span class="author-title">Author(s): </span>
-						<span>{{article.authors}}</span>
+			<div flex-gt-sm="25" flex="100">
+				<div class="list-editors">
+					<div ng-repeat="editor in editors" class="editor-panel">
+						<div class="editor-icon-container">
+							<img class="editor-icon" ng-src="{{editor.avatar}}"/>
+						</div>
+						<div class="editor-details-container">
+							<div class="editor-cheif" ng-if="editor.isChiefEditor">Editor in cheif</div>
+							<div class="editor-name">{{editor.firstName}} {{editor.lastName}}</div>
+							<div>{{editor.affiliation}}</div>
+							<div>{{editor.designation}}</div>
+							<div>{{editor.department}}</div>
+							<div>{{editor.country}}</div>
+							<div>{{editor.contactNo}}</div>
+						</div>
 					</div>
-					<div>
-						<a href="">Download</a>
-					</div>
-				</md-content>
-			</md-card>
+				</div>
+			</div>
+		</div>
 	</md-content>
 </div>

@@ -34,6 +34,13 @@ services.factory('EditorsService', ["Http", "$q", "$state", "$log", function (Ht
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
+            },
+            getEditorsByJournalId: function(journalId) {
+                var deferred = $q.defer();
+                Http.getData('/editors/'+journalId).then(function(data){
+                    deferred.resolve(data);
+                }).catch(function(err){});
+                return deferred.promise;
             }
 		};
 	}]);

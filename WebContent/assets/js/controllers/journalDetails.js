@@ -6,8 +6,8 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial) {
-controllers.controller("journalDetailsCtrl", ["$scope", "$rootScope", "$state", "$stateParams", "$localStorage", "$sessionStorage", "JournalsService", "ArticlesService", "authenticationSvc", "$mdDialog",
-  function($scope, $rootScope, $state, $stateParams, $localStorage, $sessionStorage, JournalsService, ArticlesService, authenticationSvc, $mdDialog) {
+controllers.controller("journalDetailsCtrl", ["$scope", "$rootScope", "$state", "$stateParams", "$localStorage", "$sessionStorage", "JournalsService", "ArticlesService", "authenticationSvc", "$mdDialog","EditorsService",
+  function($scope, $rootScope, $state, $stateParams, $localStorage, $sessionStorage, JournalsService, ArticlesService, authenticationSvc, $mdDialog, EditorsService) {
 
   var urlSplit = window.location.pathname.split('/'),
       _journalId = urlSplit[urlSplit.length-1].split('.')[0];
@@ -28,6 +28,53 @@ controllers.controller("journalDetailsCtrl", ["$scope", "$rootScope", "$state", 
         console.log("Unable to fetch articles list. please contact support.");
       }
     });
+
+    EditorsService.getEditorsByJournalId(_journalId).then(function (data) {
+        if (data.statusCode == 200) { // Success
+            $scope.editors = data.data;
+
+            $scope.editors = [
+                {
+                    "avatar": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                    "isChiefEditor": "true",
+                    "firstName": "First",
+                    "lastName": "Last",
+                    "affiliation": "Affiliation",
+                    "designation": "Designation",
+                    "department": "Department",
+                    "country": "India",
+                    "contactNo": "040-45678985 Ext No: 3456"
+                }
+            ];
+        } else { 					// Error
+            console.log("Unable to fetch editors list. please contact support.");
+        }
+    });
+
+      /*$scope.editors = [
+          {
+              "avatar": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              "isChiefEditor": "true",
+              "firstName": "First",
+              "lastName": "Last",
+              "affiliation": "Affiliation",
+              "designation": "Designation",
+              "department": "Department",
+              "country": "India",
+              "contactNo": "040-45678985 Ext No: 3456"
+          },
+          {
+              "avatar": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+              "isChiefEditor": "true",
+              "firstName": "First",
+              "lastName": "Last",
+              "affiliation": "Affiliation",
+              "designation": "Designation",
+              "department": "Department",
+              "country": "India",
+              "contactNo": "040-45678985 Ext No: 3456"
+          }
+      ];*/
 
     $scope.submitMenuScript = function(ev) {
       $mdDialog.show({
