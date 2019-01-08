@@ -28,7 +28,13 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
       limit: 5,
       page: 1
     };
-
+    $scope.$watch(function() {
+      return $rootScope.selectedTab;
+    }, function() {
+      if($rootScope.selectedTab == 'menuscript') {
+          $scope.refreshMenuScripts();
+      };
+    });
     $scope.refreshMenuScripts = function() {
       _getMenuScripts();
     };

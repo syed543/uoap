@@ -6,8 +6,8 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial) {
-controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'EditorsService', '$mdDialog', 'JournalsService',
-  function($mdEditDialog, $q, $scope, $timeout, EditorsService, $mdDialog, JournalsService) {
+controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$timeout', 'EditorsService', '$mdDialog', 'JournalsService', '$rootScope',
+  function($mdEditDialog, $q, $scope, $timeout, EditorsService, $mdDialog, JournalsService, $rootScope) {
 
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
@@ -28,6 +28,14 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
       limit: 5,
       page: 1
     };
+
+    $scope.$watch(function() {
+      return $rootScope.selectedTab;
+    }, function() {
+      if($rootScope.selectedTab == 'editor') {
+          $scope.refreshEditors();
+      };
+    });
 
     $scope.refreshEditors = function() {
       _getEditors();

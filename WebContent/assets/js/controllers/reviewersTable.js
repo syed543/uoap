@@ -29,6 +29,14 @@ controllers.controller("reviewersTableCtrl", ['$mdEditDialog', '$q', '$scope', '
       page: 1
     };
 
+    $scope.$watch(function() {
+      return $rootScope.selectedTab;
+    }, function() {
+      if($rootScope.selectedTab == 'reviewer') {
+          $scope.refreshReviewers();
+      };
+    });
+
     $scope.refreshReviewers = function() {
       _getReviewers();
     };

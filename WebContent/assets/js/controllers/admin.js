@@ -11,6 +11,9 @@ controllers.controller("adminHomeCtrl", ["$scope", "$rootScope", "$state", "$sta
 
     $scope.userType = $rootScope.userInfo && $rootScope.userInfo.usertype?  $rootScope.userInfo.usertype.toLowerCase() : '';
 
+    $scope.onTabSelected = function(tab) {
+        $rootScope.selectedTab = tab;
+    }
 
 }]);
 });

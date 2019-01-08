@@ -29,6 +29,14 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
       page: 1
     };
 
+    $scope.$watch(function() {
+      return $rootScope.selectedTab;
+    }, function() {
+      if($rootScope.selectedTab == 'article') {
+          $scope.refreshArticles();
+      };
+    });
+
     $scope.refreshArticles = function() {
       _getArticles();
     };
