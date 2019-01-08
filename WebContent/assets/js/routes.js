@@ -89,7 +89,7 @@ define(['angular', 'controllers/main', 'angular-ui-router'], function (angular, 
                 name: 'aboutUs',
                 templateUrl: 'assets/views/aboutUs.html',
                 controller: 'aboutUsCtrl',
-                Authentication: true
+                Authentication: false
             });
 
         $urlRouterProvider.otherwise('home');

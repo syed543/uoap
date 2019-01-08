@@ -82,11 +82,11 @@ define([
                         console.log("Not Authorized");
                         $rootScope.userlogged = false;
                     }
-                    else {
+                    /*else {
                         event.preventDefault();
                         console.log("Authorized");
                         $state.go("home");
-                    }
+                    }*/
                 }
                 if ($rootScope.userInfo !== false) {
                     if ($rootScope.userInfo.usertype.toLowerCase() == "admin") {
