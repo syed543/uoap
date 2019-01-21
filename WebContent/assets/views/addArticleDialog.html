@@ -72,6 +72,32 @@
                         </div>
                     </div>
                 </md-content>
+                <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
+                    <div layout="row">
+                        <md-input-container flex="40" class="md-block">
+                            <label>Version</label>
+                            <md-select name="version" ng-model="article.version" required>
+                                <md-option ng-repeat="version in versions" value="{{version}}">
+                                    {{version}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="articleForm.version.$error" role="alert" multiple>
+                                <div ng-message="required" class="my-message">You must provide version.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex="40" class="md-block">
+                            <label>Issue</label>
+                            <md-select name="issueNo" ng-model="article.issueNo" required>
+                                <md-option ng-repeat="issue in issues" value="{{issue}}">
+                                    {{issue}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="articleForm.issueNo.$error" role="alert" multiple>
+                                <div ng-message="required" class="my-message">You must provide Issue Number.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
             </div>
         </md-dialog-content>
 
