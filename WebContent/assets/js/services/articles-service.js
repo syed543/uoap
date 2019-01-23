@@ -52,6 +52,14 @@ services.factory('ArticlesService', ["Http", "$q", "$state", "$log", function (H
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;
+            },
+            updateArticleState: function(articleId) {
+                var deferred = $q.defer();
+                /*Http.getData('assets/data/articles.json', articleId).then(function(data){*/
+                Http.getData('/updateArticleState/'+articleId).then(function(data){
+                    deferred.resolve(data);
+                }).catch(function(err){});
+                return deferred.promise;
             }
 		};
 	}]);
