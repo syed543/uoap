@@ -1,5 +1,6 @@
 package com.journal.dao;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.journal.model.Journal;
+import com.journal.utils.JournalConstants;
 
 public class JournalJDBCTemplate {
 
@@ -44,7 +46,7 @@ public class JournalJDBCTemplate {
 
 	public List<Journal> getAllJournals() {
 		
-		String query = "select id, journalName, journalDescription, journalLongDescription from JOURNAL";
+		String query = "select id, journalName, journalDescription, journalLongDescription, journalIconFileName from JOURNAL";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
@@ -59,6 +61,7 @@ public class JournalJDBCTemplate {
 			journal.setJournal_name((String) journalRow.get("journalName"));
 			journal.setJournal_description((String) journalRow.get("journalDescription"));
 			journal.setJournal_long_description((String) journalRow.get("journalLongDescription"));
+			journal.setJournalIconFileName(JournalConstants.JOURNAL_ICONS_FOLDER + File.separator + journal.getId() + File.separator + (String) journalRow.get("journalLongDescription"));
 			
 			journals.add(journal);
 		}
