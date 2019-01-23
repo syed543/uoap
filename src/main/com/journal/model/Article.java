@@ -12,7 +12,7 @@ public class Article {
 	private String journalName;
 	
 	private Integer version;
-	private Integer issue;
+	private Integer issueNo;
 
 	public Integer getId() {
 		return id;
@@ -68,10 +68,10 @@ public class Article {
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
-	public Integer getIssue() {
-		return issue;
+	public Integer getIssueNo() {
+		return issueNo;
 	}
-	public void setIssue(Integer issue) {
-		this.issue = issue;
+	public void setIssueNo(Integer issueNo) {
+		this.issueNo = issueNo;
 	}
 }
