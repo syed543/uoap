@@ -18,14 +18,14 @@ public class WebAppUtils {
 		
 		if (type != null) {
 			
-			File folderPath = new File(getWebAppPath() + File.pathSeparator + "avatars" + File.pathSeparator + type + File.pathSeparator + id);
+			File folderPath = new File(getWebAppPath() + File.separator + JournalConstants.AVATARS + File.separator + type + File.separator + id);
 			folderPath.delete();
 			
 			if (!folderPath.mkdirs()) {
 				return;
 			}
 			
-			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(folderPath.getPath() + File.pathSeparator + fileName)));
+			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(folderPath.getPath() + File.separator + fileName)));
 			bos.write(fileData);
 			bos.flush();
 			bos.close();

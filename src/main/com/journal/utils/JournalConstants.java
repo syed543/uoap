@@ -4,17 +4,26 @@ import java.io.File;
 
 public interface JournalConstants {
 	
-	String JOURNAL_ICONS_FOLDER = "Journal" + File.separator + "Icons";
-	
-	String JOURNAL_BANNER_FOLDER = "Journal" + File.separator + "Banners";
 	
 	String ADMIN = "Admin";
+	
+	String JORUNAL = "Journal";
+	
+	String ICONS = "Icons";
+	
+	String BANNERS = "Banners";
 	
 	String REVIEWER = "Reviewer";
 	
 	String EDITOR = "Editor";
 	
 	String SUBMITTER = "Submitter";
+	
+	String AVATARS = "Avatars";
+
+	String JOURNAL_ICONS_FOLDER = JORUNAL + File.separator+ ICONS;
+	
+	String JOURNAL_BANNER_FOLDER = JORUNAL + File.separator + BANNERS;
 	
 	//1: Open, 2: Assigned, 3:In Review 4: Approved, 5: Rejected
 	int MENUSCRIPT_STATUS_OPEN = 1;
