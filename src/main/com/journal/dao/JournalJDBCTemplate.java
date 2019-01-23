@@ -25,7 +25,7 @@ public class JournalJDBCTemplate {
 		return dataSource;
 	}
 
-	public Integer saveJournal(Journal journal) {
+	public void saveJournal(Journal journal) {
 		String query = "insert into JOURNAL(journalName, journalIcon, journalIconFileName, journalDescription, journalLongDescription, journalBannerImage, journalBannerImageFileName) values" +
 				"(?, ?, ?, ?, ?, ? ,?)";
 
@@ -39,7 +39,7 @@ public class JournalJDBCTemplate {
 		
 		Integer autoInt = jdbcTemplate.queryForInt(auto);
 		
-		return autoInt - 1;
+		journal.setId(autoInt - 1);
 	}
 
 	public List<Journal> getAllJournals() {

@@ -26,8 +26,10 @@ import com.journal.dao.EditorJDBCTemplate;
 import com.journal.dao.record.EditorRecord;
 import com.journal.model.EditorModel;
 import com.journal.utils.Encryptor;
+import com.journal.utils.JournalConstants;
 import com.journal.utils.JournalMailUtil;
 import com.journal.utils.JournalUtil;
+import com.journal.utils.WebAppUtils;
 
 @Controller
 public class EditorController {
@@ -59,6 +61,10 @@ public class EditorController {
 			}
 			
 			editorJDBCTemplate.saveEditor(editorModel);
+			
+			if (editorModel.getId() != null && editorModel.getId() > 0) {
+				WebAppUtils.uploadFile(JournalConstants.EDITOR, editorModel.getId(), editorModel.getAvatarFileName(), editorModel.getAvatar());
+			}
 			
 			try {
 				
@@ -124,6 +130,10 @@ public class EditorController {
 	@RequestMapping(value="/editors", method=RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> geteditors() {
+		
+		String path = this.getClass().getClassLoader().getResource("/../..").getPath();
+		
+		System.out.println("Editor path:"+path);
 		
 		List<EditorModel> editors = editorJDBCTemplate.getEditors();
 		

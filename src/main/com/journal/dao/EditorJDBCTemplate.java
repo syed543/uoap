@@ -28,14 +28,16 @@ public class EditorJDBCTemplate {
 	}
 
 	public void saveEditor(EditorModel editorModel) {
-		String query = "insert into Editor(firstName, lastName, email, avatar, avatarFileName, description, affiliation, journalId, password, generatedPass) values" +
-						"(?, ?, ?, ?, ?, ?, ? ,?, ?, ?)";
+		String query = "insert into Editor(firstName, lastName, email, avatar, avatarFileName, description, affiliation, journalId, password, generatedPass,"
+				+ "designation, department, country, contactno, isChiefEditor) values" +
+						"(?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, editorModel.getFirstName(), editorModel.getLastName(), editorModel.getEmail(), 
 				editorModel.getAvatar(), editorModel.getAvatarFileName(), editorModel.getDescription(), 
-				editorModel.getAffiliation(), editorModel.getJournalId(), editorModel.getPassword(), editorModel.getGeneratedPass());
+				editorModel.getAffiliation(), editorModel.getJournalId(), editorModel.getPassword(), editorModel.getGeneratedPass(),
+				editorModel.getDesignation(), editorModel.getDepartment(), editorModel.getCountry(), editorModel.getContactNo(), editorModel.isChiefEditor());
 		
 		String auto = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'journal' AND TABLE_NAME = 'Editor'";
 		
@@ -47,20 +49,23 @@ public class EditorJDBCTemplate {
 	}
 	
 	public void updateEditor(EditorModel editorModel) {
-		String query = "update editor set firstName = ?, lastName = ?,  avatar = ?, avatarFileName = ?, description = ?, affiliation = ?, journalId = ? where id = ?";
+		String query = "update editor set firstName = ?, lastName = ?,  avatar = ?, avatarFileName = ?, description = ?, affiliation = ?, journalId = ?,"
+				+ "designation = ?, department = ?, country = ?, contactno = ?, isChiefEditor = ? where id = ?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, editorModel.getFirstName(), editorModel.getLastName(), editorModel.getAvatar(), 
 				editorModel.getAvatarFileName(), editorModel.getDescription(), editorModel.getAffiliation(), 
-				editorModel.getJournalId(), editorModel.getId());
+				editorModel.getJournalId(),
+				editorModel.getDesignation(), editorModel.getDepartment(), editorModel.getCountry(), editorModel.getContactNo(), editorModel.isChiefEditor(),
+				editorModel.getId());
 		
 		System.out.println("Editor updated");
 	}
 
 	public EditorRecord getEditorByMailId(String mail) {
 		
-		String query = "Select id, firstName, lastName, email, password from Editor where email = ?";
+		String query = "Select id, firstName, lastName, email, password,designation, department, country, contactno, isChiefEditor from Editor where email = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 		
@@ -76,7 +81,7 @@ public class EditorJDBCTemplate {
 
 	public List<EditorModel> getEditors() {
 		
-		String query = "Select e.id as id, firstName, lastName, email, description, affiliation, journalName, j.id as jid from Editor e, Journal j where e.journalId = j.id";
+		String query = "Select e.id as id, firstName, lastName, email, description, affiliation, journalName, designation, department, country, contactno, isChiefEditor, j.id as jid from Editor e, Journal j where e.journalId = j.id";
 
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
@@ -94,6 +99,15 @@ public class EditorJDBCTemplate {
 			editorModel.setDescription((String) editorRow.get("description"));
 			editorModel.setAffiliation((String) editorRow.get("affiliation"));
 			editorModel.setJournalName((String) editorRow.get("journalName"));
+			
+			editorModel.setDepartment((String) editorRow.get("designation"));
+			editorModel.setDesignation((String) editorRow.get("department"));
+			editorModel.setCountry((String) editorRow.get("country"));
+			editorModel.setContactNo((String) editorRow.get("contactno"));
+			if(editorRow.get("isChiefEditor") != null) {
+				editorModel.setChiefEditor((Boolean) editorRow.get("isChiefEditor"));
+			}
+			
 			editorModel.setJournalId((Integer) editorRow.get("jid"));
 			
 			editorModels.add(editorModel);

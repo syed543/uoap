@@ -21,6 +21,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.journal.dao.JournalJDBCTemplate;
 import com.journal.model.Journal;
+import com.journal.utils.JournalConstants;
+import com.journal.utils.WebAppUtils;
 
 @Controller
 public class JournalController {
@@ -44,11 +46,13 @@ public class JournalController {
 			journal.setJournalBannerImageFileName(banner.getOriginalFilename());
 		}
 		
-		Integer autoId = journalJDBCTemplate.saveJournal(journal);
+		journalJDBCTemplate.saveJournal(journal);
 		
-		if (icon != null) {
+		if (journal.getId() != null && journal.getId() > 0) {
 			
-//			File iconFile = new File(JournalConstants.JOURNAL_IMAGES_FOLDER + "")
+			WebAppUtils.uploadFile(JournalConstants.JOURNAL_ICONS_FOLDER, journal.getId(), journal.getJournalIconFileName(), journal.getJournalIcon());
+			
+			WebAppUtils.uploadFile(JournalConstants.JOURNAL_BANNER_FOLDER, journal.getId(), journal.getJournalBannerImageFileName(), journal.getJournalBannerImage());
 		}
 		
 		Map<String, Object> result = new HashMap<String, Object>();

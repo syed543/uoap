@@ -15,6 +15,10 @@ public class EditorModel {
 	private String affiliation;
 	private int journalId;
 	private String journalName;
+	private String department;
+	private String designation;
+	private String contactNo;
+	private boolean chiefEditor;
 	
 	
 	public Integer getId() {
@@ -94,5 +98,29 @@ public class EditorModel {
 	}
 	public void setJournalName(String journalName) {
 		this.journalName = journalName;
+	}
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	public String getDesignation() {
+		return designation;
+	}
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+	public String getContactNo() {
+		return contactNo;
+	}
+	public void setContactNo(String contactNo) {
+		this.contactNo = contactNo;
+	}
+	public boolean isChiefEditor() {
+		return chiefEditor;
+	}
+	public void setChiefEditor(boolean chiefEditor) {
+		this.chiefEditor = chiefEditor;
 	}
 }

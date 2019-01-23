@@ -1,8 +1,12 @@
 package com.journal.utils;
 
+import java.io.File;
+
 public interface JournalConstants {
 	
-	String JOURNAL_IMAGES_FOLDER = "/Journal/";
+	String JOURNAL_ICONS_FOLDER = "Journal" + File.separator + "Icons";
+	
+	String JOURNAL_BANNER_FOLDER = "Journal" + File.separator + "Banners";
 	
 	String ADMIN = "Admin";
 	

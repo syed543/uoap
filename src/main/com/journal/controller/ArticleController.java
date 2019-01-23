@@ -120,4 +120,14 @@ public class ArticleController {
 		result.put("message", "Article added succesfully");
 		return result;
 	}
+	
+	@RequestMapping(value="getEditorsByJournalId/{journalId}", method=RequestMethod.GET)
+	public Map<String, Object> getEditorsByJournalId(@PathVariable("journalId") int journalId) {
+		
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("statusCode", "200");
+		result.put("message", "Article added succesfully");
+		return result;
+	}
 }

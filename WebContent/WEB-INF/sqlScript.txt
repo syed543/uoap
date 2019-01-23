@@ -100,3 +100,11 @@ primary key(id)
 alter table menuscript add column feedback varchar(2000);
 
 alter table reviewer add column journalId int;
+
+alter table editor add  column designation varchar(100), add  column department varchar(100),add  column  country varchar(20), add  column contactno varchar(30), add  column isChiefEditor tinyint(1);
+
+alter table editor drop column isChiefEditor;
+
+alter table editor add column isChiefEditor boolean;
+
+alter table article add column version int, add column issue int;
