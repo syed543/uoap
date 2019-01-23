@@ -77,7 +77,7 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
           'country': '',
           'contactNo': '',
         'affiliation': '',
-        'cheifEditor': false,
+        'chiefEditor': false,
         'journalId': ''
       };
       $scope.journals = parentScope.journals;
@@ -363,7 +363,7 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
          data['department'] = $scope.editor['department'];
          data['country'] = $scope.editor['country'];
          data['contactNo'] = $scope.editor['contactNo'];
-         data['cheifEditor'] = $scope.editor['cheifEditor'];
+         data['chiefEditor'] = $scope.editor['chiefEditor'];
 
         fd.append("data", JSON.stringify(data));
         EditorsService.addEditor(fd).then(function (data) {
@@ -441,7 +441,7 @@ controllers.controller("editorsTableCtrl", ['$mdEditDialog', '$q', '$scope', '$t
         data['department'] = $scope.editor['department'];
         data['country'] = $scope.editor['country'];
         data['contactNo'] = $scope.editor['contactNo'];
-        data['cheifEditor'] = $scope.editor['cheifEditor'];
+        data['chiefEditor'] = $scope.editor['chiefEditor'];
 
         fd.append("data", JSON.stringify(data));
         EditorsService.updateEditor(fd, editorId).then(function (data) {
