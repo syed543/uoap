@@ -437,3 +437,10 @@ md-table-pagination .label {
 .editor-name {
     color: #0f1574;
 }
+
+.table-icon-image {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    padding: 5px 0;
+}

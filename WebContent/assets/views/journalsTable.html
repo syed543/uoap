@@ -35,7 +35,8 @@
                     <tbody md-body>
                     <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
                         <td md-cell>{{dessert.journal_name}}</td>
-                        <td md-cell><md-icon md-svg-src="{{desert.journal_icon}}"></md-icon> </td>
+                        <!--<td md-cell><md-icon md-svg-src="{{dessert.journalIconFileName}}"></md-icon> </td>-->
+                        <td md-cell><img class="table-icon-image" ng-src="{{dessert.journalIconFileName}}"></img> </td>
                         <td md-cell>{{dessert.journal_description}}</td>
                         <td md-cell><md-button class="md-icon-button" ng-click="view(dessert)">
                             <md-icon>visibility</md-icon>
