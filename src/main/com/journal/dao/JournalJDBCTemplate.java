@@ -61,7 +61,7 @@ public class JournalJDBCTemplate {
 			journal.setJournal_name((String) journalRow.get("journalName"));
 			journal.setJournal_description((String) journalRow.get("journalDescription"));
 			journal.setJournal_long_description((String) journalRow.get("journalLongDescription"));
-			journal.setJournalIconFileName(JournalConstants.JOURNAL_ICONS_FOLDER + File.separator + journal.getId() + File.separator + (String) journalRow.get("journalIconFileName"));
+			journal.setJournalIconFileName(JournalConstants.AVATARS + File.separator + JournalConstants.JOURNAL_ICONS_FOLDER + File.separator + journal.getId() + File.separator + (String) journalRow.get("journalIconFileName"));
 			
 			journals.add(journal);
 		}
