@@ -105,7 +105,7 @@ public class EditorJDBCTemplate {
 			editorModel.setCountry((String) editorRow.get("country"));
 			editorModel.setContactNo((String) editorRow.get("contactno"));
 			if(editorRow.get("isChiefEditor") != null) {
-				editorModel.setChiefEditor((Boolean) editorRow.get("isChiefEditor"));
+				editorModel.setChiefEditor((Boolean)editorRow.get("isChiefEditor"));
 			}
 			
 			editorModel.setJournalId((Integer) editorRow.get("jid"));
