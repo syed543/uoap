@@ -49,11 +49,11 @@ public class SubmitterJDBCTemplate {
 				submitterRecord.getEmail(), submitterRecord.getPassword(), submitterRecord.getGeneratedPass(), 
 				submitterRecord.getAddress(), submitterRecord.getCountry());
 		
-		String auto = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'journal' AND TABLE_NAME = 'submitter'";
+		String auto = "SELECT max(id) from submitter";
 		
 		Integer autoInt = jdbcTemplate.queryForInt(auto);
 		
-		submitterRecord.setId(autoInt - 1);
+		submitterRecord.setId(autoInt);
 		
 		return submitterRecord;
 	}
