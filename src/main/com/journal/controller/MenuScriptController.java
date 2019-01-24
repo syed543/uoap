@@ -26,8 +26,10 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.journal.dao.MenuScriptTemplate;
+import com.journal.dao.ReviewerJDBCTemplate;
 import com.journal.dao.SubmitterJDBCTemplate;
 import com.journal.dao.record.MenuScriptRecord;
+import com.journal.dao.record.ReviewerRecord;
 import com.journal.dao.record.SubmitterRecord;
 import com.journal.model.MenuScriptModel;
 import com.journal.model.User;
@@ -44,6 +46,9 @@ public class MenuScriptController {
 	
 	@Autowired
 	private SubmitterJDBCTemplate submitterJDBCTemplate;
+	
+	@Autowired
+	private ReviewerJDBCTemplate reviewerJDBCTemplate;
 	
 	@RequestMapping(value="/addMenuScript", method=RequestMethod.POST)
 	@ResponseBody
@@ -139,6 +144,17 @@ public class MenuScriptController {
 		
 		JournalMailUtil.sendMail(submitterRecord.getEmail(), "MenuScript Feedback Provided:", 
 				"Feed back for MenuScript:" + record.getFeedBack());
+		
+		if (model.getReviewerId() > 0) {
+			
+			ReviewerRecord record1 = reviewerJDBCTemplate.getReviewerById(model.getReviewerId());
+			
+			try {
+				JournalMailUtil.sendMail(record1.getEmail(), "Manuscript assigned for review", "Hi, \n Manuscript is assigned to you, Please review and provide feedback"); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		System.out.println("Menu Script added successfully");
 		

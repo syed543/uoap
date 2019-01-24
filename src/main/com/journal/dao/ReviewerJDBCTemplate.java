@@ -45,6 +45,22 @@ public class ReviewerJDBCTemplate {
 		return null;
 	}
 	
+	public ReviewerRecord getReviewerById(int id) {
+		
+		String query = "Select id, firstName, lastName, email, password, generatedPass, country, journalId from Reviewer where id = ?";
+		
+		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
+		
+		try {
+			
+			ReviewerRecord record = (ReviewerRecord) jdbcTemplate.queryForObject(query, new Object[] {id}, new BeanPropertyRowMapper(ReviewerRecord.class));
+			return record;
+		} catch (EmptyResultDataAccessException eae) {
+			
+		}
+		return null;
+	}
+	
 	public List<ReviewerRecord> getReviewersByJournalId(int journalId) {
 		
 		String query = "Select id, firstName, lastName, email, country from Reviewer where journalId = ?";
