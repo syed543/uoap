@@ -66,6 +66,8 @@ public class JournalFilter implements Filter{
 		allowed.add("/reviewerAccept");
 		allowed.add("/getJournalById");
 		allowed.add("/getArticlesByJournalId");
+		
+		allowed.add("/downloadArticle");
 	}
 
 	@Override
