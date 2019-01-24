@@ -44,8 +44,8 @@
                         <div ng-if="dessert.articleState == 'inPress'">In Press</div>
                         <div ng-if="dessert.articleState == 'currentIssue'">Current Issue</div>
                         <div ng-if="dessert.articleState == 'archive'">Archive</div>
-                        <div ng-if="dessert.articleState == 'inPress'" ng-click="updateArticleState(dessert)">Move to current Issue</div>
-                        <div ng-if="dessert.articleState == 'currentIssue'" ng-click="updateArticleState(dessert)">Move to Archive</div>
+                        <md-button ng-if="dessert.articleState == 'inPress'" ng-click="updateArticleState(dessert)">Move to current Issue</md-button>
+                        <md-button ng-if="dessert.articleState == 'currentIssue'" ng-click="updateArticleState(dessert)">Move to Archive</md-button>
                         </td>
                         <td md-cell><md-button class="md-icon-button" ng-click="view(dessert)">
                             <md-icon>file_download</md-icon>
