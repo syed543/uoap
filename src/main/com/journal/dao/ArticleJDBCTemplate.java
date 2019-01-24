@@ -141,7 +141,7 @@ public class ArticleJDBCTemplate {
 	
 	public void updateArticleState(int articleId) {
 		
-		String query = "update ARTICLE set articleState = articleState + 1 ";
+		String query = "update ARTICLE set articleState = articleState + 1 where id = ?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
