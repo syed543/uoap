@@ -39,13 +39,11 @@ public class EditorJDBCTemplate {
 				editorModel.getAffiliation(), editorModel.getJournalId(), editorModel.getPassword(), editorModel.getGeneratedPass(),
 				editorModel.getDesignation(), editorModel.getDepartment(), editorModel.getCountry(), editorModel.getContactNo(), editorModel.isChiefEditor());
 		
-		String auto = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'journal' AND TABLE_NAME = 'Editor'";
+		String auto = "select max(id) from Editor";
 		
 		Integer autoInt = jdbcTemplate.queryForInt(auto);
 		
-		editorModel.setId(autoInt - 1);
-		
-		System.out.println("Editor Created");
+		editorModel.setId(autoInt);
 	}
 	
 	public void updateEditor(EditorModel editorModel) {

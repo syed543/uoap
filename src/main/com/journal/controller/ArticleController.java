@@ -124,6 +124,7 @@ public class ArticleController {
 	}
 	
 	@RequestMapping(value="getEditorsByJournalId/{journalId}", method=RequestMethod.GET)
+	@ResponseBody
 	public Map<String, Object> getEditorsByJournalId(@PathVariable("journalId") int journalId) {
 		
 		
@@ -143,6 +144,18 @@ public class ArticleController {
 		response.getOutputStream().write(fileDat);
 		
 		response.flushBuffer();
+	}
+	
+	@RequestMapping(value="updateArticleState/{articleId}", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> updateArticleState(@PathVariable("articleId") int articleId) {
+		
+		articleJDBCTemplate.updateArticleState(articleId);
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("statusCode", "200");
+		result.put("message", "Article state updated succesfully");
+		return result;
 	}
 	
 }

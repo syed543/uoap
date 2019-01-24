@@ -35,11 +35,11 @@ public class ArticleJDBCTemplate {
 		jdbcTemplate.update(query, article.getTitle(), article.getAbstractDesc(), article.getAuthors(), article.getJournalId(),
 				article.getFile(), article.getFileName(), article.getVersion(), article.getIssueNo(),  1);
 		
-		String auto = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'article' AND TABLE_NAME = 'ARTICLE'";
+		String auto = "select max(id) from ARTICLE";
 		
-//		Integer autoInt = jdbcTemplate.queryForInt(auto);
+		Integer autoInt = jdbcTemplate.queryForInt(auto);
 		
-		return 1;
+		return autoInt;
 	}
 
 	public List<Article> getAllArticles() {
@@ -138,6 +138,16 @@ public class ArticleJDBCTemplate {
 		
 		jdbcTemplate.update(query, new Object[] {articleId});
 	}
+	
+	public void updateArticleState(int articleId) {
+		
+		String query = "update ARTICLE set articleState = articleState + 1 ";
+		
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		
+		jdbcTemplate.update(query, new Object[] {articleId});
+	}
+	
 	
 	public byte[] getArticleFileByArticleId(int articleId) {
 		

@@ -37,11 +37,11 @@ public class JournalJDBCTemplate {
 				journal.getJournal_description(), journal.getJournal_long_description(), journal.getJournalBannerImage(), 
 				journal.getJournalBannerImageFileName());
 		
-		String auto = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'journal' AND TABLE_NAME = 'JOURNAL'";
+		String auto = "select max(id) from JOURNAL";
 		
 		Integer autoInt = jdbcTemplate.queryForInt(auto);
 		
-		journal.setId(autoInt - 1);
+		journal.setId(autoInt);
 	}
 
 	public List<Journal> getAllJournals() {

@@ -10,6 +10,8 @@ public class Article {
 	private String fileName;
 	private Integer journalId;
 	private String journalName;
+	private int articleStateId;
+	private String articleState;
 	
 	private Integer version;
 	private Integer issueNo;
@@ -74,4 +76,17 @@ public class Article {
 	public void setIssueNo(Integer issueNo) {
 		this.issueNo = issueNo;
 	}
+	public int getArticleStateId() {
+		return articleStateId;
+	}
+	public void setArticleStateId(int articleStateId) {
+		this.articleStateId = articleStateId;
+	}
+	public String getArticleState() {
+		return articleState;
+	}
+	public void setArticleState(String articleState) {
+		this.articleState = articleState;
+	}
+	
 }

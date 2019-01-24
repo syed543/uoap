@@ -40,11 +40,11 @@ public class MenuScriptTemplate {
 		jdbcTemplate.update(query, menuScriptRecord.getSubmitterId(), menuScriptRecord.getJournalId(), menuScriptRecord.getMenuScriptTitle(), menuScriptRecord.getStatus(),
 				menuScriptRecord.getAbstractData(), menuScriptRecord.getMenuScriptData(), menuScriptRecord.getMenuScriptFileName());
 		
-		String auto = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'journal' AND TABLE_NAME = 'menuscript'";
+		String auto = "select max(id) from MENUSCRIPT'";
 		
 		Integer autoInt = jdbcTemplate.queryForInt(auto);
 		
-		menuScriptRecord.setId(autoInt - 1);
+		menuScriptRecord.setId(autoInt);
 		
 		return menuScriptRecord;
 	}
