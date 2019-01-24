@@ -35,7 +35,7 @@ services.factory('ArticlesService', ["Http", "$q", "$state", "$log", function (H
                 return deferred.promise;
             },
             downloadArticle: function(articleId) {
-                Http.downloadFile('/downloadArticle?id='+articleId);
+                Http.downloadFile('/downloadArticle/'+articleId);
             },
             addArticle: function(data) {
                 var deferred = $q.defer();

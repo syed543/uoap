@@ -1,5 +1,6 @@
 package com.journal.dao;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -128,5 +129,17 @@ public class ArticleJDBCTemplate {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, new Object[] {articleId});
+	}
+	
+	public byte[] getArticleFileByArticleId(int articleId) {
+		
+		String query = "select article from ARTICLE where id = ?";
+		
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		
+		byte[] data  = jdbcTemplate.queryForObject(query, new Object[] {articleId}, byte[].class);
+		
+		return data;
+		
 	}
 }

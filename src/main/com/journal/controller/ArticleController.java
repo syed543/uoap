@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -130,4 +132,17 @@ public class ArticleController {
 		result.put("message", "Article added succesfully");
 		return result;
 	}
+	
+	@RequestMapping(value="/downloadArticle/{articleId}", method=RequestMethod.GET)
+	public void downloadArticle(@PathVariable("articleId") int articleId, HttpServletResponse response) throws IOException {
+		
+		byte[] fileDat = articleJDBCTemplate.getArticleFileByArticleId(articleId);
+		
+		response.setContentType("application/pdf");
+		response.addHeader("Content-Disposition", "attachment; fileName=article.pdf");
+		response.getOutputStream().write(fileDat);
+		
+		response.flushBuffer();
+	}
+	
 }
