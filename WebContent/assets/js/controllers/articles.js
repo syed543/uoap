@@ -26,7 +26,7 @@ controllers.controller("articlesCtrl", ['$mdEditDialog', '$q', '$scope', '$timeo
     _getArticles();
 
     $scope.downloadArticle = function(article) {
-        ArticlesService.downloadArticle(article.article_id)
+        ArticlesService.downloadArticle(article.id)
     };
   
 }]);
