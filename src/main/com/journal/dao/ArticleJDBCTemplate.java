@@ -27,13 +27,13 @@ public class ArticleJDBCTemplate {
 	}
 
 	public Integer saveArticle(Article article) {
-		String query = "insert into ARTICLE(title, abstractDesc, authors, journalId, article, articleFileName, version, issueNo) values" +
-				"(?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "insert into ARTICLE(title, abstractDesc, authors, journalId, article, articleFileName, version, issueNo, articleState) values" +
+				"(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, article.getTitle(), article.getAbstractDesc(), article.getAuthors(), article.getJournalId(),
-				article.getFile(), article.getFileName(), article.getVersion(), article.getIssueNo());
+				article.getFile(), article.getFileName(), article.getVersion(), article.getIssueNo(),  1);
 		
 		String auto = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'article' AND TABLE_NAME = 'ARTICLE'";
 		
@@ -44,7 +44,8 @@ public class ArticleJDBCTemplate {
 
 	public List<Article> getAllArticles() {
 		
-		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, j.id as jid from Article a, Journal j where a.journalId = j.id";
+		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr,"
+				+ " j.id as jid from Article a, Journal j where a.journalId = j.id";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
@@ -63,6 +64,9 @@ public class ArticleJDBCTemplate {
 			article.setJournalName((String) articleRow.get("journalName"));
 			article.setVersion((Integer) articleRow.get("version"));
 			article.setIssueNo((Integer) articleRow.get("issueNo"));
+			article.setArticleStateId((Integer) articleRow.get("articleState")) ;
+			article.setArticleState((String) articleRow.get("articleStateStr")) ;
+			
 			articles.add(article);
 		}
 		
@@ -71,7 +75,8 @@ public class ArticleJDBCTemplate {
 	
 	public List<Article> getArticlesByJournalId(int journalId) {
 		
-		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, j.id as jid from Article a, Journal j where a.journalId = j.id and j.id = ?";
+		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr,"
+				+ " j.id as jid from Article a, Journal j where a.journalId = j.id and j.id = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
@@ -90,6 +95,9 @@ public class ArticleJDBCTemplate {
 			article.setJournalName((String) articleRow.get("journalName"));
 			article.setVersion((Integer) articleRow.get("version"));
 			article.setIssueNo((Integer) articleRow.get("issueNo"));
+			article.setArticleStateId((Integer) articleRow.get("articleState")) ;
+			article.setArticleState((String) articleRow.get("articleStateStr")) ;
+
 			articles.add(article);
 		}
 		

@@ -113,3 +113,6 @@ alter table article drop column issue;
 
 alter table article add column issueNo int;
 
+//24/01/2019
+
+alter table article add column articleState smallint not null default 1;
