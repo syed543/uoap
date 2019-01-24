@@ -40,7 +40,7 @@ public class MenuScriptTemplate {
 		jdbcTemplate.update(query, menuScriptRecord.getSubmitterId(), menuScriptRecord.getJournalId(), menuScriptRecord.getMenuScriptTitle(), menuScriptRecord.getStatus(),
 				menuScriptRecord.getAbstractData(), menuScriptRecord.getMenuScriptData(), menuScriptRecord.getMenuScriptFileName());
 		
-		String auto = "select max(id) from MENUSCRIPT'";
+		String auto = "select max(id) from MENUSCRIPT";
 		
 		Integer autoInt = jdbcTemplate.queryForInt(auto);
 		
