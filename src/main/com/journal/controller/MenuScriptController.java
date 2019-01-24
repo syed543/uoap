@@ -217,7 +217,7 @@ public class MenuScriptController {
 		return result;
 	}
 	
-	@RequestMapping(value = "/deleteMenuScript{menuScriptId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/deleteMenuScript/{menuScriptId}", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> deleteMenuScript(@PathVariable int menuScriptId) {
 		
