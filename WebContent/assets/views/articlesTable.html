@@ -29,6 +29,7 @@
                         <th md-column md-order-by="authors"><span>Authors</span></th>
                         <th md-column md-order-by="abstractDesc"><span>Abstract</span></th>
                         <th md-column md-order-by="journalName"><span>Journal</span></th>
+                        <th md-column md-order-by="articleState"><span>State</span></th>
                         <th md-column md-order-by=""><span>Download</span></th>
                         <th md-column ng-if="userType === 'admin'"  md-order-by=""><span>Delete</span></th>
                     </tr>
@@ -39,6 +40,13 @@
                         <td md-cell>{{dessert.authors}}</td>
                         <td md-cell>{{dessert.abstractDesc}}</td>
                         <td md-cell>{{dessert.journalName}}</td>
+                        <td md-cell>
+                        <div ng-if="dessert.articleState == 'inPress'">In Press</div>
+                        <div ng-if="dessert.articleState == 'currentIssue'">Current Issue</div>
+                        <div ng-if="dessert.articleState == 'archive'">Archive</div>
+                        <div ng-if="dessert.articleState == 'inPress'" ng-click="updateArticleState(dessert)">Move to current Issue</div>
+                        <div ng-if="dessert.articleState == 'currentIssue'" ng-click="updateArticleState(dessert)">Move to Archive</div>
+                        </td>
                         <td md-cell><md-button class="md-icon-button" ng-click="view(dessert)">
                             <md-icon>file_download</md-icon>
                         </md-button></td>

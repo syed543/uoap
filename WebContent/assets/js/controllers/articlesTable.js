@@ -96,6 +96,15 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
           }
       });
     };
+    $scope.updateArticleState = function(article) {
+      ArticlesService.updateArticleState(article['id']).then(function(data) {
+          if (data.statusCode == 200) { // Success
+              $scope.refreshArticles();
+          } else { 					// Error
+              console.log("Unable to delete Article. please contact support.");
+          }
+      });
+    };
 
     $scope.addArticleDialog = function(ev) {
         $mdDialog.show({
