@@ -25,8 +25,8 @@
                         <th md-column md-order-by="menuTitle"><span>Title</span></th>
                         <th md-column md-order-by="article"><span>Article Type</span></th>
                         <th md-column ng-if="userType !== 'reviewer'" md-order-by="journalName"><span>Journal</span></th>
-                        <th md-column ng-if="userType !== 'reviewer'" md-order-by="reviewer.first_Name"><span>Reviewer</span></th>
-                        <th md-column ng-if="userType !== 'reviewer'" md-order-by="reviewer.email"><span>Reviewer Email</span></th>
+                        <th md-column ng-if="userType !== 'reviewer'" md-order-by="reviewerName"><span>Reviewer</span></th>
+                        <th md-column ng-if="userType !== 'reviewer'" md-order-by="reviewerEmail"><span>Reviewer Email</span></th>
                         <th md-column md-order-by="feedback"><span>Feedback</span></th>
                         <th md-column md-order-by=""><span>View</span></th>
                         <th md-column ng-if="userType === 'reviewer'" md-order-by=""><span>Accept</span></th>
@@ -41,8 +41,8 @@
                         <td md-cell>{{dessert.menuTitle}}</td>
                         <td md-cell>{{dessert.article}}</td>
                         <td md-cell ng-if="userType !== 'reviewer'">{{dessert.journalName}}</td>
-                        <td md-cell ng-if="userType !== 'reviewer'"><span ng-if="dessert.reviewer">{{dessert.reviewer.first_Name}} {{dessert.reviewer.last_Name}}</span></td>
-                        <td md-cell ng-if="userType !== 'reviewer'"><span ng-if="dessert.reviewer && dessert.reviewer.email">{{dessert.reviewer.email}}</span></td>
+                        <td md-cell ng-if="userType !== 'reviewer'"><span>{{dessert.reviewerName}}</span></td>
+                        <td md-cell ng-if="userType !== 'reviewer'"><span>{{dessert.reviewerEmail}}</span></td>
                         <td md-cell>{{dessert.feedback}}</td>
                         <td md-cell><md-button class="md-icon-button">
                             <md-icon ng-click="view(dessert)">visibility</md-icon>

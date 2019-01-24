@@ -19,7 +19,7 @@
                     <span>{{article.version}} | </span>
                     <span class="author-title">Issue No: </span>
                     <span>{{article.issueNo}} | </span>
-                    <span>{{article.articleState}}</span>
+                    <span>{{article.articleState == 'inPress' ? 'In Press' : article.articleState == 'currentIssue' ? 'Current Issue' : 'Archive'}}</span>
                 </div>
                 <div>
                     <span class="author-title">Author(s): </span>
