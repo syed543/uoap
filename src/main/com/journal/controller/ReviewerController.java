@@ -23,6 +23,7 @@ import com.journal.dao.ReviewerJDBCTemplate;
 import com.journal.dao.record.ReviewerRecord;
 import com.journal.model.ReviewerModel;
 import com.journal.utils.Encryptor;
+import com.journal.utils.JournalMailUtil;
 import com.journal.utils.JournalUtil;
 
 @Controller
@@ -46,6 +47,14 @@ public class ReviewerController {
 			reviewerModel.setGeneratedPass("y");
 			
 			reviewerJDBCTemplate.saveReviewer(reviewerModel);
+			
+			try {
+				
+				JournalMailUtil.sendMail(reviewerModel.getEmail(), "Reviewer Registration done", "The generated password is :" + password);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 			result.put("statusCode", "200");
 			result.put("message", "Reviewer added succesfully");
 
