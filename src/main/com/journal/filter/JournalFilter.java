@@ -25,6 +25,8 @@ public class JournalFilter implements Filter{
 		allowedWithoutLogin.add("/journals");
 		allowedWithoutLogin.add("/login");
 		allowedWithoutLogin.add("/logout");
+		allowedWithoutLogin.add("/addMenuScript");
+		allowedWithoutLogin.add("/getArticles");
 		
 		allowed.add("/login");
 		allowed.add("/logout");
