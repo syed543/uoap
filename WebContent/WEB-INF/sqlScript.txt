@@ -116,3 +116,8 @@ alter table article add column issueNo int;
 //24/01/2019
 
 alter table article add column articleState smallint not null default 1;
+
+//09/02/2019
+alter table menuscript add column articleType varchar(100);
+
+alter table article add column articleType varchar(100)

@@ -32,13 +32,13 @@ public class MenuScriptTemplate {
 	}
 
 	public MenuScriptRecord saveMenuScript(MenuScriptRecord menuScriptRecord) {
-		String query = "insert into menuscript(submitterId, journalid, menuScriptTitle, status, abstractTitle, attachment, attachmentName) values" +
-				"(?, ? ,?, ?, ?, ?, ?)";
+		String query = "insert into menuscript(submitterId, journalid, menuScriptTitle, status, abstractTitle, attachment, attachmentName, articleType) values" +
+				"(?, ? ,?, ?, ?, ?, ?, ?)";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, menuScriptRecord.getSubmitterId(), menuScriptRecord.getJournalId(), menuScriptRecord.getMenuScriptTitle(), menuScriptRecord.getStatus(),
-				menuScriptRecord.getAbstractData(), menuScriptRecord.getMenuScriptData(), menuScriptRecord.getMenuScriptFileName());
+				menuScriptRecord.getAbstractData(), menuScriptRecord.getMenuScriptData(), menuScriptRecord.getMenuScriptFileName(), menuScriptRecord.getArticleType());
 		
 		String auto = "select max(id) from MENUSCRIPT";
 		
@@ -61,7 +61,6 @@ public class MenuScriptTemplate {
 	}
 	
 	public MenuScriptRecord updateMenuScript(String userType, MenuScriptRecord menuScriptRecord) {
-		
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		if (JournalConstants.ADMIN.equals(userType) || JournalConstants.EDITOR.equals(userType)) {
@@ -73,12 +72,11 @@ public class MenuScriptTemplate {
 			String query = "update menuscript set feedback = ? where id = ?";
 			jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), menuScriptRecord.getId());
 		} else if (JournalConstants.SUBMITTER.equals(userType)) {
-			String query = "update menuscript set menuScriptTitle = ?, abstractTitle = ? where id = ?";
-			jdbcTemplate.update(query, new Object[] {menuScriptRecord.getMenuScriptTitle(), menuScriptRecord.getAbstractData(), menuScriptRecord.getId()});
+			String query = "update menuscript set menuScriptTitle = ?, abstractTitle = ?, articleType = ? where id = ?";
+			jdbcTemplate.update(query, new Object[] {menuScriptRecord.getMenuScriptTitle(), menuScriptRecord.getAbstractData(), menuScriptRecord.getArticleType(), menuScriptRecord.getId()});
 		}
 		
 		return menuScriptRecord;
-
 	}
 	
 	public void updateStatus(int status, boolean unAssignReviewer, int menuScriptId) {
@@ -125,7 +123,7 @@ public class MenuScriptTemplate {
 		
 		if (JournalConstants.ADMIN.equals(userType)) {
 		
-			query = "select m.id, s.firstName firstName, s.lastName lastName, menuScriptTitle, abstractTitle, feedback, journalName, concat(r.firstName, ' ', r.lastName) as reivewerName, r.email reviewerEmail, status, j.id as jid, reviewer from " + 
+			query = "select m.id, s.firstName firstName, s.lastName lastName, menuScriptTitle, abstractTitle, feedback, journalName, articleType, concat(r.firstName, ' ', r.lastName) as reivewerName, r.email reviewerEmail, status, j.id as jid, reviewer from " + 
 				"submitter s, " + 
 				"journal j, " + 
 				"menuscript m left join reviewer r on m.reviewer = r.id " + 
@@ -133,7 +131,7 @@ public class MenuScriptTemplate {
 				"and m.journalid = j.id";
 		} else if (JournalConstants.REVIEWER.equals(userType)) {
 			
-			query = "select m.id, s.firstName firstName, s.lastName lastName, menuScriptTitle, abstractTitle, feedback, journalName, concat(r.firstName, ' ', r.lastName) as reivewerName, r.email reviewerEmail, status, j.id as jid, reviewer from " + 
+			query = "select m.id, s.firstName firstName, s.lastName lastName, menuScriptTitle, abstractTitle, feedback, journalName, articleType, concat(r.firstName, ' ', r.lastName) as reivewerName, r.email reviewerEmail, status, j.id as jid, reviewer from " + 
 					"submitter s, " + 
 					"journal j, " +
 					"menuscript m left join reviewer r on m.reviewer = r.id " + 
@@ -141,12 +139,12 @@ public class MenuScriptTemplate {
 					"and m.journalid = j.id and m.reviewer = r.id and r.email = ?";
 		} else if (JournalConstants.EDITOR.equals(userType)) {
 			
-			query = "select m.id, s.firstName firstName, s.lastName lastName, menuScriptTitle, abstractTitle, feedback, journalName, concat(r.firstName, ' ', r.lastName) as reivewerName, r.email reviewerEmail, status, j.id as jid, reviewer from submitter s, " + 
+			query = "select m.id, s.firstName firstName, s.lastName lastName, menuScriptTitle, abstractTitle, feedback, journalName, articleType, concat(r.firstName, ' ', r.lastName) as reivewerName, r.email reviewerEmail, status, j.id as jid, reviewer from submitter s, " + 
 					"journal j, editor e, menuscript m left join reviewer r on m.reviewer = r.id " + 
 					" where s.id = m.submitterId and m.journalid = j.id and m.journalid = e.journalId and e.email = ?"; 
 		} else if (JournalConstants.SUBMITTER.equals(userType)) {
 			
-			query = "select m.id, s.firstName firstName, s.lastName lastName, menuScriptTitle, abstractTitle, feedback, journalName, concat(r.firstName, ' ', r.lastName) as reivewerName, r.email reviewerEmail, status, j.id as jid, reviewer from submitter s, journal j," + 
+			query = "select m.id, s.firstName firstName, s.lastName lastName, menuScriptTitle, abstractTitle, feedback, journalName, articleType, concat(r.firstName, ' ', r.lastName) as reivewerName, r.email reviewerEmail, status, j.id as jid, reviewer from submitter s, journal j," + 
 					"menuscript m left join reviewer r on m.reviewer = r.id " + 
 					" where m.submitterId = s.id and m.journalid = j.id and s.email = ?"; 
 		}
@@ -186,6 +184,7 @@ public class MenuScriptTemplate {
 			menuScriptModel.setJournalName((String) menuScriptRow.get("journalName"));
 			menuScriptModel.setFeedback((String) menuScriptRow.get("feedback"));
 			menuScriptModel.setJournal((Integer) menuScriptRow.get("jid"));
+			menuScriptModel.setArticleType((String) menuScriptRow.get("articleType"));
 			menuScriptModel.setReviewerName((String) menuScriptRow.get("reivewerName"));
 			menuScriptModel.setReviewerEmail((String) menuScriptRow.get("reviewerEmail"));
 			if (menuScriptRow.get("reviewer") != null) {
@@ -205,7 +204,7 @@ public class MenuScriptTemplate {
 	
 	public MenuScriptModel getMenuScriptById(Integer menuScriptId) {
 		
-		String query = "select m.id as id, firstName, lastName, menuScriptTitle, abstractTitle, journalName  from " + 
+		String query = "select m.id as id, firstName, lastName, menuScriptTitle, abstractTitle, journalName, articleType  from " + 
 				"submitter s, " + 
 				"menuscript m, " + 
 				"journal j " + 

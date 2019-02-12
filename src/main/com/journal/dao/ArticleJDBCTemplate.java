@@ -27,13 +27,13 @@ public class ArticleJDBCTemplate {
 	}
 
 	public Integer saveArticle(Article article) {
-		String query = "insert into ARTICLE(title, abstractDesc, authors, journalId, article, articleFileName, version, issueNo, articleState) values" +
-				"(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "insert into ARTICLE(title, abstractDesc, authors, journalId, article, articleFileName, version, issueNo, articleState, articleType) values" +
+				"(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, article.getTitle(), article.getAbstractDesc(), article.getAuthors(), article.getJournalId(),
-				article.getFile(), article.getFileName(), article.getVersion(), article.getIssueNo(),  1);
+				article.getFile(), article.getFileName(), article.getVersion(), article.getIssueNo(),  1, article.getArticleType());
 		
 		String auto = "select max(id) from ARTICLE";
 		
@@ -44,7 +44,7 @@ public class ArticleJDBCTemplate {
 
 	public List<Article> getAllArticles() {
 		
-		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr,"
+		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, articleType, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr,"
 				+ " j.id as jid from Article a, Journal j where a.journalId = j.id";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
@@ -65,6 +65,7 @@ public class ArticleJDBCTemplate {
 			article.setVersion((Integer) articleRow.get("version"));
 			article.setIssueNo((Integer) articleRow.get("issueNo"));
 			article.setArticleStateId((Integer) articleRow.get("articleState")) ;
+			article.setArticleType((String) articleRow.get("articleType")) ;
 			article.setArticleState((String) articleRow.get("articleStateStr")) ;
 			
 			articles.add(article);
@@ -75,7 +76,7 @@ public class ArticleJDBCTemplate {
 	
 	public List<Article> getArticlesByJournalId(int journalId) {
 		
-		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr,"
+		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleType, articleState, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr,"
 				+ " j.id as jid from Article a, Journal j where a.journalId = j.id and j.id = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
@@ -95,6 +96,7 @@ public class ArticleJDBCTemplate {
 			article.setJournalName((String) articleRow.get("journalName"));
 			article.setVersion((Integer) articleRow.get("version"));
 			article.setIssueNo((Integer) articleRow.get("issueNo"));
+			article.setArticleType((String) articleRow.get("articleType")) ;
 			article.setArticleStateId((Integer) articleRow.get("articleState")) ;
 			article.setArticleState((String) articleRow.get("articleStateStr")) ;
 
@@ -108,13 +110,14 @@ public class ArticleJDBCTemplate {
 		
 		List<Object> params = new ArrayList<Object>(8);
 		
-		String query = "update ARTICLE set title = ?,  abstractDesc = ?, authors = ?, journalId = ?, version = ?, issueNo = ?";
+		String query = "update ARTICLE set title = ?,  abstractDesc = ?, authors = ?, journalId = ?, version = ?, issueNo = ?, articleType = ?";
 		params.add(article.getTitle());
 		params.add(article.getAbstractDesc());
 		params.add(article.getAuthors());
 		params.add(article.getJournalId());
 		params.add(article.getVersion());
 		params.add(article.getIssueNo());
+		params.add(article.getArticleType());
 		
 		
 		if (article.getFile() != null) {

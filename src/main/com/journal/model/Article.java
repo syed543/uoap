@@ -12,6 +12,7 @@ public class Article {
 	private String journalName;
 	private int articleStateId;
 	private String articleState;
+	private String articleType;
 	
 	private Integer version;
 	private Integer issueNo;
@@ -88,5 +89,10 @@ public class Article {
 	public void setArticleState(String articleState) {
 		this.articleState = articleState;
 	}
-	
+	public String getArticleType() {
+		return articleType;
+	}
+	public void setArticleType(String articleType) {
+		this.articleType = articleType;
+	}
 }

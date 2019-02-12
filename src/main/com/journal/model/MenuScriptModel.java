@@ -9,6 +9,7 @@ public class MenuScriptModel {
 	private String journalName;
 	private String feedback;
 	private int reviewerId;
+	private String articleType;
 	
 	public int getId() {
 		return id;
@@ -111,5 +112,11 @@ public class MenuScriptModel {
 	}
 	public void setReviewerId(int reviewerId) {
 		this.reviewerId = reviewerId;
+	}
+	public String getArticleType() {
+		return articleType;
+	}
+	public void setArticleType(String articleType) {
+		this.articleType = articleType;
 	}
 }

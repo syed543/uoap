@@ -11,6 +11,7 @@ public class MenuScriptRecord {
 		abstractData = model.getAbstractTitle();
 		feedBack = model.getFeedback();
 		reviewerId = model.getReviewerId();
+		articleType = model.getArticleType();
 	}
 	
 	public MenuScriptRecord() {
@@ -25,6 +26,7 @@ public class MenuScriptRecord {
 	private String menuScriptTitle;
 	private String abstractData;
 	private String feedBack;
+	private String articleType;
 	
 	private byte[] menuScriptData;
 	private String menuScriptFileName;
@@ -95,5 +97,13 @@ public class MenuScriptRecord {
 
 	public void setReviewerId(int reviewerId) {
 		this.reviewerId = reviewerId;
+	}
+
+	public String getArticleType() {
+		return articleType;
+	}
+
+	public void setArticleType(String articleType) {
+		this.articleType = articleType;
 	}
 }
