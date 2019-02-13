@@ -160,7 +160,7 @@
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Reviewer</label>
                         <!--<input name="reviewer" ng-model="ReviewerId" ng-if="ReviewerId" required readonly></input>-->
-                        <md-select name="reviewer" ng-model="menuScriptItem.reviewerId" required>
+                        <md-select name="reviewer" ng-model="menuScriptItem.reviewerId" required multiple>
                             <md-option ng-repeat="reviewer in reviewers" value="{{reviewer.id}}">
                                 {{reviewer.firstName}} {{reviewer.lastName}}
                                 <span class="reviewer-email">{{reviewer.email}}</span>
