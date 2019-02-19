@@ -52,6 +52,23 @@
                         </md-input-container>
                     </div>
                 </md-content>
+                
+                <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
+                	<div class="fullwidth">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Article type</label>
+                        <md-select name="articleType" ng-model="article.articleType" required>
+                            <md-option ng-repeat="artType in articleTypes" value="{{artType.id}}">
+                                {{artType.name}}
+                            </md-option>
+                        </md-select>
+                        <div ng-messages="articleForm.articleType.$error" role="alert" multiple>
+                            <div ng-message="required" class="my-message">Please provide article type.</div>
+                        </div>
+                    </md-input-container>
+                    </div>
+                </md-content>
+                
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div class="fullwidth">
                         <md-input-container>

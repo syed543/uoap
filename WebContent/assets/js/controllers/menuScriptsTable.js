@@ -89,6 +89,28 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
     }
 
     $scope.menuScriptItem = {};
+    $scope.articleTypes = [
+                           {"id": 1, "name": "Research Article"},
+                           {"id": 2, "name": "Review Article"},
+                           {"id": 3, "name": "Case Report"},
+                           {"id": 4, "name": "Mini Reivew Article"},
+                           {"id": 5, "name": "Commentary"},
+                           {"id": 6, "name": "Letter to Editor"},
+                           {"id": 7, "name": "Perspective"},
+                           {"id": 8, "name": "Rapid Communication"},
+                           {"id": 9, "name": "Short Communication"},
+                           {"id": 10, "name": "Editorial"},
+                           {"id": 11, "name": "Proceedings"},
+                           {"id": 12, "name": "Expert Review"},
+                           {"id": 13, "name": "Opinion"},
+                           {"id": 14, "name": "Special Issue Article"},
+                           {"id": 15, "name": "Case Series"},
+                           {"id": 16, "name": "Scientific Letter"},
+                           {"id": 17, "name": "Thesis"},
+                           {"id": 18, "name": "Surgical Technique"},
+                           {"id": 19, "name": "Image Article"},
+                           {"id": 20, "name": "Book Review"}
+                           ];
     $scope.view = function(item) {
         $scope.menuScriptItem = item;
 
@@ -106,6 +128,9 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
                 console.log("Unable to fetch articles list. please contact support.");
             }
         });
+        
+        $scope.articleType = _.findWhere($scope.articleTypes, {id: $scope.menuScriptItem.articleType});
+        
     };
 
       $scope.inEditMode = false;

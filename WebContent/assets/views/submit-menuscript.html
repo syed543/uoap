@@ -79,6 +79,21 @@
                         </div>
                     </md-input-container>
                 </md-content>
+                
+                <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Article type</label>
+                        <input name="articleType1" ng-model="articleType" ng-if="articleType" required readonly></input>
+                        <md-select name="articleType" ng-model="user.articleType" required ng-if="!articleType">
+                            <md-option ng-repeat="artType in articleTypes" value="{{artType.id}}">
+                                {{artType.name}}
+                            </md-option>
+                        </md-select>
+                        <div ng-if="!articleType" ng-messages="menuscript.articleType.$error" role="alert" multiple>
+                            <div ng-message="required" class="my-message">Please provide article type.</div>
+                        </div>
+                    </md-input-container>
+                </md-content>
 
                 <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
                     <md-input-container class="md-block" flex-gt-sm>

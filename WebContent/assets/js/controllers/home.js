@@ -295,6 +295,29 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
           {"name":"Zambia","abbrev":"ZM"},
           {"name":"Zimbabwe","abbrev":"ZW"}
       ];
+    
+    $scope.articleTypes = [
+                           {"id": 1, "name": "Research Article"},
+                           {"id": 2, "name": "Review Article"},
+                           {"id": 3, "name": "Case Report"},
+                           {"id": 4, "name": "Mini Reivew Article"},
+                           {"id": 5, "name": "Commentary"},
+                           {"id": 6, "name": "Letter to Editor"},
+                           {"id": 7, "name": "Perspective"},
+                           {"id": 8, "name": "Rapid Communication"},
+                           {"id": 9, "name": "Short Communication"},
+                           {"id": 10, "name": "Editorial"},
+                           {"id": 11, "name": "Proceedings"},
+                           {"id": 12, "name": "Expert Review"},
+                           {"id": 13, "name": "Opinion"},
+                           {"id": 14, "name": "Special Issue Article"},
+                           {"id": 15, "name": "Case Series"},
+                           {"id": 16, "name": "Scientific Letter"},
+                           {"id": 17, "name": "Thesis"},
+                           {"id": 18, "name": "Surgical Technique"},
+                           {"id": 19, "name": "Image Article"},
+                           {"id": 20, "name": "Book Review"}
+                           ];
     /*ArticlesService.getCountries().then(function (data) {
       if (data.statusCode == 200) { // Success
         $scope.countries = data.body.countryList;
@@ -367,7 +390,8 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
         fName : "",
         lName : "",
         postalAddress : "",
-        title : ""
+        title : "",
+        articleType: ""
     };
     if($rootScope.userInfo.email) {
       $scope.user.country = $rootScope.userInfo.country;

@@ -105,6 +105,29 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
           }
       });
     };
+    
+    $scope.articleTypes = [
+                           {"id": 1, "name": "Research Article"},
+                           {"id": 2, "name": "Review Article"},
+                           {"id": 3, "name": "Case Report"},
+                           {"id": 4, "name": "Mini Reivew Article"},
+                           {"id": 5, "name": "Commentary"},
+                           {"id": 6, "name": "Letter to Editor"},
+                           {"id": 7, "name": "Perspective"},
+                           {"id": 8, "name": "Rapid Communication"},
+                           {"id": 9, "name": "Short Communication"},
+                           {"id": 10, "name": "Editorial"},
+                           {"id": 11, "name": "Proceedings"},
+                           {"id": 12, "name": "Expert Review"},
+                           {"id": 13, "name": "Opinion"},
+                           {"id": 14, "name": "Special Issue Article"},
+                           {"id": 15, "name": "Case Series"},
+                           {"id": 16, "name": "Scientific Letter"},
+                           {"id": 17, "name": "Thesis"},
+                           {"id": 18, "name": "Surgical Technique"},
+                           {"id": 19, "name": "Image Article"},
+                           {"id": 20, "name": "Book Review"}
+                           ];
 
     $scope.addArticleDialog = function(ev) {
         $mdDialog.show({
@@ -125,7 +148,8 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
         $scope.article = {
             'article_title': '',
             'article_abstract': '',
-            'authors': ''
+            'authors': '',
+            'articleType': ''
         };
         $scope.file = '';
         $scope.hide = function() {
@@ -136,6 +160,7 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
             $mdDialog.cancel();
         };
         $scope.journals = parentScope.journals;
+        $scope.articleTypes = parentScope.articleTypes;
         $scope.versions = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,
                             32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50];
         $scope.issues = [1,2,3,4,5,6,7,8,9,10,11,12];
@@ -155,6 +180,7 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
             _data['authors'] = $scope.article['authors'];
             _data['issueNo'] = $scope.article['issueNo'];
             _data['version'] = $scope.article['version'];
+            _data['articleType'] = $scope.article['articleType'];
 
             fd.append("file", $scope.file);
             //angular.copy($scope.article, data);
