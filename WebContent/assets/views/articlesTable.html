@@ -29,6 +29,7 @@
                         <th md-column md-order-by="authors"><span>Authors</span></th>
                         <th md-column md-order-by="abstractDesc"><span>Abstract</span></th>
                         <th md-column md-order-by="journalName"><span>Journal</span></th>
+                        <th md-column md-order-by="articleType"><span>ArticleType</span></th>
                         <th md-column md-order-by="articleState"><span>State</span></th>
                         <th md-column md-order-by=""><span>Download</span></th>
                         <th md-column ng-if="userType === 'admin'"  md-order-by=""><span>Delete</span></th>
@@ -40,6 +41,7 @@
                         <td md-cell>{{dessert.authors}}</td>
                         <td md-cell>{{dessert.abstractDesc}}</td>
                         <td md-cell>{{dessert.journalName}}</td>
+                        <td md-cell>{{dessert.articleType}}</td>
                         <td md-cell>
                         <div ng-if="dessert.articleState == 'inPress'">In Press</div>
                         <div ng-if="dessert.articleState == 'currentIssue'">Current Issue</div>
