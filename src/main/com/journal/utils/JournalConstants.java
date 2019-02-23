@@ -20,6 +20,8 @@ public interface JournalConstants {
 	String SUBMITTER = "Submitter";
 	
 	String AVATARS = "Avatars";
+	
+	String JOURNAL_TEMPLATE_FILE = "journal1.html";
 
 	String JOURNAL_ICONS_FOLDER = JORUNAL + File.separator+ ICONS;
 	
@@ -35,5 +37,4 @@ public interface JournalConstants {
 	int MENUSCRIPT_STATUS_APPROVED = 4;
 	
 	int MENUSCRIPT_STATUS_REJECTED = 5;
-
 }

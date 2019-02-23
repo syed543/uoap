@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class WebAppUtils {
 	
@@ -30,5 +31,16 @@ public class WebAppUtils {
 			bos.flush();
 			bos.close();
 		}
+	}
+	
+	public static void copyJournalTemplateFile(String fileName) throws IOException {
+		
+		fileName = fileName.replaceAll(" ", "_");
+		
+		File src = new File(webAppPath + File.separator + JournalConstants.JOURNAL_TEMPLATE_FILE);
+		File dest = new File(webAppPath + File.separator + fileName + ".html");
+		
+		Files.copy(src.toPath(), dest.toPath());
+		
 	}
 }

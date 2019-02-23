@@ -50,6 +50,8 @@ public class JournalController {
 		
 		if (journal.getId() != null && journal.getId() > 0) {
 			
+			WebAppUtils.copyJournalTemplateFile(journal.getJournal_name());
+			
 			WebAppUtils.uploadFile(JournalConstants.JOURNAL_ICONS_FOLDER, journal.getId(), journal.getJournalIconFileName(), journal.getJournalIcon());
 			
 			WebAppUtils.uploadFile(JournalConstants.JOURNAL_BANNER_FOLDER, journal.getId(), journal.getJournalBannerImageFileName(), journal.getJournalBannerImage());
