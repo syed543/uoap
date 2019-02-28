@@ -123,16 +123,16 @@ public class ArticleController {
 		return result;
 	}
 	
-	@RequestMapping(value="getEditorsByJournalId/{journalId}", method=RequestMethod.GET)
-	@ResponseBody
-	public Map<String, Object> getEditorsByJournalId(@PathVariable("journalId") int journalId) {
-		
-		
-		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("statusCode", "200");
-		result.put("message", "Article added succesfully");
-		return result;
-	}
+//	@RequestMapping(value="getEditorsByJournalId/{journalId}", method=RequestMethod.GET)
+//	@ResponseBody
+//	public Map<String, Object> getEditorsByJournalId(@PathVariable("journalId") int journalId) {
+//		
+//		
+//		Map<String, Object> result = new HashMap<String, Object>();
+//		result.put("statusCode", "200");
+//		result.put("message", "Article added succesfully");
+//		return result;
+//	}
 	
 	@RequestMapping(value="/downloadArticle/{articleId}", method=RequestMethod.GET)
 	public void downloadArticle(@PathVariable("articleId") int articleId, HttpServletResponse response) throws IOException {

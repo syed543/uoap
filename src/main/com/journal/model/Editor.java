@@ -7,9 +7,15 @@ public class Editor {
 	private String lastName;
 	private String email;
 	private String avatar;
+	private String avatarFileName;
 	private String description;
 	private String affilation;
 	private Integer journalId;
+	private String designation;
+	private String department;
+	private String country;
+	private String contactno;
+	private boolean isChiefEditor;
 	
 	public Integer getId() {
 		return id;
@@ -58,5 +64,41 @@ public class Editor {
 	}
 	public void setJournalId(Integer journalId) {
 		this.journalId = journalId;
+	}
+	public String getAvatarFileName() {
+		return avatarFileName;
+	}
+	public void setAvatarFileName(String avatarFileName) {
+		this.avatarFileName = avatarFileName;
+	}
+	public String getDesignation() {
+		return designation;
+	}
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getContactno() {
+		return contactno;
+	}
+	public void setContactno(String contactno) {
+		this.contactno = contactno;
+	}
+	public boolean isChiefEditor() {
+		return isChiefEditor;
+	}
+	public void setChiefEditor(boolean isChiefEditor) {
+		this.isChiefEditor = isChiefEditor;
 	}
 }

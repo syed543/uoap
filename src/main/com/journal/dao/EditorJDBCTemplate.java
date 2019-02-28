@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.journal.dao.record.EditorRecord;
+import com.journal.model.Editor;
 import com.journal.model.EditorModel;
 
 public class EditorJDBCTemplate {
@@ -76,6 +77,41 @@ public class EditorJDBCTemplate {
 		}
 		return null;
 	}
+	
+	public List<Editor> getEditorsByJournalId(int journalId) {
+			
+			String query = "select e.id as id, firstName, lastName, email, avatar, avatarFileName, description, affiliation, journalId, designation, department,country, " +
+			"contactno, isChiefEditor from Editor e, Journal j where e.journalId = j.id and j.id = ?";
+			
+			JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
+	
+			List<Map<String, Object>> articleRows = jdbcTemplate.queryForList(query, new Object[] {journalId});
+			
+			List<Editor> articles = new ArrayList<Editor>();
+			
+			for (Map<String, Object> articleRow : articleRows) {
+				
+				Editor editor = new Editor();
+				editor.setId((Integer) articleRow.get("id"));
+				editor.setFirstName((String) articleRow.get("firstName"));
+				editor.setLastName((String) articleRow.get("lastName"));
+				editor.setEmail((String) articleRow.get("email"));
+				editor.setAvatar((String) articleRow.get("avatar"));
+				editor.setAvatarFileName((String) articleRow.get("avatarFileName"));
+				editor.setDescription((String) articleRow.get("description"));
+				editor.setAffilation((String) articleRow.get("affiliation"));
+				editor.setJournalId((Integer) articleRow.get("journalId")) ;
+				editor.setDesignation((String) articleRow.get("designation")) ;
+				editor.setDepartment((String) articleRow.get("department"));
+				editor.setCountry((String) articleRow.get("country"));
+				editor.setContactno((String) articleRow.get("contactno"));
+				editor.setChiefEditor((Boolean) articleRow.get("isChiefEditor")) ;
+	
+				articles.add(editor);
+			}
+			
+			return articles;
+		}
 
 	public List<EditorModel> getEditors() {
 		

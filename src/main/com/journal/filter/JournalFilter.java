@@ -27,6 +27,9 @@ public class JournalFilter implements Filter{
 		allowedWithoutLogin.add("/logout");
 		allowedWithoutLogin.add("/addMenuScript");
 		allowedWithoutLogin.add("/getArticles");
+		allowedWithoutLogin.add("/getJournalById");
+		allowedWithoutLogin.add("/getArticlesByJournalId");
+		allowedWithoutLogin.add("/getEditorsByJournalId");
 		
 		allowed.add("/login");
 		allowed.add("/logout");
@@ -66,8 +69,6 @@ public class JournalFilter implements Filter{
 		allowed.add("/rejectMenuscript");
 		allowed.add("/reviewerDecline");
 		allowed.add("/reviewerAccept");
-		allowed.add("/getJournalById");
-		allowed.add("/getArticlesByJournalId");
 		
 		allowed.add("/downloadArticle");
 		allowed.add("/updateArticleState");

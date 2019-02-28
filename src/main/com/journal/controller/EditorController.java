@@ -25,6 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.journal.dao.EditorJDBCTemplate;
 import com.journal.dao.record.EditorRecord;
 import com.journal.model.EditorModel;
+import com.journal.model.Editor;
 import com.journal.utils.Encryptor;
 import com.journal.utils.JournalConstants;
 import com.journal.utils.JournalMailUtil;
@@ -124,6 +125,20 @@ public class EditorController {
 		result.put("statusCode", "200");
 		result.put("message", "editor deleted succesfully");
 		
+		return result;
+	}
+	
+	@RequestMapping(value="/getEditorsByJournalId/{journalId}", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getEditorsByJournalId(@PathVariable("journalId") int journalId) {
+		
+		List<Editor> editors = editorJDBCTemplate.getEditorsByJournalId(journalId);
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("statusCode", "200");
+		result.put("data", editors);
+		result.put("count", editors.size());
+
 		return result;
 	}
 	

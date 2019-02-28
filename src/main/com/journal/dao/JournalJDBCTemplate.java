@@ -1,6 +1,8 @@
 package com.journal.dao;
 
 import java.io.File;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +10,9 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import com.journal.model.Journal;
 import com.journal.utils.JournalConstants;
@@ -71,11 +75,26 @@ public class JournalJDBCTemplate {
 	
 	public Journal getJournalById(int journalId) {
 		
-		String query = "select id, journalName, journalDescription, journalLongDescription from JOURNAL where id = ?";
+		String query = "select id, journalName, journalIconFileName, journalBannerImageFileName, journalDescription, journalLongDescription from JOURNAL where id = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
-		Journal journal = jdbcTemplate.queryForObject(query, new Object[] {journalId}, Journal.class);
+		Journal journal = jdbcTemplate.queryForObject(query, new Object[] {journalId}, new RowMapper<Journal>() {
+
+			@Override
+			public Journal mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Journal journal  = new Journal();
+				
+				journal.setId(rs.getInt("id"));
+				journal.setJournal_name(rs.getString("journalName"));
+				journal.setJournal_description(rs.getString("journalDescription"));
+				journal.setJournal_long_description(rs.getString("journalLongDescription"));
+				journal.setJournalIconFileName(JournalConstants.AVATARS + File.separator + JournalConstants.JOURNAL_ICONS_FOLDER + File.separator + journal.getId() + File.separator + rs.getString("journalIconFileName"));
+				journal.setJournalBannerImageFileName(JournalConstants.AVATARS + File.separator + JournalConstants.JOURNAL_BANNER_FOLDER + File.separator + journal.getId() + File.separator + rs.getString("journalBannerImageFileName"));
+				return journal;
+			}
+			
+		});
 		
 		return journal;
 	}

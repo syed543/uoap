@@ -78,7 +78,7 @@ public class JournalController {
 		return result;
 	}
 
-	@RequestMapping(value="/getJournalById/{journalId", method=RequestMethod.GET)
+	@RequestMapping(value="/getJournalById/{journalId}", method=RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> getJournalById(@PathVariable int journalId) {
 		
