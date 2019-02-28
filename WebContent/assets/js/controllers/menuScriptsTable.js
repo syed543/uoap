@@ -150,7 +150,7 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
               var _id = $scope.menuScriptItem['id'];
               if($scope.userType === 'admin' || $scope.userType === 'editor') {
                   data['feedback'] = $scope.menuScriptItem['feedback'];
-                  data['reviewerId'] = $scope.menuScriptItem['reviewerId'];
+                  data['reviewers'] = $scope.menuScriptItem['reviewerId'];
               } else if($scope.userType === 'reviewer') {
                   data['feedback'] = $scope.menuScriptItem['feedback'];
               } else {
