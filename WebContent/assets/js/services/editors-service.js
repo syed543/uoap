@@ -37,7 +37,7 @@ services.factory('EditorsService', ["Http", "$q", "$state", "$log", function (Ht
             },
             getEditorsByJournalId: function(journalId) {
                 var deferred = $q.defer();
-                Http.getData('/editors/'+journalId).then(function(data){
+                Http.getData('/getEditorsByJournalId/'+journalId).then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
                 return deferred.promise;

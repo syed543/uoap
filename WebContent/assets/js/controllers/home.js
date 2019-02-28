@@ -434,8 +434,9 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     };
   }
 
-  $scope.openJournal = function(journalPageId) {
-    window.open(journalPageId+'.html')
+  $scope.openJournal = function(journal) {
+	var _name = journal.journal_name.split(' ').join('_');
+    window.open(_name+'.html?id='+journal.id);
   }
 
   }]);

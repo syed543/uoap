@@ -9,8 +9,7 @@ define(['angular',
 controllers.controller("journalDetailsCtrl", ["$scope", "$rootScope", "$state", "$stateParams", "$localStorage", "$sessionStorage", "JournalsService", "ArticlesService", "authenticationSvc", "$mdDialog","EditorsService",
   function($scope, $rootScope, $state, $stateParams, $localStorage, $sessionStorage, JournalsService, ArticlesService, authenticationSvc, $mdDialog, EditorsService) {
 
-  var urlSplit = window.location.pathname.split('/'),
-      _journalId = urlSplit[urlSplit.length-1].split('.')[0];
+  var _journalId = window.location.search.split('=')[1];
   console.log(_journalId);
 
     JournalsService.getJournalById(_journalId).then(function (data) {

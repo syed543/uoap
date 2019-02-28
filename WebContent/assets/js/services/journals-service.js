@@ -22,7 +22,7 @@ services.factory('JournalsService', ["Http", "$q", "$state", "$log", function (H
             },
             getJournalById: function(id) {
                 var deferred = $q.defer();
-                Http.getData('assets/data/getJournalById.json?Id='+id).then(function(data){
+                Http.getData('/getJournalById/'+id).then(function(data){
                 //Http.getData('assets/data/getJournalById.json').then(function(data){
                     deferred.resolve(data);
                 }).catch(function(err){});
