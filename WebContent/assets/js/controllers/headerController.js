@@ -24,6 +24,11 @@ controllers.controller("headerController", ["$scope", "$rootScope", "$state", "$
       });
     };
     _getJournals();
+    
+    $scope.openJournal = function(journal) {
+    	var _name = journal.journal_name.split(' ').join('_');
+        window.open(_name+'.html?id='+journal.id);
+      }
 
 }]);
 });

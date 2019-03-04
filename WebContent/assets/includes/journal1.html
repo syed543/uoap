@@ -3,7 +3,7 @@
 		<h1>{{journal.journal_name}}</h1>
 		<div layout="row" layout-wrap>
 			<div flex-gt-sm="75" flex="100">
-				<img width="100%" style="max-height: 200px;" ng-src="{{journal.journal_banner_image}}"/>
+				<img width="100%" style="max-height: 200px;" ng-src="{{journal.journalBannerImageFileName}}"/>
 			</div>
 			<div flex-gt-sm="25" flex="100">
 				<div class="submit-menuScript-container">
@@ -33,8 +33,8 @@
 				</md-toolbar>
 				<md-card ng-repeat="article in articles">
 					<md-content layout-padding>
-						<div class="article-title">{{article.article_title}}</div>
-						<div class="article-abstract">{{article.article_abstract}}</div>
+						<div class="article-title">{{article.title}}</div>
+						<div class="article-abstract">{{article.abstractDesc}}</div>
 						<div>
 							<span class="author-title">Author(s): </span>
 							<span>{{article.authors}}</span>

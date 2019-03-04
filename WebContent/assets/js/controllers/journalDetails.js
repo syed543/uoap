@@ -14,7 +14,7 @@ controllers.controller("journalDetailsCtrl", ["$scope", "$rootScope", "$state", 
 
     JournalsService.getJournalById(_journalId).then(function (data) {
       if (data.statusCode == 200) { // Success
-        $scope.journal = data.body;
+        $scope.journal = data.data;
       } else { 					// Error
         console.log("Unable to fetch journal. please contact support.");
       }
@@ -31,20 +31,6 @@ controllers.controller("journalDetailsCtrl", ["$scope", "$rootScope", "$state", 
     EditorsService.getEditorsByJournalId(_journalId).then(function (data) {
         if (data.statusCode == 200) { // Success
             $scope.editors = data.data;
-
-            $scope.editors = [
-                {
-                    "avatar": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-                    "isChiefEditor": "true",
-                    "firstName": "First",
-                    "lastName": "Last",
-                    "affiliation": "Affiliation",
-                    "designation": "Designation",
-                    "department": "Department",
-                    "country": "India",
-                    "contactNo": "040-45678985 Ext No: 3456"
-                }
-            ];
         } else { 					// Error
             console.log("Unable to fetch editors list. please contact support.");
         }

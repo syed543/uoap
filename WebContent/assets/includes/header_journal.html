@@ -11,34 +11,43 @@
                 </button>
                 <a class="navbar-brand" href="#">Unicon Open Access</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
+            <div id="navbar" class="navbar-collapse collapse" ng-controller="headerController">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class=""><a href="index.html"><md-icon class="home-icon" md-svg-src="assets/img/home.svg"></md-icon>Journals</a></li>
-                    <!--<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Articles <span class="caret"></span></a>
+                    <!--<li class=""><a ui-sref="home"><md-icon class="home-icon" md-svg-src="assets/img/home.svg"></md-icon>Journals</a></li>-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Journals <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-header">Article 1 Header</li>
+                            <!--<li class="dropdown-header">Article 1 Header</li>
                             <li><a href="#">Journal 1</a></li>
                             <li><a href="#">Journal 2</a></li>
                             <li><a href="#">Journal 3</a></li>
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">Article 2 Header</li>
                             <li><a href="#">Journal 1</a></li>
-                            <li><a href="#">Journal 2</a></li>
+                            <li><a href="#">Journal 2</a></li>-->
+                            <li ng-repeat="journal in journals">
+                            	<a href="javascript:void(0);" ng-click="openJournal(journal)" >
+                                	{{journal.journal_name}}
+                                </a>
+                            </li>
                         </ul>
-                    </li>-->
-                    <li class=""><a href="index.html#/articles">Articles</a></li>
-                    <li ng-if="userlogged && userView" class=""><a href="index.html#/{{userView}}">Dashboard</a></li>
-                    <li class=""><a href="index.html#/forEditors">For Editors</a></li>
-                    <li class=""><a href="index.html#/forAuthors">For Authors</a></li>
-                    <li class=""><a href="index.html#/forReviewers">For Reviewers</a></li>
-                    <li class=""><a href="index.html#/aboutUs">About Us</a></li>
+                    </li>
+                    <li class=""><a ui-sref="articles">Articles</a></li>
+                    <li ng-if="userlogged && userView" class=""><a ui-sref="{{userView}}">Dashboard</a></li>
+                    <li class=""><a ui-sref="forEditors">For Editors</a></li>
+                    <li class=""><a ui-sref="forAuthors">For Authors</a></li>
+                    <li class=""><a ui-sref="forReviewers">For Reviewers</a></li>
+                    <li class=""><a ui-sref="aboutUs">About Us</a></li>
                     <li ng-show="!userlogged" class=""><a ui-sref="login">Login</a></li>
                     <li ng-show="userlogged" class="">
-                        <div class="user-info">
-                            <!--<img ng-src="" class="user-image" />-->
+                        <!--<div class="user-info">
+                            &lt;!&ndash;<img ng-src="" class="user-image" />&ndash;&gt;
                             Hello {{userInfo.fName}}
-                        </div>
+                        </div>-->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{userInfo.fName}}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header" ng-click="logout()">Logout</li>
+                        </ul>
                     </li>
                 </ul>
             </div><!--/.nav-collapse -->

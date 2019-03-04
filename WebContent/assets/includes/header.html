@@ -26,7 +26,9 @@
                             <li><a href="#">Journal 1</a></li>
                             <li><a href="#">Journal 2</a></li>-->
                             <li ng-repeat="journal in journals">
-                                <a href="{{journal.journal_abbrev}}.html" target="_blank">{{journal.journal_name}}</a>
+                            	<a href="javascript:void(0);" ng-click="openJournal(journal)" >
+                                	{{journal.journal_name}}
+                                </a>
                             </li>
                         </ul>
                     </li>
