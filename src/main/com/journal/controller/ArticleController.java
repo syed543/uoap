@@ -60,7 +60,7 @@ public class ArticleController {
 	@ResponseBody
 	public Map<String, Object> getArticles() {
 		
-		List<Article> articles  = articleJDBCTemplate.getAllArticles();
+		List<Article> articles  = articleJDBCTemplate.getAllArticles(0);
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("statusCode", "200");
 		result.put("data", articles);

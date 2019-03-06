@@ -45,11 +45,21 @@ public class ArticleJDBCTemplate {
 	public List<Article> getAllArticles(int journalId) {
 		
 		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, articleType, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr,"
-				+ " j.id as jid from Article a, Journal j where a.journalId = j.id and j.id = ?";
+				+ " j.id as jid from Article a, Journal j where a.journalId = j.id";
+		
+		if (journalId != 0) {
+			query = query.concat(" and j.id = ?");
+		}
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
-		List<Map<String, Object>> articleRows = jdbcTemplate.queryForList(query, new Object[] {journalId});
+		List<Map<String, Object>> articleRows = null;
+		
+		if (journalId != 0) {
+			articleRows = jdbcTemplate.queryForList(query, new Object[] {journalId});
+		} else {
+			articleRows = jdbcTemplate.queryForList(query);
+		}
 		
 		List<Article> articles = new ArrayList<Article>();
 		
