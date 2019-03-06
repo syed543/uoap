@@ -42,14 +42,14 @@ public class ArticleJDBCTemplate {
 		return autoInt;
 	}
 
-	public List<Article> getAllArticles() {
+	public List<Article> getAllArticles(int journalId) {
 		
 		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, articleType, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr,"
-				+ " j.id as jid from Article a, Journal j where a.journalId = j.id";
+				+ " j.id as jid from Article a, Journal j where a.journalId = j.id and j.id = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
-		List<Map<String, Object>> articleRows = jdbcTemplate.queryForList(query);
+		List<Map<String, Object>> articleRows = jdbcTemplate.queryForList(query, new Object[] {journalId});
 		
 		List<Article> articles = new ArrayList<Article>();
 		

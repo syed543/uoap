@@ -73,7 +73,7 @@ public class ArticleController {
 	@ResponseBody
 	public Map<String, Object> getArticlesByJournalId(@PathVariable int journalId) {
 		
-		List<Article> articles  = articleJDBCTemplate.getAllArticles();
+		List<Article> articles  = articleJDBCTemplate.getAllArticles(journalId);
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("statusCode", "200");
 		result.put("data", articles);
