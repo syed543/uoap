@@ -35,6 +35,10 @@ controllers.controller("journalDetailsCtrl", ["$scope", "$rootScope", "$state", 
             console.log("Unable to fetch editors list. please contact support.");
         }
     });
+    
+    $scope.downloadArticle = function(article) {
+    	ArticlesService.downloadArticle(article['id']);
+    };
 
       /*$scope.editors = [
           {

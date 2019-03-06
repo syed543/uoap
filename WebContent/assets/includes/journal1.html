@@ -36,11 +36,18 @@
 						<div class="article-title">{{article.title}}</div>
 						<div class="article-abstract">{{article.abstractDesc}}</div>
 						<div>
+		                    <span class="author-title">Version: </span>
+		                    <span>{{article.version}} | </span>
+		                    <span class="author-title">Issue No: </span>
+		                    <span>{{article.issueNo}} | </span>
+		                    <span>{{article.articleState == 'inPress' ? 'In Press' : article.articleState == 'currentIssue' ? 'Current Issue' : 'Archive'}}</span>
+		                </div>
+						<div>
 							<span class="author-title">Author(s): </span>
 							<span>{{article.authors}}</span>
 						</div>
 						<div>
-							<a href="">Download</a>
+							<a href="javascript:void(0);" ng-click="downloadArticle(article)">Download</a>
 						</div>
 					</md-content>
 				</md-card>
@@ -54,11 +61,11 @@
 						<div class="editor-details-container">
 							<div class="editor-cheif" ng-if="editor.isChiefEditor">Editor in cheif</div>
 							<div class="editor-name">{{editor.firstName}} {{editor.lastName}}</div>
-							<div>{{editor.affiliation}}</div>
+							<div>{{editor.affilation}}</div>
 							<div>{{editor.designation}}</div>
 							<div>{{editor.department}}</div>
 							<div>{{editor.country}}</div>
-							<div>{{editor.contactNo}}</div>
+							<div>{{editor.contactno}}</div>
 						</div>
 					</div>
 				</div>
