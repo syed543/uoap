@@ -96,7 +96,7 @@ public class EditorJDBCTemplate {
 				editor.setFirstName((String) articleRow.get("firstName"));
 				editor.setLastName((String) articleRow.get("lastName"));
 				editor.setEmail((String) articleRow.get("email"));
-				editor.setAvatar((String) articleRow.get("avatar"));
+//				editor.setAvatar((String) articleRow.get("avatar"));
 				editor.setAvatarFileName((String) articleRow.get("avatarFileName"));
 				editor.setDescription((String) articleRow.get("description"));
 				editor.setAffilation((String) articleRow.get("affiliation"));
