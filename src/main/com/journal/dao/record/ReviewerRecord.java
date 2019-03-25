@@ -9,6 +9,7 @@ public class ReviewerRecord {
 	private String password;
 	private String generatedPass;
 	private int journalId;
+	private String assignId;
 	
 	public int getId() {
 		return id;
@@ -51,5 +52,11 @@ public class ReviewerRecord {
 	}
 	public void setJournalId(int journalId) {
 		this.journalId = journalId;
+	}
+	public String getAssignId() {
+		return assignId;
+	}
+	public void setAssignId(String assignId) {
+		this.assignId = assignId;
 	}
 }

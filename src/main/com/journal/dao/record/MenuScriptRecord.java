@@ -12,6 +12,8 @@ public class MenuScriptRecord {
 		feedBack = model.getFeedback();
 		reviewerId = model.getReviewerId();
 		articleType = model.getArticleType();
+		reviewers = model.getReviewers();
+		
 	}
 	
 	public MenuScriptRecord() {
@@ -22,11 +24,13 @@ public class MenuScriptRecord {
 	private int submitterId;
 	private int journalId;
 	private int status; //1: Open, 2: Assigned, 3:In Review 4: Approved, 5: Rejected
-	private int reviewerId;
+	private Integer reviewerId;
 	private String menuScriptTitle;
 	private String abstractData;
 	private String feedBack;
 	private String articleType;
+	private int[] reviewers;
+	private String[] uniqueIds;
 	
 	private byte[] menuScriptData;
 	private String menuScriptFileName;
@@ -91,11 +95,11 @@ public class MenuScriptRecord {
 		this.feedBack = feedBack;
 	}
 
-	public int getReviewerId() {
+	public Integer getReviewerId() {
 		return reviewerId;
 	}
 
-	public void setReviewerId(int reviewerId) {
+	public void setReviewerId(Integer reviewerId) {
 		this.reviewerId = reviewerId;
 	}
 
@@ -105,5 +109,21 @@ public class MenuScriptRecord {
 
 	public void setArticleType(String articleType) {
 		this.articleType = articleType;
+	}
+
+	public int[] getReviewers() {
+		return reviewers;
+	}
+
+	public void setReviewers(int[] reviewers) {
+		this.reviewers = reviewers;
+	}
+
+	public String[] getUniqueIds() {
+		return uniqueIds;
+	}
+
+	public void setUniqueIds(String[] uniqueIds) {
+		this.uniqueIds = uniqueIds;
 	}
 }

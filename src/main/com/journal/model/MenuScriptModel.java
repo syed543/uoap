@@ -8,7 +8,8 @@ public class MenuScriptModel {
 	private String reviewerEmail;
 	private String journalName;
 	private String feedback;
-	private int reviewerId;
+	private Integer reviewerId;
+	private int[] reviewers;
 	private String articleType;
 	
 	public int getId() {
@@ -107,10 +108,10 @@ public class MenuScriptModel {
 	public void setFeedback(String feedback) {
 		this.feedback = feedback;
 	}
-	public int getReviewerId() {
+	public Integer getReviewerId() {
 		return reviewerId;
 	}
-	public void setReviewerId(int reviewerId) {
+	public void setReviewerId(Integer reviewerId) {
 		this.reviewerId = reviewerId;
 	}
 	public String getArticleType() {
@@ -118,5 +119,11 @@ public class MenuScriptModel {
 	}
 	public void setArticleType(String articleType) {
 		this.articleType = articleType;
+	}
+	public int[] getReviewers() {
+		return reviewers;
+	}
+	public void setReviewers(int[] reviewers) {
+		this.reviewers = reviewers;
 	}
 }

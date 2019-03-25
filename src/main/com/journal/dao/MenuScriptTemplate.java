@@ -1,5 +1,7 @@
 package com.journal.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,6 +11,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -16,6 +19,7 @@ import com.journal.dao.record.MenuScriptRecord;
 import com.journal.dao.record.SubmitterRecord;
 import com.journal.model.MenuScriptModel;
 import com.journal.utils.JournalConstants;
+import com.journal.utils.JournalUtil;
 
 
 public class MenuScriptTemplate {
@@ -60,13 +64,38 @@ public class MenuScriptTemplate {
 		return record;
 	}
 	
-	public MenuScriptRecord updateMenuScript(String userType, MenuScriptRecord menuScriptRecord) {
+	public MenuScriptRecord updateMenuScript(String userType, final MenuScriptRecord menuScriptRecord) {
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		if (JournalConstants.ADMIN.equals(userType) || JournalConstants.EDITOR.equals(userType)) {
 		
-			String query = "update menuscript set feedback = ?, reviewer = ?, status = ? where id = ?";
-			jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), menuScriptRecord.getReviewerId(), 2, menuScriptRecord.getId());
+			String query = "update menuscript set feedback = ?, status = ? where id = ?";
+			jdbcTemplate.update(query, menuScriptRecord.getFeedBack(), 2, menuScriptRecord.getId());
+			
+			if (menuScriptRecord.getReviewers() != null && menuScriptRecord.getReviewers().length > 0) {
+				
+				String deleteQuery = "delete from menuScriptAssignedReviewers where menuscriptid = ?";
+				jdbcTemplate.update(deleteQuery, menuScriptRecord.getId());
+				
+				String insertQuery = "insert into menuScriptAssignedReviewers(menuscriptid, reviewerid, assignId) values (?, ?, ?)";
+				
+				menuScriptRecord.setUniqueIds(JournalUtil.getUniqueIds(menuScriptRecord.getReviewers().length));
+				
+				jdbcTemplate.batchUpdate(insertQuery, new BatchPreparedStatementSetter() {
+					
+					@Override
+					public void setValues(PreparedStatement ps, int i) throws SQLException {
+						ps.setInt(1, menuScriptRecord.getId());
+						ps.setInt(2, menuScriptRecord.getReviewers()[i]);
+						ps.setString(3, menuScriptRecord.getUniqueIds()[i]);
+					}
+					
+					@Override
+					public int getBatchSize() {
+						return menuScriptRecord.getReviewers().length;
+					}
+				});
+			}
 		} else if (JournalConstants.REVIEWER.equals(userType)) {
 			
 			String query = "update menuscript set feedback = ? where id = ?";
@@ -204,7 +233,7 @@ public class MenuScriptTemplate {
 	
 	public MenuScriptModel getMenuScriptById(Integer menuScriptId) {
 		
-		String query = "select m.id as id, firstName, lastName, menuScriptTitle, abstractTitle, journalName, articleType  from " + 
+		String query = "select m.id as id, firstName, lastName, menuScriptTitle, abstractTitle, journalName, articleType, reviewer as reviewerId  from " + 
 				"submitter s, " + 
 				"menuscript m, " + 
 				"journal j " + 
@@ -213,7 +242,7 @@ public class MenuScriptTemplate {
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
-		MenuScriptModel model = jdbcTemplate.queryForObject(query, new Object[] {menuScriptId}, MenuScriptModel.class);
+		MenuScriptModel model = jdbcTemplate.queryForObject(query, new Object[] {menuScriptId}, new BeanPropertyRowMapper(MenuScriptModel.class));
 		
 		return model;
 	}
@@ -225,5 +254,14 @@ public class MenuScriptTemplate {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, new Object[] {menuScriptId});
+	}
+
+	public void assignReviewerToMenuScript(String menuScriptId, String reviewerid) {
+		
+		String query  = "update menuscript set reviewer = ? where id = ?";
+		
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		
+		jdbcTemplate.update(query, new Object[] {menuScriptId, reviewerid});
 	}
 }

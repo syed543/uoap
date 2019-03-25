@@ -61,6 +61,35 @@ public class ReviewerJDBCTemplate {
 		return null;
 	}
 	
+	public List<ReviewerRecord> getReviewersForMenuScript(int menuScriptId) {
+		
+		String query = "select reviewerid, email, assignId from menuScriptAssignedReviewers mr, reviewer r where r.id = mr.reviewerid and mr.menuscriptid = ?";
+		
+		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
+		
+		try {
+
+			List<Map<String, Object>> reviewerRows = jdbcTemplate.queryForList(query,  new Object[] {menuScriptId});
+			
+			List<ReviewerRecord> reviewerModels = new ArrayList<ReviewerRecord>();
+			
+			for (Map<String, Object> menuScriptRow : reviewerRows) {
+				
+				ReviewerRecord reviewerModel = new ReviewerRecord();
+				reviewerModel.setId((Integer) menuScriptRow.get("reviewerid"));
+				reviewerModel.setEmail((String) menuScriptRow.get("email"));
+				reviewerModel.setAssignId((String) menuScriptRow.get("assignId"));
+				
+				reviewerModels.add(reviewerModel);
+			}
+			
+			return reviewerModels;
+		} catch (EmptyResultDataAccessException eae) {
+			
+		}
+		return null;
+	}
+	
 	public List<ReviewerRecord> getReviewersByJournalId(int journalId) {
 		
 		String query = "Select id, firstName, lastName, email, country from Reviewer where journalId = ?";
@@ -161,5 +190,41 @@ public class ReviewerJDBCTemplate {
 		jdbcTemplate.update(query, reviewerRecord.getPassword(), reviewerRecord.getEmail());
 		
 		System.out.println("Reviewer new password is updated");
+	}
+	
+	public Map<String, Object> getMenuScriptReviewerDetailsByUniqueId(String uniqueId) {
+		
+		String query = "select menuscriptid, reviewerid, assignid from menuScriptAssignedReviewers where assignId = ?";
+		
+		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
+		
+		Map<String, Object> reviewerRows = null;
+		try {
+
+			reviewerRows = jdbcTemplate.queryForMap(query, new String[] {uniqueId});
+		} catch (Exception e) {
+			
+		}
+		
+		return reviewerRows;
+	}
+
+	public void removeReviewerForMenuScript(Map<String, Object> details) {
+
+		String query = "delete from menuScriptAssignedReviewers where menuscriptid = ? and reviewerid = ? and assignId = ?";
+		
+		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
+
+		jdbcTemplate.update(query, new Object[] {details.get("menuscriptid"), details.get("reviewerid"), details.get("assignid")});
+		
+	}
+
+	public void removeAllReviewerForsMenuScript(Map<String, Object> details) {
+		
+		String query = "delete from menuScriptAssignedReviewers where menuscriptid = ?";
+		
+		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
+
+		jdbcTemplate.update(query, new Object[] {details.get("menuscriptid")});
 	}
 }
