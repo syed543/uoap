@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,9 +126,36 @@ public class MenuScriptController {
 		return result;
 	}
 	
+	@RequestMapping(value="/reject/{uniqueId}", method=RequestMethod.GET)
+	public void rejectMenuScript(@PathVariable String uniqueId) {
+		Map<String, Object> details = reviewerJDBCTemplate.getMenuScriptReviewerDetailsByUniqueId(uniqueId);
+		
+		if (details != null && details.size() > 0) {
+			reviewerJDBCTemplate.removeReviewerForMenuScript(details);
+		}
+		
+	}
+	
+	@RequestMapping(value="/accept/{uniqueId}", method=RequestMethod.GET)
+	public void acceptMenuScript(@PathVariable String uniqueId) {
+
+		Map<String, Object> details = reviewerJDBCTemplate.getMenuScriptReviewerDetailsByUniqueId(uniqueId);
+
+		if (details != null && details.size() > 0) {
+			
+			MenuScriptModel model = menuScriptTemplate.getMenuScriptById((Integer) details.get("menuscriptid"));
+			
+			if (model.getReviewerId() ==  null) {
+				reviewerJDBCTemplate.removeAllReviewerForsMenuScript(details);
+			
+				menuScriptTemplate.assignReviewerToMenuScript((Integer) details.get("menuscriptid")+"", (Integer) details.get("reviewerid")+"");
+			}
+		}
+	}
+	
 	@RequestMapping(value="/updateMenuScript/{menuScriptId}", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> updateMenuScript(HttpSession session, @PathVariable int menuScriptId, @RequestParam String data) 
+	public Map<String, Object> updateMenuScript(HttpServletRequest request, HttpSession session, @PathVariable int menuScriptId, @RequestParam String data) 
 			throws JsonParseException, JsonMappingException, IOException {
 		
 		MenuScriptModel model = new ObjectMapper().readValue(data, MenuScriptModel.class);
@@ -142,19 +170,53 @@ public class MenuScriptController {
 		
 		SubmitterRecord submitterRecord = menuScriptTemplate.getMenuScriptSubmiiter(menuScriptId);
 		
-		JournalMailUtil.sendMail(submitterRecord.getEmail(), "MenuScript Feedback Provided:", 
+		try {
+			
+			JournalMailUtil.sendMail(submitterRecord.getEmail(), "MenuScript Feedback Provided:", 
 				"Feed back for MenuScript:" + record.getFeedBack());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		if (model.getReviewerId() > 0) {
-			
-			ReviewerRecord record1 = reviewerJDBCTemplate.getReviewerById(model.getReviewerId());
-			
-			try {
-				JournalMailUtil.sendMail(record1.getEmail(), "Manuscript assigned for review", "Hi, \n Manuscript is assigned to you, Please review and provide feedback"); 
-			} catch (Exception e) {
-				e.printStackTrace();
+		System.out.println("11111");
+		if (record.getReviewers() != null && record.getReviewers().length > 0) {
+			System.out.println("2222:"+record.getId());
+			List<ReviewerRecord> records = reviewerJDBCTemplate.getReviewersForMenuScript(record.getId());
+			System.out.println("3333:" + records);
+			if (records != null && records.size() > 0) {
+				System.out.println("444");
+				String requestUrl = request.getRequestURL().toString();
+				requestUrl = requestUrl.substring(0,  requestUrl.lastIndexOf("/"));
+				requestUrl = requestUrl.substring(0,  requestUrl.lastIndexOf("/"));
+				
+				System.out.println("requestUrl:"+requestUrl);
+
+				for (ReviewerRecord r : records) {
+					try {
+						
+						System.out.println("r.getAssignId():" + requestUrl + "/accept/"+r.getAssignId());
+
+						JournalMailUtil.sendMail(r.getEmail(), "Manuscript Assignment", "Hi, \n Manuscript is assigned to you, Accept for reviewing by clicking below:\n"
+								+ requestUrl + "/accept/"+r.getAssignId() + "\n Reject for reviewing by clicking below:\n" + 
+								requestUrl + "/reject/"+r.getAssignId()); 
+						System.out.println("Sending assignment mails");
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
+		
+//		if (model.getReviewerId() > 0) {
+//			
+////			ReviewerRecord record1 = reviewerJDBCTemplate.getReviewerById(model.getReviewerId());
+//			
+//			try {
+////				JournalMailUtil.sendMail(record1.getEmail(), "Manuscript assigned for review", "Hi, \n Manuscript is assigned to you, Please review and provide feedback"); 
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 		
 		System.out.println("Menu Script added successfully");
 		

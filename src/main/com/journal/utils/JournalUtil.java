@@ -1,11 +1,11 @@
 package com.journal.utils;
 
 import java.util.Random;
+import java.util.UUID;
 
 public class JournalUtil {
 	
 	public static String generatePassword() {
-		
 		
 		//TODO: Need to see better logic to generate password.
 		Random random = new Random();
@@ -31,5 +31,17 @@ public class JournalUtil {
 		
 		
 		return builder.toString();
+	}
+	
+	public static String[] getUniqueIds(int howmany) {
+		
+		String[] uniqueIds = new String[howmany];
+		
+		int index = 0;
+		for (String ids: uniqueIds) {
+			uniqueIds[index++] = UUID.randomUUID().toString();
+		}
+		
+		return uniqueIds;
 	}
 }

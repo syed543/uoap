@@ -30,7 +30,9 @@ public class JournalFilter implements Filter{
 		allowedWithoutLogin.add("/getJournalById");
 		allowedWithoutLogin.add("/getArticlesByJournalId");
 		allowedWithoutLogin.add("/getEditorsByJournalId");
-		allowedWithoutLogin.add("/downloadArticle");
+		allowedWithoutLogin.add("/accept");
+		allowedWithoutLogin.add("/reject");
+
 		
 		allowed.add("/login");
 		allowed.add("/logout");
@@ -71,7 +73,7 @@ public class JournalFilter implements Filter{
 		allowed.add("/reviewerDecline");
 		allowed.add("/reviewerAccept");
 		
-		//allowed.add("/downloadArticle");
+		allowed.add("/downloadArticle");
 		allowed.add("/updateArticleState");
 	}
 
@@ -83,6 +85,11 @@ public class JournalFilter implements Filter{
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 		
 		String pathInfo = request.getPathInfo();
+		
+		System.out.println("PathInfo :" + pathInfo);
+		System.out.println("Request URI :" + request.getRequestURI());
+		System.out.println("Request url: " + request.getRequestURL());
+
 		
 		HttpSession session = request.getSession(false);
 		
