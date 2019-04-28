@@ -368,7 +368,7 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
 
   $scope.submitMenuScript = function(ev) {
     $mdDialog.show({
-      locals:{journals: $scope.journalList, articles: $scope.articles, countries: $scope.countries},
+      locals:{journals: $scope.journalList, articles: $scope.articles, countries: $scope.countries, articleTypes: $scope.articleTypes},
       controller: DialogController,
       templateUrl: 'assets/views/submit-menuscript.html',
       parent: angular.element(document.body),
@@ -381,7 +381,7 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
       });
   };
 
-  function DialogController($scope, $rootScope, $mdDialog, journals, articles, countries) {
+  function DialogController($scope, $rootScope, $mdDialog, journals, articles, countries, articleTypes) {
     $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
     $scope.user = {
@@ -412,6 +412,7 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     $scope.journals = journals;
     $scope.articles = articles;
     $scope.countries = countries;
+    $scope.articleTypes = articleTypes;
 
     $scope.hide = function() {
       $mdDialog.hide();
