@@ -121,3 +121,10 @@ alter table article add column articleState smallint not null default 1;
 alter table menuscript add column articleType varchar(100);
 
 alter table article add column articleType varchar(100)
+
+//21/03/2019
+create table menuScriptAssignedReviewers(
+menuscriptid int  not null references menuscript(id),
+reviewerid int not null references reviewer(id))
+
+alter table menuScriptAssignedReviewers add assignId varchar(2000);
