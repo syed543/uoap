@@ -1,5 +1,6 @@
 package com.journal.dao;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import com.journal.dao.record.EditorRecord;
 import com.journal.model.Editor;
 import com.journal.model.EditorModel;
+import com.journal.utils.JournalConstants;
+import com.journal.utils.WebAppUtils;
 
 public class EditorJDBCTemplate {
 
@@ -96,7 +99,7 @@ public class EditorJDBCTemplate {
 				editor.setFirstName((String) articleRow.get("firstName"));
 				editor.setLastName((String) articleRow.get("lastName"));
 				editor.setEmail((String) articleRow.get("email"));
-//				editor.setAvatar((String) articleRow.get("avatar"));
+				editor.setAvatarPath("journal" + File.separator + JournalConstants.AVATARS + File.separator + JournalConstants.EDITOR + File.separator + editor.getId());
 				editor.setAvatarFileName((String) articleRow.get("avatarFileName"));
 				editor.setDescription((String) articleRow.get("description"));
 				editor.setAffilation((String) articleRow.get("affiliation"));
@@ -115,7 +118,7 @@ public class EditorJDBCTemplate {
 
 	public List<EditorModel> getEditors() {
 		
-		String query = "Select e.id as id, firstName, lastName, email, description, affiliation, journalName, designation, department, country, contactno, isChiefEditor, j.id as jid from Editor e, Journal j where e.journalId = j.id";
+		String query = "Select e.id as id, firstName, lastName, email, avatar, avatarFileName, description, affiliation, journalName, designation, department, country, contactno, isChiefEditor, j.id as jid from Editor e, Journal j where e.journalId = j.id";
 
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
@@ -130,10 +133,11 @@ public class EditorJDBCTemplate {
 			editorModel.setFirstName((String) editorRow.get("firstname"));
 			editorModel.setLastName((String) editorRow.get("lastName"));
 			editorModel.setEmail((String) editorRow.get("email"));
+			editorModel.setAvatarPath("journal" + File.separator + JournalConstants.AVATARS + File.separator + JournalConstants.EDITOR + File.separator + editorModel.getId());
+			editorModel.setAvatarFileName((String) editorRow.get("avatarFileName"));
 			editorModel.setDescription((String) editorRow.get("description"));
 			editorModel.setAffiliation((String) editorRow.get("affiliation"));
 			editorModel.setJournalName((String) editorRow.get("journalName"));
-			
 			editorModel.setDepartment((String) editorRow.get("designation"));
 			editorModel.setDesignation((String) editorRow.get("department"));
 			editorModel.setCountry((String) editorRow.get("country"));

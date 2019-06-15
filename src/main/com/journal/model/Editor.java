@@ -7,6 +7,7 @@ public class Editor {
 	private String lastName;
 	private String email;
 	private String avatar;
+	private String avatarPath;
 	private String avatarFileName;
 	private String description;
 	private String affilation;
@@ -79,6 +80,12 @@ public class Editor {
 	}
 	public String getDepartment() {
 		return department;
+	}
+	public String getAvatarPath() {
+		return avatarPath;
+	}
+	public void setAvatarPath(String avatarPath) {
+		this.avatarPath = avatarPath;
 	}
 	public void setDepartment(String department) {
 		this.department = department;

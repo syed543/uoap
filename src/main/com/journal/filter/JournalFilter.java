@@ -32,6 +32,7 @@ public class JournalFilter implements Filter{
 		allowedWithoutLogin.add("/getEditorsByJournalId");
 		allowedWithoutLogin.add("/accept");
 		allowedWithoutLogin.add("/reject");
+		allowedWithoutLogin.add("/editors");
 
 		
 		allowed.add("/login");

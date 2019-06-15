@@ -10,6 +10,7 @@ public class EditorModel {
 	private String generatedPass;
 	private String country;
 	private byte[] avatar;
+	private String avatarPath;
 	private String avatarFileName;
 	private String description;
 	private String affiliation;
@@ -98,6 +99,12 @@ public class EditorModel {
 	}
 	public void setJournalName(String journalName) {
 		this.journalName = journalName;
+	}
+	public String getAvatarPath() {
+		return avatarPath;
+	}
+	public void setAvatarPath(String avatarPath) {
+		this.avatarPath = avatarPath;
 	}
 	public String getDepartment() {
 		return department;
