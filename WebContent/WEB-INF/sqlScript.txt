@@ -1,4 +1,4 @@
-drop table if exists user;
+`1`drop table if exists user;
 
 create table user( 
 email varchar(50),

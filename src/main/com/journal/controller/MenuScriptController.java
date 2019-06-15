@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -127,17 +128,24 @@ public class MenuScriptController {
 	}
 	
 	@RequestMapping(value="/reject/{uniqueId}", method=RequestMethod.GET)
-	public void rejectMenuScript(@PathVariable String uniqueId) {
+	public ModelAndView rejectMenuScript(@PathVariable String uniqueId) {
+		
 		Map<String, Object> details = reviewerJDBCTemplate.getMenuScriptReviewerDetailsByUniqueId(uniqueId);
+		
+		ModelAndView view = new ModelAndView();
 		
 		if (details != null && details.size() > 0) {
 			reviewerJDBCTemplate.removeReviewerForMenuScript(details);
 		}
 		
+		view.setViewName("rejected");
+		return view;
 	}
 	
 	@RequestMapping(value="/accept/{uniqueId}", method=RequestMethod.GET)
-	public void acceptMenuScript(@PathVariable String uniqueId) {
+	public ModelAndView acceptMenuScript(@PathVariable String uniqueId) {
+		
+		ModelAndView view = new ModelAndView();
 
 		Map<String, Object> details = reviewerJDBCTemplate.getMenuScriptReviewerDetailsByUniqueId(uniqueId);
 
@@ -149,8 +157,15 @@ public class MenuScriptController {
 				reviewerJDBCTemplate.removeAllReviewerForsMenuScript(details);
 			
 				menuScriptTemplate.assignReviewerToMenuScript((Integer) details.get("menuscriptid")+"", (Integer) details.get("reviewerid")+"");
+				view.setViewName("accepted");
+			} else {
+				view.setViewName("alreadyAsiggned");
 			}
+		} else {
+			view.setViewName("alreadyAssigned");
 		}
+		
+		return view;
 	}
 	
 	@RequestMapping(value="/updateMenuScript/{menuScriptId}", method=RequestMethod.POST)
