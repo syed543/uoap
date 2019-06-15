@@ -262,6 +262,6 @@ public class MenuScriptTemplate {
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
-		jdbcTemplate.update(query, new Object[] {menuScriptId, reviewerid});
+		jdbcTemplate.update(query, new Object[] {reviewerid, menuScriptId});
 	}
 }
