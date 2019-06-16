@@ -70,7 +70,7 @@ public class JournalFilter implements Filter{
 		
 		allowed.add("/getReviewersByJournalId");
 		allowed.add("/approveMenuScript");
-		allowed.add("/rejectMenuscript");
+		allowed.add("/rejectMenuScript");
 		allowed.add("/reviewerDecline");
 		allowed.add("/reviewerAccept");
 		
