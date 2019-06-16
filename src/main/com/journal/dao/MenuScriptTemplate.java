@@ -258,7 +258,7 @@ public class MenuScriptTemplate {
 
 	public void assignReviewerToMenuScript(String menuScriptId, String reviewerid) {
 		
-		String query  = "update menuscript set reviewer = ? where id = ?";
+		String query  = "update menuscript set reviewer = ?, status = 3 where id = ?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
