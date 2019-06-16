@@ -61,7 +61,8 @@ public class JournalFilter implements Filter{
 		allowed.add("/addArticle");
 		allowed.add("/updateArticle");
 		allowed.add("/deleteArticle");
-		
+		allowed.add("/getArticlesByState");
+
 		//Reviewers
 		allowed.add("/menuScriptList");
 		allowed.add("/addMenuScript");
