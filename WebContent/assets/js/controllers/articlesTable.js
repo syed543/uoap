@@ -149,7 +149,8 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
             'article_title': '',
             'article_abstract': '',
             'authors': '',
-            'articleType': ''
+            'articleType': '',
+            'showOnDetailsPage': false
         };
         $scope.file = '';
         $scope.hide = function() {
@@ -181,6 +182,7 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
             _data['issueNo'] = $scope.article['issueNo'];
             _data['version'] = $scope.article['version'];
             _data['articleType'] = $scope.article['articleType'];
+            _data['showOnDetailsPage'] = $scope.article['showOnDetailsPage'];
 
             fd.append("file", $scope.file);
             //angular.copy($scope.article, data);
