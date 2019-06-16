@@ -27,7 +27,7 @@
                     <tr md-row>
                         <th md-column md-order-by="firstName"><span>First Name</span></th>
                         <th md-column md-order-by="lastName"><span>Last Name</span></th>
-                        <th md-column md-order-by="avatar"><span>Avatar</span></th>
+                        <!-- <th md-column md-order-by="avatar"><span>Avatar</span></th> -->
                         <th md-column md-order-by="description"  md-desc><span>Description</span></th>
                         <th md-column md-order-by="affiliation"><span>Affiliation</span></th>
                         <th md-column md-order-by="journalId"><span>Journal</span></th>
@@ -39,7 +39,7 @@
                     <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
                         <td md-cell>{{dessert.firstName}}</td>
                         <td md-cell>{{dessert.lastName}}</td>
-                        <td md-cell><md-icon md-svg-src="{{desert.avatar}}"></md-icon> </td>
+                        <!-- <td md-cell><md-icon md-svg-src="{{desert.avatar}}"></md-icon> </td> -->
                         <td md-cell>{{dessert.description}}</td>
                         <td md-cell>{{dessert.affiliation}}</td>
                         <td md-cell>{{dessert.journalName}}</td>

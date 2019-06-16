@@ -6,8 +6,8 @@ define(['angular',
         'controllers-module',
 		'angular-material'
         ], function(angular, controllers, ngMaterial, ngMessages) {
-controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsService", "ArticlesService", "$mdDialog", "$mdSidenav", "$timeout", "MenuScriptsService",
-  function($scope, $rootScope, $state, JournalsService, ArticlesService, $mdDialog, $mdSidenav, $timeout, MenuScriptsService) {
+controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsService", "ArticlesService", "$mdDialog", "$mdSidenav", "$timeout", "MenuScriptsService","$mdToast", 
+  function($scope, $rootScope, $state, JournalsService, ArticlesService, $mdDialog, $mdSidenav, $timeout, MenuScriptsService, $mdToast) {
 
     $scope.search = "";
 
@@ -431,6 +431,12 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
         MenuScriptsService.submitMenuScript(fd).then(function(data) {
           console.log('submitted...');
           $scope.cancel();
+          if(data.statusCode == 200) {
+        	  $mdToast.show($mdToast.simple().textContent(data.message));
+          } else if(data.message) {
+        	  $mdToast.show($mdToast.simple().textContent(data.message));  
+          }
+          
         });
     };
   }
