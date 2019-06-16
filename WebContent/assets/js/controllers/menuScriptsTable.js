@@ -193,7 +193,7 @@ controllers.controller("menuScriptsTableCtrl", ['$mdEditDialog', '$q', '$scope',
 
       $scope.approveMenuScript = function() {
           $scope.menuScriptItem['status'] = 'Approve'
-          MenuScriptsService.rejectMenuScript($scope.menuScriptItem).then(function (data) {
+          MenuScriptsService.approveMenuScript($scope.menuScriptItem).then(function (data) {
               $scope.refreshMenuScripts();
               $scope.toggleEdit();
           });

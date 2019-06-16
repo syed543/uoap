@@ -32,7 +32,7 @@
                 </md-card-title>
                 <md-card-content>
                     <div layout-align="center center" layout="row">
-                        <img ng-src="{{journal.journal_icon}}" class="md-card-image" alt="{{journal.name}}">
+                        <img ng-src="{{journal.journalIconFileName}}" class="md-card-image" alt="{{journal.name}}">
                     </div>
                     <div class="card-description">{{journal.journal_description}}</div>
                 </md-card-content>
@@ -41,6 +41,15 @@
                 </md-card-actions>
             </md-card>
         </div>
+        
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="SYD6WFHSFFNCY">
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
     </md-content>
 
     <!--<div class="uoap-accordian-gear" ng-click="openSidePanel()">
