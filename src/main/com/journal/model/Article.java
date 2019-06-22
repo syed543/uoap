@@ -13,6 +13,7 @@ public class Article {
 	private int articleStateId;
 	private String articleState;
 	private String articleType;
+	private boolean showOnDetailsPage;
 	
 	private Integer version;
 	private Integer issueNo;
@@ -94,5 +95,11 @@ public class Article {
 	}
 	public void setArticleType(String articleType) {
 		this.articleType = articleType;
+	}
+	public boolean isShowOnDetailsPage() {
+		return showOnDetailsPage;
+	}
+	public void setShowOnDetailsPage(boolean showOnDetailsPage) {
+		this.showOnDetailsPage = showOnDetailsPage;
 	}
 }

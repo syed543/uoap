@@ -26,13 +26,13 @@ public class ArticleJDBCTemplate {
 	}
 
 	public Integer saveArticle(Article article) {
-		String query = "insert into ARTICLE(title, abstractDesc, authors, journalId, article, articleFileName, version, issueNo, articleState, articleType) values" +
-				"(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "insert into ARTICLE(title, abstractDesc, authors, journalId, article, articleFileName, version, issueNo, articleState, articleType, showOnDetailsPage) values" +
+				"(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
 		jdbcTemplate.update(query, article.getTitle(), article.getAbstractDesc(), article.getAuthors(), article.getJournalId(),
-				article.getFile(), article.getFileName(), article.getVersion(), article.getIssueNo(),  1, article.getArticleType());
+				article.getFile(), article.getFileName(), article.getVersion(), article.getIssueNo(),  1, article.getArticleType(), article.isShowOnDetailsPage());
 		
 		String auto = "select max(id) from ARTICLE";
 		
@@ -43,7 +43,7 @@ public class ArticleJDBCTemplate {
 
 	public List<Article> getAllArticles(int journalId) {
 		
-		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, articleType, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr,"
+		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, articleType, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr, showOnDetailsPage,"
 				+ " j.id as jid from Article a, Journal j where a.journalId = j.id";
 		
 		if (journalId != 0) {
@@ -76,7 +76,10 @@ public class ArticleJDBCTemplate {
 			article.setArticleStateId((Integer) articleRow.get("articleState")) ;
 			article.setArticleType((String) articleRow.get("articleType")) ;
 			article.setArticleState((String) articleRow.get("articleStateStr")) ;
-			
+			Boolean value = (Boolean) articleRow.get("showOnDetailsPage");
+			if (value != null) {
+				article.setShowOnDetailsPage(value);
+			}
 			articles.add(article);
 		}
 		
@@ -85,8 +88,8 @@ public class ArticleJDBCTemplate {
 	
 	public List<Article> getAllArticlesByState(int state) {
 		
-		String query = "select id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, articleType, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr,"
-				+ " j.id as jid from Article a, Journal j where a.journalId = j.id and articleState = ?";
+		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, articleType, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr,"
+				+ " j.id as jid, showOnDetailsPage from Article a, Journal j where a.journalId = j.id and articleState = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
@@ -110,7 +113,10 @@ public class ArticleJDBCTemplate {
 			article.setArticleStateId((Integer) articleRow.get("articleState")) ;
 			article.setArticleType((String) articleRow.get("articleType")) ;
 			article.setArticleState((String) articleRow.get("articleStateStr")) ;
-			
+			Boolean value = (Boolean) articleRow.get("showOnDetailsPage");
+			if (value != null) {
+				article.setShowOnDetailsPage(value);
+			}
 			articles.add(article);
 		}
 		
@@ -121,7 +127,7 @@ public class ArticleJDBCTemplate {
 	public List<Article> getArticlesByJournalId(int journalId) {
 		
 		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleType, articleState, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr,"
-				+ " j.id as jid from Article a, Journal j where a.journalId = j.id and j.id = ?";
+				+ " j.id as jid, showOnDetailsPage from Article a, Journal j where a.journalId = j.id and j.id = ?";
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
@@ -143,6 +149,10 @@ public class ArticleJDBCTemplate {
 			article.setArticleType((String) articleRow.get("articleType")) ;
 			article.setArticleStateId((Integer) articleRow.get("articleState")) ;
 			article.setArticleState((String) articleRow.get("articleStateStr")) ;
+			Boolean value = (Boolean) articleRow.get("showOnDetailsPage");
+			if (value != null) {
+				article.setShowOnDetailsPage(value);
+			}
 
 			articles.add(article);
 		}
@@ -154,7 +164,7 @@ public class ArticleJDBCTemplate {
 		
 		List<Object> params = new ArrayList<Object>(8);
 		
-		String query = "update ARTICLE set title = ?,  abstractDesc = ?, authors = ?, journalId = ?, version = ?, issueNo = ?, articleType = ?";
+		String query = "update ARTICLE set title = ?,  abstractDesc = ?, authors = ?, journalId = ?, version = ?, issueNo = ?, articleType = ?, showOnDetailsPage = ? ";
 		params.add(article.getTitle());
 		params.add(article.getAbstractDesc());
 		params.add(article.getAuthors());
@@ -162,6 +172,7 @@ public class ArticleJDBCTemplate {
 		params.add(article.getVersion());
 		params.add(article.getIssueNo());
 		params.add(article.getArticleType());
+		params.add(article.isShowOnDetailsPage());
 		
 		
 		if (article.getFile() != null) {

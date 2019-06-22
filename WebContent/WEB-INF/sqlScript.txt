@@ -1,4 +1,4 @@
-`1`drop table if exists user;
+drop table if exists user;
 
 create table user( 
 email varchar(50),
@@ -127,4 +127,6 @@ create table menuScriptAssignedReviewers(
 menuscriptid int  not null references menuscript(id),
 reviewerid int not null references reviewer(id))
 
-alter table menuScriptAssignedReviewers add assignId varchar(2000);
+alter table menuScriptAssignedReviewers add column assignId varchar(2000);
+
+alter table article add column showOnDetailsPage boolean;

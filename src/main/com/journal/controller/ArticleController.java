@@ -126,9 +126,7 @@ public class ArticleController {
 	@RequestMapping(value="/deleteArticle/{articleId}", method=RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> deleteArticle(@PathVariable("articleId") int articleId) {
-		System.out.println("Deleting article with id : " + articleId);
 		articleJDBCTemplate.deleteJournal(articleId);
-		System.out.println("Deleted article with id : " + articleId);
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("statusCode", "200");
