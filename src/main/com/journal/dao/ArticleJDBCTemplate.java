@@ -40,8 +40,14 @@ public class ArticleJDBCTemplate {
 		
 		return autoInt;
 	}
-
+	
 	public List<Article> getAllArticles(int journalId) {
+		return getAllArticles(journalId, false, 0);
+	}
+	public List<Article> getAllArticles(int journalId, boolean showDetailsPage) {
+		return getAllArticles(journalId, showDetailsPage, 0);
+	}
+	public List<Article> getAllArticles(int journalId, boolean showOnDetailsPage, int stateId) {
 		
 		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, articleType, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr, showOnDetailsPage,"
 				+ " j.id as jid from Article a, Journal j where a.journalId = j.id";
@@ -80,7 +86,23 @@ public class ArticleJDBCTemplate {
 			if (value != null) {
 				article.setShowOnDetailsPage(value);
 			}
-			articles.add(article);
+			
+			boolean add = false;
+			if (stateId == 0) {
+				add = true;
+			} else if(stateId == article.getArticleStateId()){
+				add = true;
+			}
+			
+			if(!showOnDetailsPage) {
+				add = true;
+			}
+			else if(showOnDetailsPage == true && (value == null || value == true)) {
+				add = true;
+			}
+			if(add == true) {
+				articles.add(article);
+			}
 		}
 		
 		return articles;

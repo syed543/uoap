@@ -95,6 +95,32 @@ public class ArticleController {
 		return result;
 	}
 	
+	@RequestMapping(value="/getArticlesOnDetailsPageById/{journalId}", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getArticlesOnDetailsPageById(@PathVariable int journalId) {
+		
+		List<Article> articles  = articleJDBCTemplate.getAllArticles(journalId, true);
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("statusCode", "200");
+		result.put("data", articles);
+		result.put("count", articles.size());
+
+		return result;
+	}
+	
+	@RequestMapping(value="/getArticlesOnDetailsPageById/{journalId}/{stateId}", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getArticlesOnDetailsPageById(@PathVariable int journalId, @PathVariable int stateId) {
+		
+		List<Article> articles  = articleJDBCTemplate.getAllArticles(journalId, true, stateId);
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("statusCode", "200");
+		result.put("data", articles);
+		result.put("count", articles.size());
+
+		return result;
+	}
+	
 	@RequestMapping(value="/updateArticle/{articleId}", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> updateArticle(@RequestParam String data, @PathVariable("articleId") int articleId, 
