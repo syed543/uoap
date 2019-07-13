@@ -444,3 +444,25 @@ md-table-pagination .label {
     border-radius: 50%;
     padding: 5px 0;
 }
+
+.journal-details-banner,
+.submit-menuScript-container {
+	height: 200px;
+	width: 100%;
+}
+
+.submit-menuScript-container,
+.journal-details-banner {
+	background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.submit-menuScript-container {
+	background-position: unset;
+}
+
+.select-article-state {
+	font-size: 14px;
+}

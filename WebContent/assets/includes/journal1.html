@@ -3,10 +3,13 @@
 		<h1>{{journal.journal_name}}</h1>
 		<div layout="row" layout-wrap>
 			<div flex-gt-sm="75" flex="100">
-				<img width="100%" style="max-height: 200px;" ng-src="{{journal.journalBannerImageFileName}}"/>
+				<!-- <img width="100%" style="max-height: 200px;" ng-src="{{journal.journalBannerImageFileName}}"/>
+				 -->
+				<div class="journal-details-banner"></div>
 			</div>
 			<div flex-gt-sm="25" flex="100">
 				<div class="submit-menuScript-container">
+					<!-- <img width="100%" style="height: 100%;" ng-src="{{journal.journalIconFileName}}"/> -->
 					<div class="submit-menuscript-details" ng-click="submitMenuScript()">
 						Submit a MenuScript
 					</div>
@@ -24,7 +27,12 @@
 			<div flex-gt-sm="75" flex="100">
 				<md-toolbar class="md-table-toolbar md-default">
 					<div class="md-toolbar-tools">
-						<h1>List Of Articles:</h1>
+						<h1>List Of Articles:</h1>&nbsp;&nbsp;
+						<md-select class="select-article-state" name="version" ng-model="stateValue" required ng-change="handleStateChange(stateValue)">
+                                <md-option ng-repeat="state in states" value="{{state.stateValue}}">
+                                    {{state.stateName}}
+                                </md-option>
+                            </md-select>
 						<div flex></div>
 						<md-button class="md-icon-button" ng-click="refreshArticles()">
 							<md-icon>refresh</md-icon>

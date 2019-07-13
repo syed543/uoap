@@ -10,23 +10,59 @@ controllers.controller("journalDetailsCtrl", ["$scope", "$rootScope", "$state", 
   function($scope, $rootScope, $state, $stateParams, $localStorage, $sessionStorage, JournalsService, ArticlesService, authenticationSvc, $mdDialog, EditorsService) {
 
   var _journalId = window.location.search.split('=')[1];
-  console.log(_journalId);
-
+  //console.log(_journalId);
+  	$scope.states = [{
+  		"stateName": "In Press",
+  		"stateValue": "1"
+  	},{
+  		"stateName": "Current Issue",
+  		"stateValue": "2"
+  	},{
+  		"stateName": "Archive",
+  		"stateValue": "3"
+  	}];
+  	$scope.stateValue = "1";
+  	$scope.handleStateChange = function(state) {
+  		console.log(state);
+  		ArticlesService.getArticlesOnDetailsPageById(_journalId, state).then(function (data) {
+  	      if (data.statusCode == 200) { // Success
+  	        $scope.articles = data.data;
+  	      } else { 					// Error
+  	        console.log("Unable to fetch articles list. please contact support.");
+  	      }
+  	    });
+  	};
+  	
     JournalsService.getJournalById(_journalId).then(function (data) {
       if (data.statusCode == 200) { // Success
         $scope.journal = data.data;
+        $scope.setJournalBanner();
       } else { 					// Error
         console.log("Unable to fetch journal. please contact support.");
       }
     });
-
-    ArticlesService.getArticlesByJournalId(_journalId).then(function (data) {
+    $scope.setJournalBanner = function() {
+    	var bannerImage = $scope.journal.journalBannerImageFileName.split("\\").join("/"),
+    		iconImage = $scope.journal.journalIconFileName.split("\\").join("/");
+    		
+    	$('.journal-details-banner').css('background-image', 'url("'+bannerImage+'")');
+    	$('.submit-menuScript-container').css('background-image', 'url("'+iconImage+'")');
+    };
+    
+    /*ArticlesService.getArticlesByJournalId(_journalId).then(function (data) {
       if (data.statusCode == 200) { // Success
         $scope.articles = data.data;
       } else { 					// Error
         console.log("Unable to fetch articles list. please contact support.");
       }
-    });
+    });*/
+		ArticlesService.getArticlesOnDetailsPageById(_journalId, "1").then(function (data) {
+	  	      if (data.statusCode == 200) { // Success
+	  	        $scope.articles = data.data;
+	  	      } else { 					// Error
+	  	        console.log("Unable to fetch articles list. please contact support.");
+	  	      }
+	  	    });
 
     EditorsService.getEditorsByJournalId(_journalId).then(function (data) {
         if (data.statusCode == 200) { // Success

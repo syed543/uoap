@@ -26,6 +26,30 @@ services.factory('ArticlesService', ["Http", "$q", "$state", "$log", function (H
                 }).catch(function(err){});
                 return deferred.promise;
             },
+            getArticlesByState: function(Id) {
+                var deferred = $q.defer();
+                Http.getData('/getArticlesByState/'+Id).then(function(data){
+                /*Http.getData('assets/data/articles.json').then(function(data){*/
+                  deferred.resolve(data);
+                }).catch(function(err){});
+                return deferred.promise;
+            },
+            showOnDetailsPage: function() {
+                var deferred = $q.defer();
+                Http.getData('/showOnDetailsPage').then(function(data){
+                /*Http.getData('assets/data/articles.json').then(function(data){*/
+                  deferred.resolve(data);
+                }).catch(function(err){});
+                return deferred.promise;
+            },
+            getArticlesOnDetailsPageById: function(journalId, stateValue) {
+                var deferred = $q.defer();
+                Http.getData('/getArticlesOnDetailsPageById/'+journalId+'/'+stateValue).then(function(data){
+                /*Http.getData('assets/data/articles.json').then(function(data){*/
+                  deferred.resolve(data);
+                }).catch(function(err){});
+                return deferred.promise;
+            },
             getCountries: function() {
                 var deferred = $q.defer();
                 /*Http.getData(serviceUrl).then(function(data){*/
