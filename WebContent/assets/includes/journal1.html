@@ -1,30 +1,16 @@
 <div id="page-wrapper" ng-controller="journalDetailsCtrl" >
 	<md-content md-padding class="journal-details">
-		<h1>{{journal.journal_name}}</h1>
+		
 		<div layout="row" layout-wrap>
-			<div flex-gt-sm="75" flex="100">
+			<div flex-gt-sm="75" flex="100" style="padding-right: 10px;">
+				<h1 style="margin-top: 10px;">{{journal.journal_name}}</h1>
 				<!-- <img width="100%" style="max-height: 200px;" ng-src="{{journal.journalBannerImageFileName}}"/>
 				 -->
 				<div class="journal-details-banner"></div>
-			</div>
-			<div flex-gt-sm="25" flex="100">
-				<div class="submit-menuScript-container">
-					<!-- <img width="100%" style="height: 100%;" ng-src="{{journal.journalIconFileName}}"/> -->
-					<div class="submit-menuscript-details" ng-click="submitMenuScript()">
-						Submit a MenuScript
-					</div>
+				
+				<div layout="row" class="journal-details-desc">
+					{{journal.journal_description}}
 				</div>
-			</div>
-			<div layout="row" class="journal-details-desc">
-				{{journal.journal_description}}
-			</div>
-		</div>
-	</md-content>
-
-
-	<md-content md-padding>
-		<div layout="row" layout-wrap>
-			<div flex-gt-sm="75" flex="100">
 				<md-toolbar class="md-table-toolbar md-default">
 					<div class="md-toolbar-tools">
 						<h1>List Of Articles:</h1>&nbsp;&nbsp;
@@ -39,7 +25,7 @@
 						</md-button>
 					</div>
 				</md-toolbar>
-				<md-card ng-repeat="article in articles">
+				<md-card ng-repeat="article in articles" style="margin: 2px;">
 					<md-content layout-padding>
 						<div class="article-title">{{article.title}}</div>
 						<div class="article-abstract">{{article.abstractDesc}}</div>
@@ -59,8 +45,16 @@
 						</div>
 					</md-content>
 				</md-card>
+				
 			</div>
 			<div flex-gt-sm="25" flex="100">
+				<div class="submit-menuScript-container1">
+					<!-- <img width="100%" style="height: 100%;" ng-src="{{journal.journalIconFileName}}"/> -->
+					<div class="submit-menuscript-details" ng-click="submitMenuScript()">
+						Submit a MenuScript
+					</div>
+				</div>
+			
 				<h2>Editors: </h2>
 				<div class="list-editors">
 					<div ng-repeat="editor in editors" class="editor-panel">
@@ -78,6 +72,23 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="submit-menuScript-container">
+					
+				</div>
+			</div>
+			
+		</div>
+	</md-content>
+
+
+	<md-content md-padding>
+		<div layout="row" layout-wrap>
+			<div flex-gt-sm="75" flex="100">
+				
+			</div>
+			<div flex-gt-sm="25" flex="100">
+				
 			</div>
 		</div>
 	</md-content>
