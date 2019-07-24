@@ -468,3 +468,10 @@ md-table-pagination .label {
 .select-article-state {
 	font-size: 14px;
 }
+
+.site-content {
+	max-width: 1024px;
+    display: block;
+    text-align: justify;
+    margin: auto;
+}
