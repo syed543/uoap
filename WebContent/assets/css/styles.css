@@ -535,4 +535,5 @@ md-table-pagination .label {
 }
 .site-content p {
 	margin: 10px 0 25px;
+	line-height: 1.75em;
 }
