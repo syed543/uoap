@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
     font-family: SourceSansPro;
     src: url('fonts/SourceSansPro-Regular.ttf');
 }
@@ -32,11 +32,50 @@
 @font-face {
     font-family: SourceSansPro-Semibold;
     src: url('fonts/SourceSansPro-Semibold.ttf');
+}*/
+
+@font-face {
+    font-family: Lato-Regular;
+    src: url('Lato2OFL/Lato-Regular.ttf');
+}
+@font-face {
+    font-family: Lato-Italic;
+    src: url('Lato2OFL/Lato-Italic.ttf');
+}
+@font-face {
+    font-family: Lato-Black;
+    src: url('Lato2OFL/Lato-Black.ttf');
+}
+@font-face {
+    font-family: Lato-BlackItalic;
+    src: url('Lato2OFL/Lato-BlackItalic.ttf');
+}
+@font-face {
+    font-family: Lato-Bold;
+    src: url('Lato2OFL/Lato-Bold.ttf');
+}
+@font-face {
+    font-family: Lato-BoldItalic;
+    src: url('Lato2OFL/Lato-BoldItalic.ttf');
 }
 
-.uopa {
-    font-family: SourceSansPro !important;
-    background-color: #2a2c451a;
+.uoap, body {
+    font-family: Lato-Regular !important;
+    background-color: #fff;
+}
+u {
+	font-family: Lato-BlackItalic;
+}
+.title {
+	color: #2984cc;
+}
+.uoap-heading {
+	font-family: Lato-Black;
+	font-size: 24px;
+}
+.uoap-sub-heading {
+	font-family: Lato-Black;
+	font-size: 20px;
 }
 
 /* header styling: start */
@@ -52,7 +91,7 @@ md-icon.home-icon svg {
 
 .uoap-header .navbar-default {
     border-color: rgb(231, 231, 231);
-    background-color: #2a2c45;
+    background-color: #24bd36;
 }
 .uoap-header .navbar-default .navbar-brand,
 .uoap-header .navbar-default .navbar-nav > li > a{
@@ -62,14 +101,14 @@ md-icon.home-icon svg {
 .uoap-header .navbar-default .navbar-nav > li > a:hover,
 .uoap-header .navbar-default .navbar-nav > .open > a {
     background-color: #fff;
-    color: #2a2c45;
+    color: #24bd36;
 }
 .uoap-header .navbar-default .navbar-nav > li > a:active {
-    color: #2a2c45;
+    color: #24bd36;
 }
 
 .uoap-header .navbar-default .navbar-nav > li > a:hover md-icon.home-icon svg {
-    fill: #2a2c45;
+    fill: #24bd36;
 }
 
 .uoap .jk-carousel .slides-container .slide .ng-scope img:first-child {
@@ -106,6 +145,8 @@ md-icon.home-icon svg {
 
 /* content styling: start */
 #page-wrapper {
+	padding: 0 20px;
+	background-color: #fff;
 }
 
 #search {
@@ -167,6 +208,16 @@ md-toolbar md-icon svg {
         min-width: 600px;
     }
 }
+#page-wrapper {
+        min-height: calc(100vh - 155px);
+    }
+
+@media only screen and (min-height: 995px)  {
+    #page-wrapper {
+        min-height: calc(100vh - 190px);
+    }
+}
+
 
 /* material overrides : END*/
 /* content styling: end */
@@ -175,7 +226,7 @@ md-toolbar md-icon svg {
 /* landing page styling: start */
 
 .uoap-landing .banner {
-    background-color: #f3f1f1;
+    /*background-color: #f3f1f1;*/
     padding-top: 15px;
 }
 .uoap-landing .uoap-accordian-gear {
@@ -189,10 +240,13 @@ md-toolbar md-icon svg {
     cursor: pointer;
 }
 
+md-content.md-default-theme, md-content {
+	background-color: #fff;
+}
 
 .uoap-landing md-card md-card-title {
-    border-bottom: 2px solid #2a2c45;
-    background-color: #00a19e;
+    border-bottom: 2px solid #009688;
+    background-color: #26a96d;
     color: #fff;
 }
 .uoap-landing md-card .md-card-image {
@@ -224,11 +278,15 @@ md-toolbar md-icon svg {
 }
 
 .uoap-landing md-toolbar:not(.md-menu-toolbar) {
-    background-color: #2a2c45;
+    background-color: #24bd36;
 }
 
 .uoap-journal-list md-icon svg {
     fill: #fff;
+}
+
+.journal-details md-toolbar.md-table-toolbar .md-toolbar-tools {
+	background-color: #00000005;
 }
 
 /**	Sentence case Buttons --- BEGIN */
@@ -253,7 +311,7 @@ span.nav-item-name.flex{
 /* footer styling: start */
 .uoap-footer {
     padding: 10px;
-    background-color: #2a2c45;
+    background-color: #24bd36;
     color: #fff;
 }
 
@@ -373,7 +431,7 @@ md-table-pagination .label {
     font-weight: 600;
     color: #fff;
     padding: 10px;
-    /*border: 1px solid #2a2c45;*/
+    /*border: 1px solid #24bd36;*/
     position: relative;
 }
 .submit-menuscript-details {
@@ -474,4 +532,7 @@ md-table-pagination .label {
     display: block;
     text-align: justify;
     margin: auto;
+}
+.site-content p {
+	margin: 10px 0 25px;
 }
