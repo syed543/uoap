@@ -177,7 +177,7 @@ md-icon.home-icon svg {
 /* material overrides : START*/
 md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar),
 md-dialog md-toolbar {
-    background-color: rgb(42, 44, 69);
+    background-color: #26a96d;
 }
 
 .fullwidth,
