@@ -3,7 +3,7 @@
         <md-card>
             <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
                 <div class="md-toolbar-tools">
-                    <span>MenuScripts List</span>
+                    <span>ManuScripts List</span>
                     <div flex></div>
                     <md-button class="md-icon-button" ng-click="refreshMenuScripts()">
                         <md-icon>refresh</md-icon>
@@ -69,7 +69,7 @@
         <form name="menuscript" ng-cloak>
             <md-toolbar>
                 <div class="md-toolbar-tools">
-                    <h2>Update Menuscript</h2>
+                    <h2>Update Manuscript</h2>
                 </div>
             </md-toolbar>
             <div class="note">
@@ -93,7 +93,7 @@
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div class="fullwidth">
                         <md-input-container>
-                            <label>Menuscript Title</label>
+                            <label>Manuscript Title</label>
                             <input name="title" ng-model="menuScriptItem.menuTitle" required maxlength="1000" minlength="10" >
                             <div ng-messages="menuscript.title.$error">
                                 <div ng-message-exp="['required', 'minlength', 'maxlength']">
@@ -120,10 +120,10 @@
 
                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
                     <div>
-                        <label>Attach MenuScript</label>
+                        <label>Attach ManuScript</label>
                         <input name="file" onchange="angular.element(this).scope().uploadedFile(this)" ng-model="file" type="file" accept=".pdf, .doc, .docx">
                         <div class="errors" ng-show="menuscript.file.$dirty && menuscript.file.$invalid">
-                            Please attach a menuscript.
+                            Please attach a manuscript.
                         </div>
                     </div>
                 </md-content>
@@ -149,7 +149,7 @@
         <form name="menuscript" ng-cloak>
             <md-toolbar>
                 <div class="md-toolbar-tools">
-                    <h2>Update Menuscript</h2>
+                    <h2>Update Manuscript</h2>
                 </div>
             </md-toolbar>
             <div class="note">
