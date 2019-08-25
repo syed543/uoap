@@ -50,18 +50,30 @@ public class ArticleJDBCTemplate {
 	public List<Article> getAllArticles(int journalId, boolean showOnDetailsPage, int stateId) {
 		
 		String query = "select a.id as id, title, abstractDesc, authors,  journalName, version, issueNo, articleState, articleType, case articleState when 1 then 'inPress' when 2 then 'currentIssue' when 3 then 'archive' else 'Archieve' end as articleStateStr, showOnDetailsPage,"
-				+ " j.id as jid from Article a, Journal j where a.journalId = j.id";
+				+ " j.id as jid from Article a, Journal j where a.journalId = j.id ";
+		
+		if (showOnDetailsPage) {
+			query = query.concat(" and showOnDetailsPage = 1 ");
+		}
 		
 		if (journalId != 0) {
-			query = query.concat(" and j.id = ?");
+			query = query.concat(" and j.id = ? ");
+		}
+		
+		if (stateId != 0) {
+			query = query.concat(" and articleState = ? ");
 		}
 		
 		JdbcTemplate jdbcTemplate  = new JdbcTemplate(dataSource);
 
 		List<Map<String, Object>> articleRows = null;
 		
-		if (journalId != 0) {
+		if (journalId != 0 && stateId != 0) {
+			articleRows = jdbcTemplate.queryForList(query, new Object[] {journalId, stateId});
+		} else if (journalId != 0) {
 			articleRows = jdbcTemplate.queryForList(query, new Object[] {journalId});
+		} else if (stateId != 0) {
+			articleRows = jdbcTemplate.queryForList(query, new Object[] {stateId});
 		} else {
 			articleRows = jdbcTemplate.queryForList(query);
 		}
@@ -87,22 +99,7 @@ public class ArticleJDBCTemplate {
 				article.setShowOnDetailsPage(value);
 			}
 			
-			boolean add = false;
-			if (stateId == 0) {
-				add = true;
-			} else if(stateId == article.getArticleStateId()){
-				add = true;
-			}
-			
-			if(!showOnDetailsPage) {
-				add = true;
-			}
-			else if(showOnDetailsPage == true && (value == null || value == true)) {
-				add = true;
-			}
-			if(add == true) {
-				articles.add(article);
-			}
+			articles.add(article);
 		}
 		
 		return articles;

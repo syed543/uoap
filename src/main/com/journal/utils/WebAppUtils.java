@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import org.apache.commons.io.FileUtils;
+
 public class WebAppUtils {
 	
 	private static String webAppPath = WebAppUtils.class.getResource("/../..").getPath();
@@ -20,7 +22,8 @@ public class WebAppUtils {
 		if (type != null) {
 			
 			File folderPath = new File(getWebAppPath() + File.separator + JournalConstants.AVATARS + File.separator + type + File.separator + id);
-			folderPath.delete();
+			
+			FileUtils.deleteDirectory(folderPath);
 			
 			if (!folderPath.mkdirs()) {
 				return;

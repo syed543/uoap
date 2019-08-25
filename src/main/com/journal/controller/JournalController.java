@@ -109,10 +109,18 @@ public class JournalController {
 			journal.setJournalBannerImage(banner.getBytes());
 			journal.setJournalBannerImageFileName(banner.getOriginalFilename());
 		}
-		
+			
 		if (journal.getId() != null) {
 			
 			journalJDBCTemplate.updateJournal(journal);
+			
+			if (icon != null) {
+				WebAppUtils.uploadFile(JournalConstants.JOURNAL_ICONS_FOLDER, journal.getId(), journal.getJournalIconFileName(), journal.getJournalIcon());
+			}
+			
+			if (banner != null) {
+				WebAppUtils.uploadFile(JournalConstants.JOURNAL_BANNER_FOLDER, journal.getId(), journal.getJournalBannerImageFileName(), journal.getJournalBannerImage());
+			}
 			
 			Map<String, Object> result = new HashMap<String, Object>();
 			result.put("statusCode", "200");
