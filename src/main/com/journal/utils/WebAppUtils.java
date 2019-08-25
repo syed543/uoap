@@ -22,7 +22,6 @@ public class WebAppUtils {
 		if (type != null) {
 			
 			File folderPath = new File(getWebAppPath() + File.separator + JournalConstants.AVATARS + File.separator + type + File.separator + id);
-			
 			FileUtils.deleteDirectory(folderPath);
 			
 			if (!folderPath.mkdirs()) {
