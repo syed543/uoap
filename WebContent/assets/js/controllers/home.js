@@ -16,19 +16,19 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     };
 
   $scope.dataArray = [{
-      src: '../journal/assets/img/Cardiology banner.svg',
+      src: '../journal/assets/img/New Adjusted Journal of Cardiology.jpg',
       text: ''
     },{
       src: '../journal/assets/img/banner journal of dent.svg',
       text: ''
     },{
-      src: '../journal/assets/img/Journal of Medical Case Reports.svg',
+      src: '../journal/assets/img/New Journal of Medical Case Report.jpg',
       text: ''
     },{
-      src: '../journal/assets/img/Journal of Opthamaology.svg',
+      src: '../journal/assets/img/New Adjusted Banner of Opthamology.jpg',
       text: ''
     },{
-        src: '../journal/assets/img/Final banner of Neurology.jpg',
+        src: '../journal/assets/img/New Adjusted Banner of Neruology.jpg',
         text: ''
       }];
 
