@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1500 1500" style="enable-background:new 0 0 1500 1500;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:#302020;}
+	.st2{opacity:0.5;fill:url(#SVGID_2_);}
+	.st3{opacity:0.62;}
+	.st4{fill:url(#SVGID_3_);}
+	.st5{fill:url(#SVGID_4_);}
+	.st6{fill:url(#SVGID_5_);}
+	.st7{fill:#0A0A0A;}
+	.st8{fill:none;}
+	.st9{font-family:'TimesNewRomanPS-BoldMT';}
+	.st10{font-size:36px;}
+	.st11{font-size:60px;}
+	.st12{font-size:72px;}
+	.st13{font-family:'TimesNewRomanPS-ItalicMT';}
+</style>
+<g>
+	
+		<radialGradient id="SVGID_1_" cx="738.6567" cy="895.6137" r="305.1405" gradientTransform="matrix(-1 0 0 1 1500 0)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0.2794" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.6073" style="stop-color:#FDFDFD"/>
+		<stop  offset="0.7254" style="stop-color:#F6F6F6"/>
+		<stop  offset="0.8096" style="stop-color:#EBEBEB"/>
+		<stop  offset="0.8777" style="stop-color:#DADADA"/>
+		<stop  offset="0.9359" style="stop-color:#C4C4C4"/>
+		<stop  offset="0.9866" style="stop-color:#A9A9A9"/>
+		<stop  offset="1" style="stop-color:#A1A1A1"/>
+	</radialGradient>
+	<circle class="st0" cx="761.34" cy="895.61" r="305.14"/>
+	
+		<ellipse transform="matrix(0.7071 -0.7071 0.7071 0.7071 -410.3022 800.6702)" class="st1" cx="761.34" cy="895.61" rx="194.72" ry="194.72"/>
+	
+		<radialGradient id="SVGID_2_" cx="761.3433" cy="68.9665" r="262.093" gradientTransform="matrix(1 0 0 0.1268 0 1279.069)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#4D4D4D"/>
+		<stop  offset="0.151" style="stop-color:#515151;stop-opacity:0.8943"/>
+		<stop  offset="0.3011" style="stop-color:#5D5D5D;stop-opacity:0.7892"/>
+		<stop  offset="0.4511" style="stop-color:#717171;stop-opacity:0.6842"/>
+		<stop  offset="0.6009" style="stop-color:#8D8D8D;stop-opacity:0.5793"/>
+		<stop  offset="0.7508" style="stop-color:#B1B1B1;stop-opacity:0.4745"/>
+		<stop  offset="0.8986" style="stop-color:#DDDDDD;stop-opacity:0.371"/>
+		<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0.3"/>
+	</radialGradient>
+	<ellipse class="st2" cx="761.34" cy="1287.81" rx="262.08" ry="33.24"/>
+	<g class="st3">
+		<radialGradient id="SVGID_3_" cx="761.8674" cy="895.6137" r="202.5503" gradientUnits="userSpaceOnUse">
+			<stop  offset="0.4901" style="stop-color:#FFFFFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0"/>
+		</radialGradient>
+		<polygon class="st4" points="671.32,895.61 559.32,901.27 671.46,900.74 559.94,912.59 671.88,905.82 561.2,923.88 672.59,910.85 
+			563.09,935.1 673.57,915.82 565.62,946.2 674.83,920.72 568.77,957.15 676.36,925.54 572.53,967.91 678.17,930.26 576.89,978.43 
+			680.24,934.88 581.84,988.68 682.57,939.38 587.35,998.63 685.15,943.76 593.41,1008.24 687.98,947.98 599.99,1017.5 
+			691.05,952.05 607.07,1026.37 694.34,955.94 614.64,1034.83 697.84,959.64 622.66,1042.85 701.55,963.15 631.12,1050.42 
+			705.44,966.44 639.99,1057.5 709.51,969.5 649.25,1064.08 713.73,972.33 658.87,1070.14 718.1,974.91 668.82,1075.65 
+			722.6,977.24 679.07,1080.59 727.22,979.31 689.58,1084.95 731.95,981.12 700.33,1088.71 736.76,982.65 711.28,1091.86 
+			741.66,983.91 722.39,1094.39 746.63,984.89 733.6,1096.28 751.66,985.6 744.89,1097.54 756.74,986.02 756.21,1098.16 
+			761.87,986.16 767.52,1098.16 767,986.02 778.84,1097.54 772.08,985.6 790.13,1096.28 777.11,984.89 801.35,1094.39 
+			782.08,983.91 812.46,1091.86 786.97,982.65 823.41,1088.71 791.79,981.12 834.16,1084.95 796.52,979.31 844.68,1080.59 
+			801.14,977.24 854.93,1075.64 805.64,974.91 864.88,1070.13 810.01,972.33 874.5,1064.07 814.24,969.5 883.75,1057.49 
+			818.3,966.43 892.63,1050.41 822.19,963.14 901.08,1042.84 825.9,959.64 909.11,1034.82 829.4,955.93 916.67,1026.36 
+			832.69,952.04 923.76,1017.49 835.75,947.98 930.34,1008.23 838.58,943.75 936.39,998.61 841.17,939.38 941.9,988.67 
+			843.5,934.88 946.85,978.42 845.57,930.26 951.21,967.9 847.37,925.53 954.97,957.15 848.91,920.72 958.12,946.2 850.17,915.82 
+			960.64,935.1 851.15,910.85 962.53,923.88 851.85,905.82 963.79,912.59 852.27,900.74 964.42,901.27 852.42,895.61 964.42,889.96 
+			852.27,890.49 963.79,878.64 851.85,885.4 962.53,867.35 851.15,880.37 960.64,856.13 850.17,875.41 958.12,845.03 848.91,870.51 
+			954.97,834.08 847.37,865.69 951.2,823.32 845.57,860.97 946.84,812.8 843.5,856.35 941.89,802.55 841.16,851.84 936.38,792.6 
+			838.58,847.47 930.33,782.98 835.75,843.25 923.75,773.73 832.69,839.18 916.66,764.86 829.4,835.29 909.1,756.4 825.89,831.58 
+			901.07,748.37 822.19,828.08 892.61,740.81 818.3,824.79 883.74,733.73 814.23,821.73 874.49,727.15 810,818.9 864.87,721.09 
+			805.63,816.31 854.92,715.58 801.13,813.98 844.67,710.64 796.51,811.91 834.15,706.27 791.79,810.11 823.4,702.51 786.97,808.58 
+			812.45,699.36 782.08,807.32 801.35,696.84 777.11,806.33 790.13,694.95 772.08,805.63 778.84,693.69 767,805.21 767.52,693.06 
+			761.87,805.07 756.21,693.06 756.74,805.21 744.89,693.69 751.66,805.63 733.6,694.95 746.63,806.33 722.38,696.84 741.66,807.32 
+			711.28,699.37 736.76,808.58 700.33,702.51 731.94,810.11 689.58,706.28 727.22,811.91 679.06,710.64 722.6,813.99 668.8,715.59 
+			718.1,816.32 658.85,721.1 713.73,818.9 649.24,727.15 709.5,821.73 639.98,733.73 705.43,824.79 631.11,740.82 701.54,828.09 
+			622.65,748.38 697.84,831.59 614.63,756.41 694.33,835.29 607.06,764.87 691.04,839.19 599.98,773.74 687.98,843.25 593.4,783 
+			685.15,847.48 587.34,792.61 682.57,851.85 581.83,802.56 680.24,856.35 576.89,812.81 678.17,860.97 572.53,823.33 
+			676.36,865.69 568.77,834.08 674.83,870.51 565.62,845.03 673.57,875.41 563.09,856.13 672.59,880.37 561.2,867.35 671.88,885.4 
+			559.94,878.64 671.46,890.49 559.32,889.96 		"/>
+	</g>
+	
+		<radialGradient id="SVGID_4_" cx="738.6567" cy="895.6137" r="73.5608" gradientTransform="matrix(-1 0 0 1 1500 0)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#000000"/>
+		<stop  offset="0.474" style="stop-color:#020202"/>
+		<stop  offset="0.6447" style="stop-color:#090909"/>
+		<stop  offset="0.7665" style="stop-color:#141414"/>
+		<stop  offset="0.8649" style="stop-color:#252525"/>
+		<stop  offset="0.9481" style="stop-color:#3B3B3B"/>
+		<stop  offset="1" style="stop-color:#4D4D4D"/>
+	</radialGradient>
+	<circle class="st5" cx="761.34" cy="895.61" r="73.56"/>
+	<radialGradient id="SVGID_5_" cx="761.8674" cy="895.6137" r="157.6208" gradientUnits="userSpaceOnUse">
+		<stop  offset="0.544" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.6066" style="stop-color:#FFFFFF;stop-opacity:0.8626"/>
+		<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0"/>
+	</radialGradient>
+	<circle class="st6" cx="761.87" cy="895.61" r="157.62"/>
+	
+		<ellipse transform="matrix(0.7071 -0.7071 0.7071 0.7071 -410.3023 800.6702)" class="st7" cx="761.34" cy="895.61" rx="73.56" ry="73.56"/>
+</g>
+<rect x="147.72" y="342.46" class="st8" width="1204.56" height="193.08"/>
+<text transform="matrix(1 0 0 1 147.7188 366.3252)"><tspan x="0" y="0" class="st9 st10">UOAP</tspan><tspan x="0" y="86.4" class="st9 st11">         </tspan><tspan x="135" y="86.4" class="st9 st12">Journal of Ophthalmology</tspan><tspan x="0" y="129.6" class="st9 st10">                                                                             </tspan><tspan x="693" y="129.6" class="st13 st10">A peer review open access journal</tspan></text>
+</svg>

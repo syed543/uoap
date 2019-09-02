@@ -52,7 +52,8 @@ require.config({
         'angular-messages': 'vendors/angular-messages/angular-messages.min',
         'angular-material': 'vendors/angular-material/angular-material.min',
         'jkAngularCarousel': 'vendors/jk-carousel/jk-carousel',
-        'angular-material-data-table': 'vendors/angular-material-data-table/dist/md-data-table'
+        'angular-material-data-table': 'vendors/angular-material-data-table/dist/md-data-table',
+        'angular-sanitize': 'vendors/angular-sanitize'
     },
    
     
@@ -83,6 +84,7 @@ require.config({
       'angular-material': ['angular'],
       'jkAngularCarousel': ['angular'],
       'angular-material-data-table': ['angular'],
+      'angular-sanitize': ['angular'],
 		bootstrapper: {
 			deps: [
 				'app',

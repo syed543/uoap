@@ -13,9 +13,10 @@ define([
     'angular-messages',
     'angular-material',
     'jkAngularCarousel',
-    'angular-material-data-table'
+    'angular-material-data-table',
+    'angular-sanitize'
 
-], function (require, $, angular, ngResource, ngStorage, directives, services, controllers, routes, ngMaterial, jkAngularCarousel, mdDataTable) {
+], function (require, $, angular, ngResource, ngStorage, directives, services, controllers, routes, ngMaterial, jkAngularCarousel, mdDataTable, ngSanitize) {
     'use strict';
     /**
      * Application definition
@@ -32,7 +33,8 @@ define([
         'ngStorage',
         'ngMessages',
         'jkAngularCarousel',
-        'md.data.table'
+        'md.data.table',
+        'ngSanitize'
     ]);
 
     uoap.config(['$mdThemingProvider', function ($mdThemingProvider) {
@@ -46,6 +48,21 @@ define([
         // .backgroundPalette('gray');
     }
     ]);
+    
+    uoap.filter('lineBreak', lineBreak);
+    
+    lineBreak.$inject = [];
+
+    function lineBreak() {
+      return filterFilter;
+      function filterFilter(text) {
+        if (!text || !text.length) {
+          return text;
+        }
+
+        return text.replace(/(\\r\\n)|([\r\n])/gmi, '<br/>');
+      }
+    }
 
   // api services url constant variable
   uoap.constant('ApiEndpoint', {

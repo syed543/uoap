@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1024 206" style="enable-background:new 0 0 1024 206;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#0A916E;}
+	.st1{fill:url(#XMLID_16_);}
+	.st2{fill:#FFFFFF;}
+	.st3{fill:url(#XMLID_17_);stroke:#A0A2A2;stroke-miterlimit:10;}
+	.st4{fill:none;}
+	.st5{fill:url(#XMLID_18_);}
+	.st6{fill:#F7F2F3;}
+	.st7{font-family:'TimesNewRomanPS-BoldMT';}
+	.st8{font-size:14px;}
+	.st9{font-size:21px;}
+</style>
+<rect class="st0" width="1024" height="206.36"/>
+<g id="XMLID_2_">
+	<g id="XMLID_3_">
+		<g id="XMLID_118_">
+			<g id="XMLID_119_">
+				<g id="XMLID_120_">
+					<g id="XMLID_123_">
+						<linearGradient id="XMLID_16_" gradientUnits="userSpaceOnUse" x1="-2.4904" y1="96.3651" x2="1023.9979" y2="96.3651">
+							<stop  offset="0" style="stop-color:#A05725"/>
+							<stop  offset="0.2209" style="stop-color:#D59731"/>
+							<stop  offset="0.4414" style="stop-color:#F5F092"/>
+							<stop  offset="0.7075" style="stop-color:#D59731"/>
+							<stop  offset="1" style="stop-color:#A05725"/>
+						</linearGradient>
+						<path id="XMLID_126_" class="st1" d="M1024,1.74H715.52C643.16,60.02,278.64,327.5,0,46.95v99.39
+							C330.9,280.69,853.91,76.09,1024,1.74z"/>
+						<path id="XMLID_124_" class="st2" d="M288.67,200.48c2.69,0.03,5.39,0.05,8.11,0.05c70.99,0,148.56-10.38,230.73-30.88
+							c68.15-17,139.6-40.97,212.38-71.23C823.84,63.5,890.35,28.07,924.77,8.7h-5.02c-34.9,19.56-100.3,54.2-182.44,88.35
+							c-72.54,30.17-143.74,54.05-211.62,70.98c-84.71,21.13-164.45,31.45-236.93,30.62C179.01,197.41,84.19,170.66,6.8,119.17v3.1
+							C84.36,172.92,179.14,199.24,288.67,200.48z"/>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+<linearGradient id="XMLID_17_" gradientUnits="userSpaceOnUse" x1="733.2299" y1="190.4099" x2="740.5939" y2="190.4099">
+	<stop  offset="0" style="stop-color:#A05725"/>
+	<stop  offset="0.2209" style="stop-color:#D59731"/>
+	<stop  offset="0.4414" style="stop-color:#F5F092"/>
+	<stop  offset="0.7075" style="stop-color:#D59731"/>
+	<stop  offset="1" style="stop-color:#A05725"/>
+</linearGradient>
+<polygon id="XMLID_15_" class="st3" points="738.58,194.11 735.69,191.71 732.8,189.3 736.33,188.01 739.86,186.71 739.22,190.41 
+	"/>
+<polygon id="XMLID_6_" class="st4" points="414.6,58.09 437.09,58.09 437.09,58.09 414.6,58.09 "/>
+<g id="XMLID_4_">
+	<g id="XMLID_5_">
+		<g id="XMLID_8_">
+			<g id="XMLID_9_">
+				<g id="XMLID_10_">
+					<g id="XMLID_11_">
+						
+							<linearGradient id="XMLID_18_" gradientUnits="userSpaceOnUse" x1="-268.7032" y1="511.407" x2="757.7851" y2="511.407" gradientTransform="matrix(-0.9915 0.0137 -0.0129 -0.9335 768.048 581.8368)">
+							<stop  offset="0" style="stop-color:#A05725"/>
+							<stop  offset="0.2209" style="stop-color:#D59731"/>
+							<stop  offset="0.4414" style="stop-color:#F5F092"/>
+							<stop  offset="0.7075" style="stop-color:#D59731"/>
+							<stop  offset="1" style="stop-color:#A05725"/>
+						</linearGradient>
+						<path id="XMLID_13_" class="st5" d="M11.35,206.36l305.86-4.23c70.96-57.37,428.81-321.14,708.84-53.55l-1.33-96.15
+							C694.83-73.01,179,132.1,11.35,206.36z"/>
+						<path id="XMLID_12_" class="st2" d="M737.78,4.01c-2.67,0.01-5.35,0.03-8.04,0.07c-70.39,0.97-147.16,12.08-228.36,33.04
+							c-67.34,17.38-137.87,41.55-209.62,71.83c-82.77,34.93-148.24,70.11-182.11,89.32l4.97-0.07
+							c34.34-19.4,98.72-53.81,179.7-87.97c71.52-30.18,141.79-54.26,208.88-71.57C586.91,17.04,665.83,5.96,737.71,5.77
+							c108.84-0.31,203.21,24.27,280.63,73.02l-0.04-3C940.73,27.87,846.4,3.7,737.78,4.01z"/>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+<rect x="35.97" y="19.98" class="st4" width="307.48" height="51"/>
+<text transform="matrix(1 0 0 1 35.9712 29.2646)"><tspan x="0" y="0" class="st6 st7 st8">UOAP</tspan><tspan x="0" y="25.2" class="st6 st7 st9">Journal of Medical Case Reports</tspan></text>
+</svg>

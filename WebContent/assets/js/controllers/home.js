@@ -16,18 +16,21 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     };
 
   $scope.dataArray = [{
-      src: 'https://www.travelexcellence.com/images/movil/La_Paz_Waterfall.jpg',
-      text: 'This is first page'
+      src: '../journal/assets/img/Cardiology banner.svg',
+      text: ''
     },{
-      src: 'http://www.parasholidays.in/blog/wp-content/uploads/2014/05/holiday-tour-packages-for-usa.jpg',
-      text: 'This is second page'
+      src: '../journal/assets/img/banner journal of dent.svg',
+      text: ''
     },{
-      src: 'http://clickker.in/wp-content/uploads/2016/03/new-zealand-fy-8-1-Copy.jpg',
-      text: 'This is third page'
+      src: '../journal/assets/img/Journal of Medical Case Reports.svg',
+      text: ''
     },{
-      src: 'http://images.kuoni.co.uk/73/indonesia-34834203-1451484722-ImageGalleryLightbox.jpg',
-      text: 'This is fourth page'
-    }];
+      src: '../journal/assets/img/Journal of Opthamaology.svg',
+      text: ''
+    },{
+        src: '../journal/assets/img/Final banner of Neurology.jpg',
+        text: ''
+      }];
 
     JournalsService.getJournals().then(function (data) {
       if (data.statusCode == 200) { // Success
