@@ -16,7 +16,7 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     };
 
   $scope.dataArray = [{
-      src: '../journal/assets/img/New Adjusted Journal of Cardiology.jpg',
+      src: '../journal/assets/img/New_Cardiology.jpg',
       text: ''
     },{
       src: '../journal/assets/img/banner journal of dent.svg',
