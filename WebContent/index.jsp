@@ -5,6 +5,7 @@
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+                <meta name="google-site-verification" content="iLrorD2hs1bNEdFPmBF9FMQKFHlrJJg9YOfwfCFeiq4" />
 		<title>Unicon Open Access Publishers</title>
 
 		<style>
@@ -24,6 +25,17 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="assets/js/vendors/angular-material-data-table/dist/md-data-table.css" rel="stylesheet" />
 		<link href="assets/css/styles.css" rel="stylesheet" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149502379-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149502379-1');
+</script>
+
 	</head>
 	<body ng-cloak layout="column" flex class="uoap">
 		<header ng-include="'assets/includes/header.html'"></header>
