@@ -1,4 +1,4 @@
- 
+ Changes on all pages
  - keyword text in h1 tag
  - image alt/title/description attribute value as keyword
  - h2 tag synonyms
@@ -6,6 +6,5 @@
 
  - slider image alt value as primary keyword of each journal
  
-
 --------
 https://search.google.com/search-console?resource_id=http%3A%2F%2Fuoaponline.com%2F
