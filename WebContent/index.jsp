@@ -40,6 +40,11 @@
 	<body ng-cloak layout="column" flex class="uoap">
 		<header ng-include="'assets/includes/header.html'"></header>
 		<!-- Header End -->
+<img class="set-header-height-0" alt="Journal of Ophthalmology" src="Avatars/Journal/Banners/48/banner opthalmology.svg" />
+<img class="set-header-height-0" alt="Journal of Neurology" src="Avatars/Journal/Banners/47/Final banner of Neurology.jpg" />
+<img class="set-header-height-0" alt="Journal of Dentistry" src="Avatars/Journal/Banners/32/banner journal of dent.svg" />
+<img class="set-header-height-0" alt="Journal of Medical Case Reports" src="Avatars/Journal/Banners/10/Journal of Medical Case Reports 2 ss.svg" />
+<img class="set-header-height-0" alt="Journal of Cardioloty" src="Avatars/Journal/Banners/40/Cardiology banner 5.svg" />
 		<!-- Content Start -->
 		<div ng-include="'assets/includes/content.html'"></div>
 		<!-- Content End -->
