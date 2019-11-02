@@ -6,6 +6,8 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
                 <meta name="google-site-verification" content="iLrorD2hs1bNEdFPmBF9FMQKFHlrJJg9YOfwfCFeiq4" />
+		<meta name="title" content="Open Access Journals |Medical Case Reports - Unicon" />
+		<meta name="description" content="Provides access to quality Case Report; Clinical; Medicine; Open Access; Peer-Reviewed; and International Journals." />
 		<title>Unicon Open Access Publishers</title>
 
 		<style>
@@ -38,6 +40,8 @@
 
 	</head>
 	<body ng-cloak layout="column" flex class="uoap">
+<h1 class="set-header-height-0">Open Access Journals</h1>
+<h2 class="set-header-height-0">Medical Case Reports</h2>
 		<header ng-include="'assets/includes/header.html'"></header>
 		<!-- Header End -->
 <img class="set-header-height-0" alt="Journal of Ophthalmology" src="Avatars/Journal/Banners/48/banner opthalmology.svg" />
