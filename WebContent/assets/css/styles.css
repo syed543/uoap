@@ -315,6 +315,10 @@ span.nav-item-name.flex{
     color: #fff;
 }
 
+.uoap-footer a {
+	color: #fff;
+}
+
 /* footer styling: end */
 
 
@@ -536,4 +540,9 @@ md-table-pagination .label {
 .site-content p {
 	margin: 10px 0 25px;
 	line-height: 1.75em;
+}
+
+.set-header-height-0 {
+	position: fixed;
+	left: 9999px;
 }
