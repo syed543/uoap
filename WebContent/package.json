@@ -27,7 +27,7 @@
     "gulp-sass": "^2.0.4",
     "run-sequence": "*",
     "gulp-karma" : "*",
-    "jquery": "2.1.4",
+    "jquery": "3.4.1",
     "karma" : "^0.13",
     "karma-requirejs" : "*",
     "karma-jasmine": "~0.2.0",
