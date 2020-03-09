@@ -66,6 +66,7 @@ controllers.controller("journalDetailsCtrl", ["$scope", "$rootScope", "$state", 
 
     EditorsService.getEditorsByJournalId(_journalId).then(function (data) {
         if (data.statusCode == 200) { // Success
+            _.map(data.data, function(editor){ editor.country = _.findWhere($scope.countries, {"abbrev": editor.country}).name; });
             $scope.editors = data.data;
         } else { 					// Error
             console.log("Unable to fetch editors list. please contact support.");
