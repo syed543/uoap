@@ -36,6 +36,7 @@ controllers.controller("journalDetailsCtrl", ["$scope", "$rootScope", "$state", 
     JournalsService.getJournalById(_journalId).then(function (data) {
       if (data.statusCode == 200) { // Success
         $scope.journal = data.data;
+        $scope.journal.journal_long_description = _.unescape(data.data.journal_long_description);
         $scope.setJournalBanner();
       } else { 					// Error
         console.log("Unable to fetch journal. please contact support.");
