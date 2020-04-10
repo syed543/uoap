@@ -67,6 +67,7 @@ controllers.controller("journalDetailsCtrl", ["$scope", "$rootScope", "$state", 
 
     EditorsService.getEditorsByJournalId(_journalId).then(function (data) {
         if (data.statusCode == 200) { // Success
+            _.map(data.data, function(editor){ editor.avatarPath = editor.avatarPath.split('\\').join('/').replace('journal/', ''); });
             _.map(data.data, function(editor){ editor.country = _.findWhere($scope.countries, {"abbrev": editor.country}).name; });
             $scope.editors = data.data;
         } else { 					// Error
