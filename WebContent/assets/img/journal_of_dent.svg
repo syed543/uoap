@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1024 312" style="enable-background:new 0 0 1024 312;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#0097BA;}
+	.st1{clip-path:url(#XMLID_4_);}
+	.st2{fill:url(#XMLID_5_);}
+	.st3{fill:#00FFFF;}
+	.st4{fill:url(#XMLID_7_);}
+	.st5{fill:url(#XMLID_8_);}
+	.st6{fill:url(#XMLID_9_);}
+	.st7{fill:url(#XMLID_10_);}
+	.st8{fill:url(#XMLID_12_);}
+	.st9{fill:url(#XMLID_13_);}
+	.st10{fill:url(#XMLID_14_);}
+	.st11{fill:url(#XMLID_15_);}
+	.st12{fill:url(#XMLID_16_);}
+	.st13{fill:#00A99D;}
+	.st14{fill:url(#XMLID_17_);}
+	.st15{fill:url(#XMLID_18_);}
+	.st16{fill:url(#XMLID_19_);}
+	.st17{fill:#006837;}
+	.st18{fill:url(#XMLID_20_);}
+	.st19{fill:url(#XMLID_21_);}
+	.st20{fill:url(#XMLID_26_);}
+	.st21{fill:url(#XMLID_27_);}
+	.st22{fill:#39B54A;}
+	.st23{fill:url(#XMLID_28_);}
+	.st24{fill:url(#XMLID_29_);}
+	.st25{fill:url(#XMLID_32_);}
+	.st26{fill:url(#XMLID_33_);}
+	.st27{fill:url(#XMLID_34_);}
+	.st28{fill:url(#XMLID_35_);}
+	.st29{fill:url(#XMLID_36_);}
+	.st30{fill:url(#XMLID_37_);}
+	.st31{fill:url(#XMLID_38_);}
+	.st32{fill:#FFFFFF;}
+	.st33{fill:none;stroke:#000000;stroke-width:1.0551;stroke-miterlimit:10;}
+	.st34{fill:none;}
+	.st35{font-family:'TimesNewRomanPS-BoldMT';}
+	.st36{font-size:36px;}
+	.st37{fill:#F4EDED;}
+	.st38{font-size:12px;}
+</style>
+<rect y="-6" class="st0" width="1024" height="316"/>
+<rect id="XMLID_501_" width="1024" height="286.6"/>
+<g id="XMLID_418_">
+	<defs>
+		<rect id="XMLID_420_" x="371" y="-366" transform="matrix(6.123234e-17 -1 1 6.123234e-17 366 658)" width="282" height="1024"/>
+	</defs>
+	<clipPath id="XMLID_4_">
+		<use xlink:href="#XMLID_420_"  style="overflow:visible;"/>
+	</clipPath>
+	<g id="XMLID_485_" class="st1">
+		
+			<radialGradient id="XMLID_5_" cx="-570.233" cy="107.4312" r="95.0311" gradientTransform="matrix(-1.5893 -0.1893 0.3339 -0.9009 -878.5729 72.5874)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<ellipse id="XMLID_491_" class="st2" cx="63.55" cy="83.73" rx="154.33" ry="87.48"/>
+		<g id="XMLID_486_">
+			<polygon id="XMLID_489_" class="st3" points="-71.93,82.74 161.64,87.14 -44.56,34.64 			"/>
+			<linearGradient id="XMLID_7_" gradientUnits="userSpaceOnUse" x1="-71.9303" y1="95.3003" x2="161.6446" y2="95.3003">
+				<stop  offset="0" style="stop-color:#CCE0F4"/>
+				<stop  offset="0.0641" style="stop-color:#C3DCF2"/>
+				<stop  offset="0.1706" style="stop-color:#A9D2EE"/>
+				<stop  offset="0.3066" style="stop-color:#80C2E7"/>
+				<stop  offset="0.4649" style="stop-color:#47ACDE"/>
+				<stop  offset="0.5674" style="stop-color:#1E9CD7"/>
+				<stop  offset="0.8652" style="stop-color:#0075BE"/>
+				<stop  offset="0.9944" style="stop-color:#005B97"/>
+			</linearGradient>
+			<polygon id="XMLID_488_" class="st4" points="161.64,87.14 -24.22,107.86 -71.93,82.74 			"/>
+		</g>
+	</g>
+	<g id="XMLID_480_" class="st1">
+		
+			<radialGradient id="XMLID_8_" cx="-577.6641" cy="-156.9648" r="117.6667" gradientTransform="matrix(-1.624 0 0 -0.9206 -851.439 78.9466)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<ellipse id="XMLID_484_" class="st5" cx="86.69" cy="223.45" rx="191.09" ry="108.32"/>
+		<g id="XMLID_481_">
+			<polygon id="XMLID_483_" class="st3" points="-50.84,289.57 165.22,199 -60.82,199.52 			"/>
+			<linearGradient id="XMLID_9_" gradientUnits="userSpaceOnUse" x1="-50.8371" y1="254.8374" x2="165.2196" y2="254.8374">
+				<stop  offset="0" style="stop-color:#CCE0F4"/>
+				<stop  offset="0.0641" style="stop-color:#C3DCF2"/>
+				<stop  offset="0.1706" style="stop-color:#A9D2EE"/>
+				<stop  offset="0.3066" style="stop-color:#80C2E7"/>
+				<stop  offset="0.4649" style="stop-color:#47ACDE"/>
+				<stop  offset="0.5674" style="stop-color:#1E9CD7"/>
+				<stop  offset="0.8652" style="stop-color:#0075BE"/>
+				<stop  offset="0.9944" style="stop-color:#005B97"/>
+			</linearGradient>
+			<polygon id="XMLID_482_" class="st6" points="165.22,199 10.89,310.67 -50.84,289.57 			"/>
+		</g>
+	</g>
+	<g id="XMLID_475_" class="st1">
+		
+			<radialGradient id="XMLID_10_" cx="-1052.2438" cy="50.9782" r="100.0586" gradientTransform="matrix(-1.624 0 0 -0.9206 -851.439 78.9466)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<ellipse id="XMLID_479_" class="st7" cx="857.42" cy="32.02" rx="162.5" ry="92.11"/>
+		<g id="XMLID_476_">
+			<linearGradient id="XMLID_12_" gradientUnits="userSpaceOnUse" x1="806.1272" y1="17.3506" x2="1004.9355" y2="17.3506">
+				<stop  offset="0" style="stop-color:#CCE0F4"/>
+				<stop  offset="0.0641" style="stop-color:#C3DCF2"/>
+				<stop  offset="0.1706" style="stop-color:#A9D2EE"/>
+				<stop  offset="0.3066" style="stop-color:#80C2E7"/>
+				<stop  offset="0.4649" style="stop-color:#47ACDE"/>
+				<stop  offset="0.5674" style="stop-color:#1E9CD7"/>
+				<stop  offset="0.8652" style="stop-color:#0075BE"/>
+				<stop  offset="0.9944" style="stop-color:#005B97"/>
+			</linearGradient>
+			<polygon id="XMLID_478_" class="st8" points="1004.94,-16.1 806.13,79.1 878.75,-44.4 			"/>
+			<path id="XMLID_477_" class="st3" d="M789.79-37.2c1.82,3.09,16.34,116.3,16.34,116.3l72.62-123.5L789.79-37.2z"/>
+		</g>
+	</g>
+	<g id="XMLID_470_" class="st1">
+		
+			<radialGradient id="XMLID_13_" cx="-1074.8827" cy="-214.5405" r="110.1204" gradientTransform="matrix(-1.624 0 0 -0.9206 -851.439 78.9466)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<ellipse id="XMLID_474_" class="st9" cx="894.18" cy="276.45" rx="178.84" ry="101.38"/>
+		<g id="XMLID_471_">
+			<polygon id="XMLID_473_" class="st3" points="1048.17,299.54 842.23,232.29 953.43,345.43 			"/>
+			<linearGradient id="XMLID_14_" gradientUnits="userSpaceOnUse" x1="842.2261" y1="293.3094" x2="953.4282" y2="293.3094">
+				<stop  offset="0" style="stop-color:#CCE0F4"/>
+				<stop  offset="0.0641" style="stop-color:#C3DCF2"/>
+				<stop  offset="0.1706" style="stop-color:#A9D2EE"/>
+				<stop  offset="0.3066" style="stop-color:#80C2E7"/>
+				<stop  offset="0.4649" style="stop-color:#47ACDE"/>
+				<stop  offset="0.5674" style="stop-color:#1E9CD7"/>
+				<stop  offset="0.8652" style="stop-color:#0075BE"/>
+				<stop  offset="0.9944" style="stop-color:#005B97"/>
+			</linearGradient>
+			<polygon id="XMLID_472_" class="st10" points="842.23,232.29 869.48,354.33 953.43,345.43 			"/>
+		</g>
+	</g>
+	<g id="XMLID_465_" class="st1">
+		
+			<radialGradient id="XMLID_15_" cx="367.1479" cy="-221.6162" r="110.1231" gradientTransform="matrix(1.1362 0.6578 -1.1604 0.644 -410.5765 -87.847)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<ellipse id="XMLID_469_" class="st11" cx="263.72" cy="10.92" rx="178.84" ry="101.38"/>
+		<g id="XMLID_466_">
+			<linearGradient id="XMLID_16_" gradientUnits="userSpaceOnUse" x1="185.0904" y1="-2.3762" x2="309.216" y2="-2.3762">
+				<stop  offset="0" style="stop-color:#CCE0F4"/>
+				<stop  offset="0.0641" style="stop-color:#C3DCF2"/>
+				<stop  offset="0.1706" style="stop-color:#A9D2EE"/>
+				<stop  offset="0.3066" style="stop-color:#80C2E7"/>
+				<stop  offset="0.4649" style="stop-color:#47ACDE"/>
+				<stop  offset="0.5674" style="stop-color:#1E9CD7"/>
+				<stop  offset="0.8652" style="stop-color:#0075BE"/>
+				<stop  offset="0.9944" style="stop-color:#005B97"/>
+			</linearGradient>
+			<polygon id="XMLID_468_" class="st12" points="185.09,-67.61 244.41,62.86 309.22,-61.34 			"/>
+			<polygon id="XMLID_467_" class="st13" points="244.41,62.86 379.16,-33.56 309.22,-61.34 			"/>
+		</g>
+	</g>
+	<g id="XMLID_460_" class="st1">
+		
+			<radialGradient id="XMLID_17_" cx="-83.3036" cy="-574.9666" r="32.9975" gradientTransform="matrix(0.2823 0.9066 -1.5993 0.16 -215.1965 174.0607)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<path id="XMLID_464_" class="st14" d="M690.17,36.46c-29.15,2.92-56.94-8.11-62.09-24.63c-5.14-16.52,14.31-32.28,43.46-35.2
+			c29.15-2.92,56.94,8.11,62.09,24.63C738.77,17.79,719.31,33.54,690.17,36.46z"/>
+		<g id="XMLID_461_">
+			<polygon id="XMLID_463_" class="st3" points="676.21,-12.37 651.93,25.59 714.22,-1.9 			"/>
+			<linearGradient id="XMLID_18_" gradientUnits="userSpaceOnUse" x1="651.9338" y1="11.8426" x2="714.2151" y2="11.8426">
+				<stop  offset="0" style="stop-color:#CCE0F4"/>
+				<stop  offset="0.0641" style="stop-color:#C3DCF2"/>
+				<stop  offset="0.1706" style="stop-color:#A9D2EE"/>
+				<stop  offset="0.3066" style="stop-color:#80C2E7"/>
+				<stop  offset="0.4649" style="stop-color:#47ACDE"/>
+				<stop  offset="0.5674" style="stop-color:#1E9CD7"/>
+				<stop  offset="0.8652" style="stop-color:#0075BE"/>
+				<stop  offset="0.9944" style="stop-color:#005B97"/>
+			</linearGradient>
+			<polygon id="XMLID_462_" class="st15" points="651.93,25.59 708.87,14.88 714.22,-1.9 			"/>
+		</g>
+	</g>
+	<g id="XMLID_455_" class="st1">
+		
+			<radialGradient id="XMLID_19_" cx="-826.6353" cy="31.5668" r="32.997" gradientTransform="matrix(-1.6083 -0.1281 0.2261 -0.9117 -576.2971 182.3168)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<ellipse id="XMLID_459_" class="st16" cx="760.28" cy="259.47" rx="53.59" ry="30.38"/>
+		<g id="XMLID_456_">
+			<polygon id="XMLID_458_" class="st17" points="793.44,262.82 737.28,237.99 764.13,280.07 			"/>
+			<polygon id="XMLID_457_" class="st3" points="737.28,237.99 737.63,272 764.13,280.07 			"/>
+		</g>
+	</g>
+	<g id="XMLID_450_" class="st1">
+		
+			<radialGradient id="XMLID_20_" cx="61.2749" cy="-754.3126" r="19.5822" gradientTransform="matrix(0.3722 0.8961 -1.5808 0.211 -223.4633 182.3239)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<ellipse id="XMLID_454_" class="st18" cx="991.77" cy="78.07" rx="31.8" ry="18.03"/>
+		<g id="XMLID_451_">
+			<linearGradient id="XMLID_21_" gradientUnits="userSpaceOnUse" x1="975.7649" y1="78.4306" x2="1011.0419" y2="78.4306">
+				<stop  offset="0" style="stop-color:#FF7BAC"/>
+				<stop  offset="1" style="stop-color:#FF7BAC;stop-opacity:0"/>
+			</linearGradient>
+			<polygon id="XMLID_453_" class="st19" points="987.91,66.96 975.76,89.9 1011.04,72.44 			"/>
+			
+				<radialGradient id="XMLID_26_" cx="1002.4589" cy="88.4155" r="13.8225" gradientTransform="matrix(1.032 0 0 0.9206 -41.1724 -0.2242)" gradientUnits="userSpaceOnUse">
+				<stop  offset="0" style="stop-color:#FFFFFF"/>
+				<stop  offset="0.0851" style="stop-color:#FFEDD8"/>
+				<stop  offset="0.2082" style="stop-color:#FFD5A7"/>
+				<stop  offset="0.3345" style="stop-color:#FFC17D"/>
+				<stop  offset="0.462" style="stop-color:#FFB05B"/>
+				<stop  offset="0.591" style="stop-color:#FFA340"/>
+				<stop  offset="0.7222" style="stop-color:#FF9A2D"/>
+				<stop  offset="0.8568" style="stop-color:#FF9522"/>
+				<stop  offset="1" style="stop-color:#FF931E"/>
+			</radialGradient>
+			<polygon id="XMLID_452_" class="st20" points="975.76,89.9 1008.87,82.48 1011.04,72.44 			"/>
+		</g>
+	</g>
+	<g id="XMLID_445_" class="st1">
+		
+			<radialGradient id="XMLID_27_" cx="198.221" cy="-595.1151" r="19.5836" gradientTransform="matrix(0.7435 0.8184 -1.4437 0.4214 -146.1994 191.7438)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<ellipse id="XMLID_449_" class="st21" cx="860.37" cy="103.16" rx="31.8" ry="18.03"/>
+		<g id="XMLID_446_">
+			<polygon id="XMLID_448_" class="st22" points="854.65,94.92 849.89,116.84 876.66,95.05 			"/>
+			<polygon id="XMLID_447_" class="st22" points="849.89,116.84 878.84,105.09 876.66,95.05 			"/>
+		</g>
+	</g>
+	<g id="XMLID_440_" class="st1">
+		
+			<radialGradient id="XMLID_28_" cx="-731.1315" cy="681.8032" r="19.5823" gradientTransform="matrix(-0.7789 -0.8078 1.4251 -0.4415 -1362.0156 -46.8504)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<path id="XMLID_444_" class="st23" d="M163.81,226.93c15.41-4.77,34.74-1.56,43.16,7.17c8.42,8.74,2.76,19.69-12.66,24.46
+			s-34.74,1.56-43.16-7.17C142.73,242.65,148.4,231.7,163.81,226.93z"/>
+		<g id="XMLID_441_">
+			<linearGradient id="XMLID_29_" gradientUnits="userSpaceOnUse" x1="163.1295" y1="240.903" x2="188.9494" y2="240.903">
+				<stop  offset="0" style="stop-color:#FF7BAC"/>
+				<stop  offset="1" style="stop-color:#FF7BAC;stop-opacity:0"/>
+			</linearGradient>
+			<polygon id="XMLID_443_" class="st24" points="188,252.88 188.95,228.93 163.13,251.08 			"/>
+			
+				<radialGradient id="XMLID_32_" cx="209.2017" cy="260.9504" r="12.9341" gradientTransform="matrix(1.032 0 0 0.9206 -41.1724 -0.2242)" gradientUnits="userSpaceOnUse">
+				<stop  offset="0" style="stop-color:#FFFFFF"/>
+				<stop  offset="0.0851" style="stop-color:#FFEDD8"/>
+				<stop  offset="0.2082" style="stop-color:#FFD5A7"/>
+				<stop  offset="0.3345" style="stop-color:#FFC17D"/>
+				<stop  offset="0.462" style="stop-color:#FFB05B"/>
+				<stop  offset="0.591" style="stop-color:#FFA340"/>
+				<stop  offset="0.7222" style="stop-color:#FF9A2D"/>
+				<stop  offset="0.8568" style="stop-color:#FF9522"/>
+				<stop  offset="1" style="stop-color:#FF931E"/>
+			</radialGradient>
+			<polygon id="XMLID_442_" class="st25" points="188.95,228.93 160.51,241.07 163.13,251.08 			"/>
+		</g>
+	</g>
+	<g id="XMLID_435_" class="st1">
+		
+			<radialGradient id="XMLID_33_" cx="-172.3281" cy="788.7153" r="19.5827" gradientTransform="matrix(0.6222 -0.8503 1.5001 0.3527 -1016.022 -252.9719)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<ellipse id="XMLID_439_" class="st26" cx="59.91" cy="171.73" rx="31.8" ry="18.03"/>
+		<g id="XMLID_436_">
+			<polygon id="XMLID_438_" class="st3" points="49.93,178.42 85.1,167.43 38.47,169.92 			"/>
+			<polygon id="XMLID_437_" class="st17" points="85.1,167.43 50.59,162.49 38.47,169.92 			"/>
+		</g>
+	</g>
+	<g id="XMLID_430_" class="st1">
+		
+			<radialGradient id="XMLID_34_" cx="288.5002" cy="511.6074" r="19.5833" gradientTransform="matrix(1.4772 -0.3824 0.6746 0.8374 -681.4388 -279.1141)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<path id="XMLID_434_" class="st27" d="M118.8,31.48c7.3,9.06,0.26,19.75-15.72,23.89c-15.98,4.14-34.84,0.15-42.14-8.91
+			c-7.3-9.06-0.26-19.75,15.72-23.89S111.5,22.42,118.8,31.48z"/>
+		<g id="XMLID_431_">
+			<polygon id="XMLID_433_" class="st3" points="74.52,40.01 113.48,45.54 76.34,29.36 			"/>
+			<linearGradient id="XMLID_35_" gradientUnits="userSpaceOnUse" x1="76.345" y1="37.0701" x2="113.4758" y2="37.0701">
+				<stop  offset="0" style="stop-color:#FF7BAC"/>
+				<stop  offset="1" style="stop-color:#FF7BAC;stop-opacity:0"/>
+			</linearGradient>
+			<polygon id="XMLID_432_" class="st28" points="113.48,45.54 94.15,28.6 76.34,29.36 			"/>
+		</g>
+	</g>
+	<g id="XMLID_422_" class="st1">
+		
+			<radialGradient id="XMLID_36_" cx="-552.4404" cy="28.8836" r="31.8784" gradientTransform="matrix(-1.4772 0.3824 -0.6746 -0.8374 199.2768 459.4083)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#4574EB"/>
+			<stop  offset="0.0523" style="stop-color:#5C85ED"/>
+			<stop  offset="0.1625" style="stop-color:#87A5F2"/>
+			<stop  offset="0.2783" style="stop-color:#ACC1F6"/>
+			<stop  offset="0.3985" style="stop-color:#CAD8F9"/>
+			<stop  offset="0.5246" style="stop-color:#E2E9FC"/>
+			<stop  offset="0.6592" style="stop-color:#F2F5FE"/>
+			<stop  offset="0.8082" style="stop-color:#FCFDFF"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</radialGradient>
+		<ellipse id="XMLID_429_" class="st29" cx="995.86" cy="223.96" rx="51.77" ry="29.35"/>
+		<g id="XMLID_424_">
+			<linearGradient id="XMLID_37_" gradientUnits="userSpaceOnUse" x1="957.4345" y1="226.4249" x2="1020.8441" y2="226.4249">
+				<stop  offset="0" style="stop-color:#FF7BAC"/>
+				<stop  offset="1" style="stop-color:#FF7BAC;stop-opacity:0"/>
+			</linearGradient>
+			<polygon id="XMLID_428_" class="st30" points="1020.84,222.26 957.43,213.25 1017.88,239.6 			"/>
+			
+				<radialGradient id="XMLID_38_" cx="996.8899" cy="246.8721" r="23.2599" gradientTransform="matrix(1.032 0 0 0.9206 -41.1724 -0.2242)" gradientUnits="userSpaceOnUse">
+				<stop  offset="0" style="stop-color:#FFFFFF"/>
+				<stop  offset="0.0851" style="stop-color:#FFEDD8"/>
+				<stop  offset="0.2082" style="stop-color:#FFD5A7"/>
+				<stop  offset="0.3345" style="stop-color:#FFC17D"/>
+				<stop  offset="0.462" style="stop-color:#FFB05B"/>
+				<stop  offset="0.591" style="stop-color:#FFA340"/>
+				<stop  offset="0.7222" style="stop-color:#FF9A2D"/>
+				<stop  offset="0.8568" style="stop-color:#FF9522"/>
+				<stop  offset="1" style="stop-color:#FF931E"/>
+			</radialGradient>
+			<polygon id="XMLID_427_" class="st31" points="957.43,213.25 988.89,240.84 1017.88,239.6 			"/>
+		</g>
+	</g>
+</g>
+<path id="XMLID_153_" class="st32" d="M274.16,82.32c0,1.75-2.24,3.17-4.99,3.17c-2.76,0-4.99-1.42-4.99-3.17
+	c0-1.75,2.24-3.17,4.99-3.17C271.92,79.15,274.16,80.57,274.16,82.32z"/>
+<ellipse id="XMLID_152_" class="st32" cx="546.72" cy="33.29" rx="4.99" ry="3.17"/>
+<path id="XMLID_151_" class="st32" d="M817.02,264.91c0,1.75-2.24,3.17-4.99,3.17c-2.76,0-4.99-1.42-4.99-3.17
+	c0-1.75,2.24-3.17,4.99-3.17C814.79,261.74,817.02,263.16,817.02,264.91z"/>
+<ellipse id="XMLID_150_" class="st32" cx="52.2" cy="137.99" rx="4.99" ry="3.17"/>
+<ellipse id="XMLID_149_" class="st32" cx="755.29" cy="223.08" rx="4.99" ry="3.17"/>
+<ellipse id="XMLID_147_" class="st32" cx="827.92" cy="207.8" rx="4.99" ry="3.17"/>
+<path id="XMLID_146_" class="st32" d="M883.29,121.26c0,1.75-2.24,3.17-4.99,3.17c-2.76,0-4.99-1.42-4.99-3.17
+	c0-1.75,2.24-3.17,4.99-3.17C881.06,118.09,883.29,119.51,883.29,121.26z"/>
+<path id="XMLID_145_" class="st32" d="M88.28,238.37c0,1.75-2.24,3.17-4.99,3.17c-2.76,0-4.99-1.42-4.99-3.17
+	c0-1.75,2.24-3.17,4.99-3.17C86.05,235.2,88.28,236.62,88.28,238.37z"/>
+<path id="XMLID_144_" class="st32" d="M109.84,69.63c0,1.75-2.24,3.17-4.99,3.17c-2.76,0-4.99-1.42-4.99-3.17
+	c0-1.75,2.24-3.17,4.99-3.17C107.61,66.46,109.84,67.88,109.84,69.63z"/>
+<path id="XMLID_143_" class="st32" d="M628.2,63.57c0,1.75-2.24,3.17-4.99,3.17c-2.76,0-4.99-1.42-4.99-3.17
+	c0-1.75,2.24-3.17,4.99-3.17C625.96,60.4,628.2,61.82,628.2,63.57z"/>
+<path id="XMLID_142_" class="st32" d="M771.18,26.94c0,1.75-2.24,3.17-4.99,3.17c-2.76,0-4.99-1.42-4.99-3.17
+	c0-1.75,2.24-3.17,4.99-3.17C768.94,23.77,771.18,25.19,771.18,26.94z"/>
+<ellipse id="XMLID_141_" class="st32" cx="324.09" cy="21.75" rx="4.99" ry="3.17"/>
+<ellipse id="XMLID_140_" class="st32" cx="147.29" cy="90.4" rx="2.27" ry="1.44"/>
+<ellipse id="XMLID_138_" class="st32" cx="201.53" cy="69.2" rx="2.27" ry="1.44"/>
+<path id="XMLID_136_" class="st32" d="M421.22,79.87c0,0.8-1.02,1.44-2.27,1.44c-1.25,0-2.27-0.65-2.27-1.44
+	c0-0.8,1.02-1.44,2.27-1.44C420.2,78.43,421.22,79.07,421.22,79.87z"/>
+<path id="XMLID_135_" class="st32" d="M551.94,257.41c0,0.8-1.02,1.44-2.27,1.44c-1.25,0-2.27-0.65-2.27-1.44
+	c0-0.8,1.02-1.44,2.27-1.44C550.93,255.97,551.94,256.61,551.94,257.41z"/>
+<ellipse id="XMLID_97_" class="st32" cx="205.62" cy="29.39" rx="2.27" ry="1.44"/>
+<path id="XMLID_96_" class="st32" d="M117.56,138.86c0,0.8-1.02,1.44-2.27,1.44c-1.25,0-2.27-0.65-2.27-1.44
+	c0-0.8,1.02-1.44,2.27-1.44C116.54,137.42,117.56,138.06,117.56,138.86z"/>
+<ellipse id="XMLID_95_" class="st32" cx="251.46" cy="239.96" rx="2.27" ry="1.44"/>
+<path id="XMLID_89_" class="st32" d="M900.09,175.49c0,0.8-1.02,1.44-2.27,1.44c-1.25,0-2.27-0.65-2.27-1.44
+	c0-0.8,1.02-1.44,2.27-1.44C899.07,174.05,900.09,174.69,900.09,175.49z"/>
+<ellipse id="XMLID_98_" class="st32" cx="622.75" cy="218.47" rx="2.27" ry="1.44"/>
+<path id="XMLID_93_" class="st32" d="M865.14,252.94c0,0.8-1.02,1.44-2.27,1.44c-1.25,0-2.27-0.65-2.27-1.44
+	c0-0.8,1.02-1.44,2.27-1.44C864.12,251.5,865.14,252.14,865.14,252.94z"/>
+<ellipse id="XMLID_94_" class="st32" cx="393.76" cy="34.87" rx="2.27" ry="1.44"/>
+<path id="XMLID_91_" class="st32" d="M973.62,268.95c0,0.8-1.02,1.44-2.27,1.44c-1.25,0-2.27-0.65-2.27-1.44s1.02-1.44,2.27-1.44
+	C972.6,267.51,973.62,268.15,973.62,268.95z"/>
+<path id="XMLID_92_" class="st32" d="M52.2,30.11c0,0.8-1.02,1.44-2.27,1.44s-2.27-0.65-2.27-1.44c0-0.8,1.02-1.44,2.27-1.44
+	S52.2,29.32,52.2,30.11z"/>
+<path id="XMLID_31_" class="st32" d="M897.36,27.8c0,0.8-1.02,1.44-2.27,1.44c-1.25,0-2.27-0.65-2.27-1.44
+	c0-0.8,1.02-1.44,2.27-1.44C896.35,26.36,897.36,27.01,897.36,27.8z"/>
+<path id="XMLID_30_" class="st32" d="M979.97,156.74c0,0.8-1.02,1.44-2.27,1.44c-1.25,0-2.27-0.65-2.27-1.44
+	c0-0.8,1.02-1.44,2.27-1.44C978.96,155.3,979.97,155.94,979.97,156.74z"/>
+<ellipse id="XMLID_124_" class="st33" cx="441.19" cy="237.94" rx="5.67" ry="3.61"/>
+<path id="XMLID_127_" class="st33" d="M832.23,175.63c0,1.19-1.52,2.16-3.4,2.16c-1.88,0-3.4-0.97-3.4-2.16
+	c0-1.19,1.52-2.16,3.4-2.16C830.7,173.47,832.23,174.44,832.23,175.63z"/>
+<path id="XMLID_101_" class="st33" d="M689.02,34.73c0,1.19-1.52,2.16-3.4,2.16s-3.4-0.97-3.4-2.16c0-1.19,1.52-2.16,3.4-2.16
+	S689.02,33.53,689.02,34.73z"/>
+<g id="XMLID_2_">
+	<path id="XMLID_194_" class="st32" d="M265.77,208.31L265.77,208.31c18.31,2.94,95.11,1.56,115.39,1.84
+		c39.2,0.51,83.18,0.56,124.44,0.51c45-0.07,89.49-1.23,132.79-1.53c16.7-0.12,49.77-0.53,65.01-1.17
+		c7.53-0.29,24.45-0.41,34.12-0.48c16.3-0.06,26.48,0.96,10.37,1.31c-43.3,0.96-88.77,2.3-132.52,3.57
+		c-42.66,1.26-84.85,1.55-125.11,1.77c-18.06,0.07-116.38,0.63-129.11,0.42c-15.23-0.31-38.78,0.45-59.36,0.05
+		c-19.48-0.4-13.53,0.58-25.88-2.04c-3.9-0.88-5.06-0.63-10.16-1.97c-1.21-0.31-2.26-0.59-3.15-0.84
+		C259.93,209.01,262.26,207.95,265.77,208.31z"/>
+	<path id="XMLID_130_" class="st32" d="M761.44,99.07L761.44,99.07c-18.31-2.94-95.11-1.56-115.39-1.84
+		c-39.2-0.51-83.18-0.56-124.44-0.51c-45,0.07-89.49,1.23-132.79,1.53c-16.7,0.12-49.77,0.53-65.01,1.17
+		c-7.53,0.29-24.45,0.41-34.12,0.48c-16.3,0.06-26.48-0.96-10.37-1.31c43.3-0.96,88.77-2.3,132.52-3.57
+		c42.66-1.26,84.85-1.55,125.11-1.77c18.06-0.07,116.38-0.63,129.11-0.42c15.23,0.31,38.78-0.45,59.36-0.05
+		c19.48,0.4,13.53-0.58,25.88,2.04c3.9,0.88,5.06,0.63,10.16,1.97c1.21,0.31,2.26,0.59,3.15,0.84
+		C767.28,98.37,764.95,99.44,761.44,99.07z"/>
+</g>
+<rect x="374.3" y="139.03" transform="matrix(1 -1.154906e-03 1.154906e-03 1 -0.1834 0.6257)" class="st34" width="334.72" height="40.12"/>
+<text transform="matrix(1 0 0 1 374.3008 162.7075)" class="st32 st35 st36">Journal of Dentistry</text>
+<rect x="349.98" y="113.85" class="st34" width="142.55" height="20.52"/>
+<text transform="matrix(1 0 0 1 349.98 121.8096)" class="st37 st35 st38">UOAP</text>
+</svg>

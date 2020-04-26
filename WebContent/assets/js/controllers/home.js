@@ -16,21 +16,12 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     };
 
   $scope.dataArray = [{
-      src: '../journal/assets/img/New_Cardiology.jpg',
-      text: ''
-    },{
-      src: '../journal/assets/img/banner journal of dent.svg',
+      src: '../journal/assets/img/journal_of_dent.svg',
       text: ''
     },{
       src: '../journal/assets/img/New Journal of Medical Case Report.jpg',
       text: ''
-    },{
-      src: '../journal/assets/img/New Adjusted Banner of Opthamology.jpg',
-      text: ''
-    },{
-        src: '../journal/assets/img/New Adjusted Banner of Neruology.jpg',
-        text: ''
-      }];
+    }];
 
     JournalsService.getJournals().then(function (data) {
       if (data.statusCode == 200) { // Success
