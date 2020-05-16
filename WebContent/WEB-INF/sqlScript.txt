@@ -130,3 +130,19 @@ reviewerid int not null references reviewer(id))
 alter table menuScriptAssignedReviewers add column assignId varchar(2000);
 
 alter table article add column showOnDetailsPage boolean;
+
+drop table if exists userinvoice;
+
+create table userinvoice(
+id int not null auto_increment,
+authorName varchar(50),
+journalName varchar(50),
+articleName varchar(50),
+invoiceNumber varchar(10) not null,
+currencyCode varchar(5) not null,
+amount numeric (10, 2) not null,
+creationDate datetime not null, 
+userId  varchar(50) not null, 
+paymentStatus varchar(50), 
+transactionId varchar(100),
+primary key(id));
