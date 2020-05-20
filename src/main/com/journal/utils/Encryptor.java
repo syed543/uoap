@@ -3,13 +3,14 @@ package com.journal.utils;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.commons.codec.binary.Base64;
 
 public class Encryptor {
 	
@@ -38,7 +39,7 @@ public class Encryptor {
 		
 		byte[] encrypted = cipher.doFinal(password.getBytes());
 		
-		String encodedStr = Base64.getEncoder().encodeToString(encrypted);
+		String encodedStr = Base64.encodeBase64String(encrypted);
 		
 		return encodedStr;
 	}
@@ -49,7 +50,7 @@ public class Encryptor {
 		
 		cipher.init(Cipher.DECRYPT_MODE, aesKey);
 
-		byte[] decodedEncryptedStr = Base64.getDecoder().decode(encodedEncryptedPassword);
+		byte[] decodedEncryptedStr = Base64.decodeBase64(encodedEncryptedPassword);
 		
 		byte[] decrypted = cipher.doFinal(decodedEncryptedStr);
 		

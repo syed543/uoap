@@ -67,12 +67,12 @@ public class EditorController {
 				WebAppUtils.uploadFile(JournalConstants.EDITOR, editorModel.getId(), editorModel.getAvatarFileName(), editorModel.getAvatar());
 			}
 			
-			try {
+			/*try {
 				
 				JournalMailUtil.sendMail(editorModel.getEmail(), "Editor Registration done", "The generated password is :" + password);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			}*/
 			
 			result.put("statusCode", "200");
 			result.put("message", "editor added succesfully");

@@ -1,0 +1,130 @@
+<md-dialog class="menuscript-dialog" aria-label="Submit Invoice">
+    <form name="invoiceForm" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Add Invoices</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="assets/img/close.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="note">
+                *(Please note all fields are required)
+            </div>
+            <div class="md-dialog-content">
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container >
+                            <label>User Id:</label>
+                            <input name="userId" ng-model="invoice.userId" required>
+                            <div ng-messages="invoiceForm.userId.$error">
+                                <div ng-message="required" class="my-message">You must provide the UserId of customer.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <!-- <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container>
+                            <label>Article Number</label>
+                            <input name="articleNumber" ng-model="invoice.articleNumber" required>
+                            <div ng-messages="invoiceForm.articleNumber.$error">
+                                <div ng-message="required" class="my-message">You must provide Article Number.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content> -->
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container>
+                            <label>Article Title</label>
+                            <input name="articleName" ng-model="invoice.articleName" required>
+                            <div ng-messages="invoiceForm.articleName.$error">
+                                <div ng-message="required" class="my-message">You must provide Article Name.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container>
+                            <label>Amount</label>
+                            <input type=number min=1 step=0.01 name="amount" ng-model="invoice.amount" required>
+                            <div ng-messages="invoiceForm.amount.$error">
+                                <div ng-message="required" class="my-message">You must provide Amount.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container>
+                            <label>Journal Name</label>
+                            <input name="journalName" ng-model="invoice.journalName" required>
+                            <div ng-messages="invoiceForm.journalName.$error">
+                                <div ng-message="required" class="my-message">You must provide Journal Name.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container>
+                            <label>Corresponding Author Name</label>
+                            <input name="authorName" ng-model="invoice.authorName" required>
+                            <div ng-messages="invoiceForm.authorName.$error">
+                                <div ng-message="required" class="my-message">You must provide Author Name.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+                    <div class="fullwidth">
+                        <md-input-container>
+                            <label>Corresponding Author Email ID</label>
+                            <input name="authorEmailId" ng-model="invoice.authorEmailId" required>
+                            <div ng-messages="invoiceForm.authorEmailId.$error">
+                                <div ng-message="required" class="my-message">You must provide Author Email Id.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                
+                <md-content md-theme="docs-dark" layout-gt-sm="row"  layout-padding>
+                    <md-input-container class="fullwidth" flex-gt-sm>
+                        <label>Currency Code</label>
+                        <md-select name="currencyCode" ng-model="invoice.currencyCode" required>
+                            <md-option ng-repeat="currencyCode in currencyCodes" value="{{currencyCode.abbrev}}">
+                                {{currencyCode.name}}
+                            </md-option>
+                        </md-select>
+                        <div ng-messages="invoiceForm.currencyCode.$error">
+                            <div ng-message="required" class="my-message">You must provide Currency Code.</div>
+                        </div>
+                    </md-input-container>
+                </md-content>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button class="md-secondary" ng-click="cancel()">
+                Cancel
+            </md-button>
+            <span flex></span>
+            <md-button ng-disabled="(!invoiceForm.$dirty || !invoiceForm.$valid)" class="md-primary" ng-click="submitInvoice()" md-autofocus>
+                Generate Invoice Link
+            </md-button>
+        </md-dialog-actions>
+    </form>
+    
+    <div ng-if="{generatedUrl}">
+    	Generated Invoice Url: {{generatedUrl}}
+    </div>
+</md-dialog>
