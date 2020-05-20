@@ -32,7 +32,7 @@ import com.journal.utils.JournalConstants;
  * @author imran
  *
  */
-@Controller(value = "payment")
+@Controller
 public class SecurePaymentController {
 
 	@Autowired
@@ -83,7 +83,7 @@ public class SecurePaymentController {
 			generatedUrl = urlInfo.append(JournalConstants.SECURE_HTTP)
 					.append(JournalConstants.HOST_NAME).append("/")
 					.append(JournalConstants.CONTEXT).append("/")
-					.append("payment/verifytoken?token=").append(token)
+					.append("router/verifytoken?token=").append(token)
 					.toString();
 		}
 

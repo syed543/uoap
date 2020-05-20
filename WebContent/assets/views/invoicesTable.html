@@ -1,0 +1,67 @@
+<div ng-controller="invoicesTableCtrl" layout="column">
+
+    <md-content laout="column" flex >
+        <md-card>
+            <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
+                <div class="md-toolbar-tools">
+                    <span>Invoice List</span>
+                    <div flex></div>
+                    <md-button class="md-icon-button" ng-click="refreshInvoices()">
+                        <md-icon>refresh</md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" ng-if="userType === 'admin'"  ng-click="addInvoiceDialog()">
+                        <md-icon>add</md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <!--<md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
+                <div class="md-toolbar-tools">
+                    <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
+                </div>
+            </md-toolbar>-->
+
+            <md-table-container>
+                <!-- <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
+                    <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+                    <tr md-row>
+                        <th md-column md-order-by="title"><span>Title</span></th>
+                        <th md-column md-order-by="authors"><span>Authors</span></th>
+                        <th md-column md-order-by="abstractDesc"><span>Abstract</span></th>
+                        <th md-column md-order-by="journalName"><span>Journal</span></th>
+                        <th md-column md-order-by="articleType"><span>ArticleType</span></th>
+                        <th md-column md-order-by="articleState"><span>State</span></th>
+                        <th md-column md-order-by=""><span>Download</span></th>
+                        <th md-column ng-if="userType === 'admin'"  md-order-by=""><span>Delete</span></th>
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                        <td md-cell>{{dessert.title}}</td>
+                        <td md-cell>{{dessert.authors}}</td>
+                        <td md-cell>{{dessert.abstractDesc}}</td>
+                        <td md-cell>{{dessert.journalName}}</td>
+                        <td md-cell>{{dessert.articleType}}</td>
+                        <td md-cell>
+                        <div ng-if="dessert.articleState == 'inPress'">In Press</div>
+                        <div ng-if="dessert.articleState == 'currentIssue'">Current Issue</div>
+                        <div ng-if="dessert.articleState == 'archive'">Archive</div>
+                        <md-button class="md-primary" ng-if="dessert.articleState == 'inPress' && userType === 'admin'" ng-click="updateArticleState(dessert)">Change state to current Issue</md-button>
+                        <md-button ng-if="dessert.articleState == 'currentIssue' && userType === 'admin'" ng-click="updateArticleState(dessert)">Change state to Archive</md-button>
+                        </td>
+                        <td md-cell><md-button class="md-icon-button" ng-click="view(dessert)">
+                            <md-icon>file_download</md-icon>
+                        </md-button></td>
+                        <td md-cell ng-if="userType === 'admin'" ><md-button class="md-icon-button" ng-click="delete(dessert)">
+                            <md-icon>delete</md-icon>
+                        </md-button></td>
+                    </tr>
+                    </tbody>
+                </table> -->
+            </md-table-container>
+
+            <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{desserts.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+        </md-card>
+    </md-content>
+
+</div>

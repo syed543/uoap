@@ -78,6 +78,10 @@ public class JournalFilter implements Filter{
 		
 		allowed.add("/downloadArticle");
 		allowed.add("/updateArticleState");
+		
+		allowed.add("/generatesecureurl");
+		allowed.add("/verifytoken");
+		allowed.add("/updatePayment");
 	}
 
 	@Override

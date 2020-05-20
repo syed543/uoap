@@ -38,7 +38,7 @@ public interface JournalConstants {
 	int MENUSCRIPT_STATUS_REJECTED = 5;
 
 	String SECURE_HTTP = "https://";
-	String HOST_NAME = "uoap.com";
+	String HOST_NAME = "uoaponline.com";
 	String CONTEXT = "journal";
 
 	String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
