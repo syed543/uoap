@@ -7,6 +7,8 @@ package com.journal.controller;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.journal.dao.UserInvoiceJDBCTemplate;
 import com.journal.model.UserInvoice;
@@ -32,7 +35,7 @@ import com.journal.utils.JournalConstants;
  * @author imran
  *
  */
-@Controller(value = "payment")
+@Controller
 public class SecurePaymentController {
 
 	@Autowired
@@ -53,7 +56,7 @@ public class SecurePaymentController {
 	 */
 	@RequestMapping(value = "/generatesecureurl", method = RequestMethod.POST)
 	@ResponseBody
-	public String generateSecurePaymentUrl(
+	public Map<String, Object> generateSecurePaymentUrl(
 			@RequestBody PaymentRequest paymentRequest)
 			throws InvalidKeyException, NoSuchAlgorithmException,
 			NoSuchPaddingException, IllegalBlockSizeException,
@@ -63,6 +66,7 @@ public class SecurePaymentController {
 		StringBuilder urlInfo = null;
 		String token = null;
 		String generatedUrl = "";
+		Map<String, Object> result = new HashMap<String, Object>();
 
 		String invoice = generateInvoiceNumber(
 				JournalConstants.INVOICE_NUMBER_LENGTH);
@@ -83,11 +87,14 @@ public class SecurePaymentController {
 			generatedUrl = urlInfo.append(JournalConstants.SECURE_HTTP)
 					.append(JournalConstants.HOST_NAME).append("/")
 					.append(JournalConstants.CONTEXT).append("/")
-					.append("payment/verifytoken?token=").append(token)
+					.append("router/verifytoken?token=").append(token)
 					.toString();
 		}
 
-		return generatedUrl;
+		result.put("statusCode", "200");
+		result.put("data", generatedUrl);
+
+		return result;
 	}
 
 	/**
@@ -102,14 +109,16 @@ public class SecurePaymentController {
 	 * @throws BadPaddingException       String
 	 */
 	@RequestMapping(value = "/verifytoken", method = RequestMethod.GET)
-	@ResponseBody
-	public String verifyPaymentUrl(@RequestParam String token)
+	public ModelAndView verifyPaymentUrl(@RequestParam String token)
 			throws InvalidKeyException, NoSuchAlgorithmException,
 			NoSuchPaddingException, IllegalBlockSizeException,
 			BadPaddingException {
+		ModelAndView view = new ModelAndView();
+
+		view.setViewName("rejected");
 
 		if (token == null) {
-			return "NOTOK";
+			return view;
 		}
 
 		String dycryptedToken = Encryptor.getDecodedDecrytedString(token);
@@ -120,21 +129,31 @@ public class SecurePaymentController {
 				.getUserInvoiceById(tokenValues[1]);
 
 		if (userInvoice == null) {
-			return "NOTOK";
+			return view;
 		}
 
 		if (isExpired(userInvoice.getCreationDate(),
 				JournalConstants.TOKEN_EXPIRY,
 				JournalConstants.EXPIRY_IN_HOURS)) {
-			return "EXPIRED";
+
+			view.setViewName("expired");
+			return view;
 		}
 
 		if (JournalConstants.PAYMENT_SUCCESS
 				.equalsIgnoreCase(userInvoice.getPaymentStatus())) {
-			return "ALREADYDONE";
+			view.setViewName("alreadypaid");
+			return view;
 		}
 
-		return validateToken(tokenValues, userInvoice);
+		String status = validateToken(tokenValues, userInvoice);
+
+		if ("OK".equals(status)) {
+			view.setViewName("verified");
+			view.addObject(userInvoice);
+		}
+
+		return view;
 	}
 
 	/**
