@@ -87,7 +87,7 @@ controllers.controller("articlesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
       ArticlesService.downloadArticle(article['id']);
     };
 
-    $scope.delete = function(article) {
+    $scope.delete1 = function(article) {
       ArticlesService.deleteArticle(article['id']).then(function(data) {
           if (data.statusCode == 200) { // Success
               $scope.refreshArticles();

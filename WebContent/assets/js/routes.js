@@ -90,6 +90,20 @@ define(['angular', 'controllers/main', 'angular-ui-router'], function (angular, 
                 templateUrl: 'assets/views/aboutUs.html',
                 controller: 'aboutUsCtrl',
                 Authentication: false
+            })
+            .state('myInvoice', {
+                url: '/myInvoice',
+                name: 'invoice',
+                templateUrl: 'assets/views/invoiceDetails.html',
+                controller: 'invoiceDetailsController',
+                Authentication: false
+            })
+            .state('inValidInvoice', {
+                url: '/inValidInvoice',
+                name: 'inValidInvoice',
+                templateUrl: 'assets/views/inValidInvoice.html',
+                controller: 'inValidInvoiceController',
+                Authentication: false
             });
 
         $urlRouterProvider.otherwise('home');

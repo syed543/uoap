@@ -38,7 +38,8 @@
                     <div class="fullwidth">
                         <md-input-container>
                             <label>Email</label>
-                            <input name="editorEmail" ng-model="editor.email" type="email" required ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
+                            <!-- <input name="editorEmail" ng-model="editor.email" type="email" required ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"> -->
+                            <input name="editorEmail" ng-model="editor.email" type="email" required>
                             <div ng-messages="editor.editorEmail.$error" role="alert" multiple>
                                 <div ng-message="required" class="my-message">You must provide email.</div>
                                 <div ng-message="pattern" class="my-message">That doesn't look like a valid email.

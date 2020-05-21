@@ -143,7 +143,7 @@ controllers.controller("invoicesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
                 };*/
             InvoiceService.generateInvoice($scope.invoice).then(function (data) {
                 if (data.statusCode == 200) { // Success
-                	$scope.generatedUrl = data.generatedUrl;
+                	$scope.generatedUrl = data.data;
                 } else { 					// Error
                     console.log("Unable to generate Url. please contact support.");
                 }

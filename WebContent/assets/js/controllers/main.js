@@ -16,6 +16,7 @@ define([
 './menuScriptsTable',
 './articles',
 './journalDetails',
+'./invoicesTable',
 './forEditors',
 './forAuthors',
 './forReviewers',

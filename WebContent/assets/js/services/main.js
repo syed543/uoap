@@ -11,6 +11,7 @@ define([
 "./reviewers-service",
 "./articles-service",
 "./menuScripts-service",
+"./invoice-service",
   "./login-service"
 ], function() {
 
