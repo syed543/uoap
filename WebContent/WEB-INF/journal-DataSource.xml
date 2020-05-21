@@ -7,9 +7,9 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/journal" />
+		<property name="url" value="jdbc:mysql://localhost:3306/journal?serverTimezone=UTC" />
 		<property name="username" value="root" />
-		<property name="password" value="root" />
+		<property name="password" value="Syed!Azher54321" />
 	</bean>
 	
 	<bean id="userJDBCTemplate" class ="com.journal.dao.UserJDBCTemplate">
