@@ -33,56 +33,9 @@
 			    <h3 class="panel-title">Invoice Details</h3>
 			  </div>
 			  <div class="panel-body">
-			    
+			    Invalid Url
 			  </div>
-			  <!-- List group -->
-			  <ul class="list-group">
-			    <li class="list-group-item">
-				    <div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
-					</div>
-			    </li>
-			    <li class="list-group-item">
-			    	<div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
-					</div>
-				</li>
-			    <li class="list-group-item">
-			    	<div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
-					</div>
-				</li>
-				<li class="list-group-item">
-			    	<div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
-					</div>
-				</li>
-				<li class="list-group-item">
-			    	<div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
-					</div>
-				</li>
-				<li class="list-group-item">
-			    	<div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
-					</div>
-				</li>
-				<li class="list-group-item">
-			    	<div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
-					</div>
-				</li>
-				<li class="list-group-item">
-					<div id="paypal-button-container"></div>
-				</li>
-			  </ul>
+			  
 			</div>
 		</div>
 	</body>

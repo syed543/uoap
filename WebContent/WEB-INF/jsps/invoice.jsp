@@ -40,13 +40,13 @@
 			    <li class="list-group-item">
 				    <div class="row">
 					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
+					  <div class="col-xs-6 col-md-6">===${userInvoice.authorName}</div>
 					</div>
 			    </li>
 			    <li class="list-group-item">
 			    	<div class="row">
 					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
+					  <div class="col-xs-6 col-md-6">{authorName}</div>
 					</div>
 				</li>
 			    <li class="list-group-item">
