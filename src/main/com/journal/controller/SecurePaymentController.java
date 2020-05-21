@@ -4,6 +4,8 @@
  */
 package com.journal.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -53,6 +55,7 @@ public class SecurePaymentController {
 	 * @throws NoSuchPaddingException
 	 * @throws NoSuchAlgorithmException
 	 * @throws InvalidKeyException
+	 * @throws UnsupportedEncodingException 
 	 */
 	@RequestMapping(value = "/generatesecureurl", method = RequestMethod.POST)
 	@ResponseBody
@@ -60,7 +63,7 @@ public class SecurePaymentController {
 			@RequestBody PaymentRequest paymentRequest)
 			throws InvalidKeyException, NoSuchAlgorithmException,
 			NoSuchPaddingException, IllegalBlockSizeException,
-			BadPaddingException {
+			BadPaddingException, UnsupportedEncodingException {
 		// local variables
 		StringBuilder tokenInfo = new StringBuilder();
 		StringBuilder urlInfo = null;
@@ -81,7 +84,9 @@ public class SecurePaymentController {
 
 		// insert invoice record into db
 		saveUserInvoice(paymentRequest, invoice);
-
+		
+		token = URLEncoder.encode(token, "UTF-8");
+		
 		if (null != token) {
 			urlInfo = new StringBuilder();
 			generatedUrl = urlInfo.append(JournalConstants.SECURE_HTTP)
@@ -89,7 +94,7 @@ public class SecurePaymentController {
 					.append(JournalConstants.CONTEXT).append("/")
 					.append("router/verifytoken?token=").append(token)
 					.toString();
-		}
+		}		
 
 		result.put("statusCode", "200");
 		result.put("data", generatedUrl);
@@ -115,7 +120,7 @@ public class SecurePaymentController {
 			BadPaddingException {
 		ModelAndView view = new ModelAndView();
 
-		view.setViewName("rejected");
+		view.setViewName("notValidUrl");
 
 		if (token == null) {
 			return view;
@@ -132,24 +137,24 @@ public class SecurePaymentController {
 			return view;
 		}
 
-		if (isExpired(userInvoice.getCreationDate(),
-				JournalConstants.TOKEN_EXPIRY,
-				JournalConstants.EXPIRY_IN_HOURS)) {
-
-			view.setViewName("expired");
-			return view;
-		}
+//		if (isExpired(userInvoice.getCreationDate(),
+//				JournalConstants.TOKEN_EXPIRY,
+//				JournalConstants.EXPIRY_IN_DAYS)) {
+//
+//			view.setViewName("expired");
+//			return view;
+//		}
 
 		if (JournalConstants.PAYMENT_SUCCESS
 				.equalsIgnoreCase(userInvoice.getPaymentStatus())) {
-			view.setViewName("alreadypaid");
+			view.setViewName("alreadySubmitted");
 			return view;
 		}
 
 		String status = validateToken(tokenValues, userInvoice);
 
 		if ("OK".equals(status)) {
-			view.setViewName("verified");
+			view.setViewName("invoice");
 			view.addObject(userInvoice);
 		}
 
@@ -190,6 +195,7 @@ public class SecurePaymentController {
 		userInvoice.setUserId(paymentRequest.getUserId());
 		userInvoice.setCurrencyCode(paymentRequest.getCurrencyCode());
 		userInvoice.setInvoiceNumber(invoiceNumber);
+		userInvoice.setJournalName(paymentRequest.getJournalName());
 		userInvoice.setCreationDate(new Date());
 
 		userInvoiceJDBCTemplate.saveUserInvoice(userInvoice);
@@ -295,7 +301,8 @@ public class SecurePaymentController {
 	private String validateToken(String[] tokenValues, UserInvoice invoice) {
 
 		if (tokenValues[0].equalsIgnoreCase(invoice.getUserId())
-				&& tokenValues[2].equalsIgnoreCase(invoice.getAuthorName())
+				&& tokenValues[1].equalsIgnoreCase(invoice.getInvoiceNumber())
+				&& tokenValues[2].equalsIgnoreCase(invoice.getJournalName())
 				&& tokenValues[3].equalsIgnoreCase(invoice.getAuthorName())
 				&& tokenValues[4].equalsIgnoreCase(invoice.getCurrencyCode())
 				&& tokenValues[5].equalsIgnoreCase(

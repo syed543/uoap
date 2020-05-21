@@ -57,7 +57,7 @@ public class UserInvoiceJDBCTemplate {
 		String query = "select authorName, journalName, articleName, invoiceNumber, currencyCode, amount, userId from USERINVOICE where invoiceNumber = ?";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		UserInvoice userInvoice = (UserInvoice) jdbcTemplate.query(query,
+		UserInvoice userInvoice = (UserInvoice) jdbcTemplate.queryForObject(query,
 				new Object[] { invoiceNumber },
 				new BeanPropertyRowMapper<UserInvoice>(UserInvoice.class));
 

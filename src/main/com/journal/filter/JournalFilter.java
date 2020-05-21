@@ -34,6 +34,8 @@ public class JournalFilter implements Filter{
 		allowedWithoutLogin.add("/accept");
 		allowedWithoutLogin.add("/reject");
 		allowedWithoutLogin.add("/editors");
+		allowedWithoutLogin.add("/verifytoken");
+		allowedWithoutLogin.add("/updatePayment");
 
 		
 		allowed.add("/login");
@@ -80,8 +82,6 @@ public class JournalFilter implements Filter{
 		allowed.add("/updateArticleState");
 		
 		allowed.add("/generatesecureurl");
-		allowed.add("/verifytoken");
-		allowed.add("/updatePayment");
 	}
 
 	@Override
