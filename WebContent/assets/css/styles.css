@@ -546,3 +546,9 @@ md-table-pagination .label {
 	position: fixed;
 	left: 9999px;
 }
+
+.invoice-details {
+	max-width: 500px;
+	margin: 0 auto;
+	padding-top: 3rem;
+}
