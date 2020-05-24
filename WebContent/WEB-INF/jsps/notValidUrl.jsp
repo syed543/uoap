@@ -10,9 +10,9 @@
 		<meta name="description" content="Provides access to quality Case Report; Clinical; Medicine; Open Access; Peer-Reviewed; and International Journals." />
 		<title>Unicon Open Access Publishers</title>
 		
-		<link href="../../WebContent/assets/js/vendors/angular-material/angular-material.css" rel="stylesheet" />
-		<link href="../../WebContent/assets/js/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="../../WebContent/assets/css/styles.css" rel="stylesheet" />
+		<link href="../../journal/assets/js/vendors/angular-material/angular-material.css" rel="stylesheet" />
+		<link href="../../journal/assets/js/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../journal/assets/css/styles.css" rel="stylesheet" />
 	</head>
 	
 	<body layout="column" flex class="uoap">
@@ -28,38 +28,11 @@
 		</div>
 		
 		<div class="invoice-details">
-			<div class="panel panel-primary">
-			  <div class="panel-heading">
-			    <h3 class="panel-title">Invoice Details</h3>
-			  </div>
+			<div class="panel">
 			  <div class="panel-body">
 			    Invalid Url
 			  </div>
-			  
 			</div>
 		</div>
 	</body>
-	<script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
-	<script>
-		paypal.Buttons({
-		    createOrder: function(data, actions) {
-		      // This function sets up the details of the transaction, including the amount and line item details.
-		      return actions.order.create({
-		        purchase_units: [{
-		          amount: {
-		            value: '0.01'
-		          }
-		        }]
-		      });
-		    },
-		    onApprove: function(data, actions) {
-		      // This function captures the funds from the transaction.
-		      return actions.order.capture().then(function(details) {
-		        // This function shows a transaction success message to your buyer.
-		        alert('Transaction completed by ' + details.payer.name.given_name);
-		      });
-		    }
-		  }).render('#paypal-button-container');
-	    // This function displays Smart Payment Buttons on your web page.
-	  </script>
 </html>

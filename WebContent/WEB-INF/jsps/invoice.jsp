@@ -10,9 +10,9 @@
 		<meta name="description" content="Provides access to quality Case Report; Clinical; Medicine; Open Access; Peer-Reviewed; and International Journals." />
 		<title>Unicon Open Access Publishers</title>
 		
-		<link href="../../WebContent/assets/js/vendors/angular-material/angular-material.css" rel="stylesheet" />
-		<link href="../../WebContent/assets/js/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="../../WebContent/assets/css/styles.css" rel="stylesheet" />
+		<link href="../../journal/assets/js/vendors/angular-material/angular-material.css" rel="stylesheet" />
+		<link href="../../journal/assets/js/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../journal/assets/css/styles.css" rel="stylesheet" />
 	</head>
 	
 	<body layout="column" flex class="uoap">
@@ -39,62 +39,70 @@
 			  <ul class="list-group">
 			    <li class="list-group-item">
 				    <div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">===${userInvoice.authorName}</div>
+					  <div class="col-xs-12 col-sm-6 col-md-6">Date: </div>
+					  <div class="col-xs-6 col-md-6">${userInvoice.creationDate}</div>
 					</div>
 			    </li>
+			    <%-- <li class="list-group-item">
+			    	<div class="row">
+					  <div class="col-xs-12 col-sm-6 col-md-6">Article Number: </div>
+					  <div class="col-xs-6 col-md-6">${userInvoice.articleNumber}</div>
+					</div>
+				</li> --%>
 			    <li class="list-group-item">
 			    	<div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">{authorName}</div>
-					</div>
-				</li>
-			    <li class="list-group-item">
-			    	<div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
+					  <div class="col-xs-12 col-sm-6 col-md-6">Article Name: </div>
+					  <div class="col-xs-6 col-md-6">${userInvoice.articleName}</div>
 					</div>
 				</li>
 				<li class="list-group-item">
 			    	<div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
+					  <div class="col-xs-12 col-sm-6 col-md-6">Journal Name: </div>
+					  <div class="col-xs-6 col-md-6">${userInvoice.journalName}</div>
 					</div>
 				</li>
 				<li class="list-group-item">
 			    	<div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
+					  <div class="col-xs-12 col-sm-6 col-md-6">Corresponding Author Name: </div>
+					  <div class="col-xs-6 col-md-6">${userInvoice.authorName}</div>
 					</div>
 				</li>
+				<%-- <li class="list-group-item">
+			    	<div class="row">
+					  <div class="col-xs-12 col-sm-6 col-md-6">Corresponding Author Email ID: </div>
+					  <div class="col-xs-6 col-md-6">${userInvoice.authorEmail}</div>
+					</div>
+				</li> --%>
 				<li class="list-group-item">
 			    	<div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
+					  <div class="col-xs-12 col-sm-6 col-md-6">Amount: </div>
+					  <div class="col-xs-6 col-md-6">${userInvoice.currencyCode} ${userInvoice.amount}</div>
 					</div>
 				</li>
 				<li class="list-group-item">
-			    	<div class="row">
-					  <div class="col-xs-12 col-sm-6 col-md-6">Your email: </div>
-					  <div class="col-xs-6 col-md-6">syed.azher@gmail.com</div>
-					</div>
-				</li>
-				<li class="list-group-item">
+					<div><p>Pay using: </p></div>
 					<div id="paypal-button-container"></div>
 				</li>
 			  </ul>
 			</div>
 		</div>
 	</body>
-	<script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+	<script src="https://www.paypal.com/sdk/js?client-id=AXjLvGI9ZILQElZk7jeSbA5dOEYuJdUIxXkGmx23iHDrrrpPeZmDvlko1p2ZzTAThJ9QHBU07uC_OBBv"></script>
 	<script>
 		paypal.Buttons({
+			style: {
+			    layout:  'vertical',
+			    color:   'blue',
+			    shape:   'rect',
+			    label:   'paypal'
+			  },
 		    createOrder: function(data, actions) {
 		      // This function sets up the details of the transaction, including the amount and line item details.
 		      return actions.order.create({
 		        purchase_units: [{
 		          amount: {
-		            value: '0.01'
+		            value: '${userInvoice.amount}',
+		            currency: '${userInvoice.currencyCode}'
 		          }
 		        }]
 		      });
@@ -103,6 +111,7 @@
 		      // This function captures the funds from the transaction.
 		      return actions.order.capture().then(function(details) {
 		        // This function shows a transaction success message to your buyer.
+		        debugger;
 		        alert('Transaction completed by ' + details.payer.name.given_name);
 		      });
 		    }
