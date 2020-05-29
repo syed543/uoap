@@ -183,5 +183,38 @@ public class UserInvoice {
 	 */
 	public void setAuthorEmailId(String authorEmailId) {
 		this.authorEmailId = authorEmailId;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("UserInvoice [id=");
+		builder.append(id);
+		builder.append(", authorName=");
+		builder.append(authorName);
+		builder.append(", journalName=");
+		builder.append(journalName);
+		builder.append(", articleName=");
+		builder.append(articleName);
+		builder.append(", invoiceNumber=");
+		builder.append(invoiceNumber);
+		builder.append(", currencyCode=");
+		builder.append(currencyCode);
+		builder.append(", amount=");
+		builder.append(amount);
+		builder.append(", creationDate=");
+		builder.append(creationDate);
+		builder.append(", userId=");
+		builder.append(userId);
+		builder.append(", paymentStatus=");
+		builder.append(paymentStatus);
+		builder.append(", transactionId=");
+		builder.append(transactionId);
+		builder.append(", articleNumber=");
+		builder.append(articleNumber);
+		builder.append(", authorEmailId=");
+		builder.append(authorEmailId);
+		builder.append("]");
+		return builder.toString();
 	}	
 }

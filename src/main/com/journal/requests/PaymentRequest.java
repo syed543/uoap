@@ -36,6 +36,9 @@ public class PaymentRequest implements Serializable {
 
 	@XmlElement(required = false)
 	private String authorEmailId;
+	
+	@XmlElement(required = false)
+	private String articleNumber;
 
 	@XmlElement(required = false)
 	private String currencyCode;
@@ -190,6 +193,14 @@ public class PaymentRequest implements Serializable {
 	 */
 	public void setTransactionId(String transactionId) {
 		this.transactionId = transactionId;
+	}	
+
+	public String getArticleNumber() {
+		return articleNumber;
+	}
+
+	public void setArticleNumber(String articleNumber) {
+		this.articleNumber = articleNumber;
 	}
 
 	@Override
