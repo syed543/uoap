@@ -196,6 +196,8 @@ public class SecurePaymentController {
 		userInvoice.setCurrencyCode(paymentRequest.getCurrencyCode());
 		userInvoice.setInvoiceNumber(invoiceNumber);
 		userInvoice.setJournalName(paymentRequest.getJournalName());
+		userInvoice.setArticleNumber(paymentRequest.getArticleNumber());
+		userInvoice.setAuthorEmailId(paymentRequest.getAuthorEmailId());
 		userInvoice.setCreationDate(new Date());
 
 		userInvoiceJDBCTemplate.saveUserInvoice(userInvoice);

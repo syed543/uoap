@@ -145,4 +145,6 @@ creationDate datetime not null,
 userId  varchar(50) not null, 
 paymentStatus varchar(50), 
 transactionId varchar(100),
+articleNumber varchar(50),
+authorEmailId varchar(100),
 primary key(id));

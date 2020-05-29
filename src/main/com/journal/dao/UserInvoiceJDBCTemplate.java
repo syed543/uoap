@@ -33,7 +33,7 @@ public class UserInvoiceJDBCTemplate {
 	 */
 	public void saveUserInvoice(UserInvoice userInvoice) {
 
-		String query = "insert into USERINVOICE(authorName, journalName, articleName, invoiceNumber, currencyCode, amount, creationDate, userId, paymentStatus, transactionId) values (?,?,?,?,?,?,?,?,?,?);";
+		String query = "insert into USERINVOICE(authorName, journalName, articleName, invoiceNumber, currencyCode, amount, creationDate, userId, paymentStatus, transactionId, articleNumber, authorEmailId) values (?,?,?,?,?,?,?,?,?,?,?,?);";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
@@ -42,7 +42,7 @@ public class UserInvoiceJDBCTemplate {
 				userInvoice.getInvoiceNumber(), userInvoice.getCurrencyCode(),
 				userInvoice.getAmount(), userInvoice.getCreationDate(),
 				userInvoice.getUserId(), userInvoice.getPaymentStatus(),
-				userInvoice.getTransactionId());
+				userInvoice.getTransactionId(), userInvoice.getArticleNumber(), userInvoice.getAuthorEmailId());
 
 	}
 
@@ -54,7 +54,7 @@ public class UserInvoiceJDBCTemplate {
 	 */
 	@SuppressWarnings("unchecked")
 	public UserInvoice getUserInvoiceById(String invoiceNumber) {
-		String query = "select authorName, journalName, articleName, invoiceNumber, currencyCode, amount, userId from USERINVOICE where invoiceNumber = ?";
+		String query = "select authorName, journalName, articleName, invoiceNumber, currencyCode, amount, userId, articleNumber, authorEmailId, creationDate from USERINVOICE where invoiceNumber = ?";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		UserInvoice userInvoice = (UserInvoice) jdbcTemplate.queryForObject(query,

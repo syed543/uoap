@@ -25,6 +25,8 @@ public class UserInvoice {
 	private String userId;
 	private String paymentStatus;
 	private String transactionId;
+	private String articleNumber;
+	private String authorEmailId;
 	
 	/**
 	 * @return the id
@@ -157,5 +159,29 @@ public class UserInvoice {
 	 */
 	public void setTransactionId(String transactionId) {
 		this.transactionId = transactionId;
+	}
+	/**
+	 * @return the articleNumber
+	 */
+	public String getArticleNumber() {
+		return articleNumber;
+	}
+	/**
+	 * @param articleNumber the articleNumber to set
+	 */
+	public void setArticleNumber(String articleNumber) {
+		this.articleNumber = articleNumber;
+	}
+	/**
+	 * @return the authorEmailId
+	 */
+	public String getAuthorEmailId() {
+		return authorEmailId;
+	}
+	/**
+	 * @param authorEmailId the authorEmailId to set
+	 */
+	public void setAuthorEmailId(String authorEmailId) {
+		this.authorEmailId = authorEmailId;
 	}	
 }
