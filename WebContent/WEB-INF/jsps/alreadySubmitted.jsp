@@ -21,7 +21,7 @@
 		    <nav class="navbar navbar-default navbar-static-top">
 		        <div class="container">
 		            <div class="navbar-header">
-		                <a class="navbar-brand" href="#">Unicon Open Access</a>
+		                <a class="navbar-brand" href="#">Unicon Open Access Publishers</a>
 		            </div>
 		        </div>
 		    </nav>

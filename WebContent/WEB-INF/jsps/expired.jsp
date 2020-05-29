@@ -30,7 +30,7 @@
 		<div class="invoice-details">
 			<div class="panel">
 			  <div class="panel-body">
-			    The Invoice you are trying reach is already expired. Please contact at <a href="mailto:info@uoaponline.com">info@uoaponline.comt</a>
+			    The Invoice you are trying reach is already expired. Please contact at <a href="mailto:info@uoaponline.com">info@uoaponline.com</a>
 			  </div>
 			</div>
 		</div>

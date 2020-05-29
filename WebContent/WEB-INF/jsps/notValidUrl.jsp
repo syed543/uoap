@@ -30,7 +30,7 @@
 		<div class="invoice-details">
 			<div class="panel">
 			  <div class="panel-body">
-			    Invalid Url
+			    Invalid Url... Please contact Administrator at <a href="mailto:info@uoaponline.com">info@uoaponline.com</a>
 			  </div>
 			</div>
 		</div>

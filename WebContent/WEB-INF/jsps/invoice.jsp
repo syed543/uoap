@@ -87,8 +87,9 @@
 			</div>
 		</div>
 	</body>
-	<script src="https://www.paypal.com/sdk/js?client-id=AXjLvGI9ZILQElZk7jeSbA5dOEYuJdUIxXkGmx23iHDrrrpPeZmDvlko1p2ZzTAThJ9QHBU07uC_OBBv"></script>
+	<script src="https://www.paypal.com/sdk/js?client-id=AXjLvGI9ZILQElZk7jeSbA5dOEYuJdUIxXkGmx23iHDrrrpPeZmDvlko1p2ZzTAThJ9QHBU07uC_OBBv&currency=${userInvoice.currencyCode}"></script>
 	<script>
+		var _invoiceNumber = '${userInvoice.invoiceNumber}';
 		paypal.Buttons({
 			style: {
 			    layout:  'vertical',
@@ -101,8 +102,7 @@
 		      return actions.order.create({
 		        purchase_units: [{
 		          amount: {
-		            value: '${userInvoice.amount}',
-		            currency: '${userInvoice.currencyCode}'
+		            value: '${userInvoice.amount}'
 		          }
 		        }]
 		      });
@@ -112,7 +112,10 @@
 		      return actions.order.capture().then(function(details) {
 		        // This function shows a transaction success message to your buyer.
 		        debugger;
-		        alert('Transaction completed by ' + details.payer.name.given_name);
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("POST", "/journal/router/updatePayment");
+			xmlhttp.setRequestHeader("Content-Type", "application/json");
+			xmlhttp.send(JSON.stringify({InvoiceNumber: _invoiceNumber, PaymentStatus:details.Status, TransactionId: details.Id}));
 		      });
 		    }
 		  }).render('#paypal-button-container');
