@@ -111,7 +111,8 @@ controllers.controller("invoicesTableCtrl", ['$mdEditDialog', '$q', '$scope', '$
             'journalName': '',
             'authorName': '',
             'authorEmailId': '',
-            'currencyCode': ''
+            'currencyCode': '',
+            'articleNumber':''
         };
         $scope.file = '';
         $scope.hide = function() {
