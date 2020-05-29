@@ -43,12 +43,12 @@
 					  <div class="col-xs-6 col-md-6">${userInvoice.creationDate}</div>
 					</div>
 			    </li>
-			    <%-- <li class="list-group-item">
+			    <li class="list-group-item">
 			    	<div class="row">
 					  <div class="col-xs-12 col-sm-6 col-md-6">Article Number: </div>
 					  <div class="col-xs-6 col-md-6">${userInvoice.articleNumber}</div>
 					</div>
-				</li> --%>
+				</li>
 			    <li class="list-group-item">
 			    	<div class="row">
 					  <div class="col-xs-12 col-sm-6 col-md-6">Article Name: </div>
@@ -67,12 +67,12 @@
 					  <div class="col-xs-6 col-md-6">${userInvoice.authorName}</div>
 					</div>
 				</li>
-				<%-- <li class="list-group-item">
+				<li class="list-group-item">
 			    	<div class="row">
 					  <div class="col-xs-12 col-sm-6 col-md-6">Corresponding Author Email ID: </div>
-					  <div class="col-xs-6 col-md-6">${userInvoice.authorEmail}</div>
+					  <div class="col-xs-6 col-md-6">${userInvoice.authorEmailId}</div>
 					</div>
-				</li> --%>
+				</li>
 				<li class="list-group-item">
 			    	<div class="row">
 					  <div class="col-xs-12 col-sm-6 col-md-6">Amount: </div>
