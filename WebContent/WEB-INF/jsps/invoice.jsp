@@ -111,11 +111,11 @@
 		      // This function captures the funds from the transaction.
 		      return actions.order.capture().then(function(details) {
 		        // This function shows a transaction success message to your buyer.
-		        debugger;
+		        
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.open("POST", "/journal/router/updatePayment");
 			xmlhttp.setRequestHeader("Content-Type", "application/json");
-			xmlhttp.send(JSON.stringify({InvoiceNumber: _invoiceNumber, PaymentStatus:details.Status, TransactionId: details.Id}));
+			xmlhttp.send(JSON.stringify({InvoiceNumber: _invoiceNumber, PaymentStatus:details.status, TransactionId: details.id}));
 		      });
 		    }
 		  }).render('#paypal-button-container');
