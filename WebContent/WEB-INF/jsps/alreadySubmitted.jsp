@@ -10,9 +10,9 @@
 		<meta name="description" content="Provides access to quality Case Report; Clinical; Medicine; Open Access; Peer-Reviewed; and International Journals." />
 		<title>Unicon Open Access Publishers</title>
 		
-		<link href="../../WebContent/assets/js/vendors/angular-material/angular-material.css" rel="stylesheet" />
-		<link href="../../WebContent/assets/js/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="../../WebContent/assets/css/styles.css" rel="stylesheet" />
+		<link href="../../journal/assets/js/vendors/angular-material/angular-material.css" rel="stylesheet" />
+		<link href="../../journal/assets/js/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../journal/assets/css/styles.css" rel="stylesheet" />
 	</head>
 	
 	<body layout="column" flex class="uoap">
@@ -30,7 +30,7 @@
 		<div class="invoice-details">
 			<div class="panel">
 			  <div class="panel-body">
-			    Invoice already submitted. Thank you!
+			    Your payment is already accepted. Thank you!
 			  </div>
 			</div>
 		</div>
