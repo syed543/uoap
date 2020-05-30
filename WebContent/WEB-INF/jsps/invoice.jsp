@@ -27,7 +27,7 @@
 		    </nav>
 		</div>
 		
-		<div class="invoice-details">
+		<div class="invoice-details invoice-show">
 			<div class="panel panel-primary">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">Invoice Details</h3>
@@ -86,6 +86,13 @@
 			  </ul>
 			</div>
 		</div>
+		<div class="invoice-details invoice-hide">
+			<div class="panel">
+			  <div class="panel-body">
+			    Your payment is successfull. Thank you!
+			  </div>
+			</div>
+		</div>
 	</body>
 	<script src="https://www.paypal.com/sdk/js?client-id=AXjLvGI9ZILQElZk7jeSbA5dOEYuJdUIxXkGmx23iHDrrrpPeZmDvlko1p2ZzTAThJ9QHBU07uC_OBBv&currency=${userInvoice.currencyCode}"></script>
 	<script>
@@ -112,10 +119,17 @@
 		      return actions.order.capture().then(function(details) {
 		        // This function shows a transaction success message to your buyer.
 		        
-			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.open("POST", "/journal/router/updatePayment");
-			xmlhttp.setRequestHeader("Content-Type", "application/json");
-			xmlhttp.send(JSON.stringify({InvoiceNumber: _invoiceNumber, PaymentStatus:details.status, TransactionId: details.id}));
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.open("POST", "/journal/router/updatePayment");
+				xmlhttp.setRequestHeader("Content-Type", "application/json");
+				xmlhttp.send(JSON.stringify({InvoiceNumber: _invoiceNumber, PaymentStatus:details.status, TransactionId: details.id}));
+				if(details.status.toLowerCase() == "completed" || details.status.toLowerCase() == "onhold") {
+					var _invoiceRepTemplateEle = document.getElementsByClassName("invoice-hide")[0];
+					_invoiceRepTemplateEle.classList.remove("invoice-hide");
+
+					var _invoiceTemplateEle = document.getElementsByClassName("invoice-show")[0];
+					_invoiceTemplateEle.parentNode.removeChild(_invoiceTemplateEle);
+				}
 		      });
 		    }
 		  }).render('#paypal-button-container');
