@@ -552,3 +552,7 @@ md-table-pagination .label {
 	margin: 0 auto;
 	padding-top: 3rem;
 }
+
+.invoice-hide {
+	display: none;
+}
