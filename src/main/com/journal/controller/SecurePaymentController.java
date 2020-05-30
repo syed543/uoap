@@ -137,13 +137,12 @@ public class SecurePaymentController {
 			return view;
 		}
 		
-//		if (isExpired(userInvoice.getCreationDate(),
-//				JournalConstants.TOKEN_EXPIRY,
-//				JournalConstants.EXPIRY_IN_DAYS)) {
-//
-//			view.setViewName("expired");
-//			return view;
-//		}
+		if (isExpired(userInvoice.getCreationDate(),
+				JournalConstants.TOKEN_EXPIRY,
+				JournalConstants.EXPIRY_IN_DAYS)) {
+			view.setViewName("expired");
+			return view;
+		}
 
 		if (JournalConstants.PAYMENT_SUCCESS
 				.equalsIgnoreCase(userInvoice.getPaymentStatus())) {
