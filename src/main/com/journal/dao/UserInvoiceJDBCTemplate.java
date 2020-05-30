@@ -54,7 +54,7 @@ public class UserInvoiceJDBCTemplate {
 	 */
 	@SuppressWarnings("unchecked")
 	public UserInvoice getUserInvoiceById(String invoiceNumber) {
-		String query = "select authorName, journalName, articleName, invoiceNumber, currencyCode, amount, userId, articleNumber, authorEmailId, creationDate from USERINVOICE where invoiceNumber = ?";
+		String query = "select authorName, journalName, articleName, invoiceNumber, paymentStatus, currencyCode, amount, userId, articleNumber, authorEmailId, creationDate from USERINVOICE where invoiceNumber = ?";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		UserInvoice userInvoice = (UserInvoice) jdbcTemplate.queryForObject(query,

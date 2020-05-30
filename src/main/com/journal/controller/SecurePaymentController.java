@@ -129,14 +129,14 @@ public class SecurePaymentController {
 		String dycryptedToken = Encryptor.getDecodedDecrytedString(token);
 
 		String[] tokenValues = dycryptedToken.split("@");
-
+		
 		UserInvoice userInvoice = userInvoiceJDBCTemplate
 				.getUserInvoiceById(tokenValues[1]);
-
+		
 		if (userInvoice == null) {
 			return view;
 		}
-
+		
 //		if (isExpired(userInvoice.getCreationDate(),
 //				JournalConstants.TOKEN_EXPIRY,
 //				JournalConstants.EXPIRY_IN_DAYS)) {

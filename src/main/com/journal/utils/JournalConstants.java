@@ -46,7 +46,7 @@ public interface JournalConstants {
 	int INVOICE_NUMBER_LENGTH = 6;
 	
 	String PAYMENT_PENDING = "PENDING";
-	String PAYMENT_FAILED = "FAILED";
+	String PAYMENT_FAILED = "DECLINED";
 	String PAYMENT_SUCCESS = "COMPLETED";
 	
 	int TOKEN_EXPIRY=5;
