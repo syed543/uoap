@@ -115,7 +115,7 @@
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.open("POST", "/journal/router/updatePayment");
 			xmlhttp.setRequestHeader("Content-Type", "application/json");
-			xmlhttp.send(JSON.stringify({InvoiceNumber: _invoiceNumber, PaymentStatus:details.status, TransactionId: details.id}));
+			xmlhttp.send(JSON.stringify({invoiceNumber: _invoiceNumber, paymentStatus:details.status, transactionId: details.id}));
 		      });
 		    }
 		  }).render('#paypal-button-container');
