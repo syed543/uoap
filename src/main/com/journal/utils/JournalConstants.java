@@ -47,7 +47,7 @@ public interface JournalConstants {
 	
 	String PAYMENT_PENDING = "PENDING";
 	String PAYMENT_FAILED = "FAILED";
-	String PAYMENT_SUCCESS = "SUCCESS";
+	String PAYMENT_SUCCESS = "COMPLETED";
 	
 	int TOKEN_EXPIRY=5;
 	String EXPIRY_IN_DAYS="DAYS";
