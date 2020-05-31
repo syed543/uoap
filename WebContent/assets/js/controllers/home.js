@@ -21,7 +21,10 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
     },{
       src: '../journal/assets/img/New Journal of Medical Case Report.jpg',
       text: ''
-    }];
+    },{
+        src: '../journal/assets/img/New banner of Virology.svg',
+        text: ''
+      }];
 
     JournalsService.getJournals().then(function (data) {
       if (data.statusCode == 200) { // Success
