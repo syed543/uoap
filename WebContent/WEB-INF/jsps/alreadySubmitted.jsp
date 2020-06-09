@@ -16,16 +16,7 @@
 	</head>
 	
 	<body layout="column" flex class="uoap">
-		<div class="uoap-header">
-		    <!-- Static navbar -->
-		    <nav class="navbar navbar-default navbar-static-top">
-		        <div class="container">
-		            <div class="navbar-header">
-		                <a class="navbar-brand" href="#">Unicon Open Access Publishers</a>
-		            </div>
-		        </div>
-		    </nav>
-		</div>
+		
 		
 		<div class="invoice-details">
 			<div class="panel">
