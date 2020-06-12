@@ -22,7 +22,7 @@ controllers.controller("homeCtrl", ["$scope", "$rootScope", "$state", "JournalsS
       src: '../journal/assets/img/New Journal of Medical Case Report.jpg',
       text: ''
     },{
-        src: '../journal/assets/img/New banner of Virology.svg',
+        src: '../journal/assets/img/jpvirb.svg',
         text: ''
       }];
 
