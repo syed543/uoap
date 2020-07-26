@@ -32,7 +32,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class=""><a href="/journal/#articles">Articles</a></li>
+                    <!-- <li class=""><a href="/journal/#articles">Articles</a></li> -->
+                    <li class=""><a href="javascript:void(0);" ng-click="openArticle(journal)">Articles</a></li>
                     <li ng-if="userlogged && userView" class=""><a ui-sref="{{userView}}">Dashboard</a></li>
                     <li class=""><a href="/journal/#forEditors">For Editors</a></li>
                     <li class=""><a href="/journal/#forAuthors">For Authors</a></li>

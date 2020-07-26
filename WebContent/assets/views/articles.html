@@ -3,11 +3,16 @@
     <md-content laout="column" flex >
         <md-toolbar class="md-table-toolbar md-default">
             <div class="md-toolbar-tools">
-                <h1>List Of Articles:</h1>
+                <h1 style="padding-right: 20px;">List Of Articles:</h1>
+                <md-select class="select-article-state" name="version" ng-model="stateValue" required ng-change="handleStateChange(stateValue)">
+                    <md-option ng-repeat="state in states" value="{{state.stateValue}}">
+                        {{state.stateName}}
+                    </md-option>
+                </md-select>
                 <div flex></div>
-                <md-button class="md-icon-button" ng-click="refreshArticles()">
+                <!-- <md-button class="md-icon-button" ng-click="refreshArticles()">
                     <md-icon>refresh</md-icon>
-                </md-button>
+                </md-button> -->
             </div>
         </md-toolbar>
         <md-card ng-repeat="article in articles">

@@ -30,5 +30,9 @@ controllers.controller("headerController", ["$scope", "$rootScope", "$state", "$
         window.open(_name+'.html?id='+journal.id);
       }
 
+    $scope.openArticle = function() {
+        window.open('../#/articles?context='+$rootScope.journalContextId);
+      }
+
 }]);
 });

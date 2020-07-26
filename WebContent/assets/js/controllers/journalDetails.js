@@ -10,6 +10,7 @@ controllers.controller("journalDetailsCtrl", ["$scope", "$rootScope", "$state", 
   function($scope, $rootScope, $state, $stateParams, $localStorage, $sessionStorage, JournalsService, ArticlesService, authenticationSvc, $mdDialog, EditorsService, MenuScriptsService) {
 
   var _journalId = window.location.search.split('=')[1];
+  $rootScope.journalContextId = _journalId;
   //console.log(_journalId);
   	$scope.states = [{
   		"stateName": "In Press",
