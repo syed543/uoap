@@ -148,3 +148,5 @@ transactionId varchar(100),
 articleNumber varchar(50),
 authorEmailId varchar(100),
 primary key(id));
+
+ALTER TABLE article MODIFY abstractDesc VARCHAR(8000);
